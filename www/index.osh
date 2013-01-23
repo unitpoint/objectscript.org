@@ -1,0 +1,169 @@
+<%
+
+var header_list, header_sent = {}, false
+function header(str){
+	var parts = str.split(":", 1)
+	if(#parts == 2){
+		header_list[parts[0].upper()] = str
+	}else{
+		header_list[str.upper()] = str
+	}
+}
+
+var realEcho = echo
+
+function printf(){
+	echo sprintf.apply(_E, arguments)
+}
+
+;{
+	var buffers = []
+	
+	var orgEcho = echo
+	// var orgPrintf = printf
+	
+	function echo(){
+		echo = orgEcho
+		header_sent = true
+		for(var k, v in header_list){
+			realEcho(v, "\r\n")
+		}
+		realEcho "\r\n"
+		header = function(){
+			realEcho "HTTP headers are already sent\n"
+		}
+		echo.apply(_E, arguments)
+	}
+	
+	var function obEcho(){
+		assert(#buffers > 0, "ob buffer is not exist")
+		var buf = buffers[#buffers-1]
+		for(var k, v in arguments){
+			buf.append(v)
+		}
+	}
+	
+	ob = {}
+	function ob.push(){
+		if(#buffers == 0){
+			echo = obEcho
+			// printf = obPrintf
+		}
+		buffers.push(Buffer())
+	}
+	
+	function ob.pop(){
+		assert(#buffers > 0, "ob buffer is not exist")
+		var buf = buffers.pop()
+		if(#buffers == 0){
+			echo = orgEcho
+		}
+		echo(buf)
+	}
+	
+	function ob.popContent(){
+		assert(#buffers > 0, "ob buffer is not exist")
+		var buf = buffers.pop()
+		if(#buffers == 0){
+			echo = orgEcho
+		}
+		return toString(buf)
+	}
+	
+	function ob.getContent(){
+		assert(#buffers > 0, "ob buffer is not exist")
+		return toString(buffers[#buffers-1])
+	}
+	
+	registerShutdownFunction {||
+		for(; #buffers > 0;){
+			ob.pop()
+		}
+	}
+}
+
+header "Content-type: text/html; charset=utf8"
+echo "<TITLE>fastcgi</TITLE>\n<H1>OS fastcgi: Hello world!</H1>"
+
+var origin_string_replace = String.replace
+function String.replace(search, replace){
+	if(objectOf(search)){
+		var str = this
+		for(search, replace in search){
+			str = origin_string_replace.call(str, search, replace)
+		}
+		return str
+	}else{
+		return origin_string_replace.call(this, search, replace)
+	}
+}
+
+function String.__mul(count){
+	var buf = Buffer()
+	for(; count > 0; count--){
+		buf.append(this)
+	} 
+	return toString(buf)
+}
+
+function String.__add(b){
+	return this .. b
+}
+
+var ii = 0
+var dump_recurse_check = {}
+function dump(val, deep, is_key){
+	if(!deep){
+		dump_recurse_check = {}
+		deep = 0
+	}
+	var spaces = is_key ? "  " * deep : ""
+	echo spaces
+	if(objectOf(val) || {|| 
+		if(val.hasProperties()){ 
+			printf("&lt;%s:%d&gt;", typeOf(val), val.osValueId)
+			return true
+		}
+		return false
+	}()){
+		if(val in dump_recurse_check){
+			echo "RECURSE"
+			return
+		}
+		dump_recurse_check[val] = true
+		echo "{\n"
+		for(var k, v in val){
+			dump(k, deep+1, true)
+			echo " = "
+			dump(v, deep+1)
+		}
+		echo("  " * deep, "}\n")
+		return
+	}
+	echo toString(val).replace {
+		"<" = "&lt;"
+		">" = "&gt;"
+	}
+	if(!is_key){
+		echo "\n"
+	}
+}
+
+function Number.times(func){
+	for(var i = 0; i < this; i++){
+		func(i)
+	}
+}
+
+echo "<pre>"
+
+(10).times {|i| print i }
+
+if(false) echo toString(_G).replace {
+		"<" = "&lt;"
+		">" = "&gt;"
+	}
+dump _G
+// dump _G['_SERVER']
+// dump { abc = { ee = 1, vv = 2, ererre = {3434, 2243} }, res = 35 }
+// dump _G.Object.merge

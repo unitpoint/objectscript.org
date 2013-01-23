@@ -1,0 +1,49 @@
+server {
+	listen			80;
+
+	server_name		objectscript.org;
+	server_name		www.objectscript.org;
+
+	root	/home/os/objectscript.org/www;
+
+	error_log		/var/log/nginx/error.objectscript_org.log;
+	# access_log		/var/log/nginx/access.objectscript_org.log;
+	access_log		off;
+
+	location ~ /\.ht {
+		deny all;
+	}
+
+	location ~ /\.git {
+		deny all;
+	}
+
+	if ($request_uri ~* "^[\w\-\/]+[^\/?]$") {
+		rewrite ^(.*)$ $scheme://$host$1/ permanent;
+	}
+
+	location / {
+		try_files $uri $uri/ /index.osh;
+	}
+
+	location ~* \.(jpg|jpeg|png|gif|swf|flv|mp4|mov|avi|wmv|m4v|mkv|ico|js|css|txt)$ {
+		access_log off;
+		expires 7d;
+	}
+
+	charset	utf-8;
+
+	location ^~ /mydmn {
+		rewrite ^ https://$host$request_uri? permanent;
+	}
+
+	location ~ ^.+\.osh? {
+		fastcgi_split_path_info	^(.+\.osh?)(.*)$;
+		fastcgi_pass	127.0.0.1:9000;
+		fastcgi_index	index.osh;
+		include fastcgi_params;
+		fastcgi_intercept_errors	on;
+		fastcgi_ignore_client_abort	on;
+		fastcgi_read_timeout	360;
+	}
+}
