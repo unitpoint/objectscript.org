@@ -11251,6 +11251,7 @@ void OS::closeFile(void * f)
 
 void OS::echo(const OS_CHAR * str)
 {
+	// fputs(os->toString(-params + i).toChar(), stdout);
 	OS_PRINTF(OS_TEXT("%s"), str);
 }
 
@@ -11258,7 +11259,13 @@ void OS::printf(const OS_CHAR * format, ...)
 {
 	va_list va;
 	va_start(va, format);
-	OS_VPRINTF(format, va);
+	
+	getGlobal(core->strings->func_echo);
+	pushGlobals();
+	pushString(Core::String::formatVa(this, format, va));
+	call(1);
+
+	// OS_VPRINTF(format, va);
 	va_end(va);
 }
 
@@ -13610,7 +13617,8 @@ void OS::Core::pushNumber(double val)
 
 OS::Core::GCStringValue * OS::Core::pushStringValue(const String& val)
 {
-	return pushValue(newStringValue(val));
+	pushValue(Value(val)); // newStringValue(val));
+	return val.string;
 }
 
 OS::Core::GCStringValue * OS::Core::pushStringValue(const OS_CHAR * val)
@@ -17246,17 +17254,32 @@ void OS::initGlobalFunctions()
 
 	struct Lib
 	{
+		static void echo(OS * os, const OS_CHAR * str)
+		{
+			os->getGlobal(os->core->strings->func_echo);
+			os->pushGlobals();
+			os->pushString(str);
+			os->call(1);
+		}
+
+		static void echo(OS * os, const String& str)
+		{
+			os->getGlobal(os->core->strings->func_echo);
+			os->pushGlobals();
+			os->pushString(str);
+			os->call(1);
+		}
+
 		static int print(OS * os, int params, int, int, void*)
 		{
 			for(int i = 0; i < params; i++){
-				String str = os->toString(-params + i);
 				if(i > 0){
-					os->echo("\t");
+					echo(os, OS_TEXT("\t"));
 				}
-				os->echo(str.toChar());
+				echo(os, os->toString(-params + i));
 			}
 			if(params > 0){
-				os->echo("\n");
+				echo(os, OS_TEXT("\n"));
 			}
 			return 0;
 		}
@@ -17264,8 +17287,8 @@ void OS::initGlobalFunctions()
 		static int echo(OS * os, int params, int, int, void*)
 		{
 			for(int i = 0; i < params; i++){
-				String str = os->toString(-params + i);
-				os->echo(str.toChar());
+				// fputs(os->toString(-params + i).toChar(), stdout);
+				os->echo(os->toString(-params + i).toChar());
 			}
 			return 0;
 		}
@@ -17274,8 +17297,7 @@ void OS::initGlobalFunctions()
 		{
 			if(params > 0){
 				Format::sprintf(os, params, 0, 0, NULL);
-				String str = os->toString();
-				os->echo(str.toChar());
+				echo(os, os->toString());
 			}
 			return 0;
 		}
