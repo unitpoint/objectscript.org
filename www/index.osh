@@ -1,4 +1,4 @@
-<%
+﻿<%
 
 var header_list, header_sent = {}, false
 function header(str){
@@ -12,10 +12,6 @@ function header(str){
 
 var realEcho = echo
 
-function printf(){
-	echo sprintf.apply(_E, arguments)
-}
-
 ;{
 	var buffers = []
 	
@@ -25,6 +21,7 @@ function printf(){
 	function echo(){
 		echo = orgEcho
 		header_sent = true
+		triggerHeaderSent();
 		for(var k, v in header_list){
 			realEcho(v, "\r\n")
 		}
@@ -84,6 +81,7 @@ function printf(){
 
 header "Content-type: text/html; charset=utf8"
 echo "<TITLE>fastcgi</TITLE>\n<H1>OS fastcgi: Hello world!</H1>"
+%>Привет мир!<%
 
 var origin_string_replace = String.replace
 function String.replace(search, replace){
@@ -110,7 +108,6 @@ function String.__add(b){
 	return this .. b
 }
 
-var ii = 0
 var dump_recurse_check = {}
 function dump(val, deep, is_key){
 	if(!deep){
@@ -149,15 +146,7 @@ function dump(val, deep, is_key){
 	}
 }
 
-function Number.times(func){
-	for(var i = 0; i < this; i++){
-		func(i)
-	}
-}
-
 echo "<pre>"
-
-(10).times {|i| print i }
 
 if(false) echo toString(_G).replace {
 		"<" = "&lt;"
