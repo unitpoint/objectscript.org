@@ -21,6 +21,7 @@ protected:
 
 	FCGX_Request * request;
 	int shutdown_funcs_id;
+	bool header_sent;
 
 	virtual ~FCGX_OS()
 	{
@@ -31,6 +32,7 @@ public:
 	FCGX_OS()
 	{
 		request = NULL;
+		header_sent = false;
 	}
 
 	void initPreScript()
@@ -58,16 +60,20 @@ public:
 
 	void echo(const OS_CHAR * str)
 	{
+		if(!header_sent){
+			header_sent = true;
+			FCGX_PutS("Content-type: text/html\r\n\r\n", request->out);
+		}
 		FCGX_PutS(str, request->out);
 	}
 
-	void printf(const OS_CHAR * fmt, ...)
+	/* void printf(const OS_CHAR * fmt, ...)
 	{
 		va_list ap;
 		va_start(ap, fmt);
 		FCGX_VFPrintF(request->out, fmt, ap);
 		va_end(ap);
-	}
+	} */
 
 	void setSmartProperty(const OS_CHAR * name)
 	{
@@ -110,6 +116,13 @@ public:
 		setProperty(prop_name);
 	}
 
+	static int triggerHeaderSent(OS * p_os, int params, int, int, void*)
+	{
+		FCGX_OS * os = (FCGX_OS*)p_os;
+		os->header_sent = true;
+		return 0;
+	}
+
 	static int registerShutdownFunction(OS * p_os, int params, int, int, void*)
 	{
 		if(params > 0){
@@ -145,6 +158,18 @@ public:
 		pop();
 	}
 
+	void registerFunctions()
+	{
+		FuncDef funcs[] = {
+			{"registerShutdownFunction", FCGX_OS::registerShutdownFunction},
+			{"triggerHeaderSent", FCGX_OS::triggerHeaderSent},
+			{}
+		};
+		pushGlobals();
+		setFuncs(funcs);
+		pop();
+	}
+
 	void processRequest(FCGX_Request * p_request)
 	{
 		request = p_request;
@@ -154,8 +179,7 @@ public:
 		shutdown_funcs_id = getValueId();
 		addProperty();
 
-		pushCFunction(FCGX_OS::registerShutdownFunction);
-		setGlobal("registerShutdownFunction");
+		registerFunctions();
 
 		initEnv("_SERVER", request->envp);
 
@@ -258,7 +282,37 @@ public:
 		getProperty("SCRIPT_FILENAME");
 		String script_filename = popString();
 		
-		require(script_filename, true);
+		String ext = getFilenameExt(script_filename);
+		if(ext == OS_EXT_SOURCECODE || ext == OS_EXT_TEMPLATE){
+			require(script_filename, true);
+		}else{
+			// TODO: output not OS file
+			if(!header_sent){
+				header_sent = true;
+				if(ext == ".txt"){
+					FCGX_PutS("Content-type: text/plain\r\n", request->out);
+				}else{
+					FCGX_PutS("Content-type: text/html\r\n", request->out);
+				}
+				FCGX_PutS("\r\n", request->out);
+			}
+			void * f = openFile(script_filename, "rb");
+			if(f){
+				const int BUF_SIZE = 1024*256;
+				int size = getFileSize(f);
+				void * buf = malloc(BUF_SIZE < size ? BUF_SIZE : size OS_DBG_FILEPOS);
+				for(int i = 0; i < size; i += BUF_SIZE){
+					int len = BUF_SIZE < size - i ? BUF_SIZE : size - i;
+					readFile(buf, len, f);
+					FCGX_PutStr((const char*)buf, len, request->out);
+				}
+				closeFile(f);
+				free(buf);				
+			}else{
+				FCGX_PutS("Error open file: ", request->out);
+				FCGX_PutS(script_filename, request->out);
+			}
+		}
 
 		triggerShutdownFunctions();
 		// FCGX_Finish_r(request);
