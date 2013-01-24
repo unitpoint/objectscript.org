@@ -1,7 +1,4 @@
 cmake_minimum_required (VERSION 2.8)
-# project (os-fcgi)
-
-# add_subdirectory(os)
 
 set(target "os-fcgi")
 project(${target})
@@ -24,5 +21,7 @@ if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
 endif()
 
 add_executable(${target} ${SOURCES} ${HEADERS})
-target_link_libraries(${target} ${FCGI_LIBRARY} "pthread") 
-install(TARGETS ${target} RUNTIME DESTINATION bin) 
+target_link_libraries(${target} ${FCGI_LIBRARY} "pthread")
+
+install(TARGETS ${target} RUNTIME DESTINATION usr/sbin)
+install(DIRECTORY ../conf/etc DESTINATION .)

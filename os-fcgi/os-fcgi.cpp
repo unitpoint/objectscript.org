@@ -11,12 +11,16 @@
 #include "fcgi-2.4.1/include/fcgi_stdio.h"
 #include "MPFDParser-1.0/Parser.h"
 #include <stdlib.h>
+
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 #ifndef _MSC_VER
 #include <pthread.h>
 #endif
+
+#define PID_FILE "/var/run/os-fcgi.pid"
 
 using namespace ObjectScript;
 
@@ -413,12 +417,60 @@ void * doit(void * a)
     }
 }
 
+void signalHandler(int sig)
+{
+	unlink(PID_FILE);
+	exit(EXIT_SUCCESS);
+}
+
+void setPidFile(const char * filename)
+{
+	FILE * f = fopen(filename, "w+");
+	if (f) {
+		fprintf(f, "%u", getpid());
+		fclose(f);
+	}
+}
+
+void demonize()
+{
+	pid_t pid = fork();
+	if (pid < 0) {
+	printf("Error: Start Daemon failed (%s)\n", strerror(errno));
+		exit(EXIT_FAILURE);
+	}
+	if (pid > 0)
+		exit(EXIT_SUCCESS);
+
+	umask(0);
+
+	if (setsid() < 0)
+		exit(EXIT_FAILURE);
+
+	if ((chdir("/")) < 0)
+		exit(EXIT_FAILURE);
+
+	close(STDIN_FILENO);
+	close(STDOUT_FILENO);
+	close(STDERR_FILENO);
+
+	struct sigaction sa;
+	sa.sa_handler = signalHandler;
+	sigaction(SIGINT, &sa, 0);
+	sigaction(SIGQUIT, &sa, 0);
+	sigaction(SIGTERM, &sa, 0);
+
+	setPidFile(PID_FILE);
+}
+
 #ifdef _MSC_VER
 int _tmain(int argc, _TCHAR* argv[])
 #else
 int main(int argc, char * argv[])
 #endif
 {
+	demonize();
+
 	if(FCGX_Init()){
 		exit(1); 
 	}
@@ -428,7 +480,7 @@ int main(int argc, char * argv[])
 
     int listen_socket = FCGX_OpenSocket(port, listen_queue_backlog);
     if(listen_socket < 0){
-		printf("listen_socket < 0 \n");
+		log("listen_socket < 0 \n");
 		exit(1);
 	}
 
