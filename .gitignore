@@ -1,6 +1,8 @@
 /os-fcgi/win32/Release/
 /os-fcgi/win32/Debug/
 /os-fcgi/win32/ipch/
+/os-fcgi/win32/x64/Release/
+/os-fcgi/win32/x64/Debug/
 *.opensdf
 *.sdf
 *.suo

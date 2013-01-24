@@ -49,7 +49,7 @@ public:
 			OS_ASSERT(split);
 			if(split){
 				pushStackValue(-1);
-				pushString(value, split - value);
+				pushString(value, (int)(split - value));
 				pushString(split + 1);
 				setProperty();
 			}
@@ -84,7 +84,7 @@ public:
 				if(cur > name){
 					// newObject();
 					// pushStackValue(-3);
-					pushString(name, cur - name);
+					pushString(name, (int)(cur - name));
 					// pushStackValue(-3);
 					// setProperty();
 					// move(-1, -2);
@@ -220,7 +220,7 @@ public:
 		String content_type = popString();
 
 		const char * multipart_form_data = "multipart/form-data;";
-		int multipart_form_data_len = strlen(multipart_form_data);
+		int multipart_form_data_len = (int)strlen(multipart_form_data);
 
 		MPFD::Parser POSTParser = MPFD::Parser();
 		if(content_length > 0 && content_type.getLen() > 0 && strncmp(content_type.toChar(), multipart_form_data, multipart_form_data_len) == 0){
