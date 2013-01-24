@@ -381,14 +381,7 @@ void log(const char * msg)
 
 void * doit(void * a)
 {
-	const char * port = ":9000";
-    int listen_queue_backlog = 400;
-
-    int  listen_socket = FCGX_OpenSocket(port, listen_queue_backlog);
-    if(listen_socket < 0){
-		printf("listen_socket < 0 \n");
-		exit(1);
-	}
+    int listen_socket = (int)a;
 
     FCGX_Request request;
     if(FCGX_InitRequest(&request, listen_socket, 0)){
@@ -430,14 +423,23 @@ int main(int argc, char * argv[])
 		exit(1); 
 	}
 
+	const char * port = ":9000";
+    int listen_queue_backlog = 400;
+
+    int listen_socket = FCGX_OpenSocket(port, listen_queue_backlog);
+    if(listen_socket < 0){
+		printf("listen_socket < 0 \n");
+		exit(1);
+	}
+
 #ifndef _MSC_VER
 	const int THREAD_COUNT = 8;
 	pthread_t id[THREAD_COUNT];
 	for(int i = 1; i < THREAD_COUNT; i++){
-        pthread_create(&id[i], NULL, doit, (void*)i);
+        pthread_create(&id[i], NULL, doit, (void*)listen_socket);
 	}
 #endif
-	doit(NULL);
+	doit((void*)listen_socket);
 
 	return 0;
 }
