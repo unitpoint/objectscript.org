@@ -18898,8 +18898,9 @@ void OS::initFileClass()
 				os->pushBool(self->open(os->toString(-params)));
 			}else{
 				self->close();
+				return 0;
 			}
-			return 0;
+			return 1;
 		}
 		
 		static int read(OS * os, int params, int, int, void * user_param)
