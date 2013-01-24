@@ -12173,7 +12173,7 @@ OS::String OS::resolvePath(const String& filename, const String& cur_path)
 	if(isFileExist(resolved_path)){
 		return resolved_path;
 	}
-	core->error(OS_E_WARNING, String::format(this, OS_TEXT("filename %s is not resolved"), filename.toChar()));
+	// core->error(OS_E_WARNING, String::format(this, OS_TEXT("filename %s is not resolved"), filename.toChar()));
 	return String(this);
 }
 

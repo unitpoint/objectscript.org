@@ -9,6 +9,9 @@
 *.vcxproj.filters
 *.vcxproj.user
 
+*.osc
+*.osd
+
 # Object files
 *.o
 

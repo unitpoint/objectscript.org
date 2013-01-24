@@ -170,6 +170,46 @@ function dump(val, deep, is_key){
 	}
 }
 
+// require("Html")
+setErrorHandler {|code message file line|
+	var type = "ERROR"
+	if(code == E_WARNING)
+		type = "WARNING"
+	else if(code == E_NOTICE)
+		type = "NOTICE"
+	echo("["type"] "message"<br />")
+	echo "back trace<br />"
+	printBackTrace(1) // skip current function
+}
+
+function printBackTrace(skipNumFuncs){
+	for(var i, t in debugBackTrace(skipNumFuncs + 1)){ // skip printBackTrace
+		echo("======= ["i"]<br />")
+		echo("  line: "t.line", pos: "t.pos", file: "t.file"<br />")
+		echo("  function: "t.name", arguments: "t.arguments"<br />")
+	}
+}
+
+function eval(str, env){
+	return compileText(str).applyEnv(env || _G, null, ...)
+}
+
+var modules_checked = {}
+function __get(name){
+	if(!(name in modules_checked)){
+		modules_checked[name] = true
+		require(name)
+		if(name in _G){
+			return _G[name]
+		}
+	}
+	triggerError(E_WARNING, "Unknown class or global property "..name)
+}
+
+echo Html.tag('div', {
+	style = 'background-color:red; width:100px; height:100px'
+}, '')
+
 echo "<pre>"
 
 if(false) echo toString(_G).replace {
