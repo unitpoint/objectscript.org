@@ -74,47 +74,6 @@ public:
 		va_end(ap);
 	} */
 
-	void setSmartProperty(const OS_CHAR * name)
-	{
-		int offs = getAbsoluteOffs(-2);
-		bool index = false;
-		const OS_CHAR * cur = name;
-		for(; *cur; cur++){
-			if(*cur == (index ? OS_TEXT(']') : OS_TEXT('[')) || *cur == OS_TEXT('.')){
-				if(cur > name){
-					// newObject();
-					// pushStackValue(-3);
-					pushString(name, (int)(cur - name));
-					// pushStackValue(-3);
-					// setProperty();
-					// move(-1, -2);
-					// remove(-3);
-				}
-				if(*cur == OS_TEXT('[')){
-					index = true;
-				}else if(*cur == OS_TEXT(']')){
-					index = false;
-				}
-				name = cur + 1;
-			}
-		}
-		if(*name){
-			// setProperty(name);
-			pushString(name);
-		}
-		int count = getAbsoluteOffs(-2) - offs;
-		for(int i = 0; i < count-1; i++){
-			newObject();
-			pushStackValue();
-			setProperty(offs, toString(offs + 2 + i));
-			move(-1, offs);
-			remove(offs + 1);
-		}
-		String prop_name = toString();
-		remove(offs + 2, count);
-		setProperty(prop_name);
-	}
-
 	static int triggerHeaderSent(OS * p_os, int params, int, int, void*)
 	{
 		FCGX_OS * os = (FCGX_OS*)p_os;
@@ -138,6 +97,59 @@ public:
 		return 0;
 	}
 
+	static int decodeHexChar(OS_CHAR c)
+	{
+		if(c >= '0' && c <= '9') return      c - '0';
+		if(c >= 'A' && c <= 'F') return 10 + c - 'A';
+		if(c >= 'a' && c <= 'f') return 10 + c - 'a';
+		return 0;
+	}
+
+	static OS_CHAR decodeHexCode(const OS_CHAR * s)
+	{
+		// OS_ASSERT(s[0] && s[1]);
+		int c = decodeHexChar(s[0]) * 16 + decodeHexChar(s[1]);
+		return (OS_CHAR)c;
+	}
+
+	static int urlDecode(OS * os, int params, int, int, void*)
+	{
+		if(params >= 1){
+			String str = os->toString(-params+0);
+			const OS_CHAR * s = str;
+			const OS_CHAR * end = s + str.getLen();
+			
+			Core::Buffer buf(os);
+			for(; s < end;){
+				if(*s == OS_TEXT('%')){
+					if(s+3 <= end){
+						buf.append(decodeHexCode(s+1));
+					}
+					s += 3;
+				}else if(*s == OS_TEXT('+')){
+					buf.append(OS_TEXT(' '));
+					s++;
+				}else{
+					buf.append(*s++);
+				}
+			}
+			os->pushString(buf);
+			return 1;
+		}
+		return 0;
+	}
+
+	void initUrlLibrary()
+	{
+		FuncDef funcs[] = {
+			{"decode", FCGX_OS::urlDecode},
+			{}
+		};
+		getModule(OS_TEXT("url"));
+		setFuncs(funcs);
+		pop();
+	}
+
 	void triggerShutdownFunctions()
 	{
 		pushValueById(shutdown_funcs_id);
@@ -157,7 +169,7 @@ public:
 		pop();
 	}
 
-	void registerFunctions()
+	void initGlobalFunctions()
 	{
 		FuncDef funcs[] = {
 			{"registerShutdownFunction", FCGX_OS::registerShutdownFunction},
@@ -178,7 +190,8 @@ public:
 		shutdown_funcs_id = getValueId();
 		addProperty();
 
-		registerFunctions();
+		initGlobalFunctions();
+		initUrlLibrary();
 
 		initEnv("_SERVER", request->envp);
 
@@ -194,6 +207,7 @@ public:
 		newObject();
 		setGlobal("_COOKIE");
 
+#if 0
 #define OS_AUTO_TEXT(exp) OS_TEXT(#exp)
 		eval(OS_AUTO_TEXT(
 			if('HTTP_COOKIE' in _SERVER)
@@ -204,7 +218,8 @@ public:
 				}
 			}	
 		));
-		
+#endif
+
 		getGlobal("_SERVER");
 		getProperty("CONTENT_LENGTH");
 		int content_length = popInt();
