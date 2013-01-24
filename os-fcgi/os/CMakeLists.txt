@@ -13,18 +13,10 @@ list(APPEND SOURCES objectscript.cpp)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_CURRENT_SOURCE_DIR})
 
-find_package(Libedit QUIET)
-if(Libedit_FOUND)
-    include_directories(${Libedit_INCLUDE_DIR})
-else()
-    message(STATUS "[ WARNING ]: ${target} build without libedit.")
-endif()
-
-
 if(NOT "${CMAKE_BUILD_TYPE}" STREQUAL "Debug")
   add_custom_target(strip_${target} ALL COMMAND ${CMAKE_STRIP} ${CMAKE_CURRENT_BINARY_DIR}/${target})
 endif()
 
-add_executable(${target} ${SOURCES} ${HEADERS})
-target_link_libraries(${target} ${Libedit_LIBRARIES})
-install(TARGETS ${target} RUNTIME DESTINATION bin)
+# add_executable(${target} ${SOURCES} ${HEADERS})
+# target_link_libraries(${target} ${Libedit_LIBRARIES})
+# install(TARGETS ${target} RUNTIME DESTINATION bin)

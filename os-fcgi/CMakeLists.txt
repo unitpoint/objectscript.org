@@ -1,5 +1,5 @@
 cmake_minimum_required (VERSION 2.8)
-project (os-fcgi)
+# project (os-fcgi)
 
 # add_subdirectory(os)
 
@@ -14,6 +14,7 @@ list(APPEND SOURCES MPFDParser-1.0/Parser.cpp)
 list(APPEND SOURCES MPFDParser-1.0/Field.cpp)
 list(APPEND SOURCES MPFDParser-1.0/Exception.cpp)
 
+include_directories(os)
 include_directories(fcgi-2.4.1)
 include_directories(fcgi-2.4.1/include)
 include_directories(MPFDParser-1.0)
