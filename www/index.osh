@@ -55,11 +55,11 @@ var realEcho = echo
 	}
 	
 	var function obEcho(){
+		echo = orgEcho
 		assert(#buffers > 0, "ob buffer is not exist")
 		var buf = buffers[#buffers-1]
-		for(var k, v in arguments){
-			buf.append(v)
-		}
+		buf.append.apply(buf, arguments)
+		echo = obEcho
 	}
 	
 	ob = {}
@@ -103,7 +103,9 @@ var realEcho = echo
 
 header "Content-type: text/html; charset=utf8"
 echo "<TITLE>fastcgi</TITLE>\n<H1>OS fastcgi: Hello world!</H1>"
-%>Привет мир!<%
+%>
+	Привет мир!<br />
+<%
 
 echo "Добро пожаловать!<br />"
 
@@ -132,41 +134,40 @@ function String.__add(b){
 	return this .. b
 }
 
-var dump_recurse_check = {}
-function dump(val, deep, is_key){
-	if(!deep){
-		dump_recurse_check = {}
-		deep = 0
-	}
-	var spaces = is_key ? "  " * deep : ""
-	echo spaces
-	if(objectOf(val) || {|| 
+function dump(val){
+	var dump_recurse_check = {}
+	var function checkProps(val){
 		if(val.hasProperties()){ 
-			printf("&lt;%s:%d&gt;", typeOf(val), val.osValueId)
+			printf("<%s:%d> ", typeOf(val), val.osValueId)
 			return true
 		}
-		return false
-	}()){
-		if(val in dump_recurse_check){
-			echo "RECURSE"
-			return
-		}
-		dump_recurse_check[val] = true
-		echo "{\n"
-		for(var k, v in val){
-			dump(k, deep+1, true)
-			echo " = "
-			dump(v, deep+1)
-		}
-		echo("  " * deep, "}\n")
-		return
 	}
-	echo toString(val).replace {
-		"<" = "&lt;"
-		">" = "&gt;"
-	}
-	if(!is_key){
-		echo "\n"
+	function(val deep is_key){
+		echo is_key ? "  " * deep : ""
+		if(objectOf(val) || checkProps(val)){
+			if(!(val in dump_recurse_check)){
+				dump_recurse_check[val] = true
+				echo "{\n"
+				for(var k, v in val){
+					_F(k, deep+1, true)
+					echo " = "
+					_F(v, deep+1)
+				}
+				echo("  " * deep, "}\n")
+			}else{
+				echo "<<RECURSE>>\n"
+			}
+		}else{
+			echo(val, !is_key ? "\n" : "")
+		}
+	}(val 0)
+}
+
+function assert(a, message){
+	if(!a){
+		print(message || "assert failed")
+		printBackTrace(1)
+		terminate()
 	}
 }
 
@@ -206,17 +207,21 @@ function __get(name){
 	triggerError(E_WARNING, "Unknown class or global property "..name)
 }
 
+echo Html.tag('p', null, 'This red box is created using auto loaded Html class')
 echo Html.tag('div', {
 	style = 'background-color:red; width:100px; height:100px'
 }, '')
 
+echo Html.tag('p', null, "Test buffered output:")
 echo "<pre>"
 
-if(false) echo toString(_G).replace {
-		"<" = "&lt;"
-		">" = "&gt;"
-	}
+ob.push() // start buffer
 dump _G
+echo ob.popContent().replace {
+	"<" = "&lt;"
+	">" = "&gt;"
+	"\n" = "<br />"
+}
 // dump _G['_SERVER']
 // dump { abc = { ee = 1, vv = 2, ererre = {3434, 2243} }, res = 35 }
 // dump _G.Object.merge
