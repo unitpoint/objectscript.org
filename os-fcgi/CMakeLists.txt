@@ -24,4 +24,5 @@ add_executable(${target} ${SOURCES} ${HEADERS})
 target_link_libraries(${target} ${FCGI_LIBRARY} "pthread")
 
 install(TARGETS ${target} RUNTIME DESTINATION usr/sbin)
-install(DIRECTORY ../conf/etc DESTINATION .)
+install(DIRECTORY ../conf/etc/init.d DESTINATION etc/init.d)
+install(DIRECTORY ../conf/etc/os-fcgi DESTINATION etc/os-fcgi)
