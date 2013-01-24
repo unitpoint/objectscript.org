@@ -381,7 +381,7 @@ void log(const char * msg)
 
 void * doit(void * a)
 {
-    int listen_socket = (int)a;
+    int listen_socket = (int)(ptrdiff_t)a;
 
     FCGX_Request request;
     if(FCGX_InitRequest(&request, listen_socket, 0)){
