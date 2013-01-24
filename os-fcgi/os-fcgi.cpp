@@ -417,6 +417,7 @@ void * doit(void * a)
     }
 }
 
+#ifndef _MSC_VER
 void signalHandler(int sig)
 {
 	unlink(PID_FILE);
@@ -462,6 +463,7 @@ void demonize()
 
 	setPidFile(PID_FILE);
 }
+#endif
 
 #ifdef _MSC_VER
 int _tmain(int argc, _TCHAR* argv[])
@@ -469,7 +471,9 @@ int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char * argv[])
 #endif
 {
+#ifndef _MSC_VER
 	demonize();
+#endif
 
 	if(FCGX_Init()){
 		exit(1); 
