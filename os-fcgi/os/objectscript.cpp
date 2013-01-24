@@ -16338,7 +16338,11 @@ int OS::Core::execute()
 				int cur_ret_values = b;
 				int need_ret_values = stack_func->need_ret_values;
 				if(need_ret_values == 1){
-					stack_values.buf[stack_func->locals_stack_pos] = stack_func_locals[a];
+					if(cur_ret_values > 0){
+						stack_values.buf[stack_func->locals_stack_pos] = stack_func_locals[a];
+					}else{
+						OS_SET_VALUE_NULL(stack_values.buf[stack_func->locals_stack_pos]);
+					}
 				}else if(need_ret_values > 0){
 					if(need_ret_values <= cur_ret_values){
 						OS_MEMMOVE(stack_values.buf + stack_func->locals_stack_pos, stack_func_locals + a, sizeof(Value) * need_ret_values);
@@ -18315,9 +18319,9 @@ dump_object:
 
 		static int cmp(OS * os, int params, int, int, void*)
 		{
-			if(params < 2) return 0;
-			Core::Value left_value = os->core->getStackValue(-params + 0);
-			Core::Value right_value = os->core->getStackValue(-params + 1);
+			if(params < 1) return 0;
+			Core::Value left_value = os->core->getStackValue(-params - 1);
+			Core::Value right_value = os->core->getStackValue(-params + 0);
 			switch(OS_VALUE_TYPE(left_value)){
 			case OS_VALUE_TYPE_NULL:
 			case OS_VALUE_TYPE_BOOL:
@@ -18643,9 +18647,9 @@ void OS::initStringClass()
 
 		static int cmp(OS * os, int params, int, int, void*)
 		{
-			if(params < 2) return 0;
-			OS::String left = os->toString(-params + 0);
-			OS::String right = os->toString(-params + 1);
+			if(params < 1) return 0;
+			OS::String left = os->toString(-params - 1);
+			OS::String right = os->toString(-params + 0);
 			os->pushNumber(left.cmp(right));
 			return 1;
 		}
