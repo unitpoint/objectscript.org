@@ -14,6 +14,10 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 
+#ifndef _MSC_VER
+#include <pthread.h>
+#endif
+
 using namespace ObjectScript;
 
 class FCGX_OS: public OS
@@ -375,18 +379,10 @@ void log(const char * msg)
 	}
 }
 
-#ifdef _MSC_VER
-int _tmain(int argc, _TCHAR* argv[])
-#else
-int main(int argc, char * argv[])
-#endif
+void * doit(void * a)
 {
 	const char * port = ":9000";
     int listen_queue_backlog = 400;
-
-	if(FCGX_Init()){
-		exit(1); 
-	}
 
     int  listen_socket = FCGX_OpenSocket(port, listen_queue_backlog);
     if(listen_socket < 0){
@@ -400,98 +396,48 @@ int main(int argc, char * argv[])
 		exit(1);
 	}
 
-    while(FCGX_Accept_r(&request) == 0){
-#if 1
+#ifndef _MSC_VER
+	static pthread_mutex_t accept_mutex = PTHREAD_MUTEX_INITIALIZER;
+#endif
+
+    for(;;){
+#ifndef _MSC_VER
+		pthread_mutex_lock(&accept_mutex);
+#endif		
+		int rc = FCGX_Accept_r(&request);
+#ifndef _MSC_VER
+		pthread_mutex_unlock(&accept_mutex);
+#endif
+		if(rc){
+			printf("error accept code: %d\n", rc);
+			exit(1);
+		}
+
 		FCGX_OS * os = OS::create(new FCGX_OS());
 		os->processRequest(&request);
         os->release();
 		FCGX_Finish_r(&request);
-#elif 0
-        FCGX_FPrintF(request.out, "Content-type: text/html\r\n\r\n<TITLE>fastcgi</TITLE>\n<H1>Fastcgi: Hello world.</H1>\n");
-
-        printEnv(request.out, "Request environment", request.envp);
-        printEnv(request.out, "Initial environment", environ);
-
-		int maxPostDataLen = 5*1024*1024;
-		char *contentLength = FCGX_GetParam("CONTENT_LENGTH", request.envp);
-		int len = contentLength ? strtol(contentLength, NULL, 10) : 0;
-		if(len > maxPostDataLen){
-			FCGX_FPrintF(request.out, "Max post data len: %d > %d\n", len, maxPostDataLen);
-			continue;
-		}
-		
-		const char * multipartFormData = "multipart/form-data;";
-		int multipartFormDataLen = strlen(multipartFormData);
-	
-		char * contentType = FCGX_GetParam("CONTENT_TYPE", request.envp);
-		if(contentType && len > 0 && strncmp(contentType, multipartFormData, multipartFormDataLen) == 0){
-			MPFD::Parser POSTParser = MPFD::Parser();
-			POSTParser.SetTempDirForFileUpload("/tmp");
-			// POSTParser.SetMaxCollectedDataLength(20*1024);
-			POSTParser.SetContentType(contentType);
-
-			char * buf = new char[len];
-			len = FCGX_GetStr(buf, len, request.in);
-
-			POSTParser.SetExternalDataBuffer(buf, len);
-			POSTParser.FinishData();
-
-			std::map<std::string, MPFD::Field *> fields = POSTParser.GetFieldsMap();
-			FCGX_FPrintF(request.out, "Have %d fields<p>\n", fields.size());
-
-			std::map<std::string, MPFD::Field *>::iterator it;
-			for(it = fields.begin(); it != fields.end(); it++){
-				MPFD::Field * field = fields[it->first];
-				if(field->GetType() == MPFD::Field::TextType){
-					FCGX_FPrintF(request.out, "Got text field: '%s', value: '%s'<br>\n", it->first.c_str(), field->GetTextTypeContent().c_str());
-				}else{
-					FCGX_FPrintF(request.out, "Got text field: '%s', filename: '%s', tempfilename: '%s', mime-type: '%s'<br>\n", it->first.c_str(), 
-						field->GetFileName().c_str(),
-						field->GetTempFileNameEx().c_str(),
-						field->GetFileMimeType().c_str()
-						// field->GetTextTypeContent().c_str()
-						);
-				}
-			}
-		}else{
-            FCGX_FPrintF(request.out, "No data from standard input.<p>\n");
-		}
-        FCGX_Finish_r(&request);
-#else
-        FCGX_FPrintF(request.out, "Content-type: text/html\r\n\r\n<TITLE>fastcgi</TITLE>\n<H1>Fastcgi: Hello world.</H1>\n");
-		char *contentLength = FCGX_GetParam("CONTENT_LENGTH", request.envp);
-		int len = contentLength ? strtol(contentLength, NULL, 10) : 0;
-        if (len <= 0) {
-            FCGX_FPrintF(request.out, "No data from standard input.<p>\n");
-        }
-        else {
-            int i, ch;
-
-            FCGX_FPrintF(request.out, "Standard input:<br>\n<pre>\n");
-            for (i = 0; i < len; i++) {
-                if ((ch = FCGX_GetChar(request.in)) < 0) {
-                    FCGX_FPrintF(request.out,
-                        "Error: Not enough bytes received on standard input<p>\n");
-                    break;
-                }
-				switch(ch){
-				case '<':
-					FCGX_FPrintF(request.out, "&lt;");
-					break;
-
-				case '>':
-					FCGX_FPrintF(request.out, "&gt;");
-					break;
-
-				default:
-					FCGX_PutChar(ch, request.out);
-				}
-            }
-            FCGX_FPrintF(request.out, "\n</pre><p>\n");
-        }
-        FCGX_Finish_r(&request);
-#endif
     }
+}
+
+#ifdef _MSC_VER
+int _tmain(int argc, _TCHAR* argv[])
+#else
+int main(int argc, char * argv[])
+#endif
+{
+	if(FCGX_Init()){
+		exit(1); 
+	}
+
+#ifndef _MSC_VER
+	const int THREAD_COUNT = 8;
+	pthread_t id[THREAD_COUNT];
+	for(int i = 1; i < THREAD_COUNT; i++){
+        pthread_create(&id[i], NULL, doit, (void*)i);
+	}
+#endif
+	doit(NULL);
 
 	return 0;
 }
