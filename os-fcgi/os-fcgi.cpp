@@ -11,6 +11,8 @@
 #include "fcgi-2.4.1/include/fcgi_stdio.h"
 #include "MPFDParser-1.0/Parser.h"
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
 
 using namespace ObjectScript;
 
@@ -34,9 +36,28 @@ public:
 		header_sent = false;
 	}
 
+	EFileUseType checkFileUsage(const String& sourcecode_filename, const String& compiled_filename)
+	{
+		struct stat sourcecode_st, compiled_st;
+		stat(sourcecode_filename, &sourcecode_st);
+		stat(compiled_filename, &compiled_st);
+		if(sourcecode_st.st_mtime >= compiled_st.st_mtime){
+			return COMPILE_SOURCECODE_FILE;
+		}
+		return LOAD_COMPILED_FILE;
+	}
+
 	void initPreScript()
 	{
-		// setSetting(OS_SETTING_CREATE_DEBUG_EVAL_OPCODES, true);
+#if defined _MSC_VER && defined OS_DEBUG
+		setSetting(OS_SETTING_CREATE_DEBUG_EVAL_OPCODES, false);
+		setSetting(OS_SETTING_CREATE_DEBUG_OPCODES, true);
+#else
+		setSetting(OS_SETTING_CREATE_DEBUG_EVAL_OPCODES, false);
+		setSetting(OS_SETTING_CREATE_DEBUG_OPCODES, false);
+#endif
+		setSetting(OS_SETTING_CREATE_DEBUG_INFO, true);
+		setSetting(OS_SETTING_CREATE_COMPILED_FILE, true);
 		OS::initPreScript();
 	}
 
