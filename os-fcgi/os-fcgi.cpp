@@ -168,10 +168,37 @@ public:
 		return 0;
 	}
 
+	static int urlEncode(OS * os, int params, int, int, void*)
+	{
+		if(params >= 1){
+			String str = os->toString(-params+0);
+			const OS_CHAR * s = str;
+			const OS_CHAR * end = s + str.getLen();
+			
+			Core::Buffer buf(os);
+			for(; s < end; s++){
+				if( (*s >= OS_TEXT('0') && *s <= OS_TEXT('9'))
+					|| (*s >= OS_TEXT('A') && *s <= OS_TEXT('Z'))
+					|| (*s >= OS_TEXT('a') && *s <= OS_TEXT('z')) )
+				{
+					buf.append(*s);
+				}else{
+					buf.append(OS_TEXT('%'));
+					buf.append(OS_TEXT("0123456789ABCDEF")[((OS_BYTE)(*s) >> 4) & 0xf]);
+					buf.append(OS_TEXT("0123456789ABCDEF")[((OS_BYTE)(*s) >> 0) & 0xf]);
+				}
+			}
+			os->pushString(buf);
+			return 1;
+		}
+		return 0;
+	}
+
 	void initUrlLibrary()
 	{
 		FuncDef funcs[] = {
 			{"decode", FCGX_OS::urlDecode},
+			{"encode", FCGX_OS::urlEncode},
 			{}
 		};
 		getModule(OS_TEXT("url"));
