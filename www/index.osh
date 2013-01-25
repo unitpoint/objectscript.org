@@ -58,12 +58,16 @@ var realEcho = echo
 		echo.apply(_E, arguments)
 	}
 	
+	var function notBufferedEcho(){
+		orgEcho.apply(_E, arguments)
+	}
+	
 	var function obEcho(){
-		echo = orgEcho
+		echo = notBufferedEcho
 		assert(#buffers > 0, "ob buffer is not exist")
 		var buf = buffers[#buffers-1]
 		buf.append.apply(buf, arguments)
-		if(#buffers > 0){
+		if(echo === notBufferedEcho){
 			echo = obEcho
 		}
 	}
