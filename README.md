@@ -1,10 +1,5 @@
 objectscript.org
 ================
 
-objectscript.org framework
+http://objectscript.org is a demo of usage ObjectScript language fastcgi daemon. Please checkout https://github.com/unitpoint/os-fcgi for more information.
 
-	cd os-fcgi
-	mkdir build && cd build
-	cmake -DCMAKE_INSTALL_PREFIX=/ ..
-	make
-	make install
