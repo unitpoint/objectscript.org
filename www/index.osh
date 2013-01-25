@@ -1,25 +1,29 @@
 ﻿<%
 
 if('HTTP_COOKIE' in _SERVER){
-	for(var k, v in _SERVER.HTTP_COOKIE.split(';')){
-		v = v.trim().split('=')
-		if(#v == 2){
-			_COOKIE.setSmartProperty(v[0], v[1])
-		}else{
-			_COOKIE.setSmartProperty(v[0], '')
-		}
-	}	
+	var cookie = _SERVER.HTTP_COOKIE.trim()
+	if(#cookie > 0)
+		for(var k, v in cookie.split(';')){
+			v = v.trim().split('=')
+			if(#v == 2){
+				_COOKIE.setSmartProperty(v[0], v[1])
+			}else{
+				_COOKIE.setSmartProperty(v[0], '')
+			}
+		}	
 }
 
 if('QUERY_STRING' in _SERVER){
-	for(var k, v in _SERVER.QUERY_STRING.split('&')){
-		v = v.trim().split('=')
-		if(#v == 2){
-			_GET.setSmartProperty(v[0], url.decode(v[1]))
-		}else{
-			_GET.setSmartProperty(v[0], '')
-		}
-	}	
+	var query = _SERVER.QUERY_STRING.trim()
+	if(#query > 0)
+		for(var k, v in query.split('&')){
+			v = v.trim().split('=')
+			if(#v == 2){
+				_GET.setSmartProperty(v[0], url.decode(v[1]))
+			}else{
+				_GET.setSmartProperty(v[0], '')
+			}
+		}	
 }
 
 var header_list, header_sent = {}, false
@@ -227,6 +231,12 @@ echo Html.tag('p', null, "Test buffered output:")
 
 ob.push() // start buffer
 dump _G
+
+var num = 20
+for(var i = 0; i < 500; i++){
+	printf("[step %d] calculate factorial of %d = %v\n", i, num, {|a| a <= 1 ? 1 : a*_F(a-1)}(num))
+}
+
 echo "<pre>" .. ob.popContent().replace {
 	"<" = "&lt;"
 	">" = "&gt;"
