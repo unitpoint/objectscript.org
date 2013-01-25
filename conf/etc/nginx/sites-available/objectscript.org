@@ -46,4 +46,14 @@ server {
 		fastcgi_ignore_client_abort	on;
 		fastcgi_read_timeout	360;
 	}
+
+	location ~ ^.+\.php {
+		fastcgi_split_path_info	^(.+\.php)(.*)$;
+		fastcgi_pass	127.0.0.1:9001;
+		fastcgi_index	index.php;
+		include fastcgi_params;
+		fastcgi_intercept_errors	on;
+		fastcgi_ignore_client_abort	on;
+		fastcgi_read_timeout	360;
+	}
 }
