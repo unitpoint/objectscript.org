@@ -1,12 +1,8 @@
 <%
 
-var function factorial(i){ a <= 1 ? 1 : a*_F(a-1) }
+var function factorial(a){ return a <= 1 ? 1 : a*_F(a-1) }
 
 var num = 20
 for(var i = 0; i < 500; i++){
 	printf("[step %d] calculate factorial of %d = %v<br />", i, num, factorial(num))
 }
-~
-~
-~
-~
