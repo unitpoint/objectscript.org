@@ -59,7 +59,9 @@ var realEcho = echo
 		assert(#buffers > 0, "ob buffer is not exist")
 		var buf = buffers[#buffers-1]
 		buf.append.apply(buf, arguments)
-		echo = obEcho
+		if(#buffers > 0){
+			echo = obEcho
+		}
 	}
 	
 	ob = {}
@@ -123,11 +125,20 @@ function String.replace(search, replace){
 }
 
 function String.__mul(count){
+	count == 1 && return this
+	count <= 0 && return ""
 	var buf = Buffer()
-	for(; count > 0; count--){
+	for(; count >= 1; count--){
 		buf.append(this)
-	} 
+	}
+	if(count < 0){
+		buf.append(this.sub(0, #this * (count + 1)))
+	}
 	return toString(buf)
+}
+
+function String.__div(count){
+	return this * (1 / count)
 }
 
 function String.__add(b){
@@ -213,15 +224,12 @@ echo Html.tag('div', {
 }, '')
 
 echo Html.tag('p', null, "Test buffered output:")
-echo "<pre>"
 
 ob.push() // start buffer
 dump _G
-echo ob.popContent().replace {
+echo "<pre>" .. ob.popContent().replace {
 	"<" = "&lt;"
 	">" = "&gt;"
 	"\n" = "<br />"
 }
-// dump _G['_SERVER']
-// dump { abc = { ee = 1, vv = 2, ererre = {3434, 2243} }, res = 35 }
-// dump _G.Object.merge
+
