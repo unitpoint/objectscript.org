@@ -139,8 +139,8 @@ function String.__mul(count){
 	for(; count >= 1; count--){
 		buf.append(this)
 	}
-	if(count < 0){
-		buf.append(this.sub(0, #this * (count + 1)))
+	if(count > 0){
+		buf.append(this.sub(0, #this * count))
 	}
 	return toString(buf)
 }
@@ -190,6 +190,17 @@ function assert(a, message){
 	}
 }
 
+function unhandledException(e){
+	if("trace" in e){
+		printf("Unhandled exception: '%s'<br />", e.message);
+		for(var i, t in e.trace){
+			printf("#%d %s(%d): %s, args: %s<br />", i, t.file, t.line, t.object ? "{obj-"..t.object.osValueId.."}."..t.name : t.name, t.arguments);
+		}
+	}else{
+		printf("Unhandled exception: '%s' in %s(%d)<br />", e.message, e.file, e.line);
+	}
+}
+
 // require("Html")
 setErrorHandler {|code message file line|
 	var type = "ERROR"
@@ -219,8 +230,8 @@ function __get(name){
 	if(!(name in modules_checked)){
 		modules_checked[name] = true
 		require(name)
-		if(name in _G){
-			return _G[name]
+		if(name in _E){
+			return _E[name]
 		}
 	}
 	triggerError(E_WARNING, "Unknown class or global property "..name)
