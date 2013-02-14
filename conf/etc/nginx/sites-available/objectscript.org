@@ -37,7 +37,7 @@ server {
 		rewrite ^ https://$host$request_uri? permanent;
 	}
 
-	location ~ ^.+\.osh? {
+	location ~ ^.+\.(osh?|html?) {
 		fastcgi_split_path_info	^(.+\.osh?)(.*)$;
 		fastcgi_pass	127.0.0.1:9000;
 		fastcgi_index	index.osh;

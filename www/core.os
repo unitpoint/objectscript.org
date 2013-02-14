@@ -1,3 +1,28 @@
+function assert(a, message){
+	a || throw (message || "assert failed")
+}
+
+function unhandledException(e){
+	if("trace" in e){
+		printf("Unhandled exception: '%s'<br />", e.message);
+		for(var i, t in e.trace){
+			printf("#%d %s(%d): %s, args: %s<br />", i, t.file, t.line, t.object ? "{obj-"..t.object.id.."}."..t.name : t.name, t.arguments);
+		}
+	}else{
+		printf("Unhandled exception: '%s' in %s(%d)<br />", e.message, e.file, e.line);
+	}
+}
+
+function printBackTrace(skipNumFuncs){
+	for(var i, t in debugBackTrace(skipNumFuncs + 1)){ // skip printBackTrace
+		printf("#%d %s(%d): %s, args: %s<br />", i, t.file, t.line, t.object ? "{obj-"..t.object.id.."}."..t.name : t.name, t.arguments);
+	}
+}
+
+function eval(str, env){
+	return compileText(str).applyEnv(env || _G, null, ...)
+}
+
 if('HTTP_COOKIE' in _SERVER){
 	var cookie = _SERVER.HTTP_COOKIE.trim()
 	if(#cookie > 0)
@@ -111,16 +136,16 @@ var realEcho = echo
 	}
 }
 
-var origin_string_replace = String.replace
+var strReplace = String.replace
 function String.replace(search, replace){
 	if(objectOf(search)){
 		var str = this
 		for(search, replace in search){
-			str = origin_string_replace.call(str, search, replace)
+			str = strReplace.call(str, search, replace)
 		}
 		return str
 	}else{
-		return origin_string_replace.call(this, search, replace)
+		return strReplace.call(this, search, replace)
 	}
 }
 
@@ -149,7 +174,7 @@ function dump(val){
 	var dump_recurse_check = {}
 	var function checkProps(val){
 		if(val.hasProperties()){ 
-			printf("<%s:%d> ", typeOf(val), val.osValueId)
+			printf("<%s:%d> ", typeOf(val), val.id)
 			return true
 		}
 	}
@@ -172,31 +197,6 @@ function dump(val){
 			echo(val, !is_key ? "\n" : "")
 		}
 	}(val 0)
-}
-
-function assert(a, message){
-	a || throw (message || "assert failed")
-}
-
-function unhandledException(e){
-	if("trace" in e){
-		printf("Unhandled exception: '%s'<br />", e.message);
-		for(var i, t in e.trace){
-			printf("#%d %s(%d): %s, args: %s<br />", i, t.file, t.line, t.object ? "{obj-"..t.object.osValueId.."}."..t.name : t.name, t.arguments);
-		}
-	}else{
-		printf("Unhandled exception: '%s' in %s(%d)<br />", e.message, e.file, e.line);
-	}
-}
-
-function printBackTrace(skipNumFuncs){
-	for(var i, t in debugBackTrace(skipNumFuncs + 1)){ // skip printBackTrace
-		printf("#%d %s(%d): %s, args: %s\n", i, t.file, t.line, t.object ? "{obj-"..t.object.osValueId.."}."..t.name : t.name, t.arguments);
-	}
-}
-
-function eval(str, env){
-	return compileText(str).applyEnv(env || _G, null, ...)
 }
 
 var modules_checked = {}

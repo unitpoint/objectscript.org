@@ -9,6 +9,9 @@ echo "<TITLE>fastcgi</TITLE>\n<H1>OS fastcgi: Hello world!</H1>"
 
 echo "Добро пожаловать!<br />"
 
+<br />
+%>ObjectScript version <%=OS_VERSION%><br />
+
 echo Html.tag('p', null, 'This red box is created using auto loaded Html class')
 echo Html.tag('div', {
 	style = 'background-color:red; width:100px; height:100px'
