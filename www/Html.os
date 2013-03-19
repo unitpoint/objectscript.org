@@ -1,15 +1,15 @@
 
 var specialAttributes = {
-	checked = 1
-	declare = 1
-	defer = 1
-	disabled = 1
-	ismap = 1
-	multiple = 1
-	nohref = 1
-	noresize = 1
-	readonly = 1
-	selected = 1
+	checked = 1,
+	declare = 1,
+	defer = 1,
+	disabled = 1,
+	ismap = 1,
+	multiple = 1,
+	nohref = 1,
+	noresize = 1,
+	readonly = 1,
+	selected = 1,
 }
 
 Html = {
@@ -22,11 +22,11 @@ Html = {
 			return closeTag ? html..' />' : html..'>';
 		else
 			return closeTag ? html..'>'..content..'</'..tag..'>' : html..'>'..content;
-	}
+	},
 	
 	encode = function(str){
 		return str
-	}
+	},
 
 	renderAttributes = function(htmlOptions){
 		if(!objectOf(htmlOptions) || #htmlOptions == 0){
@@ -45,6 +45,6 @@ Html = {
 				html.append(' ', name, '="', value, '"')
 		}
 		return toString(html)
-	}
+	},
 
 }

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+    <head>
+    <title>OS-FCGI FastCGI demo</title>
+    </head>
+<body>
+    <h1>Hello world!</h1>
+    <h2>ObjectScript FastCGI demo</h2>
+    <p>
+    <%
+        echo "Добро пожаловать! <br />"
+		var num = 20
+		var r = {|a| a <= 1 ? 1 : a*_F(a-1)}(num)
+		printf("factorial of %v = %v", num, r)
+    %>
+    </p>
+</body>
+</html>

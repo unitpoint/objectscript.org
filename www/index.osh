@@ -29,8 +29,8 @@ for(var i = 0; i < 500; i++){
 }
 
 echo "<pre>" .. ob.popContent().replace {
-	"<" = "&lt;"
-	">" = "&gt;"
-	"\n" = "<br />"
+	"<" = "&lt;",
+	">" = "&gt;",
+	"\n" = "<br />",
 }
 

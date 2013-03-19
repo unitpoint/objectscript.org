@@ -2,21 +2,35 @@ function assert(a, message){
 	a || throw (message || "assert failed")
 }
 
+BR = "<br />"
+BEGIN_PRE = "<pre>"
+END_PRE = "</pre>"
+
 function unhandledException(e){
-	if("trace" in e){
-		printf("Unhandled exception: '%s'<br />", e.message);
-		for(var i, t in e.trace){
-			printf("#%d %s(%d): %s, args: %s<br />", i, t.file, t.line, t.object ? "{obj-"..t.object.id.."}."..t.name : t.name, t.arguments);
-		}
+	echo BEGIN_PRE
+	if(e is CompilerException){
+		echo "${BR}Unhandled exception: '${e.message}' in ${e.file}(${e.line},${e.pos}), token: ${e.token}\n${e.lineString.trim()}${BR}${BR}"
 	}else{
-		printf("Unhandled exception: '%s' in %s(%d)<br />", e.message, e.file, e.line);
+		echo "${BR}Unhandled exception: '${e.message}'${BR}${BR}"
 	}
+	if('trace' in e)
+	for(var i, t in e.trace){
+		printf("#${i} ${t.file}%s: %s, args: ${t.arguments}${BR}",
+			t.line > 0 ? "(${t.line},${t.pos})" : "",
+			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.id}>.${t.name}" : t.name)
+
+	}
+	echo END_PRE
 }
 
 function printBackTrace(skipNumFuncs){
+	echo BEGIN_PRE
 	for(var i, t in debugBackTrace(skipNumFuncs + 1)){ // skip printBackTrace
-		printf("#%d %s(%d): %s, args: %s<br />", i, t.file, t.line, t.object ? "{obj-"..t.object.id.."}."..t.name : t.name, t.arguments);
+		printf("#${i} ${t.file}%s: %s, args: ${t.arguments}${BR}",
+			t.line > 0 ? "(${t.line},${t.pos})" : "",
+			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.id}>.${t.name}" : t.name)
 	}
+	echo END_PRE
 }
 
 function eval(str, env){
@@ -138,7 +152,7 @@ var realEcho = echo
 
 var strReplace = String.replace
 function String.replace(search, replace){
-	if(objectOf(search)){
+	if(!(search is Regexp) && objectOf(search)){
 		var str = this
 		for(search, replace in search){
 			str = strReplace.call(str, search, replace)
@@ -173,30 +187,30 @@ function String.__add(b){
 function dump(val){
 	var dump_recurse_check = {}
 	var function checkProps(val){
-		if(val.hasProperties()){ 
+		if(val.hasOwnProperty()){ 
 			printf("<%s:%d> ", typeOf(val), val.id)
 			return true
 		}
 	}
-	function(val deep is_key){
+	function(val, deep, is_key){
 		echo is_key ? "  " * deep : ""
 		if(objectOf(val) || checkProps(val)){
-			if(!(val in dump_recurse_check)){
+			if(val in dump_recurse_check){
+				echo "<<RECURSE>>\n"
+			}else{
 				dump_recurse_check[val] = true
 				echo "{\n"
-				for(var k, v in val){
+				for(var k, v in val.dumpIter()){
 					_F(k, deep+1, true)
 					echo " = "
 					_F(v, deep+1)
 				}
 				echo("  " * deep, "}\n")
-			}else{
-				echo "<<RECURSE>>\n"
 			}
 		}else{
 			echo(val, !is_key ? "\n" : "")
 		}
-	}(val 0)
+	}(val, 0)
 }
 
 var modules_checked = {}
@@ -204,10 +218,10 @@ function __get(name){
 	if(!(name in modules_checked)){
 		modules_checked[name] = true
 		require(name)
-		if(name in _E){
-			return _E[name]
+		if(name in this){
+			return this[name]
 		}
 	}
-	throw("Unknown class or global property "..name)
+	throw("unknown class or global property "..name)
 }
 
