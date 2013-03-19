@@ -75,30 +75,28 @@ function header(str){
 
 header "Content-type: text/html; charset=utf8"
 
-var realEcho = echo
-
 ;{
 	var buffers = []
 	
-	var orgEcho = echo
+	var originEcho = echo
 	// var orgPrintf = printf
 	
 	function echo(){
-		echo = orgEcho
+		echo = originEcho
 		header_sent = true
-		triggerHeaderSent();
+		triggerHeaderSent()
 		for(var k, v in header_list){
-			realEcho(v, "\r\n")
+			originEcho(v, "\r\n")
 		}
-		realEcho "\r\n"
+		originEcho "\r\n"
 		header = function(){
-			realEcho "HTTP headers are already sent\n"
+			originEcho "HTTP headers are already sent\n"
 		}
 		echo.apply(_E, arguments)
 	}
 	
 	var function notBufferedEcho(){
-		orgEcho.apply(_E, arguments)
+		originEcho.apply(_E, arguments)
 	}
 	
 	var function obEcho(){
@@ -124,7 +122,7 @@ var realEcho = echo
 		assert(#buffers > 0, "ob buffer is not exist")
 		var buf = buffers.pop()
 		if(#buffers == 0){
-			echo = orgEcho
+			echo = originEcho
 		}
 		echo(buf)
 	}
@@ -133,7 +131,7 @@ var realEcho = echo
 		assert(#buffers > 0, "ob buffer is not exist")
 		var buf = buffers.pop()
 		if(#buffers == 0){
-			echo = orgEcho
+			echo = originEcho
 		}
 		return toString(buf)
 	}
@@ -147,19 +145,6 @@ var realEcho = echo
 		for(; #buffers > 0;){
 			ob.pop()
 		}
-	}
-}
-
-var strReplace = String.replace
-function String.replace(search, replace){
-	if(!(search is Regexp) && objectOf(search)){
-		var str = this
-		for(search, replace in search){
-			str = strReplace.call(str, search, replace)
-		}
-		return str
-	}else{
-		return strReplace.call(this, search, replace)
 	}
 }
 

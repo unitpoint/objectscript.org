@@ -28,9 +28,24 @@ for(var i = 0; i < 500; i++){
 	printf("[step %d] calculate factorial of %d = %v\n", i, num, {|a| a <= 1 ? 1 : a*_F(a-1)}(num))
 }
 
-echo "<pre>" .. ob.popContent().replace {
-	"<" = "&lt;",
-	">" = "&gt;",
-	"\n" = "<br />",
-}
+if(false)
+	echo "<pre>" .. ob.popContent()
+		.replace("<", "&lt;")
+		.replace(">", "&gt;")
+		.replace("\n", "<br />")
+elseif(false)
+	echo "<pre>" .. ob.popContent().replace(Regexp("/<|>|\n/"), function(m){
+		m = m[0]
+		m == "<" && return "&lt;";
+		m == ">" && return "&gt;";
+		m == "\n" && return "<br />";
+		return "UNKNOWN";
+	})
+elseif(true)
+	echo "<pre>" .. ob.popContent().replace {
+		"<" = "&lt;",
+		">" = "&gt;",
+		"\n" = "<br />",
+	}
+
 
