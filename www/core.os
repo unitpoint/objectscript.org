@@ -1,7 +1,4 @@
-function assert(a, message){
-	a || throw (message || "assert failed")
-}
-
+require "std"
 BR = "<br />"
 BEGIN_PRE = "<pre>"
 END_PRE = "</pre>"
@@ -31,10 +28,6 @@ function printBackTrace(skipNumFuncs){
 			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.id}>.${t.name}" : t.name)
 	}
 	echo END_PRE
-}
-
-function eval(str, env){
-	return compileText(str).applyEnv(env || _G, null, ...)
 }
 
 if('HTTP_COOKIE' in _SERVER){
@@ -198,10 +191,10 @@ function dump(val){
 	}(val, 0)
 }
 
-var modules_checked = {}
+var modulesChecked = {}
 function __get(name){
-	if(!(name in modules_checked)){
-		modules_checked[name] = true
+	if(!(name in modulesChecked)){
+		modulesChecked[name] = true
 		require(name)
 		if(name in this){
 			return this[name]
