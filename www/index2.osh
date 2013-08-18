@@ -1,0 +1,51 @@
+﻿<%
+
+require "core"
+
+echo "<TITLE>fastcgi</TITLE>\n<H1>OS fastcgi: Hello world!</H1>"
+%>
+	Привет мир!<br />
+<%
+
+echo "Добро пожаловать!<br />"
+
+%><br />
+ObjectScript version <%=OS_VERSION%>
+<br /><%
+
+echo Html.tag('p', null, 'This red box is created using auto loaded Html class')
+echo Html.tag('div', {
+	style = 'background-color:red; width:100px; height:100px'
+}, '')
+
+echo Html.tag('p', null, "Test buffered output:")
+
+ob.push() // start buffer
+dump _G
+
+var num = 20
+for(var i = 0; i < 500; i++){
+	printf("[step %d] calculate factorial of %d = %v\n", i, num, {|a| a <= 1 ? 1 : a*_F(a-1)}(num))
+}
+
+if(false)
+	echo "<pre>" .. ob.popContent()
+		.replace("<", "&lt;")
+		.replace(">", "&gt;")
+		.replace("\n", "<br />")
+elseif(false)
+	echo "<pre>" .. ob.popContent().replace(Regexp("/<|>|\n/"), function(m){
+		m = m[0]
+		m == "<" && return "&lt;";
+		m == ">" && return "&gt;";
+		m == "\n" && return "<br />";
+		return "UNKNOWN";
+	})
+elseif(true)
+	echo "<pre>" .. ob.popContent().replace {
+		"<" = "&lt;",
+		">" = "&gt;",
+		"\n" = "<br />",
+	}
+
+

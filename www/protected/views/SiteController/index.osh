@@ -1,0 +1,6 @@
+Test content. 
+<p>
+<%
+	echo BEGIN_PRE
+	dump(this)
+	echo END_PRE
