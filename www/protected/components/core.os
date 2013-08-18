@@ -184,6 +184,6 @@ function __get(name){
 			return this[name]
 		}
 	}
-	throw("unknown class or global property "..name)
+	throw "unknown class or global property \"${name}\""
 }
 

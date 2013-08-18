@@ -4,12 +4,14 @@ Controller = extends Component {
 		actionId = "",
 	}, */
 	
+	controllerId = null,
 	actionId = null,
 	layout = "main",
 
-	__construct = function(owner){
+	__construct = function(owner, controllerId){
 		super()
 		@owner = owner
+		@controllerId = controllerId
 	},
 
 	runAction = function(name){
@@ -31,7 +33,7 @@ Controller = extends Component {
 		if(name.sub(0, 2) == "//"){
 			name = "{views}/${name.sub(2)}"
 		}else if(name.sub(0, 1) == "/"){
-			name = "{views}/${name.sub(1)}"
+			name = "{views}${name}"
 		}else{
 			name = "{views}/${@classname}/${name}"
 		}

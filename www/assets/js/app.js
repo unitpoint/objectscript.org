@@ -3227,6 +3227,7 @@ var App = function () {
         init: function () {
             handleResponsive(); // set and handle responsive
             handleUniform(); // handles uniform elements
+			
             // page level handlers
             if (App.isPage("index")) {
                 handleDashboardCharts(); // handles plot charts for main page

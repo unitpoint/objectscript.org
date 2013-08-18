@@ -1,0 +1,25 @@
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="<%=app.lang%>"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="<%=app.charset%>" />
+	<title>ObjectScript</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	<link href="/assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/metro.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/css/style_responsive.css" rel="stylesheet" type="text/css" type="text/css" />
+	<link href="/assets/css/style_oxsar.css" rel="stylesheet" type="text/css" id="style_color" />
+	<link href="/assets/gritter/css/jquery.gritter.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/uniform/css/uniform.default.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" type="text/css" />
+	<link href="/assets/jqvmap/jqvmap/jqvmap.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/favicon.ico" rel="shortcut icon" />
+</head>
+<!-- END HEAD -->

@@ -1,4 +1,4 @@
 ﻿<%  
 	require("protected/components/Application")
-	Application(require("protected/config/main")).processRequest()
-	// echo "123"
+	Application(require("protected/config/main")).run()
+	

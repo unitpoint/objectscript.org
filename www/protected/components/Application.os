@@ -48,6 +48,10 @@ Application = extends Component {
 		// dump(@config); terminate()
 	},
 	
+	run = function(){
+		@processRequest()
+	},
+	
 	processRequest = function(){
 		var route = @urlManager.parseUrl(@request)
 		@runController(route);
@@ -69,14 +73,16 @@ Application = extends Component {
 		var p = route.split("/")
 		var count, action = #p
 		if(!count){
-			p = [@defaultController]
+			p = @defaultController.split("/")
+			count = #p
 		}
 		if(count > 1){
 			action = p[--count]
 			delete p[count]
 		}
+		var controllerId = p[count-1]
 		p[count-1] = p[count-1].flower() .. "Controller"
-		var controller = _G[@resolveClass(p.join("."))](this) // @getComponent(p[0])
+		var controller = _G[@resolveClass(p.join("."))](this, controllerId) // @getComponent(p[0])
 		if(controller){
 			controller is Controller || throw "Error controller class: ${controller.classname}"
 			return {
@@ -86,17 +92,18 @@ Application = extends Component {
 		}
 	},
 	
-	getComponent = function(name){
+	getComponent = function(name, config){
 		name || throw "Attempt to create \"null\" component"
 		return @_components[name] || {||
-			var config, component = @config.components[name] || throw "Component \"${name}\" is not registered"
+			config || config = @config.components[name] || throw "Component \"${name}\" config is not set"
 			if(config.enabled === false){
 				throw "Component \"${name}\" is disabled"
 			}else{
+				var component
 				@_components[name] = component = _G[@resolveClass(config.classname || name)](this)
-				for(var name, value in config){
-					if(name != "classname"){
-						component[name] = value
+				for(var key, value in config){
+					if(key != "classname" && key != "enabled"){
+						component[key] = value
 					}
 				}
 				component.init()
@@ -105,7 +112,7 @@ Application = extends Component {
 		}.call(this)
 	},
 	
-	setComponent = function(nane, value){
+	setComponent = function(name, value){
 		@_components[name] = value
 	},
 	
@@ -115,6 +122,10 @@ Application = extends Component {
 	
 	__get@request = function(){
 		return @getComponent("request")
+	},
+	
+	__get@db = function(){
+		return @getComponent("db")
 	},
 	
 	resolvePath = function(path){
@@ -127,7 +138,7 @@ Application = extends Component {
 					throw "app.resolvePath recursion error: "..path
 				}
 				r[alias] = true
-				return replace(aliases[alias])
+				return replace(aliases[alias] || throw "Alias \"${alias}\" is not resolved")
 			})
 		}
 		return replace(path)
