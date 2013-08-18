@@ -12,7 +12,7 @@ Application = extends Component {
 		}
 	},
 	
-	__get@defaultComponets = function(){
+	__get@defaultComponents = function(){
 		return {
 			
 		}
@@ -40,7 +40,7 @@ Application = extends Component {
 		header "Content-type: text/html; charset=${@charset}"
 		// echo "Content-type: text/html; charset=${@charset}"
 		
-		@config.componets = (@defaultComponets || {}).merge(@config.componets)
+		@config.components = (@defaultComponents || {}).merge(@config.components)
 		
 		// dump(@config);
 		@addAliases((@defaultAliases || {}).merge(@config.aliases))

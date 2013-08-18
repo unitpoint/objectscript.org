@@ -3,13 +3,13 @@ return {
 	lang = "ru",
 	// defaultController = "game",
 	aliases = {
-		"{componets}" = "{app}/componets",
+		"{components}" = "{app}/components",
 		"{helpers}" = "{app}/helpers",
 		"{controllers}" = "{app}/controllers",
 		"{views}" = "{app}/views",
 	},
 	paths = {
-		"{componets}",
+		"{components}",
 		"{helpers}",
 		"{app}/langs",
 		"{controllers}",
