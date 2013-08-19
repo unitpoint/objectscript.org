@@ -31,6 +31,7 @@ Application = extends Component {
 		_components = {},
 		_strings = {},
 		_controller = null,
+		_compiledViews = {},
 	},
 	
 	__construct = function(config){
@@ -172,6 +173,23 @@ Application = extends Component {
 			}
 		}
 		// terminate()
+	},
+	
+	renderView = function(controller, name, params){
+		if(name.sub(0, 2) == "//"){
+			name = "{views}/${name.sub(2)}"
+		}else if(name.sub(0, 1) == "/"){
+			name = "{views}${name}"
+		}else{
+			name = "{views}/${controller.classname}/${name}"
+		}
+		var filename = @resolvePath(name)
+		// filename = require.resolve(filename) || throw "View \"filename\" is not found"
+		// dump("filename: ${filename}, r: ${resolvedFilename}")
+		ob.push()
+		var view = app._compiledViews[filename] || app._compiledViews[filename] = compileFile(filename, true, null, true)
+		view.call({controller = controller}.merge(params))
+		return ob.popContent()
 	},
 	
 	__get@paths = function(){

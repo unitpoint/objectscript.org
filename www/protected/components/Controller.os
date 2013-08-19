@@ -24,24 +24,13 @@ Controller = extends Component {
 	render = function(name, params){
 		var content = @renderPartial(name, params)
 		if(@layout){
-			content = @renderPartial("/layouts/${@layout}", {content = content})
+			var layout = @layout.sub(0, 1) == "/" ? @layout : "/layouts/${@layout}"
+			content = @renderPartial(layout, {content = content})
 		}
 		return content
 	},
 	
 	renderPartial = function(name, params){
-		if(name.sub(0, 2) == "//"){
-			name = "{views}/${name.sub(2)}"
-		}else if(name.sub(0, 1) == "/"){
-			name = "{views}${name}"
-		}else{
-			name = "{views}/${@classname}/${name}"
-		}
-		var filename = @owner.resolvePath(name)
-		// dump("filename: ${filename}")
-		// filename = require.resolve(filename)
-		ob.push()
-		compileFile(filename, true, null, true).call({controller = this}.merge(params))
-		return ob.popContent()
+		return @owner.renderView(this, name, params);
 	},
 }
