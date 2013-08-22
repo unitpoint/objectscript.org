@@ -250,3 +250,5 @@ Application = extends Component {
 function _T(name, group){
 	return app.getString(name, group) || name
 }
+
+_T.__get = _T
