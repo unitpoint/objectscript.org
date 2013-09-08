@@ -516,29 +516,6 @@ if("Curl" in _G){
 	print "Curl library is not enabled"
 }
 
-if("Regexp" in _G){
-	print "Test Regexp"
-	
-	print Regexp.escape("/(\d+)-(\d+)/", "/")
-	
-	print Regexp("/(\d+)-(\d+)/").replace("xyz-12-1977-abc", "$2-$1")
-	print Regexp("/(\d+)-(\d+)/").replace("xyz-12-1977-abc", {|m, str| m[2].."-"..m[1] })
-
-	print "xyz-12-1977-abc".replace(Regexp("/(\d+)-(\d+)/"), "$2-$1")
-	print "xyz-12-1977-abc".replace(Regexp("/(\d+)-(\d+)/"), {|m, str| m[2].."-"..m[1] })
-
-	var r = Regexp("/(\d+)/isug")
-	print r.exec("123-456")
-	print r.test("123-456")
-	
-	print "123 asfghg  76as hjasdjkah".split(Regexp("/\s+/"))
-
-	print Regexp("#/(?P<year>\d{4})/(?P<month>\d{2})/((?P<id>\d{1,})|(?P<permalink>.{1,}))[/]{0,1}$#")
-			.exec("/2011/10/Lorem-ipsum-dolor-it-amet-consectetur-adipisicing")
-}else{
-	print "Regexp library is not enabled"
-}
-
 ;{
 	print "Test var in string"
 	var abc = {xyz = 123} // local variable
@@ -658,6 +635,29 @@ if("ODBO" in _G){
 	conn.commit()
 }else{
 	print "ODBO extension is not enabled"
+}
+
+if("Regexp" in _G){
+	print "Test Regexp"
+	
+	print Regexp.escape("/(\d+)-(\d+)/", "/")
+	
+	print Regexp("/(\d+)-(\d+)/").replace("xyz-12-1977-abc", "$2-$1")
+	print Regexp("/(\d+)-(\d+)/").replace("xyz-12-1977-abc", {|m, str| m[2].."-"..m[1] })
+
+	print "xyz-12-1977-abc".replace(Regexp("/(\d+)-(\d+)/"), "$2-$1")
+	print "xyz-12-1977-abc".replace(Regexp("/(\d+)-(\d+)/"), {|m, str| m[2].."-"..m[1] })
+
+	var r = Regexp("/(\d+)/isug")
+	print r.exec("123-456")
+	print r.test("123-456")
+	
+	print "123 asfghg  76as hjasdjkah".split(Regexp("/\s+/"))
+
+	print Regexp("#/(?P<year>\d{4})/(?P<month>\d{2})/((?P<id>\d{1,})|(?P<permalink>.{1,}))[/]{0,1}$#")
+			.exec("/2011/10/Lorem-ipsum-dolor-it-amet-consectetur-adipisicing")
+}else{
+	print "Regexp library is not enabled"
 }
 
 terminate()
