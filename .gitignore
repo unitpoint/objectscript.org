@@ -1,2 +1,3 @@
 *.osc
 *.osd
+/protected/config/db-local.os
