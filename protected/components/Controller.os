@@ -36,4 +36,8 @@ Controller = extends Component {
 	renderPartial = function(name, params){
 		return @owner.renderView(this, name, params);
 	},
+	
+	createUrl = function(url){
+		return app.createUrl({controller = @controllerId}.merge(url))
+	},
 }

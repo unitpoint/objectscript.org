@@ -32,10 +32,6 @@
 	<link href="assets/google-code-prettify/prettify.css" rel="stylesheet">
 	
 	<script src="assets/js/bootstrap.min.js"></script>
-	<!-- Include jQuery Syntax Highlighter -->
-	<script type="text/javascript" src="http://balupton.github.com/jquery-syntaxhighlighter/scripts/jquery.syntaxhighlighter.min.js"></script>
-	<!-- Initialise jQuery Syntax Highlighter -->
-	<script type="text/javascript">$.SyntaxHighlighter.init();</script>
 </head>
 
 <body>

@@ -129,6 +129,10 @@ Application = extends Component {
 		return @getComponent("db")
 	},
 	
+	createUrl = function(url){
+		return @urlManager.createUrl(url)
+	},
+	
 	resolveAliases = function(path){
 		var r = {}
 		var aliases = @_aliases

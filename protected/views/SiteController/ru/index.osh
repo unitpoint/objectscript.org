@@ -9,16 +9,19 @@
 	языков, как JavaScript, Lua, Ruby, Python и PHP. ObjectScript имеет синтаксис из JavaScript, 
 	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python и PHP, 
 	а также имеет свои уникаьные возможности.</p>
-	<p>OS - это универсальный язык программирования, без компромиссов. Его можно использовать в программам на C++, 
-	для разработки сайтов или как скриптовой язык. Например, этот сайт сделан на ObjectScript и Вы можете посмотреть исходники
-	сайта в репозитории на <a href="https://github.com/unitpoint/objectscript.org" target="_blank">github</a>-е.</p>
 	<p>
 	  <a class="btn btn-lg btn-primary" href="https://github.com/unitpoint/os-fcgi" role="button">Загрузить &raquo;</a>
 	</p>
 </div>
 
+<div class="bs-callout bs-callout-danger">
+<p>ObjectScript - это универсальный язык программирования. Его можно использовать в программам на C++, 
+для разработки сайтов, а также как скриптовой язык. Например, этот сайт сделан на ObjectScript и вы можете посмотреть исходники
+сайта в репозитории на <a href="https://github.com/unitpoint/objectscript.org" target="_blank">github</a>-е.</p>
+</div>
+
 <div class="page-header">
-  <h1>Первая страница на ObjectScript</h1>
+  <h1>Первая страница на ObjectScript <small>файл index.osh</small></h1>
 </div>
 
 <div class="row">
@@ -35,11 +38,17 @@
 </pre>
   </div>
   <div class="col-md-6">
-	<div class="bs-callout bs-callout-info">
-      <h4>Cross-browser compatibility</h4>
-      <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet Explorer 8.</p>
-    </div>
+	<p>Откройте данный файл в браузере, набрав имя вашего веб-сервера и <code>/index.osh</code>. При локальной разработке эта ссылка может быть 
+	чем-то вроде <code>http://localhost/index.osh</code> (это зависит от настроек вашего веб-сервера).</p>
+	<p>Эта программа чрезвычайно проста. Все, что она делает, это выводит <code>Привет мир!</code>, используя функцию OS <code>echo</code>. 
+	Заметьте, что файл не обязан быть выполняемым или как-то отличаться от других файлов. Сервер знает, что этот файл должен быть обработан OS, 
+	так как файл имеет расширение <code>.osh</code>. Рассматривайте его как обычный HTML-файл, в который можно встраивать программы на OS и делать кучу интересных вещей.</p>
   </div>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <p>Если у вас этот пример ничего не отображает или выводит окно загрузки, или если вы видите весь этот файл в текстовом виде, то, скорее всего, 
+	ваш веб-сервер не имеет поддержки OS или был сконфигурирован неправильно. Следуйте инструкции по <a href="<%=@controller.createUrl{action="install"}%>">Установке</a>, чтобы подготовить ваш веб-сервер для работы с OS.</p>
 </div>
 
 <div class="page-header">
