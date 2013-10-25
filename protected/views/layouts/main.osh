@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="<%=app.lang%>">
 
 <head>
 	<meta charset="<%=app.charset%>">
@@ -71,6 +71,8 @@
 		<div class="container">
 			<%=@content%>
 		</div>
+		
+		<p></p>
 	</div>
 
 	<div id="footer">
@@ -80,7 +82,13 @@
 	</div>
 	
 	<a id="github" href="https://github.com/unitpoint/os-fcgi" target="_blank"><img 
-		src="img/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>	
+		src="img/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+	
+	<%if(false){%>
+	<pre class="prettyprint linenums lang-js"><%
+		dump(_SERVER)
+	%></pre>
+	<%}%>
 </body>
 
 </html>

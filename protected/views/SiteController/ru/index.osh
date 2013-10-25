@@ -13,10 +13,10 @@
 	</p>
 </div>
 
-<div class="bs-callout bs-callout-danger">
-<p>ObjectScript - это универсальный язык программирования. Его можно использовать в программам на C++, 
-для разработки сайтов, а также как скриптовой язык. Например, этот сайт сделан на ObjectScript и вы можете посмотреть исходники
-сайта в репозитории на <a href="https://github.com/unitpoint/objectscript.org" target="_blank">github</a>-е.</p>
+<div class="bs-callout bs-callout-info">
+	<p>ObjectScript - это универсальный язык программирования. Его можно использовать в программам на C++, 
+	для разработки сайтов, а также как скриптовой язык. Например, этот сайт сделан на ObjectScript и вы можете посмотреть исходники
+	сайта в репозитории на <a href="https://github.com/unitpoint/objectscript.org" target="_blank">github</a>-е.</p>
 </div>
 
 <div class="page-header">
@@ -51,15 +51,14 @@
 </div>
 
 <div class="page-header">
-  <h1>Пример скрипта на ObjectScript</h1>
+  <h1>Пример скрипта на ObjectScript <small>файл fibonacci.os</small></h1>
 </div>
 
 <div class="row">
   <div class="col-md-6">
 <pre class="prettyprint linenums lang-js">
 function fib(n){
-  var r = [0];
-  var a, b = 0, 1;
+  var a, b, r = 0, 1, [0];
   for(; b < n;){
     r.push(b);
     a, b = b, a+b;
@@ -70,6 +69,16 @@ print fib(100);
 </pre>
   </div>
   <div class="col-md-6">
-	djfdjkfhdskj
+	<p>Эта программа выводит числа фибоначчи в интервале от 0 до 100 в виде массива. Для ее запуска,
+	вопользуйтесь консольным приложением для запуска скриптов ObjectScript:</p>
+<pre class="prettyprint lang-js">
+> os fibonacci.os
+[0,1,1,2,3,5,8,13,21,34,55,89]
+</pre>
   </div>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <p>Вы можете скачать исходники консольного приложения <code>os</code> или уже откомпилированный и готовый для запуска 
+  бинарный файл в разделе <a href="<%=@controller.createUrl{action="download"}%>">Загрузки</a>.</p>
 </div>

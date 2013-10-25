@@ -21,4 +21,8 @@ SiteController = extends Controller {
 	actionInstall = function(){
 		echo @render("install")
 	},
+	
+	actionDownload = function(){
+		echo @render("download")
+	},
 }
