@@ -8,7 +8,10 @@ HttpRequest = extends Component {
 	
 	__get@baseUrl = function(){
 		if(!@_baseUrl){
-			@_baseUrl = path.dirname(@scriptUrl).replace(Regexp("#/+$#"), "")
+			@_baseUrl = path.dirname(@scriptUrl) // .replace(Regexp("#/+$#"), "")
+			if(@_baseUrl == ""){
+				@_baseUrl = "/"
+			}
 			// echo "baseUrl: "..@_baseUrl.."<br />"
 		}
 		return @_baseUrl

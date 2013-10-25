@@ -49,9 +49,20 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li class="active"><a href="#"><%=_T.MENU_HOME%></a></li>
-						<li><a href="#about">Downloads</a></li>
-						<li><a href="#contact">Documentation</a></li>
+						<%
+							var menuItems = {
+								index = _T.MENU_HOME,
+								download = _T.MENU_DOWNLOAD,
+								install = _T.MENU_INSTALL,
+								doc = _T.MENU_DOC,
+							}
+							var curAction = @controller.actionId
+							for(var action, name in menuItems){
+								var isActive = curAction == action
+								var url = @controller.createUrl{action=action}
+								echo "<li"..(isActive ? " class='active'" : "").."><a href='${url}'>${name}</a></li>"
+							}
+						%>
 					</ul>
 				</div>
 			</div>

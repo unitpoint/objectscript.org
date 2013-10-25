@@ -1,4 +1,4 @@
-Controller = extends Component {
+﻿Controller = extends Component {
 	/* __object = {
 		owner = null,
 		actionId = "",
@@ -8,8 +8,8 @@ Controller = extends Component {
 	actionId = null,
 	layout = "main",
 	pageTitle = "ObjectScript Title",
-	pageDesc = "ObjectScript Desc",
 	pageAuthor = "Evgeniy Golovin",
+	pageDesc = "ObjectScript это новый, встраиваемый, бесплатный с открытым исходным кодом язык программирования, сочетает преимущества языков программирования JavaScript, Lua, Ruby, Python, PHP",
 
 	__construct = function(owner, controllerId){
 		super()

@@ -1,16 +1,15 @@
-<% 
-	@controller.pageTitle = "ObjectScript: Без компромиссов"
-	@controller.pageDesc = "ObjectScript это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования, который сочетает в себе преимущества таких языков, как JavaScript, Lua, Ruby, Python и PHP"
+﻿<% 
+	@controller.pageTitle = "Без компромиссов / ObjectScript"
 %>
 <div class="jumbotron">
 	<h1>ObjectScript</h1>
 	<p>ObjectScript (или OS) - это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования, 
 	который сочетает в себе преимущества таких
 	языков, как JavaScript, Lua, Ruby, Python и PHP. ObjectScript имеет синтаксис из JavaScript, 
-	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python и PHP, 
-	а также имеет свои уникаьные возможности.</p>
+	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python и PHP. 
+	Кроме это ObjectScript предоставляет свои уникальные возможности.</p>
 	<p>
-	  <a class="btn btn-lg btn-primary" href="https://github.com/unitpoint/os-fcgi" role="button">Загрузить &raquo;</a>
+	  <a class="btn btn-lg btn-primary" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
 	</p>
 </div>
 

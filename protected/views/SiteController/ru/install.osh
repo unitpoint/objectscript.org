@@ -1,0 +1,7 @@
+﻿<% 
+	@controller.pageTitle = "Установка ObjectScript"
+%>
+<div class="page-header">
+  <h1>Локальная установка ObjectScript <small>на базе denwer</small></h1>
+</div>
+

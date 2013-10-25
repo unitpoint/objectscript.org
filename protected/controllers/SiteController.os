@@ -17,4 +17,8 @@ SiteController = extends Controller {
 		// dump([@classname, {pass=pass, user=user}]); terminate()
 		echo @render("index")
 	},
+	
+	actionInstall = function(){
+		echo @render("install")
+	},
 }
