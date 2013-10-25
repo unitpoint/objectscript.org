@@ -129,15 +129,13 @@ Application = extends Component {
 		return @getComponent("db")
 	},
 	
-	resolvePath = function(path){
+	resolveAliases = function(path){
 		var r = {}
 		var aliases = @_aliases
 		var function replace(path){
 			return path.replace(Regexp("#^{[\w\d\._]+?}#"), {|m| 
 				var alias = m[0]
-				if(alias in r){
-					throw "app.resolvePath recursion error: "..path
-				}
+				r[alias] && throw "app.resolveAliases recursion error: ${path}"
 				r[alias] = true
 				return replace(aliases[alias] || throw "Alias \"${alias}\" is not resolved")
 			})
@@ -160,13 +158,13 @@ Application = extends Component {
 	
 	addAliases = function(aliases){
 		for(var alias, path in aliases){
-			@_aliases[alias] = @resolvePath(path)
+			@_aliases[alias] = @resolveAliases(path)
 		}
 	},
 	
 	addPaths = function(paths){
 		for(var _, path in paths){
-			path = @resolvePath(path)
+			path = @resolveAliases(path)
 			// echo path .. BR
 			if(!(path in require.paths)){
 				require.paths.push(path)
@@ -183,10 +181,11 @@ Application = extends Component {
 		}else{
 			name = "{views}/${controller.classname}/${name}"
 		}
-		var filename = @resolvePath(name)
+		var filename = @resolveAliases(name)
 		// filename = require.resolve(filename) || throw "View \"filename\" is not found"
 		// dump("filename: ${filename}, r: ${resolvedFilename}")
 		ob.push()
+		filename = require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
 		var view = app._compiledViews[filename] || app._compiledViews[filename] = compileFile(filename, true, null, true)
 		view.call({controller = controller}.merge(params))
 		return ob.popContent()
@@ -221,7 +220,7 @@ Application = extends Component {
 	loadStrings = function(group){
 		group || group = "strings"
 		// echo "app.loadStrings: ${group}${BR}"
-		return @_strings[group] = require("${@lang}/${group}")
+		return @_strings[group] = require(@resolveAliases("{langs}/${@lang}/${group}"))
 	},
 	
 	getStringsGroup = function(group){

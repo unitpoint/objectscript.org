@@ -1,4 +1,4 @@
 ﻿<%  
 	require("../protected/components/Application")
-	Application(require("../protected/config/main")).run()
+	Application(require("../protected/config/config-main")).run()
 	

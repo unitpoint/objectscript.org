@@ -1,0 +1,18 @@
+.pln{color:#000}@media screen{.str{color:#080}.kwd{color:#008}.com{color:#800}.typ{color:#606}.lit{color:#066}.pun,.opn,.clo{color:#660}.tag{color:#008}.atn{color:#606}.atv{color:#080}.dec,.var{color:#606}.fun{color:red}}@media print,projection{.str{color:#060}.kwd{color:#006;font-weight:bold}.com{color:#600;font-style:italic}.typ{color:#404;font-weight:bold}.lit{color:#044}.pun,.opn,.clo{color:#440}.tag{color:#006;font-weight:bold}.atn{color:#404}.atv{color:#060}}
+pre.prettyprint {
+	padding:2px;
+	background-color:#f9f9f9;
+	border:1px solid #888;
+}
+pre.prettyprint ol.linenums{margin-top:5px;margin-bottom:5px}
+pre.prettyprint li { border-left: 2px solid #6ce26c; padding-left: 10px; margin-right:2px; }
+pre.prettyprint li.L0,
+pre.prettyprint li.L2,
+pre.prettyprint li.L4,
+pre.prettyprint li.L6,
+pre.prettyprint li.L8  { background: #fff; }
+pre.prettyprint li.L1,
+pre.prettyprint li.L3,
+pre.prettyprint li.L5,
+pre.prettyprint li.L7,
+pre.prettyprint li.L9 { background: #f9f9f9; }

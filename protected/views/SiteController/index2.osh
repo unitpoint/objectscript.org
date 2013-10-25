@@ -1,0 +1,12 @@
+<div class="jumbotron">
+	<h1>ObjectScript</h1>
+	<p>The ObjectScript is a new embedded programing language that mixes benefits of JavaScript, Lua, Ruby, Python and PHP. 
+	The ObjectScript has syntax from JavaScript, multiple results from Lua, sugar syntax from Ruby, magic methods from Python 
+	and much more.</p>
+	<p>The ObjectScript is universal scripting language, there are no compromises any more.</p>
+	<p>
+	  <a class="btn btn-lg btn-primary" href="#" role="button">Download &raquo;</a>
+	</p>
+</div>
+
+aa

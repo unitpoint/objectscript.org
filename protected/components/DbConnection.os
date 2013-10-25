@@ -5,12 +5,15 @@ DbConnection = extends Component {
 	params = null,
 	
 	open = function(){
-		@type || throw "ODBO type is not set"
-		return @handle || @handle = ODBO(@type, @params)
+		// @type || throw "ODBO type is not set"
+		return @handle || @handle = ODBO(@type || throw "ODBO type is not set", @params)
 	},
 	
 	close = function(){
-		@handle = null
+		if(@handle){
+			@handle.close()
+			@handle = null
+		}
 	},
 	
 	query = function(sql, params){

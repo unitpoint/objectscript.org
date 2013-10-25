@@ -1,0 +1,67 @@
+<% 
+	@controller.pageTitle = "ObjectScript: Без компромиссов"
+	@controller.pageDesc = "ObjectScript это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования, который сочетает в себе преимущества таких языков, как JavaScript, Lua, Ruby, Python и PHP"
+%>
+<div class="jumbotron">
+	<h1>ObjectScript</h1>
+	<p>ObjectScript (или OS) - это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования, 
+	который сочетает в себе преимущества таких
+	языков, как JavaScript, Lua, Ruby, Python и PHP. ObjectScript имеет синтаксис из JavaScript, 
+	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python и PHP, 
+	а также имеет свои уникаьные возможности.</p>
+	<p>OS - это универсальный язык программирования, без компромиссов. Его можно использовать в программам на C++, 
+	для разработки сайтов или как скриптовой язык. Например, этот сайт сделан на ObjectScript и Вы можете посмотреть исходники
+	сайта в репозитории на <a href="https://github.com/unitpoint/objectscript.org" target="_blank">github</a>-е.</p>
+	<p>
+	  <a class="btn btn-lg btn-primary" href="https://github.com/unitpoint/os-fcgi" role="button">Загрузить &raquo;</a>
+	</p>
+</div>
+
+<div class="page-header">
+  <h1>Первая страница на ObjectScript</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+<pre class="prettyprint linenums"><% ob.push() %>
+<html>
+ <head>
+  <title>Тестируем ObjectScript</title>
+ </head>
+ <body>
+ &lt;% echo '<p>Привет мир!</p>' %&gt;
+ </body>
+</html><%=ob.popContent().replace { "<" = "&lt;", ">" = "&gt;" } %>
+</pre>
+  </div>
+  <div class="col-md-6">
+	<div class="bs-callout bs-callout-info">
+      <h4>Cross-browser compatibility</h4>
+      <p>Striped tables are styled via the <code>:nth-child</code> CSS selector, which is not available in Internet Explorer 8.</p>
+    </div>
+  </div>
+</div>
+
+<div class="page-header">
+  <h1>Пример скрипта на ObjectScript</h1>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+<pre class="prettyprint linenums lang-js">
+function fib(n){
+  var r = [0];
+  var a, b = 0, 1;
+  for(; b < n;){
+    r.push(b);
+    a, b = b, a+b;
+  }
+  return r;
+}
+print fib(100);
+</pre>
+  </div>
+  <div class="col-md-6">
+	djfdjkfhdskj
+  </div>
+</div>

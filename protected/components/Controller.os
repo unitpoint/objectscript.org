@@ -7,6 +7,9 @@ Controller = extends Component {
 	controllerId = null,
 	actionId = null,
 	layout = "main",
+	pageTitle = "ObjectScript Title",
+	pageDesc = "ObjectScript Desc",
+	pageAuthor = "Evgeniy Golovin",
 
 	__construct = function(owner, controllerId){
 		super()
