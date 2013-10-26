@@ -66,6 +66,38 @@ function header(str){
 	}
 }
 
+var cookiesList = []
+function setCookie(name, value, expires, path, domain, secure, httponly){
+	var cookie = Buffer()
+	value && value = stringOf(value)
+	if(!value){ // deleted
+		cookie.append("Set-Cookie: ${name}=deleted; expires="..DateTime(1970, 1, 1).format("D, d-M-Y H:i:s T"))
+	}else{
+		cookie.append("Set-Cookie: ${name}="..url.encode(value))
+		if(expires){
+			if(expires is DateTime){
+				cookie.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
+			}else{
+				cookie.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
+			}
+		}
+		if(path){
+			cookie.append("; path=${path}")
+		}
+		if(domain){
+			cookie.append("; path=${domain}")
+		}
+		if(secure){
+			cookie.append("; secure")
+		}
+		if(httponly){
+			cookie.append("; httponly")
+		}
+	}
+	echo "cookie: "..toString(cookie).."<br />"
+	cookiesList.push(toString(cookie))
+}
+
 var buffers, echoFuncs = [], []
 
 var originEcho = echo
@@ -76,6 +108,9 @@ var function sendHeader(){
 		headerSent = true
 		triggerHeaderSent()
 		for(var k, v in headerList){
+			originEcho(v, "\r\n")
+		}
+		for(var _, v in cookiesList){
 			originEcho(v, "\r\n")
 		}
 		originEcho "\r\n"
