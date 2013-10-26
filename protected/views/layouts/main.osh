@@ -54,7 +54,7 @@
 								index = _T.MENU_HOME,
 								download = _T.MENU_DOWNLOAD,
 								install = _T.MENU_INSTALL,
-								doc = _T.MENU_DOC,
+								manual = _T.MENU_MANUAL,
 							}
 							var curAction = @controller.actionId
 							for(var action, name in menuItems){

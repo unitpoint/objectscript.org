@@ -1,0 +1,113 @@
+<% 
+	var content = require("manual-content.os")
+	var breadcrumb, page, pageTitle = [], @page
+	if(page){
+		function(curContent){
+			if(curContent[page]){
+				pageTitle = stringOf(curContent[page]) || curContent[page][0]
+				breadcrumb.push{page, pageTitle}
+				content = curContent // [page][1]
+				return true
+			}
+			for(var key, subContent in curContent){
+				if(!stringOf(subContent)){
+					breadcrumb.push{key, subContent[0]}
+					if(_F(subContent[1])){
+						return true;
+					}
+					breadcrumb.pop()
+				}
+			}
+		}(content)
+	}else{
+		for(var key, subContent in content){
+			pageTitle = stringOf(subContent) || subContent[0]
+			breadcrumb.push{key, pageTitle}
+			page = key
+			break
+		}
+	}
+	@controller.pageTitle = pageTitle .. " / ObjectScript"
+%>
+<ol class="breadcrumb">
+	<%
+		var url = @controller.createUrl{action="manual"}
+		echo "<li><a href='${url}'>${_T.MENU_MANUAL}</a></li>"
+		for(var _, item in breadcrumb){
+			var key, name = item[0], item[1]
+			if(key == page){
+				echo "<li class='active'>${name}</li>"
+			}else{
+				var url = @controller.createUrl{action="manual", params={page=key}}
+				echo "<li><a href='${url}'>${name}</a></li>"
+			}
+		}
+	%>
+</ol>
+
+<div class="row">
+  <div class="col-md-3">
+	<% if(true){ %>
+	<div class="list-group">
+		<%
+			for(var key, subContent in content){
+				var name = stringOf(subContent) || subContent[0]
+				var url = @controller.createUrl{action="manual", params={page=key}}
+				var activeClass = key == page ? " active" : ""
+				echo "<a class='list-group-item${activeClass}' href='${url}'>${name}</a>"
+			}
+		%>
+	</div>
+	<% }else{ %>
+	<div>
+	  <ul class="nav nav-pills nav-stacked">
+		<%
+			for(var key, subContent in content){
+				var name = stringOf(subContent) || subContent[0]
+				var url = @controller.createUrl{action="manual", params={page=key}}
+				var activeClass = key == page ? " class='active'" : ""
+				echo "<li${activeClass}><a href='${url}'>${name}</a></li>"
+			}
+		%>
+	  </ul>
+	</div>
+	<% } %>
+  </div>
+  <div class="col-md-9 manual">
+	<div class="page-header">
+	  <h1><%=pageTitle%></h1>
+	</div>
+	<% if(!stringOf(content[page])){ %>
+		<div class="row content">
+			<div class="col-md-5">
+				<h3><%=_T.CONTENT%></h3>
+				<ul>
+				<%
+					for(var key, subContent in content[page][1]){
+						if(stringOf(subContent)){
+							var name = subContent
+							var url = @controller.createUrl{action="manual", params={page=key}}
+							echo "<li><a href='${url}'>${name}</a></li>"
+						}else{
+							var name = subContent[0]
+							var url = @controller.createUrl{action="manual", params={page=key}}
+							echo "<li><a href='${url}'>${name}</a>"
+								echo "<ul>"
+								for(var key2, subContent2 in subContent[1]){
+									var name = stringOf(subContent2) || subContent2[0]
+									var url = @controller.createUrl{action="manual", params={page=key2}}
+									echo "<li><a href='${url}'>${name}</a></li>"
+								}
+								echo "</ul>"
+							echo "</li>"
+						}
+					}
+				%>
+				</ul>
+			</div>
+		</div>
+	<% } /* if(!stringOf(content[page])) */ %>
+	<%=@controller.renderPartial("manual.${page}.osh")%>
+  </div>  
+</div>  
+

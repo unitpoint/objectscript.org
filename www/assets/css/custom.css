@@ -95,3 +95,24 @@ code, pre {
   border-color: #d0e3f0;
 }
 
+.affix, .affix-top, .affix-bottom {
+  width: 250px;
+}
+
+.affix {
+  position: fixed;
+  top: 70px;
+}
+
+.manual > .page-header {
+	position:relative;
+	margin-top:-15px;
+}
+
+.manual .content {
+	margin-bottom: 20px;
+}
+
+.manual > .page-header  > span {
+	position:absolute; top:-80px;
+}
