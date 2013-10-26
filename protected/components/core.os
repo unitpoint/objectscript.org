@@ -94,7 +94,7 @@ function setCookie(name, value, expires, path, domain, secure, httponly){
 			cookie.append("; httponly")
 		}
 	}
-	echo "cookie: "..toString(cookie).."<br />"
+	// echo "cookie: "..toString(cookie).."<br />"
 	cookiesList.push(toString(cookie))
 }
 
