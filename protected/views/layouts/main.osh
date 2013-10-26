@@ -1,21 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="<%=app.lang%>">
-<% var params = app.params %>
+<% var CLIENT_VERSION = app.params.CLIENT_VERSION %>
 <head>
 	<meta charset="<%=app.charset%>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<%=@controller.pageDesc%>">
 	<meta name="author" content="<%=@controller.pageAuthor%>">
-	<link rel="shortcut icon" href="assets/ico/favicon.png?<%=params.CLIENT_VERSION%>">
+	<link rel="shortcut icon" href="assets/ico/favicon.png?<%=CLIENT_VERSION%>">
 
 	<title><%=@controller.pageTitle%></title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="assets/css/bootstrap.css?<%=params.CLIENT_VERSION%>" rel="stylesheet">
+	<link href="assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="assets/css/custom.css?<%=params.CLIENT_VERSION%>" rel="stylesheet">
+	<link href="assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 
 	<!-- Just for debugging purposes. Don't actually copy this line! -->
 	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -28,10 +28,10 @@
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	
-	<script src="assets/google-code-prettify/run_prettify.js?<%=params.CLIENT_VERSION%>"></script>
-	<link href="assets/google-code-prettify/prettify.css?<%=params.CLIENT_VERSION%>" rel="stylesheet">
+	<script src="assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
+	<link href="assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
-	<script src="assets/js/bootstrap.min.js?<%=params.CLIENT_VERSION%>"></script>
+	<script src="assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
 </head>
 
 <body>
@@ -77,12 +77,15 @@
 
 	<div id="footer">
 		<div class="container">
-			<p class="text-muted credit">Powered by <a href="https://github.com/unitpoint/os-fcgi">ObjectScript FastCGI daemon</a></p>
+			<div class="pull-right" style="margin-top:15px;">
+				<%=@controller.renderPartial("/layouts/_counter.liveinternet.osh")%>
+			</div>
+			<p class="text-muted credit"><%=_T.POWERED_BY%> <a href="https://github.com/unitpoint/os-fcgi">ObjectScript FastCGI daemon</a></p>
 		</div>
 	</div>
 	
 	<a id="github" href="https://github.com/unitpoint/os-fcgi" target="_blank"><img 
-		src="img/forkme_left_red_aa0000.png?<%=params.CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
+		src="img/forkme_left_red_aa0000.png?<%=CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
 	
 	<%if(false){%>
 	<pre class="prettyprint linenums lang-js"><%

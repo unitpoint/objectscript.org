@@ -31,14 +31,14 @@
 %>
 <ol class="breadcrumb">
 	<%
-		var url = @controller.createUrl{action="manual"}
+		var url = @controller.createUrl()
 		echo "<li><a href='${url}'>${_T.MENU_MANUAL}</a></li>"
 		for(var _, item in breadcrumb){
 			var key, name = item[0], item[1]
 			if(key == page){
 				echo "<li class='active'>${name}</li>"
 			}else{
-				var url = @controller.createUrl{action="manual", params={page=key}}
+				var url = @controller.createUrl{params={page=key}}
 				echo "<li><a href='${url}'>${name}</a></li>"
 			}
 		}
@@ -52,7 +52,7 @@
 		<%
 			for(var key, subContent in content){
 				var name = stringOf(subContent) || subContent[0]
-				var url = @controller.createUrl{action="manual", params={page=key}}
+				var url = @controller.createUrl{params={page=key}}
 				var activeClass = key == page ? " active" : ""
 				echo "<a class='list-group-item${activeClass}' href='${url}'>${name}</a>"
 			}
@@ -64,7 +64,7 @@
 		<%
 			for(var key, subContent in content){
 				var name = stringOf(subContent) || subContent[0]
-				var url = @controller.createUrl{action="manual", params={page=key}}
+				var url = @controller.createUrl{params={page=key}}
 				var activeClass = key == page ? " class='active'" : ""
 				echo "<li${activeClass}><a href='${url}'>${name}</a></li>"
 			}
@@ -86,16 +86,16 @@
 					for(var key, subContent in content[page][1]){
 						if(stringOf(subContent)){
 							var name = subContent
-							var url = @controller.createUrl{action="manual", params={page=key}}
+							var url = @controller.createUrl{params={page=key}}
 							echo "<li><a href='${url}'>${name}</a></li>"
 						}else{
 							var name = subContent[0]
-							var url = @controller.createUrl{action="manual", params={page=key}}
+							var url = @controller.createUrl{params={page=key}}
 							echo "<li><a href='${url}'>${name}</a>"
 								echo "<ul>"
 								for(var key2, subContent2 in subContent[1]){
 									var name = stringOf(subContent2) || subContent2[0]
-									var url = @controller.createUrl{action="manual", params={page=key2}}
+									var url = @controller.createUrl{params={page=key2}}
 									echo "<li><a href='${url}'>${name}</a></li>"
 								}
 								echo "</ul>"

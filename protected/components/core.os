@@ -150,6 +150,13 @@ registerShutdownFunction {||
 	}
 }
 
+var savedTerminate = terminate
+function terminate(){
+	triggerShutdownFunctions()
+	sendHeader();
+	savedTerminate()
+}
+
 function String.__mul(count){
 	count == 1 && return this
 	count <= 0 && return ""

@@ -137,6 +137,14 @@ Application = extends Component {
 		return @urlManager.createUrl(url)
 	},
 	
+	end = function(){
+		terminate()
+	},
+	
+	redirect = function(url){
+		@request.redirect(@createUrl(url))
+	},
+	
 	resolveAliases = function(path){
 		var r = {}
 		var aliases = @_aliases

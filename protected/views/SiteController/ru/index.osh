@@ -7,7 +7,7 @@
 	который сочетает в себе преимущества таких
 	языков, как JavaScript, Lua, Ruby, Python и PHP. ObjectScript имеет синтаксис из JavaScript, 
 	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python и PHP. 
-	Кроме это ObjectScript предоставляет свои уникальные возможности.</p>
+	Кроме этого ObjectScript предоставляет свои уникальные возможности.</p>
 	<p>
 	  <a class="btn btn-lg btn-primary" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
 	</p>
@@ -79,6 +79,6 @@ print fib(100);
 </div>
 
 <div class="bs-callout bs-callout-danger">
-  <p>Вы можете скачать исходники консольного приложения <code>os</code> или уже откомпилированный и готовый для запуска 
-  бинарный файл в разделе <a href="<%=@controller.createUrl{action="download"}%>">Загрузки</a>.</p>
+  <p>Вы можете скачать исходники консольного приложения <code>os</code> или уже откомпилированные и готовые для запуска 
+  бинарные файлы в разделе <a href="<%=@controller.createUrl{action="download"}%>">Загрузки</a>.</p>
 </div>

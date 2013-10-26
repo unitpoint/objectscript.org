@@ -1,5 +1,7 @@
 UrlManager = extends Component {
 	routeVar = "r",
+	_showScriptName = true,
+	_baseUrl = null,
 	
 	__construct = function(){
 		super()
@@ -13,8 +15,17 @@ UrlManager = extends Component {
 		return request.getParam(@routeVar)
 	},
 	
+	__get@showScriptName = function(){
+		return @_showScriptName
+	},
+	
+	__set@showScriptName = function(value){
+		@_showScriptName = value
+		@_baseUrl = null
+	},
+	
 	__get@baseUrl = function(){
-		return app.request.baseUrl
+		return @_baseUrl || @_baseUrl = @showScriptName ? app.request.scriptUrl : app.request.baseUrl
 	},
 	
 	createUrl = function(p){
@@ -22,7 +33,7 @@ UrlManager = extends Component {
 		
 		var anchor = ""
 		if(p.params["#"]){
-			anchor = "#".p.params["#"]
+			anchor = "#"..p.params["#"]
 			delete p.params["#"]
 		}
 		var controller = p.controller || app.defaultController
@@ -35,7 +46,7 @@ UrlManager = extends Component {
 		}else{
 			urlParams.push("${@routeVar}=${controller}/${action}")
 		}
-		var url = @baseUrl
+		var url = @baseUrl .. (@showScriptName ? "" : "/")
 		for(var name, value in p.params){
 			urlParams.push(_E.url.encode(name).."=".._E.url.encode(value))
 		}

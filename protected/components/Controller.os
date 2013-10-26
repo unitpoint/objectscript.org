@@ -38,6 +38,10 @@
 	},
 	
 	createUrl = function(url){
-		return app.createUrl({controller = @controllerId}.merge(url))
+		return app.createUrl({controller = @controllerId, action = @actionId}.merge(url))
+	},
+	
+	redirect = function(url){
+		app.redirect({controller = @controllerId, action = @actionId}.merge(url))
 	},
 }
