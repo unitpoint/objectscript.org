@@ -26,6 +26,10 @@ Application = extends Component {
 		return @config.defaultAction || "index"
 	},
 	
+	__get@params = function(){
+		return @config.params
+	},
+	
 	__object = {
 		_aliases = {},
 		_components = {},

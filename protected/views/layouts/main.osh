@@ -1,21 +1,21 @@
 ﻿<!DOCTYPE html>
 <html lang="<%=app.lang%>">
-
+<% var params = app.params %>
 <head>
 	<meta charset="<%=app.charset%>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<%=@controller.pageDesc%>">
 	<meta name="author" content="<%=@controller.pageAuthor%>">
-	<link rel="shortcut icon" href="assets/ico/favicon.png">
+	<link rel="shortcut icon" href="assets/ico/favicon.png?<%=params.CLIENT_VERSION%>">
 
 	<title><%=@controller.pageTitle%></title>
 
 	<!-- Bootstrap core CSS -->
-	<link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/bootstrap.css?<%=params.CLIENT_VERSION%>" rel="stylesheet">
 
 	<!-- Custom styles for this template -->
-	<link href="assets/css/custom.css" rel="stylesheet">
+	<link href="assets/css/custom.css?<%=params.CLIENT_VERSION%>" rel="stylesheet">
 
 	<!-- Just for debugging purposes. Don't actually copy this line! -->
 	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -28,10 +28,10 @@
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	
-	<script src="assets/google-code-prettify/run_prettify.js"></script>
-	<link href="assets/google-code-prettify/prettify.css" rel="stylesheet">
+	<script src="assets/google-code-prettify/run_prettify.js?<%=params.CLIENT_VERSION%>"></script>
+	<link href="assets/google-code-prettify/prettify.css?<%=params.CLIENT_VERSION%>" rel="stylesheet">
 	
-	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap.min.js?<%=params.CLIENT_VERSION%>"></script>
 </head>
 
 <body>
@@ -82,7 +82,7 @@
 	</div>
 	
 	<a id="github" href="https://github.com/unitpoint/os-fcgi" target="_blank"><img 
-		src="img/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+		src="img/forkme_left_red_aa0000.png?<%=params.CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
 	
 	<%if(false){%>
 	<pre class="prettyprint linenums lang-js"><%

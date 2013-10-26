@@ -26,6 +26,6 @@ return {
 		db = require("db-local.os"),
 	},
 	params = {
-		
+		CLIENT_VERSION = 2,
 	},
 }
