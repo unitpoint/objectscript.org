@@ -8,6 +8,7 @@ return {
 		"{controllers}" = "{app}/controllers",
 		"{views}" = "{app}/views",
 		"{langs}" = "{app}/langs",
+		"{widgets}" = "{app}/widgets",
 	},
 	paths = {
 		"{components}",
@@ -15,6 +16,7 @@ return {
 		"{controllers}",
 		"{views}",
 		"{langs}",
+		"{widgets}",
 	},
 	components = {
 		urlManager = {

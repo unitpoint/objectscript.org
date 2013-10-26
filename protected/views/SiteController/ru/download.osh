@@ -1,4 +1,4 @@
-<% 
+﻿<% 
 	@controller.pageTitle = "Загрузка ObjectScript"
 %>
 <div class="page-header">
@@ -61,8 +61,8 @@ service os-fcgi restart
   <h1>Запускаемая версия ObjectScript под Windows</h1>
 </div>
 <ul class="list-unstyled">
-  <li><a href="https://github.com/unitpoint/os-fcgi-win/blob/master/os-fcgi-1.8.5-dev-win32-x86.zip" 
-	target="_blank"><b>os-fcgi-1.8.5-dev-win32-x86.zip</b></a> (2958 Кб) - <a href="https://github.com/unitpoint/os-fcgi-win/tree/master/os-fcgi-1.8.5-dev-win32-x86" 
+  <li><a href="https://github.com/unitpoint/os-fcgi-win/blob/master/os-fcgi-1.8.6-dev-win32-x86.zip" 
+	target="_blank"><b>os-fcgi-1.8.6-dev-win32-x86.zip</b></a> (2959 Кб) - <a href="https://github.com/unitpoint/os-fcgi-win/tree/master/os-fcgi-1.8.6-dev-win32-x86" 
 	target="_blank">посмотреть содержимое архива</a></li>
 </ul>
 

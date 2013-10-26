@@ -5,16 +5,21 @@
 	}, */
 	
 	controllerId = null,
+	controller = null,
 	actionId = null,
 	layout = "main",
 	pageTitle = "ObjectScript Title",
 	pageAuthor = "Evgeniy Golovin",
 	pageDesc = "ObjectScript это новый, встраиваемый, бесплатный с открытым исходным кодом язык программирования, сочетает преимущества языков программирования JavaScript, Lua, Ruby, Python, PHP",
+	
+	_widgetStack = null,
 
 	__construct = function(owner, controllerId){
 		super()
 		@owner = owner
+		@controller = this
 		@controllerId = controllerId
+		@_widgetStack = []
 	},
 
 	runAction = function(name){
@@ -34,14 +39,42 @@
 	},
 	
 	renderPartial = function(name, params){
-		return @owner.renderView(this, name, params);
+		return @owner.renderView(@controller, name, params);
 	},
 	
 	createUrl = function(url){
-		return app.createUrl({controller = @controllerId, action = @actionId}.merge(url))
+		return @owner.createUrl({controller = @controller.controllerId, action = @controller.actionId}.merge(url))
 	},
 	
 	redirect = function(url){
-		app.redirect({controller = @controllerId, action = @actionId}.merge(url))
+		@owner.redirect({controller = @controller.controllerId, action = @controller.actionId}.merge(url))
+	},
+	
+	createWidget = function(classname, params){
+		return @owner.createWidget(@controller, classname, params)
+	},
+	
+	renderWidget = function(classname, params){
+		ob.push()
+		@createWidget(classname, params).run()
+		return ob.popContent()
+	},
+	
+	widget = function(classname, params){
+		var widget = @createWidget(classname, params)
+		widget.run()
+		return widget
+	},
+	
+	beginWidget = function(classname, params){
+		var widget = @createWidget(classname, params)
+		@_widgetStack.push(widget)
+		return widget
+	},
+	
+	endWidget = function(){
+		var widget = @_widgetStack.pop() || throw "${@classname} has an extra endWidget call in its view"
+		widget.run()
+		return widget
 	},
 }

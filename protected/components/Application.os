@@ -97,6 +97,16 @@ Application = extends Component {
 		}
 	},
 	
+	createWidget = function(controller, classname, params){
+		var widget = _G[@resolveClass(classname)](controller)
+		widget is Widget || throw "Error widget class: ${widget.classname}"
+		for(var key, value in params){
+			widget[key] = value
+		}
+		widget.init()
+		return widget
+	},
+	
 	getComponent = function(name, config){
 		name || throw "Attempt to create \"null\" component"
 		return @_components[name] || {||
@@ -149,7 +159,7 @@ Application = extends Component {
 		var r = {}
 		var aliases = @_aliases
 		var function replace(path){
-			return path.replace(Regexp("#^{[\w\d\._]+?}#"), {|m| 
+			return path.replace(Regexp("#{[\w\d\._]+?}#"), {|m| 
 				var alias = m[0]
 				r[alias] && throw "app.resolveAliases recursion error: ${path}"
 				r[alias] = true
@@ -190,17 +200,22 @@ Application = extends Component {
 	},
 	
 	renderView = function(controller, name, params){
-		if(name.sub(0, 2) == "//"){
-			name = "{views}/${name.sub(2)}"
-		}else if(name.sub(0, 1) == "/"){
-			name = "{views}${name}"
-		}else{
-			name = "{views}/${controller.classname}/${name}"
+		if(!path.exists(name) && !path.absolute(name)){
+			if(name.sub(0, 2) == "//"){
+				name = "{views}/${name.sub(2)}"
+			}else{ 
+				var start = name.sub(0, 1)
+				if(start == "/"){
+					name = "{views}${name}"
+				}else if(start != "{"){
+					name = "{views}/${controller.classname}/${name}"
+				}else{
+					// echo "renderView: ${name} <br />"
+				}
+			}
 		}
-		var filename = @resolveAliases(name)
-		// filename = require.resolve(filename) || throw "View \"filename\" is not found"
-		// dump("filename: ${filename}, r: ${resolvedFilename}")
 		ob.push()
+		var filename = @resolveAliases(name)
 		filename = require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
 		var view = app._compiledViews[filename] || app._compiledViews[filename] = compileFile(filename, true, null, true)
 		view.call({controller = controller}.merge(params))
