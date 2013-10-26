@@ -82,3 +82,17 @@ function Array.reverse(){
 	}
 	return r
 }
+
+function DateTime.__add(b){
+	b is DateTime && throw "DateTime.__add requires Number"
+	return DateTime {
+		comdate = @comdate + (numberOf(b) || throw "DateTime.__add requires Number")
+	}
+}
+
+function DateTime.__sub(b){
+	b is DateTime && return @comdate - b.comdate;
+	return DateTime {
+		comdate = @comdate - (numberOf(b) || throw "DateTime.__sub requires DateTime or Number")
+	}
+}
