@@ -47,7 +47,7 @@ if('QUERY_STRING' in _SERVER){
 	var query = _SERVER.QUERY_STRING.trim()
 	if(#query > 0)
 		for(var k, v in query.split('&')){
-			v = v.trim().split('=')
+			v = v.trim().split('=', 1)
 			if(#v == 2){
 				_GET.setSmartProperty(v[0], url.decode(v[1]))
 			}else{
@@ -69,7 +69,7 @@ function header(str){
 var cookiesList = []
 function setCookie(name, value, expires, path, domain, secure, httponly){
 	var cookie = Buffer()
-	value && value = stringOf(value)
+	value && value = toString(value)
 	if(!value){ // deleted
 		cookie.append("Set-Cookie: ${name}=deleted; expires="..DateTime(1970, 1, 1).format("D, d-M-Y H:i:s T"))
 	}else{
@@ -81,18 +81,10 @@ function setCookie(name, value, expires, path, domain, secure, httponly){
 				cookie.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
 			}
 		}
-		if(path){
-			cookie.append("; path=${path}")
-		}
-		if(domain){
-			cookie.append("; path=${domain}")
-		}
-		if(secure){
-			cookie.append("; secure")
-		}
-		if(httponly){
-			cookie.append("; httponly")
-		}
+		path && cookie.append("; path=${path}")
+		domain && cookie.append("; path=${domain}")
+		secure && cookie.append("; secure")
+		httponly && cookie.append("; httponly")
 	}
 	// echo "cookie: "..toString(cookie).."<br />"
 	cookiesList.push(toString(cookie))
@@ -211,6 +203,10 @@ function String.__div(count){
 
 function String.__add(b){
 	return this .. b
+}
+
+function String.__radd(b){
+	return b .. this
 }
 
 function String.flower(){

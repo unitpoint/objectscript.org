@@ -217,7 +217,7 @@ Application = extends Component {
 		ob.push()
 		var filename = @resolveAliases(name)
 		filename = require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
-		var view = app._compiledViews[filename] || app._compiledViews[filename] = compileFile(filename, true, null, true)
+		var view = @_compiledViews[filename] || @_compiledViews[filename] = compileFile(filename, true, null, true)
 		view.call({controller = controller}.merge(params))
 		return ob.popContent()
 	},
