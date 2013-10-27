@@ -25,7 +25,8 @@ return {
 		request = {
 			classname = "HttpRequest",
 		},
-		db = require("db-local.os"),
+		// db = require("db-local.os"),
+		db = extends require("db-local.os") {}, // hide db user & password while print config
 	},
 	params = {
 		CLIENT_VERSION = 2,
