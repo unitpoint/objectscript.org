@@ -38,8 +38,12 @@
 		return content
 	},
 	
+	resolveView = function(name){
+		return @owner.resolveView(@controller, name)
+	},
+	
 	renderPartial = function(name, params){
-		return @owner.renderView(@controller, name, params);
+		return @owner.renderView(@controller, @resolveView(name), params);
 	},
 	
 	createUrl = function(url){

@@ -69,17 +69,15 @@ function header(str){
 var cookiesList = []
 function setCookie(name, value, expires, path, domain, secure, httponly){
 	var cookie = Buffer()
-	value && value = toString(value)
+	// value && value = stringOf(value) || throw "setCookie: value should be String"
 	if(!value){ // deleted
 		cookie.append("Set-Cookie: ${name}=deleted; expires="..DateTime(1970, 1, 1).format("D, d-M-Y H:i:s T"))
 	}else{
 		cookie.append("Set-Cookie: ${name}="..url.encode(value))
-		if(expires){
-			if(expires is DateTime){
-				cookie.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
-			}else{
-				cookie.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
-			}
+		if(expires is DateTime){
+			cookie.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
+		}else if(expires){
+			cookie.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
 		}
 		path && cookie.append("; path=${path}")
 		domain && cookie.append("; path=${domain}")
@@ -192,7 +190,7 @@ function String.__mul(count){
 		buf.append(this)
 	}
 	if(count > 0){
-		buf.append(this.sub(0, #this * count))
+		buf.append(@sub(0, #this * count))
 	}
 	return toString(buf)
 }

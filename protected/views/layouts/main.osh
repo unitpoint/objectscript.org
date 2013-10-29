@@ -80,7 +80,7 @@
 			<div class="pull-right" style="margin-top:15px;">
 				<%=@controller.renderPartial("/layouts/_counter.liveinternet.osh")%>
 			</div>
-			<p class="text-muted credit"><%=_T.POWERED_BY%> <a href="https://github.com/unitpoint/os-fcgi">ObjectScript FastCGI daemon</a></p>
+			<p class="text-muted credit"><%=_T.FOOTER_CREDIT%></p>
 		</div>
 	</div>
 	

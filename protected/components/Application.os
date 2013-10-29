@@ -77,13 +77,13 @@ Application = extends Component {
 	createController = function(route){
 		var p = route.split("/")
 		var count, action = #p
-		if(!count){
+		if(count == 0){
 			p = @defaultController.split("/")
 			count = #p
 		}
 		if(count > 1){
-			action = p[--count]
-			delete p[count]
+			action = p.pop()
+			count--
 		}
 		var controllerId = p[count-1]
 		p[count-1] = p[count-1].flower() .. "Controller"
@@ -111,19 +111,16 @@ Application = extends Component {
 		name || throw "Attempt to create \"null\" component"
 		return @_components[name] || {||
 			config || config = @config.components[name] || throw "Component \"${name}\" config is not set"
-			if(config.enabled === false){
-				throw "Component \"${name}\" is disabled"
-			}else{
-				var component
-				@_components[name] = component = _G[@resolveClass(config.classname || name)](this)
-				for(var key, value in config){
-					if(key != "classname" && key != "enabled"){
-						component[key] = value
-					}
+			config.enabled === false && throw "Component \"${name}\" is disabled"
+			var component
+			@_components[name] = component = _G[@resolveClass(config.classname || name)](this)
+			for(var key, value in config){
+				if(key != "classname" && key != "enabled"){
+					component[key] = value
 				}
-				component.init()
-				return component
 			}
+			component.init()
+			return component
 		}.call(this)
 	},
 	
@@ -198,8 +195,8 @@ Application = extends Component {
 		}
 		// terminate()
 	},
-	
-	renderView = function(controller, name, params){
+
+	resolveView = function(controller, name){
 		if(!path.exists(name) && !path.absolute(name)){
 			if(name.sub(0, 2) == "//"){
 				name = "{views}/${name.sub(2)}"
@@ -214,9 +211,12 @@ Application = extends Component {
 				}
 			}
 		}
-		ob.push()
 		var filename = @resolveAliases(name)
-		filename = require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
+		return require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
+	},
+	
+	renderView = function(controller, filename, params){
+		ob.push()
 		var view = @_compiledViews[filename] || @_compiledViews[filename] = compileFile(filename, true, null, true)
 		view.call({controller = controller}.merge(params))
 		return ob.popContent()
