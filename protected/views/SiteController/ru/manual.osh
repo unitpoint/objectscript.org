@@ -4,4 +4,8 @@
 		content = require("manual-content.os"),
 		page = @page,
 		pageViewPrefix = path.dirname(__FILE__).."/manual.",
+		breadcrumb = {
+			url = @controller.createUrl(),
+			name = _T.MENU_MANUAL,
+		},
 	})

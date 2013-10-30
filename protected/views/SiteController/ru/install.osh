@@ -1,7 +1,10 @@
 ﻿<% 
-	@controller.pageTitle = "Установка ObjectScript"
-%>
-<div class="page-header">
-  <h1>Локальная установка ObjectScript <small>на базе denwer</small></h1>
-</div>
-
+	@controller.widget("ManualWidget", {
+		content = require("install-content.os"),
+		page = @page,
+		pageViewPrefix = path.dirname(__FILE__).."/",
+		breadcrumb = {
+			url = @controller.createUrl(),
+			name = _T.MENU_INSTALL,
+		},
+	})

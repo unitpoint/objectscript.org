@@ -11,17 +11,11 @@ HttpRequest = extends Component {
 	},
 	
 	getBaseUrl = function(absolute){
-		if(!@_baseUrl){
-			@_baseUrl = path.dirname(@scriptUrl) // .replace(Regexp("#/+$#"), "")
-			/* if(@_baseUrl == ""){
-				@_baseUrl = "/"
-			} */
-		}
-		return absolute ? @hostInfo .. @_baseUrl : @_baseUrl
+		return absolute ? @hostInfo .. @baseUrl : @baseUrl
 	},
 	
 	__get@baseUrl = function(){
-		return @getBaseUrl()
+		return @_baseUrl || @_baseUrl = path.dirname(@scriptUrl)
 	},
 	
 	__get@scriptUrl = function(){
@@ -39,7 +33,7 @@ HttpRequest = extends Component {
 	},
 	
 	__get@isSecureConnection = function(){
-		return @_isSecureConnection || @_isSecureConnection = _SERVER['HTTPS'].lower().find("on")
+		return @_isSecureConnection || @_isSecureConnection = _SERVER['HTTPS'].lower().find("on") !== null
 	},
 	
 	__get@port = function(){
@@ -61,10 +55,6 @@ HttpRequest = extends Component {
 	},
 	
 	__get@hostInfo = function(){
-		return @getHostInfo()
-	},
-	
-	getHostInfo = function(schema){
 		if(!@_hostInfo){
 			var secure = @isSecureConnection
 			var http = secure ? 'https' : 'http'
@@ -77,10 +67,15 @@ HttpRequest = extends Component {
 					@_hostInfo = @_hostInfo..':'..port
 			}
 		}
+		return @_hostInfo
+	},
+	
+	getHostInfo = function(schema){
+		var hostInfo = @hostInfo
 		if(schema){
 			var secure = @isSecureConnection
 			if(secure && schema === 'https' || !secure && schema === 'http'){
-				return @_hostInfo
+				return hostInfo
 			}
 			var port = schema === 'https' ? @securePort : @port
 			if(port != 80 && schema === 'http' || port != 443 && schema === 'https')
@@ -88,22 +83,16 @@ HttpRequest = extends Component {
 			else
 				port = ''
 
-			return 	@_hostInfo.replace(Regexp("^(\w+)://"), schema.."://")..port
+			return 	hostInfo.replace(Regexp("#^(\w+)://#"), schema.."://")..port
 		}
-		return @_hostInfo
+		return hostInfo
 	},
 	
 	redirect = function(url, end, statusCode){
-		end !== null || end = true
-		statusCode || statusCode = 302
-		if(url.sub(0, 1) == '/'){
-			url = @hostInfo..url
-		}
-		/* echo("<pre>Status: "..statusCode..", Location: "..url..", this: "..this..", _SERVER:\n")
-		dump(_SERVER)
-		terminate() */
-		header("Status: "..statusCode)
-		header("Location: "..url)
-		end && app.end()
+		// echo "redirect: ${end}<br>"
+		header("Status: "..(statusCode || 302))
+		header("Location: "..(url.sub(0, 1) == '/' ? @hostInfo..url : url))
+		if(end === null || end === true) 
+			app.end()
 	},
 }

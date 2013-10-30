@@ -18,9 +18,9 @@ SiteController = extends Controller {
 		echo @render("index")
 	},
 	
-	actionInstall = function(){
-		@redirect{action="manual", params={page="install"}}
-		// echo @render("install")
+	actionInstall = function(page){
+		// @redirect{action="manual", params={page="install"}}
+		echo @render("install", {page = page})
 	},
 	
 	actionDownload = function(){

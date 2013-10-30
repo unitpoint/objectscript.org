@@ -1,4 +1,4 @@
-return {
+﻿return {
 	"getting-started" = {
 		"Приступая к работе", {
 			intro = {
@@ -17,10 +17,12 @@ return {
 		}
 	},
 	install = {
-		"Установка и настройка", {
+		"Установка и настройка", 
+		url = {controller="site", action="install"},
+		/* {
 			"install.unix" = "Установка на Unix системы",
 			"install.win" = "Установка в системах Windows",
-		},
+		}, */
 	},
 	langref = {
 		"Справочник языка", {

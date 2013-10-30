@@ -173,6 +173,9 @@ registerShutdownFunction {||
 	for(; #buffers > 0;){
 		ob.pop()
 	}
+	if(!headerSent && (#headerList > 0 || #cookiesList > 0)){	
+		sendHeader();
+	}
 }
 
 var savedTerminate = terminate

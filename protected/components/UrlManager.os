@@ -29,6 +29,9 @@ UrlManager = extends Component {
 	},
 	
 	createUrl = function(p){
+		var url = stringOf(p)
+		url && return url;
+		
 		delete p.params[@routeVar]
 		
 		var anchor = ""
