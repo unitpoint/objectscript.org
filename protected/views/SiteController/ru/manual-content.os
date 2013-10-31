@@ -5,6 +5,7 @@
 				"Введение", {
 					"intro.whatisos" = "Что такое OS?",
 					"intro.whatcando" = "Возможности OS",
+					"intro.utf8support" = "Поддержка UTF-8 в OS",
 				},
 			},
 			tutorial = {
