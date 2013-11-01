@@ -1,0 +1,37 @@
+﻿<p>
+Давайте сделаем что-нибудь полезное. К примеру, определим, какой браузер использует тот, кто смотрит в данный момент нашу страницу. 
+Для этого мы проверим строку с именем браузера, посылаемую нам в HTTP-запросе. Эта информация хранится в переменной. 
+Интересующая нас в данный момент переменная называется <code>_SERVER["HTTP_USER_AGENT"]</code>.
+
+<h3>Файл index.osh</h3>
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<html>
+ <head>
+  <title>Show user agent using ObjectScript</title>
+ </head>
+ <body>
+ &lt;% echo _SERVER["HTTP_USER_AGENT"] %&gt; 
+ </body>
+</html><% @controller.endWidget("HtmlEncodeWidget") %>
+</pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<code>_SERVER</code> - специальная зарезервированная переменная OS, которая содержит всю информацию, 
+полученную от веб-сервера. Это глобальная переменная, поэтому ее можно использовать в любом месте программы. 
+</div>
+</p>
+
+<p>Пример вывода данной программы:
+<div class="row">
+  <div class="col-md-10">
+<pre>
+Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.22 Chrome/25.0.1364.172
+</pre>
+  </div>
+</div>

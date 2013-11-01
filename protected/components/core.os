@@ -169,6 +169,20 @@ ob = {
 	}
 }
 
+var shutdownFunctions = []
+
+function registerShutdownFunction(func){
+	shutdownFunctions.push(functionOf(func) || throw "expect function")
+}
+
+function triggerShutdownFunctions(){
+	var funcs, func = shutdownFunctions
+	shutdownFunctions = []
+	for(; func = funcs.pop();){
+		func()
+	}
+}
+
 registerShutdownFunction {||
 	for(; #buffers > 0;){
 		ob.pop()
