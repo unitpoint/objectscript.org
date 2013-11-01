@@ -25,7 +25,7 @@
 
 <div class="row">
   <div class="col-md-6">
-<pre class="prettyprint linenums"><% ob.push() %>
+<pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <html>
  <head>
   <title>Тестируем ObjectScript</title>
@@ -33,7 +33,7 @@
  <body>
  &lt;% echo '<p>Привет мир!</p>' %&gt;
  </body>
-</html><%=ob.popContent().replace { "<" = "&lt;", ">" = "&gt;" } %>
+</html><% @controller.endWidget("HtmlEncodeWidget") %>
 </pre>
   </div>
   <div class="col-md-6">

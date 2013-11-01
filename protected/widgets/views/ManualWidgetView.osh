@@ -5,13 +5,13 @@
 		function(curContent){
 			if(curContent[page]){
 				pageTitle = stringOf(curContent[page]) || curContent[page][0]
-				breadcrumb.push{page, pageTitle}
+				breadcrumb.push([page, pageTitle])
 				content = curContent // [page][1]
 				return true
 			}
 			for(var key, subContent in curContent){
 				if(!stringOf(subContent)){
-					breadcrumb.push{key, subContent[0]}
+					breadcrumb.push([key, subContent[0]])
 					if(_F(subContent[1])){
 						return true;
 					}
@@ -22,7 +22,7 @@
 	}else{
 		for(var key, subContent in content){
 			pageTitle = stringOf(subContent) || subContent[0]
-			breadcrumb.push{key, pageTitle}
+			breadcrumb.push([key, pageTitle])
 			page = key
 			break
 		}
@@ -63,8 +63,8 @@ $(function(){
 
 <div class="row">
   <div class="col-md-3">
-	<% if(true){ %>
 	<div id="content-affix" data-spy="affix" data-offset-top="53">
+		<% if(true){ %>
 		<div class="list-group">
 			<%
 				for(var key, subContent in content){
@@ -75,21 +75,19 @@ $(function(){
 				}
 			%>
 		</div>
+		<% }else{ %>
+		  <ul class="nav nav-pills nav-stacked">
+			<%
+				for(var key, subContent in content){
+					var name = stringOf(subContent) || subContent[0]
+					var url = @controller.createUrl(subContent.url || {params={page=key}})
+					var activeClass = key == page ? " class='active'" : ""
+					echo "<li${activeClass}><a href='${url}'>${name}</a></li>"
+				}
+			%>
+		  </ul>
+		<% } %>
 	</div>
-	<% }else{ %>
-	<div>
-	  <ul class="nav nav-pills nav-stacked">
-		<%
-			for(var key, subContent in content){
-				var name = stringOf(subContent) || subContent[0]
-				var url = @controller.createUrl(subContent.url || {params={page=key}})
-				var activeClass = key == page ? " class='active'" : ""
-				echo "<li${activeClass}><a href='${url}'>${name}</a></li>"
-			}
-		%>
-	  </ul>
-	</div>
-	<% } %>
   </div>
   <div class="col-md-9 manual">
 	<div class="page-header">

@@ -42,8 +42,14 @@
 		return @owner.resolveView(@controller, name)
 	},
 	
-	renderPartial = function(name, params){
-		return @owner.renderView(@controller, @resolveView(name), params);
+	renderPartial = function(name, params, checkWidgetStack){
+		checkWidgetStack = checkWidgetStack === null || checkWidgetStack
+		var widgetCount = #@_widgetStack
+		var content = @owner.renderView(@controller, @resolveView(name), params);
+		if(checkWidgetStack && widgetCount != #@_widgetStack){
+			throw "${@classname} has "..(widgetCount > #@_widgetStack ? 'extra' : 'error').." stack widgets (before ${widgetCount} != after ${#@_widgetStack})"
+		}
+		return content
 	},
 	
 	createUrl = function(url){
@@ -72,12 +78,16 @@
 	
 	beginWidget = function(classname, params){
 		var widget = @createWidget(classname, params)
-		@_widgetStack.push(widget)
+		@_widgetStack.push([classname, widget])
 		return widget
 	},
 	
-	endWidget = function(){
-		var widget = @_widgetStack.pop() || throw "${@classname} has an extra endWidget call in its view"
+	endWidget = function(classname){
+		var stackWidget = @_widgetStack.pop() || throw "${@classname} has an extra endWidget call in its view"
+		if(stackWidget[0] != classname){
+			throw "${@classname}.endWidget(${classname}) mismatch of ${stackWidget[0]} in its view"
+		}
+		var widget = stackWidget[1]
 		widget.run()
 		return widget
 	},

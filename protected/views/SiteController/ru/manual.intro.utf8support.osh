@@ -15,7 +15,20 @@ OS автоматически обрабатывает BOM, делая это п
 большинстве редакторов.
 <p>
 <div class="bs-callout bs-callout-danger">
-  Заголовки HTTP протокола должны отправляться до отправки самих данных согласно спецификации протокола.
+  <p>Cогласно спецификации HTTP протокола тело данных (body) распологается после заголовков (headers). Пример ответа сервера по 
+  протоколу HTTP (заголовки от тела отделены пустой строкой):
+<pre class="prettyprint linenums">HTTP/1.1 200 OK
+Date: Mon, 12 Mar 2001 19:12:16 GMT
+Server: Apache/1.3.12 (Unix) Debian/GNU mod_perl/1.24
+Last-Modified: Fri, 22 Sep 2013 14:16:18
+ETag: "dd7b6e-d29-39cb69b2"
+Accept-Ranges: bytes
+Content-Length: 3369
+Connection: close
+Content-Type: text/html
+
+[File content goes here]
+</pre>  
 </div>
 </p>
 <p>

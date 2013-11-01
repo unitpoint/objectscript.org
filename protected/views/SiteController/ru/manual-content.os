@@ -10,7 +10,7 @@
 			},
 			tutorial = {
 				"Простой учебник", {
-					"tutorial.firstpage" = "Первая страница на PHP",
+					"tutorial.firstpage" = "Первая страница на OS",
 					"tutorial.useful" = "Делаем что-нибудь полезное",
 					"tutorial.forms" = "Работа с формами",
 				},

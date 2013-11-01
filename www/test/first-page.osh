@@ -1,0 +1,8 @@
+<html>
+ <head>
+  <title>Тестируем ObjectScript</title>
+ </head>
+ <body>
+ <% echo '<p>Привет мир!</p>' %> Я программирую на OS, 5 в степени 2 = <%=5**2 %>
+ </body>
+</html>
