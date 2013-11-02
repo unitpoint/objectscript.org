@@ -1,4 +1,5 @@
 require "std"
+
 BR = "<br />"
 BEGIN_PRE = "<pre>"
 END_PRE = "</pre>"
@@ -14,7 +15,7 @@ function unhandledException(e){
 	for(var i, t in e.trace){
 		printf("#${i} ${t.file}%s: %s, args: ${t.arguments}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
-			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.id}>.${t.name}" : t.name)
+			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.__id}>.${t.__name}" : t.__name)
 
 	}
 	echo END_PRE
@@ -25,7 +26,7 @@ function printBackTrace(skipNumFuncs){
 	for(var i, t in debugBackTrace(skipNumFuncs + 1)){ // skip printBackTrace
 		printf("#${i} ${t.file}%s: %s, args: ${t.arguments}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
-			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.id}>.${t.name}" : t.name)
+			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.__id}>.${t.__name}" : t.__name)
 	}
 	echo END_PRE
 }
@@ -66,6 +67,8 @@ function header(str){
 	}
 }
 
+// header "Content-type: text/html; charset=utf-8"
+
 var cookiesList = []
 function setCookie(name, value, expires, path, domain, secure, httponly){
 	var cookie = Buffer()
@@ -94,7 +97,7 @@ var originEcho = echo
 // var orgPrintf = printf
 
 var function sendHeader(){
-	if(!headerSent){
+	if(!headerSent && (#headerList > 0 || #cookiesList > 0)){	
 		headerSent = true
 		triggerHeaderSent()
 		for(var k, v in headerList){
@@ -107,6 +110,7 @@ var function sendHeader(){
 		header = function(){
 			originEcho "HTTP headers are already sent"..BR
 		}
+		sendHeader = function(){}
 	}
 }
 
@@ -169,27 +173,11 @@ ob = {
 	}
 }
 
-var shutdownFunctions = []
-
-function registerShutdownFunction(func){
-	shutdownFunctions.push(functionOf(func) || throw "expect function")
-}
-
-function triggerShutdownFunctions(){
-	var funcs, func = shutdownFunctions
-	shutdownFunctions = []
-	for(; func = funcs.pop();){
-		func()
-	}
-}
-
 registerShutdownFunction {||
 	for(; #buffers > 0;){
 		ob.pop()
 	}
-	if(!headerSent && (#headerList > 0 || #cookiesList > 0)){	
-		sendHeader();
-	}
+	sendHeader();
 }
 
 var savedTerminate = terminate
@@ -198,45 +186,3 @@ function terminate(){
 	sendHeader();
 	savedTerminate()
 }
-
-function String.__mul(count){
-	count == 1 && return this
-	count <= 0 && return ""
-	var buf = Buffer()
-	for(; count >= 1; count--){
-		buf.append(this)
-	}
-	if(count > 0){
-		buf.append(@sub(0, #this * count))
-	}
-	return toString(buf)
-}
-
-function String.__div(count){
-	return this * (1 / count)
-}
-
-function String.__add(b){
-	return this .. b
-}
-
-function String.__radd(b){
-	return b .. this
-}
-
-function String.flower(){
-	return @sub(0, 1).upper() .. @sub(1)
-}
-
-var modulesChecked = {}
-function __get(name){
-	if(!(name in modulesChecked)){
-		modulesChecked[name] = true
-		require(name, false)
-		if(name in this){
-			return this[name]
-		}
-	}
-	throw "unknown class or global property \"${name}\""
-}
-

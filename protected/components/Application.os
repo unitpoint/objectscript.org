@@ -42,7 +42,6 @@ Application = extends Component {
 		app ? throw "App is already created" : app = this
 
 		@config = config || {}
-		header "Content-type: text/html; charset=${@charset}"
 		// echo "Content-type: text/html; charset=${@charset}"
 		
 		@config.components = (@defaultComponents || {}).merge(@config.components)
@@ -54,6 +53,7 @@ Application = extends Component {
 	},
 	
 	run = function(){
+		header "Content-type: text/html; charset=${@charset}"
 		@processRequest()
 	},
 	
@@ -67,7 +67,7 @@ Application = extends Component {
 		if(ca){
 			old, @_controller = @_controller, ca.controller
 			@_controller.init()
-			@_controller.runAction(ca.action)
+			@_controller.runAction(ca.actionId)
 			@_controller = old
 		}else{
 			throw "Unable to resolve the request \"${route}\""
@@ -76,13 +76,13 @@ Application = extends Component {
 	
 	createController = function(route){
 		var p = route.split("/")
-		var count, action = #p
+		var count, actionId = #p
 		if(count == 0){
 			p = @defaultController.split("/")
 			count = #p
 		}
 		if(count > 1){
-			action = p.pop()
+			actionId = p.pop()
 			count--
 		}
 		var controllerId = p[count-1]
@@ -92,7 +92,7 @@ Application = extends Component {
 			controller is Controller || throw "Error controller class: ${controller.classname}"
 			return {
 				controller = controller,
-				action = action
+				actionId = actionId
 			}
 		}
 	},

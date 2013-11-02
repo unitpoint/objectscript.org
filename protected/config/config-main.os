@@ -28,7 +28,5 @@ return {
 		// db = require("db-local.os"),
 		db = extends require("db-local.os") {}, // hide db user & password while print config
 	},
-	params = {
-		CLIENT_VERSION = 2,
-	},
+	params = require("config-params.os"),
 }

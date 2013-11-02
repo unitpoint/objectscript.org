@@ -84,7 +84,7 @@
 		</div>
 	</div>
 	
-	<a id="github" href="https://github.com/unitpoint/os-fcgi" target="_blank"><img 
+	<a id="github" href="https://github.com/unitpoint/objectscript.org" target="_blank"><img 
 		src="img/forkme_left_red_aa0000.png?<%=CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
 	
 	<%if(false){%>

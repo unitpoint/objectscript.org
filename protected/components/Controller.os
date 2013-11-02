@@ -43,11 +43,14 @@
 	},
 	
 	renderPartial = function(name, params, checkWidgetStack){
-		checkWidgetStack = checkWidgetStack === null || checkWidgetStack
+		if(checkWidgetStack === false){
+			return @owner.renderView(@controller, @resolveView(name), params)
+		}
 		var widgetCount = #@_widgetStack
-		var content = @owner.renderView(@controller, @resolveView(name), params);
-		if(checkWidgetStack && widgetCount != #@_widgetStack){
-			throw "${@classname} has "..(widgetCount > #@_widgetStack ? 'extra' : 'error').." stack widgets (before ${widgetCount} != after ${#@_widgetStack})"
+		var content = @owner.renderView(@controller, @resolveView(name), params)
+		if(widgetCount != #@_widgetStack){
+			throw "${@classname} has "..(widgetCount > #@_widgetStack ? 'extra' : 'error')
+					.." stack widgets (before ${widgetCount} != after ${#@_widgetStack})"
 		}
 		return content
 	},

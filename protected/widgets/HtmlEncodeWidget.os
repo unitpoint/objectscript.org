@@ -4,6 +4,6 @@ HtmlEncodeWidget = extends Widget {
 		ob.push()
 	},
 	run = function(){
-		echo ob.popContent().replace { "<" = "&lt;", ">" = "&gt;" }
+		echo html.encode(ob.popContent())
 	},
 }

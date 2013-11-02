@@ -1,0 +1,76 @@
+﻿<p>
+Одно из главнейших достоинств OS - то, как он работает с формами HTML. Здесь основным является то, что каждый элемент формы 
+автоматически становится доступным программам на OS. Для подробной информации об использовании форм в OS читайте раздел 
+<a href="">Переменные из внешних источников</a>. 
+
+<h3>Cтраница с формой HTML
+	<small>рабочий пример <a href="examples/tutorial.forms.osh" target="_blank">examples/tutorial.forms.osh</a></small></h3>
+
+<pre class="prettyprint linenums lang-osh"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  require "../../protected/components/webcore"
+%&gt;<!DOCTYPE html>
+<html>
+ <head>
+  <title>Dealing with Forms in ObjectScript</title>
+ </head>
+ <body>
+  &lt;% if(_POST.name && _POST.name != ""){ %&gt; 
+   <p>Hi &lt;%=html.encode(_POST.name)%&gt;.
+      You are &lt;%=toNumber(_POST.age)%&gt; years old.</p>
+   <hr />
+  &lt;% } /* if */ %&gt;
+  <form action="" method="post">
+   <p>Enter your name: <input type="text" name="name" /></p>
+   <p>Enter your age: <input type="text" name="age" /></p>
+   <p><input type="submit" /></p>
+  </form>
+ </body>
+</html><% @controller.endWidget("HtmlEncodeWidget") %>
+</pre>
+
+<p>
+В начале страницы мы подключаем библиотеку <code>webcore</code> с помощью функции <code>require</code>.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<h4>Замечание</h4>
+Библиотека <code>webcore</code> содержит базовые функции для веб-разработки, такие как <code>header</code>, <code>setCookie</code>,
+буферизованный вывод <code>ob</code>, а также механизм автоматической подгрузки файлов используемых библиотек.
+</div>
+</p>
+
+<p>
+Далее на странице есть форма HTML с двумя полями для ввода. Когда пользователь заполнит форму и нажмет кнопку отправки, 
+будет вызван обработчик в виде этой же страницы. 
+
+<p>
+Код программы, который обрабатывает данные формы, у нас следующий:
+<pre class="prettyprint linenums lang-osh"><% @controller.beginWidget("HtmlEncodeWidget") %>
+  &lt;% if(_POST.name && _POST.name != ""){ %&gt; 
+   <p>Hi &lt;%=html.encode(_POST.name)%&gt;.
+      You are &lt;%=toNumber(_POST.age)%&gt; years old.</p>
+   <hr />
+  &lt;% } /* if */ %&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+
+<h3>Пример вывода нашей программы</h3>
+
+<pre>Hi Evgeniy. You are 35 years old.</pre>
+
+<p>
+Если не принимать во внимание куски кода с <code>html.encode</code> и <code>toNumber</code>, то принцип работы данного кода 
+должен быть прост и понятен. <code>html.encode</code> обеспечивает правильную кодировку "особых" HTML-символов так, 
+чтобы вредоносный HTML или Javascript не был вставлен на вашу страницу. Поле <code>age</code>, о котором нам известно, 
+что оно должно быть число, мы можем просто преобразовать в число, что автоматически избавит нас от нежелательных символов. 
+Переменные <code>_POST.name</code> и <code>_POST.age</code> автоматически установлены для вас средствами OS. 
+Ранее мы использовали глобальную переменную <code>_SERVER</code>, здесь же мы точно так же используем глобальную 
+переменную <code>_POST</code>, которая содержит все <i>POST</i>-данные. Заметим, что метод отправки (method) нашей формы - <i>POST</i>. 
+Если бы мы использовали метод <i>GET</i>, то информация нашей формы была бы в глобальной переменной <code>_GET</code>. 
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Мы можем использовать следующие специальные глобальные переменные при веб-разработке на OS:
+<code>_SERVER</code>, <code>_POST</code>, <code>_GET</code>, <code>_COOKIE</code> и <code>_FILES</code>.
+</div>
+</p>

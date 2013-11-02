@@ -1,8 +1,31 @@
 ﻿<html>
  <head>
-  <title>Show user agent using ObjectScript</title>
+  <title>Show user agent in ObjectScript</title>
  </head>
  <body>
- <% echo _SERVER["HTTP_USER_AGENT"] %>
+ <p><% echo _SERVER["HTTP_USER_AGENT"] %></p>
+ <p>
+	Browser:
+	<%
+		var userAgent = _SERVER["HTTP_USER_AGENT"].lower()
+		if(userAgent.find("firefox/")){
+			echo "Firefox"
+		}else if(userAgent.find("opera/") || userAgent.find("opr/")){
+			echo "Opera"
+		}else if(userAgent.find("chrome/")){
+			echo "Chrome"
+		}else if(userAgent.find("safari/")){
+			echo "Safari"
+		}else if(userAgent.find("iphone/")){
+			echo "Iphone"
+		}else if(userAgent.find("applewebkit/")){
+			echo "AppleWebKit"
+		}else if(userAgent.find("msie ")){
+			echo "MSIE"
+		}else{
+			echo "Not detected"
+		}
+	%>
+ </p>
  </body>
 </html>
