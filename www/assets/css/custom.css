@@ -116,3 +116,17 @@ code, pre {
 .manual > .page-header  > span {
 	position:absolute; top:-80px;
 }
+
+.badge-src {
+	position:relative;
+}
+
+.badge-src .badge {
+	background-color: #fcf2f2;
+	border: 1px #dFb5b4 solid;
+	position:absolute; top:-5px; right:7px
+}
+
+.badge-src .badge a {
+	color: #c7254e;
+}

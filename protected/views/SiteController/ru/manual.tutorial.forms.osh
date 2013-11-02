@@ -6,6 +6,11 @@
 <h3>Cтраница с формой HTML
 	<small>рабочий пример <a href="examples/tutorial.forms.osh" target="_blank">examples/tutorial.forms.osh</a></small></h3>
 
+<div class="row">
+  <div class="col-md-10 badge-src">
+	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.forms.osh"
+		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+
 <pre class="prettyprint linenums lang-osh"><% @controller.beginWidget("HtmlEncodeWidget") %>
 &lt;%
   require "../../protected/components/webcore"
@@ -28,6 +33,8 @@
  </body>
 </html><% @controller.endWidget("HtmlEncodeWidget") %>
 </pre>
+  </div>
+</div>
 
 <p>
 В начале страницы мы подключаем библиотеку <code>webcore</code> с помощью функции <code>require</code>.
@@ -47,6 +54,9 @@
 
 <p>
 Код программы, который обрабатывает данные формы, у нас следующий:
+
+<div class="row">
+  <div class="col-md-10">
 <pre class="prettyprint linenums lang-osh"><% @controller.beginWidget("HtmlEncodeWidget") %>
   &lt;% if(_POST.name && _POST.name != ""){ %&gt; 
    <p>Hi &lt;%=html.encode(_POST.name)%&gt;.
@@ -54,6 +64,8 @@
    <hr />
   &lt;% } /* if */ %&gt;
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
 
 <h3>Пример вывода нашей программы</h3>
 
@@ -62,9 +74,12 @@
 <p>
 Если не принимать во внимание куски кода с <code>html.encode</code> и <code>toNumber</code>, то принцип работы данного кода 
 должен быть прост и понятен. <code>html.encode</code> обеспечивает правильную кодировку "особых" HTML-символов так, 
-чтобы вредоносный HTML или Javascript не был вставлен на вашу страницу. Поле <code>age</code>, о котором нам известно, 
-что оно должно быть число, мы можем просто преобразовать в число, что автоматически избавит нас от нежелательных символов. 
-Переменные <code>_POST.name</code> и <code>_POST.age</code> автоматически установлены для вас средствами OS. 
+чтобы вредоносный HTML или Javascript не был вставлен на нашу страницу. Поле <code>age</code>, о котором нам известно, 
+что оно должно быть числом, мы можем просто преобразовать в число, вызвав фугкцию <code>toNumber</code>, что автоматически 
+избавит нас от нежелательных символов. 
+
+<p>
+Переменные <code>_POST.name</code> и <code>_POST.age</code> автоматически установлены для нас средствами OS. 
 Ранее мы использовали глобальную переменную <code>_SERVER</code>, здесь же мы точно так же используем глобальную 
 переменную <code>_POST</code>, которая содержит все <i>POST</i>-данные. Заметим, что метод отправки (method) нашей формы - <i>POST</i>. 
 Если бы мы использовали метод <i>GET</i>, то информация нашей формы была бы в глобальной переменной <code>_GET</code>. 
