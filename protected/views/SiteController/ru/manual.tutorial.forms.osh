@@ -35,7 +35,8 @@
 <p>
 <div class="bs-callout bs-callout-danger">
 <h4>Замечание</h4>
-Библиотека <code>webcore</code> содержит базовые функции для веб-разработки, такие как <code>header</code>, <code>setCookie</code>,
+Библиотека <a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/webcore.os" 
+	target="_blank">webcore</a> содержит базовые функции для веб-разработки, такие как <code>header</code>, <code>setCookie</code>,
 буферизованный вывод <code>ob</code>, а также механизм автоматической подгрузки файлов используемых библиотек.
 </div>
 </p>
