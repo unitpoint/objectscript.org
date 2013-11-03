@@ -24,11 +24,11 @@
   <dd>Репозиторий <b>OS-FCGI</b> содержит в себе исходники выше описанных проектов и решения для сборки</dd>
   
   <dt><a href="https://github.com/unitpoint/os-fcgi.git" target="_blank">unitpoint/os-fcgi.git</a></dt>
-  <dd>Ссылка для клонирования репозитории через git (рекомендую <a href="http://www.syntevo.com/smartgithg/" 
+  <dd>Ссылка для клонирования репозитория через git (рекомендую <a href="http://www.syntevo.com/smartgithg/" 
 	target="_blank">SmartGit/Hg</a> в качестве пользовательского интерфейса)</dd>
 	
   <dt><a href="https://github.com/unitpoint/os-fcgi/archive/master.zip" target="_blank">unitpoint/os-fcgi/archive/master.zip</a></dt>
-  <dd>Ссылка для загрузки репозитории одним архивом</dd>
+  <dd>Ссылка для загрузки репозитория одним архивом</dd>
 </dl>
 
 <h3>Сборка под Windows</h3>
