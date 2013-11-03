@@ -7,6 +7,11 @@ target="_blank">github</a>-е.
 OS сконструирован специально для ведения веб-разработок, поэтому его код может внедряться непосредственно в HTML.
 <p>
 Простой ответ, но что он может означать? Вот пример кода:
+<div class="row">
+  <div class="col-md-10 badge-src">
+	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.firstpage.osh"
+		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+
 <pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <!DOCTYPE html>
 <html>
@@ -18,6 +23,9 @@ OS сконструирован специально для ведения ве�
  </body>
 </html><% @controller.endWidget("HtmlEncodeWidget") %>
 </pre>
+  </div>
+</div>
+
 <p>
 Вместо рутинного вывода HTML-кода командами языка (как это происходит, например, в Perl или C), скрипт OS содержит HTML 
 с вставками кода на OS (в нашем случае, это вывод текста <code>"&lt;p&gt;Привет мир!&lt;/p&gt;!"</code>). Код OS отделяется специальными 

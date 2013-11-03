@@ -5,7 +5,7 @@
 	<img src="img/os-fcgi-just-ready.png" class="img-thumbnail">
 </p>
 <p>
-Теперь самое время сделать что-нибудь интересное на OS. Для этого посетите раздел в документации
+Теперь самое время сделать что-нибудь интересное на OS. Для этого познакомьтесь с примерами в разделе документации
 <a href="<%=@controller.createUrl{action="manual", params={page="tutorial"}}%>">Простой учебник для веб-разработчика</a>.
 
 <h3>Что делать при возникновении ошибки?</h3>
@@ -17,4 +17,4 @@
 <p>
 То это означает, что сервис <code>OS-FCGI</code> не запущен, либо он слушает не тот порт, который прописан в
 настройках веб-сервера. Следуйте инструкции 
-<a href="<%=@controller.createUrl{params={page="install.win.denwer"}}%>">Установка под apache на Denwer</a> для решения проблемы. 
+<a href="<%=@controller.createUrl{params={page="install.win.denwer"}}%>">Установка под apache на Denwer</a> для решения этой проблемы. 
