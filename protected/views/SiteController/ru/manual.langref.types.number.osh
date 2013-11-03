@@ -1,0 +1,98 @@
+﻿<p>
+Числа в OS являются числами с плавающей. Размер числа зависит от платформы, хотя максимум, как правило 
+составляет <code>~1.8e308</code> с точностью около 16 десятичных цифр (64-битный IEEE формат).
+<p>
+В OS числа можно записать в разных вариантах:
+
+<div class="row">
+  <div class="col-md-11">
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  a = 1234;   // десятичное число
+  a = -123;   // отрицательное число
+  a = 0123;   // восьмеричное число (эквивалентно 83 в десятичной системе)
+  a = 0x1A;   // шестнадцатеричное число (эквивалентно 26 в десятичной системе)
+  a = 0b101;  // двоичное число (эквивалентно 5 в десятичной системе)
+  a = 1.5;    // число с плавающей точкой
+  a = 1.5e2;  // экспоненциальная запись числа (эквивалентно 150.0)
+  a = 150e-2; // еще экспоненциальная запись (эквивалентно 1.5)
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<h3>Преобразование в целое</h3>
+
+<p>
+В OS числа автоматически преобразуются в целые (как и наоборот) при необходимости. Например, при использовании побитовых
+операторов <code>|</code>, <code>&amp;</code>, <code>^</code> и <code>~</code>.
+<p>
+Для явного преобразования в целое, используйте фунцкции <code>math.floor</code>, <code>math.ceil</code>, <code>math.round</code>.
+Кроме этого запись <code>foo|0</code> также преобразует значение переменной <i>foo</i> в целое значение. Для того, чтобы 
+преобразовать число в 32-битное целое, используйте запись <code>foo & 0xffffffff</code>.
+
+<h3>Погрешности в вычислениях</h3>
+
+<p>
+Числа хранятся в 64-битном IEEE формате (по умолчанию), который обеспечивает точность около 16 десятичных цифр. 
+Т.к. это всегда числа с плавающей точкой, то они могут не совсем точно хранить ожидаемое значение с учетом цифр после запятой.
+Ответ на вопрос, почему это работает именно так, можно найти в <a href="http://floating-point-gui.de/" 
+taregt="_blank">руководстве по числам с плавающей точкой</a>, которое также называется <i>"Why don’t my numbers add up?"</i> 
+("Почему мои числа не складываются?").
+
+<h3>Пример с точностью чисел
+	<small>рабочий пример <a href="examples/tutorial.numbers.osh" target="_blank">tutorial.numbers.osh</a></small></h3>
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.numbers.osh"
+		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  printf("%.20f<br />", 0.94 - 0.01)  // выведет: 0.93000000000000005000
+  printf("%f<br />", 0.94 - 0.01)     // выведет: 0.930000
+
+  // используйте дружелюбный для человека формат вывода чисел %n
+  printf("%n<br />", 0.94 - 0.01)     // выведет: 0.93
+
+  // числа преобразуются в строки по формату %n
+  echo(0.94 - 0.01, "<br />")         // выведет: 0.93
+
+  echo(typeOf(10.5), "<br />")        // выведет: number
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<h3>Сравнение чисел с плавающей точкой</h3>
+
+<p>
+С учетом потерь на точность вычислений, проверять числа с плавающей точкой на равенство проблематично из-за их внутреннего представления. 
+Тем не менее, существуют способы для их сравнения, которые работают несмотря ни на что.
+<p>
+Для сравнения чисел с плавающей точкой используется верхняя граница относительной ошибки при округлении. Эта величина называется 
+машинной эпсилон или единица округления (unit roundoff) и представляет собой самую маленькую допустимую разницу при расчетах.
+
+<h3><code>a</code> и <code>b</code> равны до 5-ти знаков
+	<small>рабочий пример <a href="examples/tutorial.numbers-compare.osh" target="_blank">tutorial.numbers-compare.osh</a></small></h3>
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.numbers-compare.osh"
+		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  a = 1.23456789;
+  b = 1.23456780;
+  epsilon = 0.00001;
+
+  if(math.abs(a - b) < epsilon){
+    echo "true";
+  }else{
+    echo "false";
+  }
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>

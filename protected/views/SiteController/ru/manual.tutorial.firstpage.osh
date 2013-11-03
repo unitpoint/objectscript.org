@@ -2,7 +2,7 @@
 Создайте файл с именем <code>index.osh</code> в корневом каталоге веб-сервера (DOCUMENT_ROOT) и запишите в него следующее:
 
 <h3>Файл index.osh
-	<small>рабочий пример <a href="examples/tutorial.firstpage.osh" target="_blank">examples/tutorial.firstpage.osh</a></small></h3>
+	<small>рабочий пример <a href="examples/tutorial.firstpage.osh" target="_blank">tutorial.firstpage.osh</a></small></h3>
 
 <div class="row">
   <div class="col-md-10 badge-src">

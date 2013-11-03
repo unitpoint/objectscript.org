@@ -4,7 +4,7 @@
 Интересующая нас в данный момент переменная называется <code>_SERVER["HTTP_USER_AGENT"]</code>.
 
 <h3>Вывод браузера 
-	<small>рабочий пример <a href="examples/tutorial.useful.osh" target="_blank">examples/tutorial.useful.osh</a></small></h3>
+	<small>рабочий пример <a href="examples/tutorial.useful.osh" target="_blank">tutorial.useful.osh</a></small></h3>
 
 <div class="row">
   <div class="col-md-10 badge-src">
@@ -77,7 +77,7 @@ Browser: Chrome
 
 <p>
 <div class="bs-callout bs-callout-danger">
-В OS преобразование к булевому типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
+В OS преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
 все другие значения возвращают <i>истину</i>, включая число <code>0</code> и пустую строку <code>""</code>.
 </div>
 </p>

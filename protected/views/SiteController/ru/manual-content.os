@@ -31,7 +31,7 @@
 				"Основы синтаксиса", {
 					"langref.basic-syntax.tags" = "Теги OS",
 					"langref.basic-syntax.html" = "Изолирование от HTML",
-					"langref.basic-syntax.osh-os" = "Расширения файлов .osh и .os",
+					"langref.basic-syntax.osh-os" = "Файлы osh, os, osc, ost",
 					"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 					"langref.basic-syntax.comments" = "Комментарии",
 				},

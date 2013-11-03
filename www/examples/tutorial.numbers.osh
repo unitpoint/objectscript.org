@@ -1,0 +1,12 @@
+<%
+
+  printf("%.20f<br />", 0.94 - 0.01)  // outputs: 0.93000000000000005000
+  printf("%f<br />", 0.94 - 0.01)     // outputs: 0.930000
+
+  // use human friendly number format
+  printf("%n<br />", 0.94 - 0.01)     // outputs: 0.93
+
+  // numbers are converted to string using human friendly format
+  echo(0.94 - 0.01, "<br />")         // outputs: 0.93
+
+  echo(typeOf(10.5), "<br />")        // outputs: number
