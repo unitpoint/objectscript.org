@@ -9,7 +9,7 @@
 	"install.win" = {
 		"Установка на Windows", {
 			"install.win.denwer" = "Установка под apache на Denwer",
-			"install.win.test-ostest" = "Проверка http://ostest",
+			"install.win.test-ostest" = "Проверка работы http://ostest",
 		},
 	},
 }
