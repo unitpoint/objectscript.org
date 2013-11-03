@@ -1,5 +1,5 @@
 ﻿<p>
-Чтобы посмотреть текущие настройки <code>OS-FCGI</code>, давайте выполним команду:
+Чтобы посмотреть текущие настройки <code>OS-FCGI</code>, просто выполним следующую команду:
 <pre>
 cat /etc/os-fcgi/conf.os
 </pre>
@@ -14,7 +14,7 @@ cat /etc/os-fcgi/conf.os
 </p>
 
 <p>
-При необходимости просто измените файл <code>/etc/os-fcgi/conf.os</code> и перезапустите <code>OS-FCGI</code> командой:
+При необходимости измените файл <code>/etc/os-fcgi/conf.os</code> и перезапустите <code>OS-FCGI</code> командой:
 <pre>
 service os-fcgi restart
 </pre>
