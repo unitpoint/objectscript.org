@@ -1,13 +1,12 @@
 ﻿<p>
 Создайте файл с именем <code>index.osh</code> в корневом каталоге веб-сервера (DOCUMENT_ROOT) и запишите в него следующее:
 
-<h3>Файл index.osh
-	<small>рабочий пример <a href="examples/tutorial.firstpage.osh" target="_blank">tutorial.firstpage.osh</a></small></h3>
+<h3>Файл index.osh</h3>
 
 <div class="row">
   <div class="col-md-10 badge-src">
-	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.firstpage.osh"
-		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.firstpage.osh"})%>
+
 <pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <html>
  <head>

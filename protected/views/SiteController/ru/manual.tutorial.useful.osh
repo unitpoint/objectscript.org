@@ -3,13 +3,12 @@
 Для этого мы проверим строку с именем браузера, посылаемую нам в HTTP-запросе. Эта информация хранится в переменной. 
 Интересующая нас в данный момент переменная называется <code>_SERVER["HTTP_USER_AGENT"]</code>.
 
-<h3>Вывод браузера 
-	<small>рабочий пример <a href="examples/tutorial.useful.osh" target="_blank">tutorial.useful.osh</a></small></h3>
+<h3>Вывод браузера</h3>
 
 <div class="row">
   <div class="col-md-10 badge-src">
-	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.useful.osh"
-		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.useful.osh"})%>
+
 <pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <html>
  <head>

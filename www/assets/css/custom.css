@@ -124,7 +124,8 @@ code, pre {
 .badge-src .badge {
 	background-color: #fcf2f2;
 	border: 1px #dFb5b4 solid;
-	position:absolute; top:-5px; right:7px
+	position:absolute; top:-5px; right:7px;
+	font-size: 20px;
 }
 
 .badge-src .badge a {

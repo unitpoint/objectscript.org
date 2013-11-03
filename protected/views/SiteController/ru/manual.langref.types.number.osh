@@ -40,13 +40,11 @@
 taregt="_blank">руководстве по числам с плавающей точкой</a>, которое также называется <i>"Why don’t my numbers add up?"</i> 
 ("Почему мои числа не складываются?").
 
-<h3>Пример с точностью чисел
-	<small>рабочий пример <a href="examples/tutorial.numbers.osh" target="_blank">tutorial.numbers.osh</a></small></h3>
+<h3>Пример с точностью чисел</h3>
 
 <div class="row">
   <div class="col-md-11 badge-src">
-	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.numbers.osh"
-		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.numbers.osh"})%>
 
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
 &lt;%
@@ -74,13 +72,12 @@ taregt="_blank">руководстве по числам с плавающей �
 Для сравнения чисел с плавающей точкой используется верхняя граница относительной ошибки при округлении. Эта величина называется 
 машинной эпсилон или единица округления (unit roundoff) и представляет собой самую маленькую допустимую разницу при расчетах.
 
-<h3><code>a</code> и <code>b</code> равны до 5-ти знаков
-	<small>рабочий пример <a href="examples/tutorial.numbers-compare.osh" target="_blank">tutorial.numbers-compare.osh</a></small></h3>
+<h3><code>a</code> и <code>b</code> равны до 5-ти знаков</h3>
 
 <div class="row">
   <div class="col-md-11 badge-src">
-	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.numbers-compare.osh"
-		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.numbers-compare.osh"})%>
+
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
 &lt;%
   a = 1.23456789;

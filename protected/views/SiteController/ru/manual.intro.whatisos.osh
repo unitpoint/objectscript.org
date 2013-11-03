@@ -9,8 +9,7 @@ OS сконструирован специально для ведения ве�
 Простой ответ, но что он может означать? Вот пример кода:
 <div class="row">
   <div class="col-md-10 badge-src">
-	  <span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.firstpage.osh"
-		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.firstpage.osh"})%>
 
 <pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <!DOCTYPE html>
