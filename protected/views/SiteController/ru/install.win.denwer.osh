@@ -1,0 +1,123 @@
+﻿<p>
+<div class="bs-callout bs-callout-danger">
+  У вас уже должен быть установлен <i>Джентльменский набор Web-разработчика</i> («Д.н.w.р», читается «Денвер»). Если это не так,
+  то скачайте и установите <a href="http://www.denwer.ru/" target="_blank">Denwer</a>, следуйте при этом руководству с оф. сайта.
+</div>
+</p>
+
+<ol>
+<li><p>
+Откроем для редактирования текстовый файл <code>c:\WebServers\usr\local\apache\conf\httpd.conf</code>
+<p>
+<div class="bs-callout bs-callout-danger">
+  Обычно Denwer находится в папке <code>c:\WebServers</code>, если это не так, то
+  расположение файла <i>httpd.conf</i> будет другим.
+</div>
+</p>
+
+<li><p>
+Найдем в файле конфигурации следующий текст
+<pre class="prettyprint"><% @controller.beginWidget("HtmlEncodeWidget") %>
+#<VirtualHost 127.0.0.1:*>
+#    ServerName non-existent-host
+#    DocumentRoot /home/non-existent-host/www
+#</VirtualHost>
+
+# Если вы вручную хотите создать виртуальный хост со специфическими 
+# настройками, то сделайте это сразу же после данного комментария. 
+# Не помещайте "рукодельные" хосты в конец файла, иначе они не будут 
+# доступны!
+<% @controller.endWidget("HtmlEncodeWidget") %>
+</pre>
+
+<li><p>
+И добавим после найденного текста строчку
+<pre class="prettyprint">
+Include conf/extra/httpd-ostest.conf
+</pre>
+<p>
+<div class="bs-callout bs-callout-danger">
+  <p>В результате должно получилось так:
+<pre class="prettyprint">
+# Если вы вручную хотите создать виртуальный хост со специфическими 
+# настройками, то сделайте это сразу же после данного комментария. 
+# Не помещайте "рукодельные" хосты в конец файла, иначе они не будут 
+# доступны!
+
+Include conf/extra/httpd-ostest.conf
+</pre>
+</div>
+</p>
+
+<li><p>
+Сохраним и закроем файл <code>c:\WebServers\usr\local\apache\conf\httpd.conf</code>
+
+<li><p>
+Теперь мы настроим виртуальный хост <code>ostest</code>, для этого создадим и откроем для редактирования 
+текстовый файл <code>c:\WebServers\usr\local\apache\conf\extra\httpd-ostest.conf</code>
+
+<li><p>
+И сохраним в него следующий текст
+
+<div class="row">
+  <div class="col-md-10 badge-src">
+	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/httpd-ostest.conf"
+		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+<pre class="prettyprint"><% @controller.beginWidget("HtmlEncodeWidget") %>
+#
+# Use name-based virtual hosting.
+#
+<VirtualHost ostest:80>
+  ServerAdmin webmaster@ostest
+  DocumentRoot "c:/WebSources/ostest/www"
+  ServerName ostest
+  
+  # SetHandler fastcgi-script
+  # AddHandler fastcgi-script .osh
+  FastCgiExternalServer "c:/WebSources/ostest/www" -host 127.0.0.1:9000
+  
+  <Directory "c:/WebSources/ostest/www">
+    # SetHandler fastcgi-script
+    AddHandler fastcgi-script .osh
+    Options Indexes FollowSymLinks MultiViews ExecCGI
+    AllowOverride all
+    Order Deny,Allow
+    Deny from all
+    Allow from 127.0.0.1
+  </Directory>
+</VirtualHost>
+<% @controller.endWidget("HtmlEncodeWidget") %>
+</pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+  Если вы используете путь отличный от <code>c:/WebSources/ostest</code>, то впишите в файл конфигурации ваш путь.
+</div>
+</p>
+
+<li><p>
+Осталось прописать IP адрес нашего виртуального хоста. Для этого
+откроем для редактирования текстовый файл <code>c:\Windows\System32\drivers\etc\hosts</code>
+и добавим в начало файла следующую строчку
+<pre class="prettyprint">
+127.0.0.1	ostest
+</pre>
+<p>
+<div class="bs-callout bs-callout-danger">
+  Файл <code>c:\Windows\System32\drivers\etc\hosts</code> может потребоваться изменить от имени администратора.
+</div>
+</p>
+
+<li><p>
+Сохраним и закроем все измененные файлы и запустим Denwer командой
+<pre class="prettyprint">
+C:\WebServers\denwer\Run.exe
+</pre>
+
+</ol>
+
+<p>
+Готово! Мы полностью настроили в Denwer-е виртуальный хост с именем <code>http://ostest</code>, который будет обрабатываться
+по интерфейсу FastCGI программой <code>OS-FCGI</code>.

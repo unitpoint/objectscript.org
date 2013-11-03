@@ -1,0 +1,20 @@
+<p>
+Чтобы проверить наш тестовый виртуальный хост, впишем его имя (<code>http://ostest</code>) в адресную строку браузера. 
+Если все сделано правильно, то мы увидем что-то вроде:
+<p class="text-center">
+	<img src="img/os-fcgi-just-ready.png" class="img-thumbnail">
+</p>
+<p>
+Теперь самое время сделать что-нибудь интересное на OS, следуя документации в разделе
+<a href="<%=@controller.createUrl{action="manual", params={page="tutorial"}}%>">Простой учебник для веб-разработчика</a>.
+
+<h3>Что делать при возникновении ошибки</h3>
+<p>
+Если браузер показывает ошибку 500, например, такую:
+<p class="text-center">
+	<img src="img/denwer-err-500.png" class="img-thumbnail">
+</p>
+<p>
+То это означает, что сервис <code>OS-FCGI</code> не запущен, либо он слушает не тот порт, который прописан в
+настройках веб-сервера. Следуйте инструкции 
+<a href="<%=@controller.createUrl{params={page="install.win.denwer"}}%>">Установка под apache на Denwer</a> для решения проблемы. 
