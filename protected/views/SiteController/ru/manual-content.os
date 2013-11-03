@@ -27,12 +27,13 @@
 	},
 	langref = {
 		"Справочник языка", {
-			"langref.basic-synrax" = {
+			"langref.basic-syntax" = {
 				"Основы синтаксиса", {
-					"langref.basic-synrax.tags" = "Теги OS",
-					"langref.basic-synrax.html" = "Изолирование от HTML",
-					"langref.basic-synrax.separation" = "Разделение инструкций",
-					"langref.basic-synrax.comments" = "Комментарии",
+					"langref.basic-syntax.tags" = "Теги OS",
+					"langref.basic-syntax.html" = "Изолирование от HTML",
+					"langref.basic-syntax.osh-os" = "Расширения файлов .osh и .os",
+					"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
+					"langref.basic-syntax.comments" = "Комментарии",
 				},
 			},
 			"langref.types" = {

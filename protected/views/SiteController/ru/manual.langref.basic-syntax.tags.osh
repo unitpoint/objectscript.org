@@ -1,0 +1,33 @@
+<p>
+Когда OS обрабатывает файл с расширением <code>.osh</code>, <code>.html</code> или <code>.htm</code>, он ищет открывающие и 
+закрывающие теги, такие как <code>&lt;%</code> и <code>%&gt;</code>, 
+которые указывают OS, когда начинать и заканчивать обработку кода между ними. Подобный способ обработки позволяет OS внедряться 
+в разные виды документов, так как всё, что находится вне пары открывающих и закрывающих тегов, будет проигнорировано парсером OS.
+<p>
+OS также допускает короткие теги <code>&lt;%=</code> и <code>%&gt;</code>, которые позволяют вставить в документ расчитанное
+на этапе выполнения значение.
+
+<h3>Пример использования тегов
+	<small>рабочий пример <a href="examples/tutorial.firstpage.osh" target="_blank">examples/tutorial.firstpage.osh</a></small></h3>
+
+<div class="row">
+  <div class="col-md-10 badge-src">
+	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/tutorial.firstpage.osh"
+		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+<pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<html>
+ <head>
+  <title>Тестируем ObjectScript</title>
+ </head>
+ <body>
+ &lt;% echo '<p>Привет мир!</p>' %&gt; 
+ Я программирую на OS, 5 в степени 2 = &lt;%=5**2 %&gt;
+ </body>
+</html><% @controller.endWidget("HtmlEncodeWidget") %>
+</pre>
+  </div>
+</div>
+
+<p>
+Если файл содержит только код OS, предпочтительно опустить закрывающий тег в конце файла. Это помогает избежать добавление случайных 
+символов пробела или перевода строки после закрывающего тега OS, которые могут послужить причиной нежелательных эффектов.
