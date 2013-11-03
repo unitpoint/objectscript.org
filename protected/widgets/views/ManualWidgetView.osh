@@ -34,6 +34,7 @@
 		if(@breadcrumb){
 			echo "<li><a href='${@breadcrumb.url}'>${@breadcrumb.name}</a></li>"
 		}
+		var htmlTitle = ["ObjectScript"]
 		for(var _, item in breadcrumb){
 			var key, name = item[0], item[1]
 			if(key == page){
@@ -42,7 +43,9 @@
 				var url = @controller.createUrl{params={page=key}}
 				echo "<li><a href='${url}'>${name}</a></li>"
 			}
+			htmlTitle.push(name)
 		}
+		@controller.pageTitle = htmlTitle.reverse().join(" / ")
 	%>
 </ol>
 

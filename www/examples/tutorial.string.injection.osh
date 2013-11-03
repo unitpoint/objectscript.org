@@ -1,0 +1,19 @@
+﻿<%
+  echo "this is a string<br />";
+
+  // outputs: three plus three is 6
+  echo "three plus three is ${3+3}<br />";
+
+  foobar = "blah";
+  // outputs: the value of foobar is blah
+  echo "the value of foobar is ${foobar}<br />";
+
+  // outputs: the value of foobar in ${foobar}
+  echo "the value of foobar in \${foobar}<br />";
+
+  function factorial(a){
+    return a <= 1 ? 1 : a*factorial(a-1)
+  }
+  var p = 10;
+  // outputs: factorial of 10 is 3628800
+  echo "factorial of ${p} is ${factorial(p)}<br />";

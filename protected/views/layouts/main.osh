@@ -2,14 +2,14 @@
 <html lang="<%=app.lang%>">
 <% var CLIENT_VERSION = app.params.CLIENT_VERSION %>
 <head>
-	<meta charset="<%=app.charset%>">
+	<meta charset="<%=html.encode(app.charset)%>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="<%=@controller.pageDesc%>">
-	<meta name="author" content="<%=@controller.pageAuthor%>">
+	<meta name="description" content="<%=html.encode(@controller.pageDesc)%>">
+	<meta name="author" content="<%=html.encode(@controller.pageAuthor)%>">
 	<link rel="shortcut icon" href="assets/ico/favicon.png?<%=CLIENT_VERSION%>">
 
-	<title><%=@controller.pageTitle%></title>
+	<title><%=html.encode(@controller.pageTitle)%></title>
 
 	<!-- Bootstrap core CSS -->
 	<link href="assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">

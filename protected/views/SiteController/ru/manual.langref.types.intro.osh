@@ -18,7 +18,7 @@ OS поддерживает восемь типов данных.
 </ul>
 
 <p>
-Два специальный тип:
+Два специальных типа:
 <ul>
 <li><p><a href="<%=c.createUrl{params={page="langref.types.null"}}%>">null</a> - только одно значение  <code>null</code>
 <li><p><a href="<%=c.createUrl{params={page="langref.types.userdata"}}%>">userdata</a> - пользовательские данные для интеграции с кодом на <code>C++</code>
@@ -38,8 +38,31 @@ OS поддерживает восемь типов данных.
 <li><p>int - целое число
 </ul>
 
+<p>
 OS - язык с динамической типизацией, любая переменная может хранить сначало число, потом строку или любой др. тип данных. 
 Обычно это определяется во время выполнения программы в зависимости от контекста, в котором используется переменная. 
 Если же требуется преобразовать один тип в другой, то для этого нужно использовать функции, например, <code>toNumber</code>,
 <code>toString</code> и т.п. Для того, чтобы узнать тип переменной, существует функцией <code>typeOf</code>,
 которая возвращает строку с названием типа.
+
+<h3>Простые типы</h3>
+
+<p>
+К простым типам относятся: 
+<a href="<%=c.createUrl{params={page="langref.types.bool"}}%>">boolean</a>,
+<a href="<%=c.createUrl{params={page="langref.types.number"}}%>">number</a>,
+<a href="<%=c.createUrl{params={page="langref.types.string"}}%>">string</a> и
+<a href="<%=c.createUrl{params={page="langref.types.null"}}%>">null</a>. Они так называются, потому что не могут являться
+контейнерами для др. значений. Некоторые функции в OS выполняют конвертацию значений автоматически между простыми типами 
+при необходимости.
+
+<h3>Сложные типы</h3>
+
+<p>
+К сложным типам относятся: 
+<a href="<%=c.createUrl{params={page="langref.types.array"}}%>">array</a>,
+<a href="<%=c.createUrl{params={page="langref.types.object"}}%>">object</a>,
+<a href="<%=c.createUrl{params={page="langref.types.userdata"}}%>">userdata</a> и
+<a href="<%=c.createUrl{params={page="langref.types.function"}}%>">function</a>. Значения этих типом могут являться
+контейнерами для др. значений.
+
