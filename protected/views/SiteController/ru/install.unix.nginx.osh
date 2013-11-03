@@ -1,0 +1,60 @@
+<p>
+Сервис <code>OS-FCGI</code> реализует клиент-серверный протокол FastCGI, который поддерживается почти всеми веб-серверами, в том числе 
+apache, nginx, lighttpd и мн. др.
+<p>
+Для того, чтобы настроить <i>nginx</i> для работы с <code>OS-FCGI</code> нужно просто прописать 
+<code>fastcgi_pass 127.0.0.1:9000;</code> в необходимом блоке <i>location</i>.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+  Мы использовали порт 9000, т.к. этот порт <code>OS-FCGI</code> использует по умолчанию.
+  Если вы поменяли настройки в файле <code>/etc/os-fcgi/conf.os</code>, то не забудьте внести
+  соответствующие изменения в настройки <i>nginx</i>.
+</div>
+</p>
+
+<h3>Пример файла конфирурации nginx</h3>
+
+<p>
+Обычно файл конфигурации домена находится в папке <code>/etc/nginx/sites-enabled/</code>.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/conf/etc/nginx/sites-available/objectscript.org"
+		target="_blank" title="Файл конфигурации для сайта objectscript.org"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+<pre class="prettyprint">
+server {
+    listen          80;
+    server_name     mydomain.com www.mydomain.com;
+    root            /home/myuser/mydomain.com/www;
+    error_log       /var/log/nginx/error.mydomain.com.log;
+    access_log      off;
+    location ~ /\.ht {
+        deny all;
+    }
+    location ~ /\.git {
+        deny all;
+    }
+    location / {
+        try_files $uri $uri/ /index.osh /index.os;
+    }
+    location ~* \.(jpg|jpeg|png|gif|swf|flv|mp4|mov|avi|wmv|m4v|mkv|ico|js|css|txt)$ {
+        access_log off;
+        expires 7d;
+    }
+    charset utf-8;
+    location ~ ^.+\.osh? {
+        fastcgi_split_path_info ^(.+\.osh?)(.*)$;
+        fastcgi_pass    127.0.0.1:9000;
+        fastcgi_index   index.osh;
+        include fastcgi_params;
+        fastcgi_intercept_errors    on;
+        fastcgi_ignore_client_abort on;
+        fastcgi_read_timeout    360;
+    }
+}
+</pre>
+  </div>
+</div>
+
+<h3>Файл конфигурации fastcgi_params</h3>

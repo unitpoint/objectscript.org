@@ -1,0 +1,20 @@
+<p>
+Чтобы посмотреть текущие настройки <code>OS-FCGI</code>, давайте выполним команду:
+<pre>
+cat /etc/os-fcgi/conf.os
+</pre>
+<p class="text-left">
+	<img src="img/os-fcgi-conf.png">
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+  По умолчанию <code>OS-FCGI</code> запускается в 8-ми потоках и слушает порт <code>9000</code> на локальном компьютере.
+</div>
+</p>
+
+<p>
+При необходимости просто измените файл <code>/etc/os-fcgi/conf.os</code> и перезапустите <code>OS-FCGI</code> командой:
+<pre>
+service os-fcgi restart
+</pre>

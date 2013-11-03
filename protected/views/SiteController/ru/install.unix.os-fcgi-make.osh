@@ -1,0 +1,64 @@
+<p>
+<code>OS-FCGI</code> - это сервис, предназначенный для веб-программирования на языке OS (ObjectScript). OS-FCGI реализует 
+клиент-серверный интерфейс FastCGI для взаимодействия с веб-сервером. Интерфейс FastCGI поддерживается большинством современных 
+веб-серверов, например, apache, nginx и мн. др.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Установку OS-FCGI следует выполнять из под пользователя <code>root</code>
+</div>
+</p>
+
+<ol>
+<li><p>Для начала скачаем самую последнюю версию <code>OS-FCGI</code> и перейдем в соответствующую папку:
+<pre>
+git clone https://github.com/unitpoint/os-fcgi.git
+cd ./os-fcgi
+</pre>
+<p class="text-left">
+	<img src="img/os-fcgi-clone.png">
+</p>
+
+<li><p>Затем сконфигурируем сборку под нашу платформу:
+<pre>
+mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=/ ..
+</pre>
+<p class="text-left">
+	<img src="img/os-fcgi-configure.png">
+</p>
+
+<li><p>Теперь запустим компиляцию из исходников и выполним установку сервиса <code>OS-FCGI</code>:
+<pre>
+make
+make install
+</pre>
+<p class="text-left">
+	<img src="img/os-fcgi-make.png">
+</p>
+
+<li><p>Отлично, осталось только запустить сервис <code>OS-FCGI</code>:
+<pre>
+service os-fcgi restart
+</pre>
+<p class="text-left">
+	<img src="img/os-fcgi-start.png">
+</p>
+</ol>
+
+<p>
+Для удобства приведем тут полный перечень команд, которые были описаны выше:
+<pre>
+git clone https://github.com/unitpoint/os-fcgi.git
+cd ./os-fcgi
+mkdir build && cd build
+cmake -DCMAKE_INSTALL_PREFIX=/ ..
+make
+make install
+service os-fcgi restart
+</pre>
+
+<p>
+Вот и все, мы скачали исходники <code>OS-FCGI</code>, скомпилировали их, установили и запустили сервис <code>OS-FCGI</code>. 
+По умолчанию <code>OS-FCGI</code> слушает порт 9000 на локальном компьютере, осталось только настроить наш веб-сервер для работы
+по протокоду FastCGI, чтобы начать программировать на OS.
