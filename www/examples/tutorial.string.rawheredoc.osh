@@ -1,8 +1,8 @@
-<pre><%
-  // Âûâåäåò: this is a string
+ï»¿<pre><%
+  // Ð’Ñ‹Ð²ÐµÐ´ÐµÑ‚: this is a string
   echo <<<~~'this is a string~~
 
-  // ýòà ñòðîêà íà÷èíàåòñÿ è çàêàí÷èâàåòñÿ ñèìâîëàìè íîâîé ñòðîêè
+  // ÑÑ‚Ð° ÑÑ‚Ñ€Ð¾ÐºÐ° Ð½Ð°Ñ‡Ð¸Ð½Ð°ÐµÑ‚ÑÑ Ð¸ Ð·Ð°ÐºÐ°Ð½Ñ‡Ð¸Ð²Ð°ÐµÑ‚ÑÑ ÑÐ¸Ð¼Ð²Ð¾Ð»Ð°Ð¼Ð¸ Ð½Ð¾Ð²Ð¾Ð¹ ÑÑ‚Ñ€Ð¾ÐºÐ¸
   echo <<<==='
 
 Harry Potter is due to start
@@ -10,5 +10,4 @@ his fifth year at Hogwarts School
 of Witchcraft and Wizardry.
 
 ===
-
 %></pre>

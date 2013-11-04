@@ -187,7 +187,6 @@ his fifth year at Hogwarts School
 of Witchcraft and Wizardry.
 
 ===
-
 %&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
