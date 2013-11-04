@@ -63,6 +63,6 @@ OS - язык с динамической типизацией, любая пе�
 <a href="<%=c.createUrl{params={page="langref.types.array"}}%>">array</a>,
 <a href="<%=c.createUrl{params={page="langref.types.object"}}%>">object</a>,
 <a href="<%=c.createUrl{params={page="langref.types.userdata"}}%>">userdata</a> и
-<a href="<%=c.createUrl{params={page="langref.types.function"}}%>">function</a>. Значения этих типом могут являться
+<a href="<%=c.createUrl{params={page="langref.types.function"}}%>">function</a>. Значения этих типов могут являться
 контейнерами для др. значений.
 
