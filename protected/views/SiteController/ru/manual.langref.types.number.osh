@@ -6,8 +6,7 @@
 
 <div class="row">
   <div class="col-md-11">
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
+<pre class="prettyprint linenums lang-js">
   a = 1234;   // десятичное число
   a = -123;   // отрицательное число
   a = 0123;   // восьмеричное число (эквивалентно 83 в десятичной системе)
@@ -16,8 +15,7 @@
   a = 1.5;    // число с плавающей точкой
   a = 1.5e2;  // экспоненциальная запись числа (эквивалентно 150.0)
   a = 150e-2; // еще экспоненциальная запись (эквивалентно 1.5)
-%&gt;
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+</pre>
   </div>
 </div>
 
@@ -47,18 +45,18 @@ taregt="_blank">руководстве по числам с плавающей �
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.numbers.osh"})%>
 
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  printf("%.20f<br />", 0.94 - 0.01)  // выведет: 0.93000000000000005000
-  printf("%f<br />", 0.94 - 0.01)     // выведет: 0.930000
+<pre>&lt;%
+  printf("%.20f\n", 0.94 - 0.01)  // outputs: 0.93000000000000005000
+  printf("%f\n", 0.94 - 0.01)     // outputs: 0.930000
 
-  // используйте дружелюбный для человека формат вывода чисел %n
-  printf("%n<br />", 0.94 - 0.01)     // выведет: 0.93
+  // use human friendly number format
+  printf("%n\n", 0.94 - 0.01)     // outputs: 0.93
 
-  // числа преобразуются в строки по формату %n
-  echo(0.94 - 0.01, "<br />")         // выведет: 0.93
+  // numbers are converted to string using human friendly format
+  echo(0.94 - 0.01, "\n")         // outputs: 0.93
 
-  echo(typeOf(10.5), "<br />")        // выведет: number
-%&gt;
+  echo(typeOf(10.5), "\n")        // outputs: number
+%&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
 </div>

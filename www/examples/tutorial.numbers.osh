@@ -1,12 +1,12 @@
-<%
-
-  printf("%.20f<br />", 0.94 - 0.01)  // outputs: 0.93000000000000005000
-  printf("%f<br />", 0.94 - 0.01)     // outputs: 0.930000
+<pre><%
+  printf("%.20f\n", 0.94 - 0.01)  // outputs: 0.93000000000000005000
+  printf("%f\n", 0.94 - 0.01)     // outputs: 0.930000
 
   // use human friendly number format
-  printf("%n<br />", 0.94 - 0.01)     // outputs: 0.93
+  printf("%n\n", 0.94 - 0.01)     // outputs: 0.93
 
   // numbers are converted to string using human friendly format
-  echo(0.94 - 0.01, "<br />")         // outputs: 0.93
+  echo(0.94 - 0.01, "\n")         // outputs: 0.93
 
-  echo(typeOf(10.5), "<br />")        // outputs: number
+  echo(typeOf(10.5), "\n")        // outputs: number
+%></pre>
