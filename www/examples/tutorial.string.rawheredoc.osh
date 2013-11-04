@@ -1,9 +1,6 @@
-<%
-  echo '<pre>';
-  
+<pre><%
   // Выведет: this is a string
-  // .. - строковый оператор конкатенации
-  echo <<<~~'this is a string~~;
+  echo <<<~~'this is a string~~
 
   // эта строка начинается и заканчивается символами новой строки
   echo <<<==='
@@ -12,6 +9,6 @@ Harry Potter is due to start
 his fifth year at Hogwarts School
 of Witchcraft and Wizardry.
 
-===;
+===
 
-  echo '</pre>';
+%></pre>

@@ -1,5 +1,4 @@
-<%
-  echo "<pre>"
+<pre><%
   printf("        %9s %9s\n", 'numberOf', 'toNumber')
   printf("---------------------------\n")
   printf("  null: %9s %9s\n", numberOf(null), toNumber(null))
@@ -21,4 +20,4 @@
 
   var arr = [1,2,3]
   printf(" array: %9s %9s\n", numberOf(arr), toNumber(arr))
-  echo "</pre>"
+%></pre>

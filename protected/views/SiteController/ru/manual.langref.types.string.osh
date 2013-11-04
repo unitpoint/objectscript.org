@@ -175,12 +175,9 @@
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.rawheredoc.osh"})%>
 
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  echo '<pre>';
-  
+<pre>&lt;%
   // Выведет: this is a string
-  // .. - строковый оператор конкатенации
-  echo <<<~~'this is a string~~;
+  echo <<<~~'this is a string~~
 
   // эта строка начинается и заканчивается символами новой строки
   echo <<<==='
@@ -189,10 +186,9 @@ Harry Potter is due to start
 his fifth year at Hogwarts School
 of Witchcraft and Wizardry.
 
-===;
+===
 
-  echo '</pre>';
-%&gt;
+%&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
 </div>
@@ -308,8 +304,7 @@ OS также имеет функции <code>stringOf</code> (для прове
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.convert.osh"})%>
 	
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  echo "<pre>"
+<pre>&lt;%
   printf("        %9s %9s\n", 'stringOf', 'toString')
   printf("---------------------------\n")
   printf("  null: %9s %9s\n", stringOf(null), toString(null))
@@ -330,8 +325,7 @@ OS также имеет функции <code>stringOf</code> (для прове
 
   var arr = [1,2,3]
   printf(" array: %9s %9s\n", stringOf(arr), toString(arr))
-  echo "</pre>"
-%&gt;
+%&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
 </div>

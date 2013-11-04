@@ -174,8 +174,7 @@ OS также имеет функции <code>numberOf</code> (для прове
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.number.convert.osh"})%>
 	
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  echo "<pre>"
+<pre>&lt;%
   printf("        %9s %9s\n", 'numberOf', 'toNumber')
   printf("---------------------------\n")
   printf("  null: %9s %9s\n", numberOf(null), toNumber(null))
@@ -197,8 +196,7 @@ OS также имеет функции <code>numberOf</code> (для прове
 
   var arr = [1,2,3]
   printf(" array: %9s %9s\n", numberOf(arr), toNumber(arr))
-  echo "</pre>"
-%&gt;
+%&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
 </div>
