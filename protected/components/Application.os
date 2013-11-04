@@ -63,11 +63,11 @@ Application = extends Component {
 	},
 	
 	runController = function(route){
-		var ca, old = @createController(route)
-		if(ca){
-			old, @_controller = @_controller, ca.controller
-			@_controller.init()
-			@_controller.runAction(ca.actionId)
+		var controller, actionId, old = @createController(route)
+		if(controller){
+			old, @_controller = @_controller, controller
+			controller.init()
+			controller.runAction(actionId)
 			@_controller = old
 		}else{
 			throw "Unable to resolve the request \"${route}\""
@@ -90,10 +90,7 @@ Application = extends Component {
 		var controller = _G[@resolveClass(p.join("."))](this, controllerId) // @getComponent(p[0])
 		if(controller){
 			controller is Controller || throw "Error controller class: ${controller.classname}"
-			return {
-				controller = controller,
-				actionId = actionId
-			}
+			return controller, actionId
 		}
 	},
 	
