@@ -1,0 +1,9 @@
+<pre><%
+  function getObject(){
+    return { one = "awesome" }
+  }
+  b = "one";
+  print(getObject()[b])             // outputs: awesome
+  print(getObject()["one"])         // outputs: awesome
+  print(getObject().one)            // outputs: awesome
+%></pre>

@@ -1,0 +1,20 @@
+<pre><%
+  a = ["zero", "one", "two"]
+  printf("  cur array: %s\n", a)
+  printf("  typeOf(a): %s\n", typeOf(a)) // outputs: array
+  printf("   a.length: %s\n", a.length)  // outputs: 3
+  printf("       a[1]: %s\n", a[1])      // outputs: one
+  printf("delete a[1]\n")
+  delete a[1]                            // delete value at index 1
+  printf("  cur array: %s\n", a)
+  printf("   a.length: %s\n", a.length)  // outputs: 2
+  printf("       a[1]: %s\n", a[1])      // outputs: two
+  printf("a[4] = \"new\"\n")
+  a[4] = "new"
+  printf("  cur array: %s\n", a)
+  printf("    a.pop(): %s\n", a.pop())
+  printf("  cur array: %s\n", a)
+  a[0] = "username"
+  printf("a[0] = \"username\"\n")
+  printf("  cur array: %s\n", a)
+%></pre>

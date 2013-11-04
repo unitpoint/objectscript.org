@@ -1,0 +1,10 @@
+<pre><%
+  a = {
+    username = "Ivan", 
+    password = "qwerty", 
+    age = 23,
+  }
+  for(key, value in a){
+    print "${key} = ${value}"
+  }
+%></pre>

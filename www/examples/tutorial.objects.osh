@@ -1,0 +1,11 @@
+<pre><%
+  b = "age"
+  a = {
+    username = "Ivan", 
+    password = "qwerty", 
+    "additional", 
+    [b] = 23,
+  }
+  printf("      obj: %s\n", a)
+  printf("typeOf(a): %s\n", typeOf(a))
+%></pre>

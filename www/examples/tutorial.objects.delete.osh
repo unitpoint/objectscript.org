@@ -1,0 +1,10 @@
+<pre><%
+  a = {
+    username = "Ivan", 
+    password = "qwerty", 
+    age = 23,
+  }
+  printf("before: %s\n", a)
+  delete a.password
+  printf(" after: %s\n", a)
+%></pre>

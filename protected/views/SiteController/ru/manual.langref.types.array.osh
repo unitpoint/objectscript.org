@@ -1,0 +1,55 @@
+﻿<p>
+Массив в OS - это контейнер с набором элементов. Доступ к элементу массива осуществляется по числовому индексу, это должно
+быть не отрицательное целое число. Первый элемент в масиве начинается с индекса <code>0</code>. Если в качестве индекса
+передать дробное число, то оно будет преобразовано в целое. 
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Элементами массива могут быть значения любых типов, в том числе др. массивы. Так можно создать двумерный 
+массив или любой др. мерности.
+</div>
+</p>
+
+<h3>Синтаксис</h3>
+<p>
+Масив создается с помощью конструкции в квадратных скобках и перечисления через запятую необходимых значений. При этом запятая после
+последнего элемента массива может присутствовать.
+
+<p>
+Новый пустой масив можно создать конструкцией <code>[]</code>.
+
+<h3>Пример массивов</h3>
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.arrays.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  a = ["zero", "one", "two"]
+  printf("  cur array: %s\n", a)
+  printf("  typeOf(a): %s\n", typeOf(a)) // outputs: array
+  printf("   a.length: %s\n", a.length)  // outputs: 3
+  printf("       a[1]: %s\n", a[1])      // outputs: one
+  printf("delete a[1]\n")
+  delete a[1]                            // delete value at index 1
+  printf("  cur array: %s\n", a)
+  printf("   a.length: %s\n", a.length)  // outputs: 2
+  printf("       a[1]: %s\n", a[1])      // outputs: two
+  printf("a[4] = \"new\"\n")
+  a[4] = "new"
+  printf("  cur array: %s\n", a)
+  printf("    a.pop(): %s\n", a.pop())
+  printf("  cur array: %s\n", a)
+  a[0] = "username"
+  printf("a[0] = \"username\"\n")
+  printf("  cur array: %s\n", a)
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Если требуется использовать не только числовые индексы, а, например, строковые, то необходимо воспользоваться 
+<a href="<%=@controller.createUrl{params={page="langref.types.object"}}%>">объектом</a> вместо массива.
+</div>
+</p>

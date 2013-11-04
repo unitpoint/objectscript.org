@@ -1,0 +1,4 @@
+﻿<pre><%
+  a = { 1 = 'January ','February','March' }
+  print(a)
+%></pre>

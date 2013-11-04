@@ -1,0 +1,5 @@
+<pre><%
+  var func = function(){ print arguments }
+  var func2 = function(f){ f.apply(null, ...) }
+  func2(func, 1, 2, 3)
+%></pre>
