@@ -4,18 +4,23 @@ BR = "<br />"
 BEGIN_PRE = "<pre>"
 END_PRE = "</pre>"
 
+var function removeRootPath(path){
+	return path.replace(_SERVER.DOCUMENT_ROOT, "")
+}
+
 function unhandledException(e){
 	echo BEGIN_PRE
+	// dump _SERVER
 	if(e is CompilerException){
-		echo "${BR}Unhandled exception: '${e.message}' in ${e.file}(${e.line},${e.pos}), token: ${e.token}\n${e.lineString.trim()}${BR}${BR}"
+		echo "${BR}Unhandled exception: '${removeRootPath(e.message)}' in ${removeRootPath(e.file)}(${e.line},${e.pos}), token: ${e.token}\n${e.lineString.trim()}${BR}${BR}"
 	}else{
-		echo "${BR}Unhandled exception: '${e.message}'${BR}${BR}"
+		echo "${BR}Unhandled exception: '${removeRootPath(e.message)}'${BR}${BR}"
 	}
 	if('trace' in e)
 	for(var i, t in e.trace){
-		printf("#${i} ${t.file}%s: %s, args: ${t.arguments}${BR}",
+		printf("#${i} ${removeRootPath(t.file)}%s: %s, args: ${t.arguments}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
-			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.__id}>.${t.__name}" : t.__name)
+			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.__name)
 
 	}
 	echo END_PRE
@@ -24,9 +29,9 @@ function unhandledException(e){
 function printBackTrace(skipNumFuncs){
 	echo BEGIN_PRE
 	for(var i, t in debugBackTrace(skipNumFuncs + 1)){ // skip printBackTrace
-		printf("#${i} ${t.file}%s: %s, args: ${t.arguments}${BR}",
+		printf("#${i} ${removeRootPath(t.file)}%s: %s, args: ${t.arguments}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
-			t.object && t.object !== _G ? "<${typeOf(t.object)}#${t.object.__id}>.${t.__name}" : t.__name)
+			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.__name)
 	}
 	echo END_PRE
 }

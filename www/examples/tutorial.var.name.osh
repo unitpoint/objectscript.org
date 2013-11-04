@@ -1,0 +1,6 @@
+﻿<pre><%
+  var a = {
+	b = function(){}
+  }
+  print a.b.__name
+%></pre>

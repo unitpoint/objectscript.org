@@ -45,6 +45,29 @@
 					"langref.types.null" = "Пустое значение (null)",
 				},
 			},
+			"langref.variables" = {
+				"Переменные", {
+					"langref.variables.basics" = "Основы",
+					"langref.variables.predefined" = "Предопределенные переменные",
+					"langref.variables.scope" = "Область видимости переменной",
+					"langref.variables.external" = "Переменные извне OS",
+				},
+			},
+			"langref.constants.predefined" = "Волшебные константы",
+			"langref.expressions" = "Выражения",
+			"langref.operators" = {
+				"Операторы", {
+					"langref.operators.precedence" = "Приоритет оператора",
+					"langref.operators.arithmetic" = "Арифметические операторы",
+					"langref.operators.assignment" = "Оператор присваивания",
+					"langref.operators.bitwise" = "Побитовые операторы",
+					"langref.operators.comparison" = "Операторы сравнения",
+					"langref.operators.increment" = "Операторы инкремента и декремента",
+					"langref.operators.logical" = "Логические операторы",
+					"langref.operators.string" = "Строковые операторы",
+					"langref.operators.type" = "Операторы проверки типа",
+				},
+			},
 		},
 	},
 }
