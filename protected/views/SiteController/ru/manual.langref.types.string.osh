@@ -214,7 +214,7 @@ Heredoc-синтаксис начинается с последовательн�
 Если строка указывается в двойных кавычках, либо при помощи <i>heredoc</i>, то можно вставлять переменные непосредственно
 внутрь строки.
 <p>
-Вставка переменной начинается символами <code>${</code> и заканчивается - <code>}</code>.
+Вставка переменной начинается символами <code>${</code> и заканчивается <code>}</code>.
 Если в строку необходимо вставить сами символы <b>${</b>, то их нужно предварить обратным слешем: <code>\${</code>.
 
 <h3>Пример с вставкой значений</h3>
@@ -224,26 +224,26 @@ Heredoc-синтаксис начинается с последовательн�
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.injection.osh"})%>
 	
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  echo "this is a string<br />";
+<pre>&lt;%
+  echo "this is a string\n";
 
-  // Выводит: three plus three is 6
-  echo "three plus three is ${3+3}<br />";
+  // outputs: three plus three is 6
+  echo "three plus three is ${3+3}\n";
 
   foobar = "blah";
-  // Выводит: the value of foobar is blah
-  echo "the value of foobar is ${foobar}<br />";
+  // outputs: the value of foobar is blah
+  echo "the value of foobar is ${foobar}\n";
 
-  // Выводит: the value of foobar in ${foobar}
-  echo "the value of foobar in \${foobar}<br />";
+  // outputs: the value of foobar in ${foobar}
+  echo "the value of foobar in \${foobar}\n";
 
   function factorial(a){
     return a <= 1 ? 1 : a*factorial(a-1)
   }
   var p = 10;
-  // Выводит: factorial of 10 is 3628800
-  echo "factorial of ${p} is ${factorial(p)}<br />";
-%&gt;
+  // outputs: factorial of 10 is 3628800
+  echo "factorial of ${p} is ${factorial(p)}\n";
+%&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
 </div>
