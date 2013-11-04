@@ -260,4 +260,145 @@ Heredoc-синтаксис начинается с последовательн�
 <h3>Преобразование в строку</h3>
 
 <p>
+Простые типы автоматически преобразуются в строки, например, при конкатенации по следующим правилам.
 
+<p>
+<table class="table table-striped table-bordered">
+  <thead>
+	<tr>
+	  <th>Значение</th>
+	  <th>Результат</th>
+	  <th>Комментарий</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>null</code></td>
+	  <td><span class="str">"null"</span></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>true</code></td>
+	  <td><span class="str">"true"</span></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>false</code></td>
+	  <td><span class="str">"false"</span></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>0.3</code></td>
+	  <td><span class="str">"0.3"</span></td>
+	  <td>числа преобразуются в строки по дружелюбному для человека формату - %n (см. <a href="">printf</a>)</td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+Для остальных типов происходит вызов метода <code>valueOf</code>, который должен вернуть один из простых типов.
+
+<p>
+OS также имеет функции <code>stringOf</code> (для проверки на возможность быстрого преобразования в строку) 
+и <code>toString</code> (для принудительного преобразования в строку, при необходимости, будет вызван метод <code>valueOf</code>).
+
+<h3>Пример</h3>
+<div class="row">
+  <div class="col-md-10 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.convert.osh"})%>
+	
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  echo "<pre>"
+  printf("        %9s %9s\n", 'stringOf', 'toString')
+  printf("---------------------------\n")
+  printf("  null: %9s %9s\n", stringOf(null), toString(null))
+  printf("  true: %9s %9s\n", stringOf(true), toString(true))
+  printf(" false: %9s %9s\n", stringOf(false), toString(false))
+  printf("  \"12\": %9s %9s\n", stringOf("12"), toString("12"))
+  printf("\"0x12\": %9s %9s\n", stringOf("0x12"), toString("0x12"))
+  printf("\"0123\": %9s %9s\n", stringOf("0123"), toString("0123"))
+  printf("\"0b10\": %9s %9s\n", stringOf("0b10"), toString("0b10"))
+  printf("    12: %9s %9s\n", stringOf(12), toString(12))
+
+  var obj = {
+    valueOf = function(){
+      return 10
+    }
+  }
+  printf("   obj: %9s %9s\n", stringOf(obj), toString(obj))
+
+  var arr = [1,2,3]
+  printf(" array: %9s %9s\n", stringOf(arr), toString(arr))
+  echo "</pre>"
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+<div class="row">
+  <div class="col-md-10">
+<table class="table table-striped table-bordered">
+  <thead>
+	<tr>
+	  <th></th>
+	  <th>stringOf</th>
+	  <th>toString</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>null</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"null"</span></td>
+	</tr>
+	<tr>
+	  <td><code>true</code></td>
+	  <td><span class="str">"true"</span></td>
+	  <td><span class="str">"true"</span></td>
+	</tr>
+	<tr>
+	  <td><code>false</code></td>
+	  <td><span class="str">"false"</span></td>
+	  <td><span class="str">"false"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"12"</span></td>
+	  <td><span class="str">"12"</span></td>
+	  <td><span class="str">"12"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"0x12"</span></td>
+	  <td><span class="str">"0x12"</span></td>
+	  <td><span class="str">"0x12"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"0123"</span></td>
+	  <td><span class="str">"0123"</span></td>
+	  <td><span class="str">"0123"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"0b10"</span></td>
+	  <td><span class="str">"0b10"</span></td>
+	  <td><span class="str">"0b10"</span></td>
+	</tr>
+	<tr>
+	  <td><code>12</code></td>
+	  <td><span class="str">"12"</span></td>
+	  <td><span class="str">"12"</span></td>
+	</tr>
+	<tr>
+	  <td><code>obj</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"10"</span></td>
+	</tr>
+	<tr>
+	  <td><code>array</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"[1,2,3]"</span></td>
+	</tr>
+  </tbody>
+</table>
+  </div>
+</div>

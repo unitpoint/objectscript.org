@@ -1,0 +1,23 @@
+<%
+  echo "<pre>"
+  printf("        %9s %9s\n", 'stringOf', 'toString')
+  printf("---------------------------\n")
+  printf("  null: %9s %9s\n", stringOf(null), toString(null))
+  printf("  true: %9s %9s\n", stringOf(true), toString(true))
+  printf(" false: %9s %9s\n", stringOf(false), toString(false))
+  printf("  \"12\": %9s %9s\n", stringOf("12"), toString("12"))
+  printf("\"0x12\": %9s %9s\n", stringOf("0x12"), toString("0x12"))
+  printf("\"0123\": %9s %9s\n", stringOf("0123"), toString("0123"))
+  printf("\"0b10\": %9s %9s\n", stringOf("0b10"), toString("0b10"))
+  printf("    12: %9s %9s\n", stringOf(12), toString(12))
+
+  var obj = {
+    valueOf = function(){
+      return 10
+    }
+  }
+  printf("   obj: %9s %9s\n", stringOf(obj), toString(obj))
+
+  var arr = [1,2,3]
+  printf(" array: %9s %9s\n", stringOf(arr), toString(arr))
+  echo "</pre>"
