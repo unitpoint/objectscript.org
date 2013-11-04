@@ -293,39 +293,70 @@ Heredoc-синтаксис начинается с последовательн�
 </table>
 
 <p>
-Для остальных типов происходит вызов метода <code>valueOf</code>, который должен вернуть один из простых типов.
+В OS преобразование в строку выполняется функцией <code>toString</code> (в том числе при конкатенации). <i>toString</i> 
+преобразует простые типы по выше описанным правилам, а для сложных - вызывает метод <code>valueOf</code>, который должен 
+вернуть один из простых типов. Если преобразование в строку невозможно, то <i>toString</i> возвращает 
+<span class="str">""</span> (пустую строку).
 
 <p>
-OS также имеет функции <code>stringOf</code> (для проверки на возможность быстрого преобразования в строку) 
-и <code>toString</code> (для принудительного преобразования в строку, при необходимости, будет вызван метод <code>valueOf</code>).
+Аналогично <i>numberOf</i> для чисел, в OS имеется механизм проверки совместимости значения со строкой. Это делается
+функцией <code>stringOf</code>. Она умеет преобразовывать число в строку, а для остальных не строковых типов 
+возвращает <code>null</code>.
 
-<h3>Пример</h3>
+<h3>Пример <code>stringOf</code> в setCookie</h3>
+<div class="row">
+  <div class="col-md-11">
+<pre class="prettyprint linenums lang-js">
+  if(expires is DateTime){
+    cookie.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
+  }else if(expires){
+    cookie.append("; expires="..(stringOf(expires) 
+	  || throw "setCookie: expires should be DateTime, string or null"))
+  }
+</pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Функция <code>setCookie</code> содержит один из параметров <code>expires</code>, который характеризует время 
+жизни куки. Корректное значение этого параметра может быть одного из следующих типов:
+<code>string</code>, <code>DateTime</code> или <code>null</code>. В остальных случаях это не имеет 
+логического смысла и вызывается исключение оператором <code>throw</code>.
+</div>
+</p>
+
+<h3>Пример работы <code>stringOf</code> и <code>toString</code></h3>
 <div class="row">
   <div class="col-md-10 badge-src">
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.convert.osh"})%>
 	
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <pre>&lt;%
+  var function d(a){
+	return a === null ? "   &lt;null&gt;" : a;
+  }
+
   printf("        %9s %9s\n", 'stringOf', 'toString')
   printf("---------------------------\n")
-  printf("  null: %9s %9s\n", stringOf(null), toString(null))
-  printf("  true: %9s %9s\n", stringOf(true), toString(true))
-  printf(" false: %9s %9s\n", stringOf(false), toString(false))
-  printf("  \"12\": %9s %9s\n", stringOf("12"), toString("12"))
-  printf("\"0x12\": %9s %9s\n", stringOf("0x12"), toString("0x12"))
-  printf("\"0123\": %9s %9s\n", stringOf("0123"), toString("0123"))
-  printf("\"0b10\": %9s %9s\n", stringOf("0b10"), toString("0b10"))
-  printf("    12: %9s %9s\n", stringOf(12), toString(12))
+  printf("  null: %9s %9s\n", d(stringOf(null)), d(toString(null)))
+  printf("  true: %9s %9s\n", d(stringOf(true)), d(toString(true)))
+  printf(" false: %9s %9s\n", d(stringOf(false)), d(toString(false)))
+  printf("  \"12\": %9s %9s\n", d(stringOf("12")), d(toString("12")))
+  printf("\"0x12\": %9s %9s\n", d(stringOf("0x12")), d(toString("0x12")))
+  printf("\"0123\": %9s %9s\n", d(stringOf("0123")), d(toString("0123")))
+  printf("\"0b10\": %9s %9s\n", d(stringOf("0b10")), d(toString("0b10")))
+  printf("    12: %9s %9s\n", d(stringOf(12)), d(toString(12)))
 
   var obj = {
     valueOf = function(){
       return 10
     }
   }
-  printf("   obj: %9s %9s\n", stringOf(obj), toString(obj))
+  printf("   obj: %9s %9s\n", d(stringOf(obj)), d(toString(obj)))
 
   var arr = [1,2,3]
-  printf(" array: %9s %9s\n", stringOf(arr), toString(arr))
+  printf(" array: %9s %9s\n", d(stringOf(arr)), d(toString(arr)))
 %&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
@@ -350,12 +381,12 @@ OS также имеет функции <code>stringOf</code> (для прове
 	</tr>
 	<tr>
 	  <td><code>true</code></td>
-	  <td><span class="str">"true"</span></td>
+	  <td><code>null</code></td>
 	  <td><span class="str">"true"</span></td>
 	</tr>
 	<tr>
 	  <td><code>false</code></td>
-	  <td><span class="str">"false"</span></td>
+	  <td><code>null</code></td>
 	  <td><span class="str">"false"</span></td>
 	</tr>
 	<tr>
