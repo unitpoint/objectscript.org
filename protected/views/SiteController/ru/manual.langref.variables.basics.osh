@@ -1,0 +1,109 @@
+﻿<p>
+OS переменные являются "контейнерами", в которые вы можете загружать различную информацию, а позднее извлекать ее обратно.
+
+<p>
+Каждая OS переменная должна иметь собственное уникальное имя, которое может начинаться с латинской буквы, 
+<nobr>символа <code>_</code> (подчеркивания)</nobr> или <code>$</code> (доллара),
+при этом в самом имени переменной могут использоваться еще цифры и символ <code>@</code>.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Имя переменных в OS не может начинаться с цифр и с символа <code>@</code>.
+</div>
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Так как OS чувствителен к регистру, переменные с одинаковыми именами написанными в разном регистре 
+(например <code>user</code> и <code>User</code>), будут являться разными переменными.
+</div>
+</p>
+
+<h3>Создание локальных переменных</h3>
+
+<p>
+Создание локальных переменных в OS происходит с помощью команды <code>var</code>. Локальные переменные доступны
+в текущей области видимости, читайте подробнее об этом в разделе 
+<a href="<%=@controller.createUrl{params={page="langref.variables.scope"}}%>">Область видимости переменной</a>.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-js">
+//Создаем переменную с именем ex1
+var ex1;
+//Создаем переменную с именем ex2
+var ex2;
+</pre>
+  </div>
+</div>
+
+<p>
+Созданные выше переменные будут пустыми т.е. мы создали переменные, но не загрузили в них никакие значения.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Переменные с пустыми значениями содержат <code>null</code>.
+</div>
+</p>
+
+<p>
+Чтобы проверить переменную на пустое значение, в OS мы используем оператор <code>===</code> или <code>!==</code>
+
+<p>
+Загрузка значений в переменные в OS выполняется с помощью оператора <code>=</code>. Значения могут загружаться в переменные 
+прямо в момент создания. В случаях когда в одной строке объявляются и инициализируются несколько переменных, используется
+один оператор <code>=</code> с перечислением через запятую значений, каждое из которых присвоится соответствующей переменной.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.basics.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  var ex1;
+  if(ex1 === null){
+    print "ex1 is null";
+  }else{
+    print "ex1 is not null";
+  }
+  var v1 = "hello";
+  var v2 = "world";
+  print "v1:${v1}, v2:${v2}";
+  
+  var a, b, c = 1, 2, 3;
+  print "a:${a}, b:${b}, c:${c}";
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<h3>Создание глобальных переменных</h3>
+
+<p>
+В OS cоздание глобальных переменных осуществляется без использования команды <code>var</code>. Такие переменные доступны 
+из любой точки программы. Создание функций подчиняется такому же правилу.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.global.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  // sqr - это глобальная функция
+  function sqr(a){      // идентично: sqr = function(a){ ...
+    return a*a
+  }
+  print "sqr(5): "..sqr(5)
+  
+  // sqrt - это локальная переменная
+  var function sqrt(a){ // идентично: var sqrt = function(a){ ...
+    return a**0.5
+  }
+  print "sqrt(25): "..sqrt(25)
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+Если быть совсем уж точным, то переменные создаются в текущем окружении. Доступ к глобальной переменной <code>user</code>
+транслируется в <code>_E.user</code>. Обычно текущее окружение идентично глобальному окружению. Подробнее об этом читайте
+в разделе <a href="">Окружение функции</a>.

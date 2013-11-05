@@ -68,6 +68,43 @@
 					"langref.operators.type" = "Операторы проверки типа",
 				},
 			},
+			"langref.control-structures" = {
+				"Управляющие конструкции", {
+					"langref.control-structures.intro" = "Введение",
+					"langref.control-structures.if" = "if / else",
+					"langref.control-structures.for" = "for",
+					"langref.control-structures.break" = "break / continue",
+					"langref.control-structures.return" = "return",
+				},
+			},
+			"langref.functions" = {
+				"Функции", {
+					"langref.functions.user-defined" = "Функции, определяемые пользователем",
+					"langref.functions.arguments" = "Аргументы функции",
+					"langref.functions.returning-values" = "Возврат значений",
+					"langref.functions.anonymous" = "Анонимные функции",
+					"langref.functions.alternative" = "Альтернативный синтаксис",
+				},
+			},
+			"langref.oop" = {
+				"ООП", {
+					"langref.oop.intro" = "Введение",
+					"langref.oop.basics" = "Основы",
+					"langref.oop.std" = "Стандартные классы",
+					"langref.oop.properties" = "Свойства",
+					"langref.oop.properties-multi" = "Многомерные свойства",
+					"langref.oop.properties-empty" = "Пустые свойства",
+					"langref.oop.autoload" = "Автоматическая загрузка классов",
+					"langref.oop.constructor" = "Конструкторы и деструкторы",
+					"langref.oop.inheritance" = "Наследование",
+					"langref.oop.encapsulation" = "Инкапсуляции",
+					"langref.oop.iterations" = "Итераторы объектов",
+					"langref.oop.magic-methods" = "Магические методы",
+					"langref.oop.clone" = "Клонирование объектов",
+					"langref.oop.typehinting" = "Контроль типа",
+				},
+			},
+			"langref.exceptions" = "Исключения",
 		},
 	},
 }

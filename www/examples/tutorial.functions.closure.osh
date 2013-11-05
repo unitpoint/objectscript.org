@@ -1,0 +1,15 @@
+<pre><%
+
+  function start(a){
+    return function(){
+      return a++;
+    }
+  }
+  
+  func = start(10)
+  print(func())
+  print(func())
+  print(func())
+  print(func())
+
+%></pre>

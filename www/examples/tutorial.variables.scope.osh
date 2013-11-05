@@ -1,0 +1,10 @@
+﻿<pre><%
+  var a = "hello"
+  ;{
+    var a = a
+    print "sub a: "..a
+    a = "world"
+    print "sub a: "..a
+  }
+  print "a: "..a
+%></pre>

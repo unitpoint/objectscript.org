@@ -1,0 +1,13 @@
+﻿<pre><%
+  // sqr is global function
+  function sqr(a){
+    return a*a
+  }
+  print "sqr(5): "..sqr(5)
+  
+  // sqrt is local function
+  var function sqrt(a){
+    return a**0.5
+  }
+  print "sqrt(25): "..sqrt(25)
+%></pre>

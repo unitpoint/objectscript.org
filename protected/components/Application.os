@@ -228,7 +228,7 @@ Application = extends Component {
 	},
 	
 	__get@charset = function(){
-		return @config.charset || "utf8"
+		return @config.charset || "utf-8"
 	},
 	
 	__set@charset = function(value){

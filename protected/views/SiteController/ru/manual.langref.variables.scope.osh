@@ -1,0 +1,56 @@
+﻿<p>
+Область видимости локальной переменной ограничена текущим файлом или текущим блоком кода. Блок кода - это набор команд между 
+фигурными скобками <nobr><code>{ ... }</code></nobr> (не путать с объектом).
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.scope.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  var a = "hello"
+  ;{
+    var a = a   // можно присвоить значение переменной с верхнего блока
+    print "sub a: "..a   // выведет: hello
+    a = "world"
+    print "sub a: "..a   // выведет: world
+  }
+  print "a: "..a         // выведет: hello
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Блок кода в OS должен начинаться с <code>;{</code> и заканчиваться <code>}</code>. Блоки могут быть вложенными.
+</div>
+</p>
+
+<p>
+При объявлении переменной в конструкции <code>for</code>, она существует только в рамках цикла.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.scope-for.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  for(var i = 0; i < 5; i++){
+    print "i: "..i
+  }
+  print "after for: "..i // тут локальная переменная i не существует
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Если после цикла <code>for</code> присвоить значение в переменную <code>i</code>, то будет создана
+глобальная переменная. 
+</div>
+</p>
+
+<p>
+Рекомендуется использовать <code>var</code> для локальных переменных при присваивании,
+если вы не уверены в текущей области видимости. OS допускает объявление через <code>var</code> одной и той же 
+переменной несколько раз.

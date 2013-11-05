@@ -1,0 +1,90 @@
+﻿<p>
+Пользовательские объекты (userdata) позволяют подключать в OS функционал и классы, которые реализованы на <code>C++</code>. 
+
+<p>
+Предполжим, у нас есть следующий класс на C++, который мы хотим использовать в коде на OS.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-cpp">
+class TestClass
+{
+public:
+    int i;
+    float j;
+
+    TestClass(int _i, float _j){ i = _i; j = _j; }
+
+    int getI() const { return i; }
+    void setI(int _i){ i = _i; }
+    
+    float getJ() const { return j; }
+    void setJ(float _j){ j = _j; }
+
+    double doSomething(int a, float b, double c, TestClass * pb)
+    {
+        return i + j + a + b + c + pb->i + pb->j;
+    }
+
+    void print()
+    {
+        printf("test class: %d, %f\n", i, j);
+    }
+};
+</pre>
+  </div>
+</div>
+
+<p>Подключаем его к OS (следующий код на C++).
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-cpp">
+namespace ObjectScript { OS_DECL_USER_CLASS(TestClass); }
+TestClass * __constructTestClass(int i, float j){ return new TestClass(i, j); }
+OS::FuncDef funcs[] = {
+    def("__construct", __constructTestClass),
+    def("__get@i", &TestClass::getI),
+    def("__set@i", &TestClass::setI),
+    def("__get@j", &TestClass::getJ),
+    def("__set@j", &TestClass::setJ),
+    def("doSomething", &TestClass::doSomething),
+    def("print", &TestClass::print),
+    {}
+};
+registerUserClass<TestClass>(os, funcs);
+</pre>
+  </div>
+</div>
+
+<p>Готово, проверяем в скрипте OS.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-js">
+var t = TestClass(1, 0.25)
+print "t.i: "..t.i
+print "t.j: "..t.j
+
+var t2 = TestClass(2, 0.5)
+t2.i = t2.i + t.j
+print "t2"
+t2.print()
+
+print "t.doSomething(10, 100.001, 1000.1, t2): "..t.doSomething(10, 100.001, 1000.1, t2)
+</pre>
+  </div>
+</div>
+
+<p>Вывод скрипта на OS.
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums">
+t.i: 1
+t.j: 0.25
+t2
+test class: 2, 0.500000
+t.doSomething(10, 100.001, 1000.1, t2): 1113.8509994506835
+</pre>
+  </div>
+</div>

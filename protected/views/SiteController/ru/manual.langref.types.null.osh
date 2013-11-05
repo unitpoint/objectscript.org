@@ -1,0 +1,43 @@
+﻿<p>
+В OS существует специальное значение <code>null</code>. Это означает, что реально в переменной нет значения.
+При использовании <code>null</code> в логических конструкциях, оно трактуется как <i>ложь</i> (<code>false</code>).
+
+<p>
+Чтобы удалить значение в локальной переменной, нужно присвоить ей <code>null</code>.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-js">
+&lt;%
+  a = null;
+%&gt;
+</pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<p>
+В контексте объекта можно присовить <code>null</code> свойству объекта (или элементу массиву), а можно 
+удалить свойство - это зависит от задачи. Для удаления свойства или элемента массива используйте оператор <code>delete</code>.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.delete.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  a = {
+    username = "Ivan", 
+    password = "qwerty", 
+    age = 23,
+  }
+  printf("before: %s\n", a)
+  delete a.password
+  printf(" after: %s\n", a)
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+</div>
+</p>

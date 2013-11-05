@@ -1,0 +1,14 @@
+﻿<pre><%
+  var ex1;
+  if(ex1 === null){
+    print "ex1 is null";
+  }else{
+    print "ex1 is not null";
+  }
+  var v1 = "hello";
+  var v2 = "world";
+  print "v1:${v1}, v2:${v2}";
+  
+  var a, b, c = 1, 2, 3;
+  print "a:${a}, b:${b}, c:${c}";
+%></pre>
