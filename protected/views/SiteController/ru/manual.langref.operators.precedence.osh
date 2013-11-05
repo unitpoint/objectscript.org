@@ -1,0 +1,384 @@
+﻿<%
+	var controller = @controller
+	var url = function(page){
+		return controller.createUrl{params={page=page}}
+	}
+%>
+<p>
+Приоритет оператора определяет, насколько "тесно" он связывает между собой два выражения. Например, 
+выражение <code>1 + 5 * 3</code> вычисляется как <code>16</code>, а не <code>18</code>, поскольку оператор 
+умножения <code>*</code> имеет более высокий приоритет, чем оператор сложения <code>+</code>. 
+
+<p>
+Круглые скобки могут использоваться для принудительного указания порядка выполнения операторов. Например, 
+выражение <code>(1 + 5) * 3</code> вычисляется как <code>18</code>.
+
+<p>
+В следующей таблице приведен список операторов. Чем выше приоритет, тем раньше выполняется оператор в череде других,
+размещенных в выражении.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th colspan="2">Оператор</th>
+	  <th>Синтаксис</th>
+	  <th>Приоритет</th>
+	  <th>Перегрузка методом</th>
+	  <th>Обратный метод</th>
+	  <th>Дополнительная информация</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>=</code></td>
+	  <td>Присваивание</td>
+	  <td><code>a = b</code></td>
+	  <td>0</td>
+	  <td></td>
+	  <td></td>
+	  <td>Выполняется справа налево. См. <a href="">Чтение и запись свойств</a></td>
+	</tr>
+	<tr>
+	  <td><code>,</code></td>
+	  <td>Параметры</td>
+	  <td><code>a, b = 0, 1</code><br /><code>func(a, b, c)</code></td>
+	  <td>1</td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>? :</code></td>
+	  <td>Тернарный оператор</td>
+	  <td><code>a = b > 2 ? 2 : b</code></td>
+	  <td>2</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.ternary")%>">Тернарный оператор</a></td>
+	</tr>
+	<tr>
+	  <td><code>||</code></td>
+	  <td>Логическое ИЛИ</td>
+	  <td><code>a || b</code></td>
+	  <td>3</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.logical")%>">Логические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>&&</code></td>
+	  <td>Логическое И</td>
+	  <td><code>a && b</code></td>
+	  <td>4</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.logical")%>">Логические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>..</code></td>
+	  <td>Конкатенация</td>
+	  <td><code>a .. b</code></td>
+	  <td>5</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.string")%>">Строковые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>===</code></td>
+	  <td>Строгое равно</td>
+	  <td><code>a === b</code></td>
+	  <td>6</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>!==</code></td>
+	  <td>Строгое не равно</td>
+	  <td><code>a !== b</code></td>
+	  <td>6</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>==</code></td>
+	  <td>Равно</td>
+	  <td><code>a == b</code></td>
+	  <td>6</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>!=</code></td>
+	  <td>Не равно</td>
+	  <td><code>a != b</code></td>
+	  <td>6</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>&gt;=</code></td>
+	  <td>Больше или равно</td>
+	  <td><code>a >= b</code></td>
+	  <td>7</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;=</code></td>
+	  <td>Меньше или равно</td>
+	  <td><code>a <= b</code></td>
+	  <td>7</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>&gt;</code></td>
+	  <td>Больше</td>
+	  <td><code>a > b</code></td>
+	  <td>7</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;</code></td>
+	  <td>Меньше</td>
+	  <td><code>a < b</code></td>
+	  <td>7</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;=&gt;</code></td>
+	  <td>Сравнение</td>
+	  <td><code>a <=> b</code></td>
+	  <td>7</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	  <td><a href="<%=url("langref.operators.comparison")%>">Операторы сравнения</a></td>
+	</tr>
+	<tr>
+	  <td><code>|</code></td>
+	  <td>Побитовое ИЛИ</td>
+	  <td><code>a | b</code></td>
+	  <td>8</td>
+	  <td><code>__bitor</code></td>
+	  <td><code>__rbitor</code></td>
+	  <td><a href="<%=url("langref.operators.bitwise")%>">Побитовые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>&amp;</code></td>
+	  <td>Побитовое И</td>
+	  <td><code>a & b</code></td>
+	  <td>9</td>
+	  <td><code>__bitand</code></td>
+	  <td><code>__rbitand</code></td>
+	  <td><a href="<%=url("langref.operators.bitwise")%>">Побитовые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>^</code></td>
+	  <td>Побитовое исключающее ИЛИ (XOR)</td>
+	  <td><code>a ^ b</code></td>
+	  <td>9</td>
+	  <td><code>__bitxor</code></td>
+	  <td><code>__rbitxor</code></td>
+	  <td><a href="<%=url("langref.operators.bitwise")%>">Побитовые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;&lt;</code></td>
+	  <td>Побитовый левый сдвиг</td>
+	  <td><code>a << b</code></td>
+	  <td>10</td>
+	  <td><code>__lshift</code></td>
+	  <td><code>__rlshift</code></td>
+	  <td><a href="<%=url("langref.operators.bitwise")%>">Побитовые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>&gt;&gt;</code></td>
+	  <td>Побитовый правый сдвиг</td>
+	  <td><code>a >> b</code></td>
+	  <td>10</td>
+	  <td><code>__rshift</code></td>
+	  <td><code>__rrshift</code></td>
+	  <td><a href="<%=url("langref.operators.bitwise")%>">Побитовые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>+</code></td>
+	  <td>Сложение</td>
+	  <td><code>a + b</code></td>
+	  <td>11</td>
+	  <td><code>__add</code></td>
+	  <td><code>__radd</code></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>-</code></td>
+	  <td>Вычитание</td>
+	  <td><code>a - b</code></td>
+	  <td>11</td>
+	  <td><code>__sub</code></td>
+	  <td><code>__rsub</code></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>*</code></td>
+	  <td>Умножение</td>
+	  <td><code>a * b</code></td>
+	  <td>12</td>
+	  <td><code>__mul</code></td>
+	  <td><code>__rmul</code></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>/</code></td>
+	  <td>Деление</td>
+	  <td><code>a / b</code></td>
+	  <td>12</td>
+	  <td><code>__div</code></td>
+	  <td><code>__rdiv</code></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>%</code></td>
+	  <td>Модуль</td>
+	  <td><code>a % b</code></td>
+	  <td>12</td>
+	  <td><code>__mod</code></td>
+	  <td><code>__rmod</code></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>**</code></td>
+	  <td>Возведение в степень</td>
+	  <td><code>a ** b</code></td>
+	  <td>13</td>
+	  <td><code>__pow</code></td>
+	  <td><code>__rpow</code></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>is</code></td>
+	  <td>Проверка типа</td>
+	  <td><code>a is b</code></td>
+	  <td>13</td>
+	  <td><code></code></td>
+	  <td><code></code></td>
+	  <td><a href="<%=url("langref.operators.type")%>">Операторы проверки типа</a></td>
+	</tr>
+	<tr>
+	  <td><code>in</code></td>
+	  <td>Вхождение</td>
+	  <td><code>a in b</code></td>
+	  <td>13</td>
+	  <td><code></code></td>
+	  <td><code></code></td>
+	  <td><a href="<%=url("langref.operators.type")%>">Оператор вхождения</a></td>
+	</tr>
+	<tr>
+	  <td><code>++</code></td>
+	  <td>Инкремент</td>
+	  <td><code>a++</code><br /><code>++a</code></td>
+	  <td>14</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>--</code></td>
+	  <td>Декремент</td>
+	  <td><code>a--</code><br /><code>--a</code></td>
+	  <td>14</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>!</code></td>
+	  <td>Логическое отрицание (NOT)</td>
+	  <td><code>!a</code></td>
+	  <td>15</td>
+	  <td></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.logical")%>">Логические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>+</code></td>
+	  <td>Унарный плюс</td>
+	  <td><code>+a</code></td>
+	  <td>15</td>
+	  <td><code>__plus</code></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>-</code></td>
+	  <td>Унарный минус</td>
+	  <td><code>-a</code></td>
+	  <td>15</td>
+	  <td><code>__neg</code></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>~</code></td>
+	  <td>Побитовая инверсия</td>
+	  <td><code>~a</code></td>
+	  <td>15</td>
+	  <td><code>__bitnot</code></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.bitwise")%>">Побитовые операторы</a></td>
+	</tr>
+	<tr>
+	  <td><code>#</code></td>
+	  <td>Длина</td>
+	  <td><code>#a</code></td>
+	  <td>15</td>
+	  <td><code>__len</code></td>
+	  <td></td>
+	  <td><a href="<%=url("langref.operators.len")%>">Оператор длины</a></td>
+	</tr>
+	<tr>
+	  <td><code>()</code></td>
+	  <td>Вызов функции</td>
+	  <td><code>max(a, b)</code></td>
+	  <td>16</td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>{}</code></td>
+	  <td>Вызов функции</td>
+	  <td><code>func{a="b"}</code></td>
+	  <td>16</td>
+	  <td></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>.</code></td>
+	  <td>Доступ к свойству</td>
+	  <td><code>a.prop</code></td>
+	  <td>16</td>
+	  <td></td>
+	  <td></td>
+	  <td>см. <a href="">Чтение и запись свойств</a></td>
+	</tr>
+	<tr>
+	  <td><code>[]</code></td>
+	  <td>Доступ к свойству</td>
+	  <td><code>a["prop"]</code></td>
+	  <td>16</td>
+	  <td></td>
+	  <td></td>
+	  <td>см. <a href="">Чтение и запись свойств</a></td>
+	</tr>
+  </tbody>
+</table>

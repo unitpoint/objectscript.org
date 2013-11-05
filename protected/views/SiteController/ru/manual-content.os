@@ -54,18 +54,21 @@
 				},
 			},
 			"langref.constants.predefined" = "Волшебные константы",
-			"langref.expressions" = "Выражения",
+			// "langref.expressions" = "Выражения",
 			"langref.operators" = {
 				"Операторы", {
-					"langref.operators.precedence" = "Приоритет оператора",
+					"langref.operators.precedence" = "Приоритет операторов",
 					"langref.operators.arithmetic" = "Арифметические операторы",
 					"langref.operators.assignment" = "Оператор присваивания",
 					"langref.operators.bitwise" = "Побитовые операторы",
 					"langref.operators.comparison" = "Операторы сравнения",
 					"langref.operators.increment" = "Операторы инкремента и декремента",
 					"langref.operators.logical" = "Логические операторы",
+					"langref.operators.ternary" = "Тернарный оператор",
 					"langref.operators.string" = "Строковые операторы",
+					"langref.operators.len" = "Оператор длины",
 					"langref.operators.type" = "Операторы проверки типа",
+					"langref.operators.in" = "Оператор вхождения",
 				},
 			},
 			"langref.control-structures" = {

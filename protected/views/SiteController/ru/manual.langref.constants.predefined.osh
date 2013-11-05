@@ -1,0 +1,19 @@
+﻿<p>
+В OS существуют следующие <i>волшебные</i> константы:
+
+<ul>
+<li><p><code>__FILE__</code> - путь к текущему файлы
+<li><p><code>__LINE__</code> - номер текущей строки
+</ul>
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.constants.predefined.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  print __FILE__
+  print __LINE__
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
