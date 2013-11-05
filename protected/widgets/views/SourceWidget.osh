@@ -1,5 +1,5 @@
 ﻿<div class="row">
-  <div class="col-md-11 badge-src">
+  <div class="col-md-<%=@width || 11%> badge-src">
 	<%@controller.widget('BadgeSourceWidget', {view=@source})%>
 <pre class="prettyprint linenums lang-js">
 <%

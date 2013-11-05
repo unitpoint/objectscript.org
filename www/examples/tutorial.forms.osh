@@ -1,22 +1,20 @@
 ﻿<%
-
-	require "../../protected/components/webcore"
-	
+  require "../../protected/components/webcore"
 %><!DOCTYPE html>
 <html>
- <head>
+<head>
   <title>Dealing with Forms in ObjectScript</title>
- </head>
- <body>
-	<% if(_POST.name && _POST.name != ""){ %> 
-	<p>Hi <%=html.encode(_POST.name)%>. 
-	   You are <%=toNumber(_POST.age)%> years old.</p>
-	<hr />
-	<% } /* if */ %>
-	<form action="" method="post">
-	 <p>Enter your name: <input type="text" name="name" /></p>
-	 <p>Enter your age: <input type="text" name="age" /></p>
-	 <p><input type="submit" /></p>
-	</form>
- </body>
+</head>
+<body>
+  <% if(_POST.name != ""){ %> 
+  <p>Hi <%=html.encode(_POST.name)%>. 
+     You are <%=toNumber(_POST.age)%> years old.</p>
+  <hr />
+  <% } /* if */ %>
+  <form action="" method="post">
+    <p>Enter your name: <input type="text" name="name" /></p>
+    <p>Enter your age: <input type="text" name="age" /></p>
+    <p><input type="submit" /></p>
+  </form>
+</body>
 </html>

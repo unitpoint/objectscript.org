@@ -52,14 +52,14 @@
 <script>
 
 $(function(){
-	$('#content-affix').affix({
+	/* $('#content-affix').affix({
 		offset: {
 			top: 53,
 			bottom: function () {
 				return (this.bottom = $('#footer').outerHeight(true))
 			}
 		}
-	})
+	}) */
 });
 
 </script>
