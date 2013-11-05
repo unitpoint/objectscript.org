@@ -1,0 +1,22 @@
+﻿<pre style="font-size:25px"><%
+  var a, b, d, c = 0, null, 1, false
+  printf("  %s ==  %s => %s\n", a, d, a == d);
+  printf("  %s !=  %s => %s\n", a, d, a != d);
+  printf("  %s >=  %s => %s\n", a, d, a >= d);
+  printf("  %s >   %s => %s\n", a, d, a > d);
+  printf("  %s <=  %s => %s\n", a, d, a <= d);
+  printf("  %s <   %s => %s\n", a, d, a < d);
+  printf("  %s <=> %s => %s\n", a, d, a <=> d);
+  printf("-----------------\n");
+  printf("  %s === %-4s => %s\n", a, b, a === b);
+  printf("  %s !== %-4s => %s\n", a, b, a !== b);
+  printf("  %s === %-4s => %s\n", a, a, a === a);
+  printf("  %s !== %-4s => %s\n", a, a, a !== a);
+  printf("  %s ==  %-4s => %s\n", a, b, a == b);
+  printf("  %s !=  %-4s => %s\n", a, b, a != b);
+  printf("-----------------\n");
+  printf("  %s === %-4s => %s\n", c, b, c === b);
+  printf("  %s !== %-4s => %s\n", c, b, c !== b);
+  printf("  %s ==  %-4s => %s\n", c, b, c == b);
+  printf("  %s !=  %-4s => %s\n", c, b, c != b);
+%></pre>

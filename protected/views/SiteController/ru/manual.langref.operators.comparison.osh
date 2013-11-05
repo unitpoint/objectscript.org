@@ -1,0 +1,98 @@
+﻿<p>
+Операторы сравнения, как это видно из их названия, позволяют сравнивать между собой два значения.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th colspan="2">Оператор</th>
+	  <th>Синтаксис</th>
+	  <th>Перегрузка методом</th>
+	  <th>Обратный метод</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>===</code></td>
+	  <td>Строгое равно</td>
+	  <td><code>a === b</code></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>!==</code></td>
+	  <td>Строгое не равно</td>
+	  <td><code>a !== b</code></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>==</code></td>
+	  <td>Равно</td>
+	  <td><code>a == b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>!=</code></td>
+	  <td>Не равно</td>
+	  <td><code>a != b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>&gt;=</code></td>
+	  <td>Больше или равно</td>
+	  <td><code>a >= b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;=</code></td>
+	  <td>Меньше или равно</td>
+	  <td><code>a <= b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>&gt;</code></td>
+	  <td>Больше</td>
+	  <td><code>a > b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;</code></td>
+	  <td>Меньше</td>
+	  <td><code>a < b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>&lt;=&gt;</code></td>
+	  <td>Сравнение</td>
+	  <td><code>a <=> b</code></td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+ Операторы <code>===</code> (строгое равно) и <code>!==</code> (строгое не равно) проверяют тип и значение. При строгом равно
+ тип и значение должны быть идентичны, при не строгом равно - наоборот.
+</div>
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+ <p>Оператор <code><=></code> сравнивает два аргумента в конструкции <code>a <=> b</code> и возвращает число:
+ <ul>
+   <li><p>меньше нуля, если <code>a < b</code>
+   <li><p>больше нуля, если <code>a > b</code>
+   <li><p>ноль, если <code>a == b</code>
+</div>
+</p>
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.comparison.osh"})%>
