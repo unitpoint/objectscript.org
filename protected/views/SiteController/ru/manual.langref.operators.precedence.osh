@@ -40,7 +40,7 @@
 	</tr>
 	<tr>
 	  <td><code>,</code></td>
-	  <td>Параметры</td>
+	  <td>Перечисление</td>
 	  <td><code>a, b = 0, 1</code><br /><code>func(a, b, c)</code></td>
 	  <td>1</td>
 	  <td></td>
@@ -247,7 +247,7 @@
 	</tr>
 	<tr>
 	  <td><code>%</code></td>
-	  <td>Модуль</td>
+	  <td>Деление по модулю</td>
 	  <td><code>a % b</code></td>
 	  <td>12</td>
 	  <td><code>__mod</code></td>

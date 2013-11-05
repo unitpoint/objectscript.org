@@ -1,0 +1,11 @@
+﻿<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view=@source})%>
+<pre class="prettyprint linenums lang-js">
+<%
+	echo html.encode(File.readContents(_SERVER.DOCUMENT_ROOT.."/"..@source)
+				.replace(Regexp("#^(\xef\xbb\xbf)?<pre[^>]+>#s"), "<pre>"))
+%>
+</pre>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+﻿<pre style="font-size:25px"><%
+  var a, b = 0b1011, 0b10
+  printf(" %14s => %08b bin\n", a, a);
+  printf(" %14s => %08b bin\n", b, b);
+  printf("-------------------------------\n");
+  printf("  %s | %s => %3s => %08b bin\n", a, b, a | b, a | b);
+  printf("  %s & %s => %3s => %08b bin\n", a, b, a & b, a & b);
+  printf("  %s ^ %s => %3s => %08b bin\n", a, b, a ^ b, a ^ b);
+  printf(" %s << %s => %3s => %08b bin\n", a, b, a << b, a << b);
+  printf(" %s >> %s => %3s => %08b bin\n", a, b, a >> b, a >> b);
+  printf("-------------------------------\n");
+  printf("     ~%s => %3s => %08b bin\n", a, ~a, ~a & 0xff);
+%></pre>

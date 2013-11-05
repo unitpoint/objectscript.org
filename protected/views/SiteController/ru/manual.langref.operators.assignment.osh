@@ -1,0 +1,67 @@
+﻿<p>
+Оператор присваивания обозначается как <code>=</code>. Он означает, что левый операнд получает значение правого 
+выражения (т.е. устанавливается значением).
+
+<p>
+Результатом выполнения оператора присваивания является само присвоенное значение. Таким образом, результат 
+выполнения <code>a = 3</code> будет равен <code>3</code>. Это позволяет делать некоторые трюки.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.1.osh"})%>
+
+<p>
+OS позволяет инициализировать несколько переменных за один раз. При этом нужно указать перечисление (через запятую) 
+принимающих переменных, затем оператор присваивания (<code>=</code>) и перечисление значений. 
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Если количество значений
+будет меньше, чем количество переменных, то оставшиеся переменные получат пустое значение <code>null</code>.
+Если количество значений будет больше, чем количество переменных, то лишние значения будут проигнорированы.
+</div>
+</p>
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.2.osh"})%>
+
+<p>
+Интересное следствие из этого то, что можно менять местами два и более значений в переменных одной командой.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.3.osh"})%>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<p>
+Обратите внимание, что следующее выражение не верно в OS:
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint lang-js">
+  var a = 1, b = 2, c = 3 // синтаксическая ошибка
+</pre>
+  </div>
+</div>
+
+<p>
+А вот так правильно:
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint lang-js">
+  var a, b, c = 1, 2, 3 // правильно
+</pre>
+  </div>
+</div>
+
+</div>
+</p>
+
+<p>
+Кроме этого, OS позволяет возвращать несколько значений из функций и сразу присваивать их переменным.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.return-values.osh"})%>
+
+<%if(false){%>
+<p>
+А еще OS позволяет присваивать одно значение сразу нескольким переменным одной командой.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.4.osh"})%>
+<%}/*if*/%>

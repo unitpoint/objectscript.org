@@ -1,0 +1,15 @@
+﻿<pre style="font-size:25px"><%
+  var a, b, c = 1, 2, 3
+  print "var a, b, c = 1, 2, 3"
+  print "a: ${a}, b: ${b}, c: ${c}"
+  print ""
+  
+  var a, b, c = 1, 2
+  print "var a, b, c = 1, 2"
+  print "a: ${a}, b: ${b}, c: ${c}"
+  print ""
+  
+  var a, b, c = 1, 2, 4, 7
+  print "var a, b, c = 1, 2, 4, 7"
+  print "a: ${a}, b: ${b}, c: ${c}"
+%></pre>

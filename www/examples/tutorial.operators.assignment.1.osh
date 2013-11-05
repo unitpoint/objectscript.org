@@ -1,0 +1,5 @@
+﻿<pre style="font-size:25px"><%
+  a = (b = 4) + 5
+  print "a = (b = 4) + 5"
+  print "a: ${a}, b: ${b}"
+%></pre>

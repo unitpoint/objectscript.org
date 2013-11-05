@@ -1,0 +1,18 @@
+﻿<pre style="font-size:25px"><%
+  var a, b = 5, 3
+  printf("  %s + %s => %s\n", a, b, a + b);
+  printf("  %s - %s => %s\n", a, b, a - b);
+  printf("  %s * %s => %s\n", a, b, a * b);
+  printf("  %s / %s => %s\n", a, b, a / b);
+  printf("  %s %% %s => %s\n", a, b, a % b);
+  printf(" %s ** %s => %s\n", a, b, a ** b);
+  printf("-----------------\n");
+  printf("      a => %s\n", a);
+  printf("    a++ => %s\n", a++);
+  printf("      a => %s\n", a);
+  printf("    ++a => %s\n", ++a);
+  printf("      a => %s\n", a);
+  printf("-----------------\n");
+  printf("     +a => %s\n", +a);
+  printf("     -a => %s\n", -a);
+%></pre>

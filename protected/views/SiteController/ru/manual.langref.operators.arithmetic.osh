@@ -1,0 +1,88 @@
+﻿<p>
+Помните школьные основы арифметики? Описанные ниже операторы работают так же.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th colspan="2">Оператор</th>
+	  <th>Синтаксис</th>
+	  <th>Перегрузка методом</th>
+	  <th>Обратный метод</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>+</code></td>
+	  <td>Сложение</td>
+	  <td><code>a + b</code></td>
+	  <td><code>__add</code></td>
+	  <td><code>__radd</code></td>
+	</tr>
+	<tr>
+	  <td><code>-</code></td>
+	  <td>Вычитание</td>
+	  <td><code>a - b</code></td>
+	  <td><code>__sub</code></td>
+	  <td><code>__rsub</code></td>
+	</tr>
+	<tr>
+	  <td><code>*</code></td>
+	  <td>Умножение</td>
+	  <td><code>a * b</code></td>
+	  <td><code>__mul</code></td>
+	  <td><code>__rmul</code></td>
+	</tr>
+	<tr>
+	  <td><code>/</code></td>
+	  <td>Деление</td>
+	  <td><code>a / b</code></td>
+	  <td><code>__div</code></td>
+	  <td><code>__rdiv</code></td>
+	</tr>
+	<tr>
+	  <td><code>%</code></td>
+	  <td>Деление по модулю</td>
+	  <td><code>a % b</code></td>
+	  <td><code>__mod</code></td>
+	  <td><code>__rmod</code></td>
+	</tr>
+	<tr>
+	  <td><code>**</code></td>
+	  <td>Возведение в степень</td>
+	  <td><code>a ** b</code></td>
+	  <td><code>__pow</code></td>
+	  <td><code>__rpow</code></td>
+	</tr>
+	<tr>
+	  <td><code>++</code></td>
+	  <td>Инкремент</td>
+	  <td><code>a++</code><br /><code>++a</code></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>--</code></td>
+	  <td>Декремент</td>
+	  <td><code>a--</code><br /><code>--a</code></td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>+</code></td>
+	  <td>Унарный плюс</td>
+	  <td><code>+a</code></td>
+	  <td><code>__plus</code></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>-</code></td>
+	  <td>Унарный минус</td>
+	  <td><code>-a</code></td>
+	  <td><code>__neg</code></td>
+	  <td></td>
+	</tr>
+  </tbody>
+</table>
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.arithmetic.osh"})%>

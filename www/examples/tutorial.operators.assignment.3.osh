@@ -1,0 +1,10 @@
+﻿<pre style="font-size:25px"><%
+  a, b = 1, 2
+  print "a, b = 1, 2"
+  print "a: ${a}, b: ${b}"
+  print ""
+  
+  a, b = b, a /* WOW */
+  print "a, b = b, a"
+  print "a: ${a}, b: ${b}"
+%></pre>

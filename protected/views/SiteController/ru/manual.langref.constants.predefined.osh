@@ -11,8 +11,8 @@
 	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.constants.predefined.osh"})%>
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
 <pre>&lt;%
-  print __FILE__
-  print __LINE__
+  print "file: "..__FILE__
+  print "line: "..__LINE__
 %&gt;</pre>
 <% @controller.endWidget("HtmlEncodeWidget") %></pre>
   </div>
