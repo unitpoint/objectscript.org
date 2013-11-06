@@ -1,0 +1,23 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Оператор</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>#a</code></td>
+	  <td>Возвращает <i>длину</i> <code>a</code>. Для строк - это количество символов, для массива и объекта - количество элементов.</td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+OS транслирует команду <code>#a</code> в <code>a.__len()</code>, т.е. вызывает магический метод <code>__len</code> и возвращает его результат.
+</div>
+</p>
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.len.osh"})%>

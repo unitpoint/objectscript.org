@@ -1,0 +1,30 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Оператор</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a ? b : c</code></td>
+	  <td>Если <code>a</code> при преобразовании к булеву типу равно <i>истина</i>, то возвращается <code>b</code>, иначе <code>c</code>.</td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+В OS преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
+все другие значения возвращают <i>истину</i>, включая число <code>0</code> и пустую строку <code>""</code>.
+</div>
+</p>
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.ternary.osh"})%>
+
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.ternary"}, "#"="null"}%>">Логические операторы</a>, 
+	<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, "#"="null"}%>">Булев тип</a>
+</div>

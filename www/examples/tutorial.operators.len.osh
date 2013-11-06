@@ -1,0 +1,23 @@
+﻿<pre style="font-size:25px"><%
+  a = [1, 2, 3]
+  print "#${a} => "..#a
+  print ""
+  
+  a = "Привет!"
+  print "#\"${a}\" => "..#a
+  print " \"${a}\".prototype === String => "..(a.prototype === String)
+  print ""
+  
+  String.__len = String.lenUtf8
+  print "String.__len = String.lenUtf8"
+  print "#\"${a}\" => "..#a
+  print ""
+  
+  String.__len = String.lenAnsi
+  print "String.__len = String.lenAnsi"
+  print "#\"${a}\" => "..#a
+  print ""
+  
+  print "\"${a}\".lenIconv(\"utf-8\") => "..a.lenIconv("utf-8")
+  
+%></pre>

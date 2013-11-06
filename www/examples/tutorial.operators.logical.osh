@@ -1,0 +1,20 @@
+﻿<pre style="font-size:25px"><%
+  a, b, c, d = 5, 3, null, false
+  printf("  %4s || %s => %s\n", a, b, a || b);
+  printf("  %4s && %s => %s\n", a, b, a && b);
+  printf("--------------------------\n")
+  printf("  %4s || %s => %s\n", c, b, c || b);
+  printf("  %4s && %s => %s\n", c, b, c && b);
+  printf("--------------------------\n")
+  printf("  %s || %s => %s\n", a, c, a || c);
+  printf("  %s && %s => %s\n", a, c, a && c);
+  printf("--------------------------\n")
+  printf("         !%s => %s\n", a, !a);
+  printf("        !!%s => %s\n", a, !!a);
+  printf("--------------------------\n")
+  printf("      !%s => %s\n", c, !c);
+  printf("     !!%s => %s\n", c, !!c);
+  printf("--------------------------\n")
+  printf("      !%s => %s\n", d, !d);
+  printf("     !!%s => %s\n", d, !!d);
+%></pre>

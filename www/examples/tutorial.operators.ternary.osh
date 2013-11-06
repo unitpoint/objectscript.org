@@ -1,0 +1,5 @@
+﻿<pre style="font-size:25px"><%
+  a, b, c, d = 5, 3, null, false
+  printf("  %4s ? %s : %4s => %s\n", a, b, c, a ? b : c);
+  printf("  %4s ? %s : %4s => %s\n", c, b, a, c ? b : a);
+%></pre>

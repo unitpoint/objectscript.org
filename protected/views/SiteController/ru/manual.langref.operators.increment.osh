@@ -38,4 +38,5 @@ OS поддерживает префиксные и постфиксные оп�
 </div>
 </p>
 
+<h3>Пример</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.increment.osh"})%>
