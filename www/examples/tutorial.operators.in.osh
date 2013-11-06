@@ -1,0 +1,12 @@
+﻿<pre style="font-size:18px"><%
+    for(var i, a in [
+        {1: "one", second: "two"},
+        [1, "one", "two"],
+    ]){
+        print "\n----------------------------\n"
+        print "  a = ${a}\n"
+        print "       1 in a => "..(1 in a)
+        print "'second' in a => "..("second" in a)
+        print "   'one' in a => "..("one" in a)
+    }
+%></pre>
