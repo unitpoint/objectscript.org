@@ -75,18 +75,14 @@ Application = extends Component {
 	},
 	
 	createController = function(route){
-		var p = route.split("/")
+		var p = (stringOf(route) || @defaultController).split("/")
 		var count, actionId = #p
-		if(!count){
-			p = @defaultController.split("/")
-			count = #p
-		}
 		if(count > 1){
 			actionId = p.pop()
 			count--
 		}
 		var controllerId = p[count-1]
-		p[count-1] = p[count-1].flower() .. "Controller"
+		p[count-1] = controllerId.flower() .. "Controller"
 		var controller = _G[@resolveClass(p.join("."))](this, controllerId) // @getComponent(p[0])
 		if(controller){
 			controller is Controller || throw "Error controller class: ${controller.classname}"
@@ -164,9 +160,9 @@ Application = extends Component {
 	},
 	
 	resolveClass = function(classname){
-		var p = classname.split(".")
+		var p = (stringOf(classname) || throw "classname required").split(".")
 		var count = #p
-		assert(count > 0)
+		// assert(count > 0)
 		if(count > 1){
 			p[0] = @_aliases["{${p[0]}}"] || p[0]
 		}
