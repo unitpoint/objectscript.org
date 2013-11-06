@@ -54,20 +54,6 @@
 	  <td><code>__rpow</code></td>
 	</tr>
 	<tr>
-	  <td><code>++</code></td>
-	  <td>Инкремент</td>
-	  <td><code>a++</code><br /><code>++a</code></td>
-	  <td></td>
-	  <td></td>
-	</tr>
-	<tr>
-	  <td><code>--</code></td>
-	  <td>Декремент</td>
-	  <td><code>a--</code><br /><code>--a</code></td>
-	  <td></td>
-	  <td></td>
-	</tr>
-	<tr>
 	  <td><code>+</code></td>
 	  <td>Унарный плюс</td>
 	  <td><code>+a</code></td>
@@ -86,3 +72,7 @@
 
 <h3>Пример</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.arithmetic.osh"})%>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.increment"}, "#"="null"}%>">Операторы инкремента и декремента</a>
+</div>

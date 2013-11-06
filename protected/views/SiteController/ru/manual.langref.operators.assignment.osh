@@ -30,23 +30,14 @@ OS позволяет инициализировать несколько пер
 <p>
 <div class="bs-callout bs-callout-danger">
 <p>
-Обратите внимание, что следующее выражение не верно в OS:
+Обратите внимание, что при присваивании нескольких значений нескольким переменным в одном выражении, используется
+только один знак <code>=</code>.
 
 <div class="row">
   <div class="col-md-11 badge-src">
 <pre class="prettyprint lang-js">
-  var a = 1, b = 2, c = 3 // синтаксическая ошибка
-</pre>
-  </div>
-</div>
-
-<p>
-А вот так правильно:
-
-<div class="row">
-  <div class="col-md-11 badge-src">
-<pre class="prettyprint lang-js">
-  var a, b, c = 1, 2, 3 // правильно
+  var a, b, c = 1, 2, 3   // правильно
+  var a = 1, b = 2, c = 3 // так не правильно
 </pre>
   </div>
 </div>

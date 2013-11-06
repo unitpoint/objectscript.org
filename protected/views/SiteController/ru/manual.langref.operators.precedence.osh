@@ -288,7 +288,7 @@
 	  <td>14</td>
 	  <td></td>
 	  <td></td>
-	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	  <td><a href="<%=url("langref.operators.increment")%>">Операторы инкремента и декремента</a></td>
 	</tr>
 	<tr>
 	  <td><code>--</code></td>
@@ -297,7 +297,7 @@
 	  <td>14</td>
 	  <td></td>
 	  <td></td>
-	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
+	  <td><a href="<%=url("langref.operators.increment")%>">Операторы инкремента и декремента</a></td>
 	</tr>
 	<tr>
 	  <td><code>!</code></td>

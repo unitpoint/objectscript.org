@@ -18,7 +18,7 @@
 <p>
 <div class="bs-callout bs-callout-danger">
 <p>
-В контексте объекта можно присовить <code>null</code> свойству объекта (или элементу массиву), а можно 
+В контексте объекта можно присвоить <code>null</code> свойству объекта (или элементу массиву), а можно 
 удалить свойство - это зависит от задачи. Для удаления свойства или элемента массива используйте оператор <code>delete</code>.
 
 <div class="row">
@@ -41,3 +41,7 @@
 
 </div>
 </p>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.comparison"}, "#"="null"}%>">Сравнение с <b>null</b></a>
+</div>

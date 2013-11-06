@@ -8,11 +8,6 @@
   printf(" %s ** %s => %s\n", a, b, a ** b);
   printf("-----------------\n");
   printf("      a => %s\n", a);
-  printf("    a++ => %s\n", a++);
-  printf("      a => %s\n", a);
-  printf("    ++a => %s\n", ++a);
-  printf("      a => %s\n", a);
-  printf("-----------------\n");
   printf("     +a => %s\n", +a);
   printf("     -a => %s\n", -a);
 %></pre>

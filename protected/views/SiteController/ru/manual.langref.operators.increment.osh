@@ -1,0 +1,41 @@
+﻿<p>
+OS поддерживает префиксные и постфиксные операторы инкремента и декремента в стиле C++.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th colspan="2">Оператор</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>++a</code></td>
+	  <td>Префиксный инкремент</td>
+	  <td>Увеличивает <code>a</code> на единицу, затем возвращает значение <code>a</code>.</td>
+	</tr>
+	<tr>
+	  <td><code>a++</code></td>
+	  <td>Постфиксный инкремент</td>
+	  <td>Возвращает значение <code>a</code>, затем увеличивает <code>a</code> на единицу.</td>
+	</tr>
+	<tr>
+	  <td><code>--a</code></td>
+	  <td>Префиксный декремент</td>
+	  <td>Уменьшает <code>a</code> на единицу, затем возвращает значение <code>a</code>.</td>
+	</tr>
+	<tr>
+	  <td><code>a--</code></td>
+	  <td>Постфиксный декремент</td>
+	  <td>Возвращает значение <code>a</code>, затем уменьшает <code>a</code> на единицу.</td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Операторы инкремента и декремента работают только с локальными переменными.
+</div>
+</p>
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.increment.osh"})%>

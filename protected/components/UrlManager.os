@@ -34,11 +34,6 @@ UrlManager = extends Component {
 		
 		delete p.params[@routeVar]
 		
-		var anchor = ""
-		if(p.params["#"]){
-			anchor = "#"..p.params["#"]
-			delete p.params["#"]
-		}
 		var controller = p.controller || app.defaultController
 		var action = p.action || app.defaultAction
 		var urlParams = []
@@ -49,13 +44,13 @@ UrlManager = extends Component {
 		}else{
 			urlParams.push("${@routeVar}=${controller}/${action}")
 		}
-		var url = @baseUrl .. (@showScriptName ? "" : "/")
+		var url = @showScriptName ? @baseUrl : @baseUrl.."/"
 		for(var name, value in p.params){
 			urlParams.push(_E.url.encode(name).."=".._E.url.encode(value))
 		}
 		if(#urlParams > 0){
 			url = url.."?"..urlParams.join(p.amp || "&")
 		}
-		return url
+		return p["#"] ? url.."#".._E.url.encode(p["#"]) : url
 	},
 }

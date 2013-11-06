@@ -58,8 +58,8 @@
 			"langref.operators" = {
 				"Операторы", {
 					"langref.operators.precedence" = "Приоритет операторов",
-					"langref.operators.arithmetic" = "Арифметические операторы",
 					"langref.operators.assignment" = "Оператор присваивания",
+					"langref.operators.arithmetic" = "Арифметические операторы",
 					"langref.operators.bitwise" = "Побитовые операторы",
 					"langref.operators.comparison" = "Операторы сравнения",
 					"langref.operators.increment" = "Операторы инкремента и декремента",
