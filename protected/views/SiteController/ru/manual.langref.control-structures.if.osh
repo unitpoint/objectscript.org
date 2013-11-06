@@ -1,0 +1,117 @@
+﻿<p>
+Конструкция if является одной из наиболее важных во многих языках программирования, в том числе и OS. Она предоставляет 
+возможность условного выполнения фрагментов кода.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+
+  if(выражение)
+    инструкция
+	
+</pre>
+  </div>
+</div>
+
+<p>
+Выражение вычисляется в булево значение. Если выражение принимает значение <code>true</code>, то OS выполнит инструкцию, 
+а если оно принимает значение <code>false</code> - проигнорирует. Информацию о том, какие значения считаются равными 
+значению <code>true</code>, можно найти в разделе 
+<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, "#"="convert"}%>">Преобразование в булев тип</a>.
+
+<p>
+Следующий пример выведет <span class="text-success"><b>a больше b</b></span>, если значение переменной 
+<code>a</code> больше, чем <code>b</code>:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+
+  if(a > b)
+    echo "a больше b";
+	
+</pre>
+  </div>
+</div>
+
+<p>
+Часто необходимо, чтобы условно выполнялось более одной инструкции. Разумеется, для этого нет необходимости обворачивать 
+каждую инструкцию в <code>if</code>. Вместо этого можно объединить несколько инструкций в блок. Например, следующий код 
+выведет <span class="text-success"><b>a больше b</b></span>, если значение переменной <code>a</code> больше, чем <code>b</code>, и затем 
+присвоит значение переменной <code>a</code> переменной <code>b</code>:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+if (a > b) {
+  echo "a больше b";
+  b = a;
+}
+</pre>
+  </div>
+</div>
+
+<p>
+Инструкции <code>if</code> могут быть бесконечно вложены в другие инструкции <code>if</code>, что даёт большую гибкость 
+в организации условного выполнения различных частей программы.
+
+<h3>else</h3>
+<p>
+Часто необходимо выполнить одно выражение, если определенное условие верно, и другое выражение, если условие не верно. 
+Именно для этого <code>else</code> и используется. <code>else</code> расширяет оператор <code>if</code>, чтобы выполнить 
+выражение, в случае если условие в операторе <code>if</code> равно <code>false</code>. К примеру, следующий код выведет 
+<span class="text-success"><b>a больше чем b</b></span>, если <code>a</code> больше, чем <code>b</code>, и 
+<span class="text-success"><b>a НЕ больше, чем b</b></span> в противном случае:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+if (a > b) {
+  echo "a больше, чем b";
+} else {
+  echo "a НЕ больше, чем b";
+}
+</pre>
+  </div>
+</div>
+
+<p>
+Выражение <code>else</code> выполняется только, если выражение <code>if</code> эквивалентно <code>false</code>, и если 
+нет других любых выражений <code>elseif</code>, или если они все равны <code>false</code>.
+
+<h3>else if</h3>
+<p>
+Конструкция <code>elseif</code> (или <code>else if</code>) - есть сочетание <code>else</code> и <code>if</code>. 
+Аналогично <code>else</code>, она расширяет оператор <code>if</code> для выполнения различных выражений в случае, 
+когда условие начального оператора <code>if</code> эквивалентно <code>false</code>. Однако, в отличии от <code>else</code>, 
+выполнение альтернативного выражения произойдет только тогда, когда условие оператора <code>elseif</code> будет являться 
+равным <code>true</code>. К примеру, следующий код может выводить 
+<ul>
+<li><span class="text-success"><b>a больше, чем b</b></span>
+<li><span class="text-success"><b>a равно b</b></span>
+<li><span class="text-success"><b>a меньше, чем b</b></span>
+</ul>
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+if (a > b) {
+    echo "a больше, чем b";
+} elseif (a == b) {
+    echo "a равен b";
+} else {
+    echo "a меньше, чем b";
+}
+</pre>
+  </div>
+</div>
+
+<p>
+Может быть несколько <code>elseif</code> в одном <code>if</code> выражении. Первое же выражение <code>elseif</code> 
+(если будет хоть одно) равное <code>true</code> будет выполнено. В OS вы также можете написать <code>else if</code> 
+(в два слова). Синтаксически значение немного отличается, но в конечном итоге оба выражения приведут к одному 
+и тому же результату.
+
+<p>
+Выражение <code>elseif</code> выполнится, если предшествующее выражение <code>if</code> и предшествующие 
+выражения <code>elseif</code> эквивалентны <code>false</code>, а текущий <code>elseif</code> равен <code>true</code>.

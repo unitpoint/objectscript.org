@@ -6,7 +6,7 @@
         print "\n----------------------------\n"
         print "  a = ${a}\n"
         print "       1 in a => "..(1 in a)
-        print "'second' in a => "..("second" in a)
-        print "   'one' in a => "..("one" in a)
+        print "'second' in a => "..('second' in a)
+        print "   'one' in a => "..('one' in a)
     }
 %></pre>
