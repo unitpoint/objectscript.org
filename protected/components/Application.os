@@ -77,7 +77,7 @@ Application = extends Component {
 	createController = function(route){
 		var p = route.split("/")
 		var count, actionId = #p
-		if(count == 0){
+		if(!count){
 			p = @defaultController.split("/")
 			count = #p
 		}
