@@ -1,7 +1,8 @@
 ﻿<table class="table table-striped">
   <thead>
 	<tr>
-	  <th colspan="2">Оператор</th>
+	  <th>Синтаксис</th>
+	  <th>Название</th>
 	  <th>Действие</th>
 	  <th>Эквивалент</th>
 	</tr>
@@ -27,7 +28,7 @@
 	</tr>
 	<tr>
 	  <td><code>!!a</code></td>
-	  <td></td>
+	  <td>К булеву типу</td>
 	  <td>Значение <code>a</code> преобразуется к булеву типу.</td>
 	  <td></td>
 	</tr>

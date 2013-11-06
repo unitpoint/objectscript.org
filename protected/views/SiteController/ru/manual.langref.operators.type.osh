@@ -1,0 +1,19 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Оператор</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a is b</code></td>
+	  <td>Возвращает <i>истину</i>, если <code>a</code> или один из его прототипов строго равен <code>b</code>, в ином случае
+		возвращает <i>ложь</i></td>
+	</tr>
+  </tbody>
+</table>
+
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.type.osh"})%>

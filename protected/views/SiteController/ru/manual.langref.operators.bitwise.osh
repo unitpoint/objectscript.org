@@ -4,52 +4,46 @@
 <table class="table table-striped">
   <thead>
 	<tr>
-	  <th colspan="2">Оператор</th>
 	  <th>Синтаксис</th>
+	  <th>Название</th>
 	  <th>Перегрузка методом</th>
 	  <th>Обратный метод</th>
 	</tr>
   </thead>
   <tbody>
 	<tr>
-	  <td><code>|</code></td>
-	  <td>Побитовое ИЛИ</td>
 	  <td><code>a | b</code></td>
+	  <td>Побитовое ИЛИ</td>
 	  <td><code>__bitor</code></td>
 	  <td><code>__rbitor</code></td>
 	</tr>
 	<tr>
-	  <td><code>&amp;</code></td>
-	  <td>Побитовое И</td>
 	  <td><code>a & b</code></td>
+	  <td>Побитовое И</td>
 	  <td><code>__bitand</code></td>
 	  <td><code>__rbitand</code></td>
 	</tr>
 	<tr>
-	  <td><code>^</code></td>
-	  <td>Побитовое исключающее ИЛИ (XOR)</td>
 	  <td><code>a ^ b</code></td>
+	  <td>Побитовое исключающее ИЛИ (XOR)</td>
 	  <td><code>__bitxor</code></td>
 	  <td><code>__rbitxor</code></td>
 	</tr>
 	<tr>
-	  <td><code>&lt;&lt;</code></td>
-	  <td>Побитовый левый сдвиг</td>
 	  <td><code>a << b</code></td>
+	  <td>Побитовый левый сдвиг</td>
 	  <td><code>__lshift</code></td>
 	  <td><code>__rlshift</code></td>
 	</tr>
 	<tr>
-	  <td><code>&gt;&gt;</code></td>
-	  <td>Побитовый правый сдвиг</td>
 	  <td><code>a >> b</code></td>
+	  <td>Побитовый правый сдвиг</td>
 	  <td><code>__rshift</code></td>
 	  <td><code>__rrshift</code></td>
 	</tr>
 	<tr>
-	  <td><code>~</code></td>
-	  <td>Побитовая инверсия</td>
 	  <td><code>~a</code></td>
+	  <td>Побитовая инверсия</td>
 	  <td><code>__bitnot</code></td>
 	  <td></td>
 	</tr>

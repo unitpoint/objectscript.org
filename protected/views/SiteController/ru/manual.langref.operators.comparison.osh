@@ -4,73 +4,64 @@
 <table class="table table-striped">
   <thead>
 	<tr>
-	  <th colspan="2">Оператор</th>
 	  <th>Синтаксис</th>
+	  <th>Название</th>
 	  <th>Перегрузка методом</th>
 	  <th>Обратный метод</th>
 	</tr>
   </thead>
   <tbody>
 	<tr>
-	  <td><code>===</code></td>
-	  <td>Строгое равно</td>
 	  <td><code>a === b</code></td>
+	  <td>Строгое равно</td>
 	  <td></td>
 	  <td></td>
 	</tr>
 	<tr>
-	  <td><code>!==</code></td>
-	  <td>Строгое не равно</td>
 	  <td><code>a !== b</code></td>
+	  <td>Строгое не равно</td>
 	  <td></td>
 	  <td></td>
 	</tr>
 	<tr>
-	  <td><code>==</code></td>
-	  <td>Равно</td>
 	  <td><code>a == b</code></td>
+	  <td>Равно</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>
 	<tr>
-	  <td><code>!=</code></td>
-	  <td>Не равно</td>
 	  <td><code>a != b</code></td>
+	  <td>Не равно</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>
 	<tr>
-	  <td><code>&gt;=</code></td>
-	  <td>Больше или равно</td>
 	  <td><code>a >= b</code></td>
+	  <td>Больше или равно</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>
 	<tr>
-	  <td><code>&lt;=</code></td>
-	  <td>Меньше или равно</td>
 	  <td><code>a <= b</code></td>
+	  <td>Меньше или равно</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>
 	<tr>
-	  <td><code>&gt;</code></td>
-	  <td>Больше</td>
 	  <td><code>a > b</code></td>
+	  <td>Больше</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>
 	<tr>
-	  <td><code>&lt;</code></td>
-	  <td>Меньше</td>
 	  <td><code>a < b</code></td>
+	  <td>Меньше</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>
 	<tr>
-	  <td><code>&lt;=&gt;</code></td>
-	  <td>Сравнение</td>
 	  <td><code>a <=> b</code></td>
+	  <td>Сравнение</td>
 	  <td><code>__cmp</code></td>
 	  <td><code>__rcmp</code></td>
 	</tr>

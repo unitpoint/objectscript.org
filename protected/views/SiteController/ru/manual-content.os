@@ -65,7 +65,7 @@
 					"langref.operators.increment" = "Операторы инкремента и декремента",
 					"langref.operators.logical" = "Логические операторы",
 					"langref.operators.ternary" = "Тернарный оператор",
-					"langref.operators.string" = "Строковые операторы",
+					"langref.operators.string" = "Строковый оператор",
 					"langref.operators.len" = "Оператор длины",
 					"langref.operators.type" = "Операторы проверки типа",
 					"langref.operators.in" = "Оператор вхождения",

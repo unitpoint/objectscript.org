@@ -1,0 +1,11 @@
+﻿<pre style="font-size:18px"><%
+  var a = ["Hello", 10, [1, 2], {a=1}, true, false]
+  var types = [String, Number, Array, Boolean, Object]
+  for(var i, val in a){
+    for(var j, type in types){
+      printf("%8s %-7s is %-8s => %-5s\n", 
+        typeOf(val), json.encode(val), type.__name, val is type)
+    }
+    printf("\n")
+  }
+%></pre>
