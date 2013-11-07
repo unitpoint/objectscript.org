@@ -1,0 +1,13 @@
+﻿<p>
+<code>break</code> прерывает выполнение текущего цикла <code>for</code> или <code>for in</code>. 
+
+<p>
+<code>continue</code> используется внутри цикла <code>for</code> или <code>for in</code> для пропуска оставшейся 
+части текущей итерации цикла и перехода к выполнению следующей итерации.
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.control-structures.break-continue.osh"})%>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}}%>">for / for in</a>
+</div>

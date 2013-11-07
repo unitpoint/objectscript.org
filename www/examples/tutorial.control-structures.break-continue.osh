@@ -1,0 +1,16 @@
+<pre style="font-size:18px"><%
+
+    print "if(i == 3) break"
+    for(var i = 0; i < 10; i++){
+        print i
+        if(i == 3) break
+    }
+    print ""
+
+    print "if(i % 2 == 0) continue"
+    for(var i = 0; i < 10; i++){
+        if(i % 2 == 0) continue
+        print i
+    }
+
+%></pre>
