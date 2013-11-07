@@ -1,0 +1,22 @@
+<pre style="font-size:18px"><%
+  a = {
+    username = "Ivan", 
+    password = "qwerty", 
+    age = 23,
+  }
+  printf("before: %s\n", a)
+  delete a.password
+  printf("delete a.password\n")
+  printf(" after: %s\n\n", a)
+  
+  name = "age"
+  delete a[name]
+  printf("delete a['age']\n")
+  printf(" after: %s\n\n", a)
+  
+  a = ["zero", "one", "two"]
+  printf("before: %s\n", a)
+  delete a[1]
+  printf("delete a[1]\n")
+  printf(" after: %s\n", a)
+%></pre>
