@@ -1,0 +1,26 @@
+﻿<p>
+Замыкание - одна из мощнейших возможностей OS. Если говорить просто, то замыкание - это внутренняя функция. 
+Ведь OS разрешает создавать функции по ходу выполнения скрипта. И эти функции имеют доступ к переменным внешних функций - это
+и есть замыкание.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.functions.closure.osh"})%>
+<pre class="prettyprint linenums lang-js">
+  function start(a){
+    return function(){
+      return a++;
+    }
+  }
+  func = start(10)
+  print(func())    // выведет: 10
+  print(func())    // выведет: 11
+  print(func())    // выведет: 12
+  print(func())    // выведет: 13
+</pre>
+  </div>
+</div>
+
+<p>
+В данном примере функция <code>start</code> возвращает др. анонимную функцию, которая присваивается в переменную <code>func</code>, 
+при этом <i>func</i> имеет доступ к локальной переменной <code>a</code> функции <i>start</i>, которая уже завершила свое выполнение.

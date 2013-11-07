@@ -1,0 +1,20 @@
+﻿<p>
+OS поддерживает альтернативный синтаксис для описания анонимных функций.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+
+  {|arg1,arg2 ...| statement }
+
+</pre>
+  </div>
+</div>
+
+<p>
+Объявление функции начинается с <code>{|</code>, затем следует описание аргументов функции через запятую 
+(аргументы могут отсутствовать), после чего <code>|</code> и само тело функции с командами, в завершении <code>}</code>.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.alternative.osh"})%>
+
+

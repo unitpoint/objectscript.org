@@ -1,0 +1,25 @@
+﻿<p>
+В OS все функции ялвяются функциями первого класса (<a href="http://en.wikipedia.org/wiki/First-class_function" target="_blank">first-class 
+function</a>). Это означает, что OS поддерживает передачу функций в качестве аргументов другим функциям, возврат их как результат 
+других функций, присваивание их переменным или сохранение в структурах данных. 
+
+<p>
+Все функции в OS являются объектами. Как это понимать? Это означает, что у них есть свойства и методы, которые можно использовать.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.functions.apply.osh"})%>
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<pre>&lt;%
+  var func = function(){ print arguments }
+  var func2 = function(f){ f.apply(null, ...) }
+  func2(func, 1, 2, 3)
+%&gt;</pre>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.functions.arguments"}}%>">Аргументы функции</a>
+</div>
+
