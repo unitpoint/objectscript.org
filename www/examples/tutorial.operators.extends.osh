@@ -2,11 +2,11 @@
 
     Person = {
         __construct = function(firstname, lastname){
-            @firstname = firstname
-            @lastname = lastname
+            this.firstname = firstname
+            this.lastname = lastname
         },
         getFullname = function(){
-            return @firstname .. " " .. @lastname
+            return this.firstname .. " " .. this.lastname
         },
     }
 

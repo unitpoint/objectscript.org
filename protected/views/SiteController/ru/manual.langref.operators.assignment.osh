@@ -1,7 +1,7 @@
 ﻿<table class="table table-striped">
   <thead>
 	<tr>
-	  <th>Оператор</th>
+	  <th>Синтаксис</th>
 	  <th>Действие</th>
 	</tr>
   </thead>
@@ -34,7 +34,7 @@ OS позволяет инициализировать несколько пер
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.2.osh"})%>
 
 <p>
-Интересное следствие из этого то, что можно менять местами два и более значений в переменных одной командой.
+Интересное следствие из этого то, что можно менять местами два и более значений переменных одной командой.
 
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.3.osh"})%>
 
@@ -47,8 +47,11 @@ OS позволяет инициализировать несколько пер
 <div class="row">
   <div class="col-md-11 badge-src">
 <pre class="prettyprint lang-js">
-  var a, b, c = 1, 2, 3   // правильно
-  var a = 1, b = 2, c = 3 // так не правильно
+
+  var a, b = 1, 2   // правильно
+  
+  var a = 1, b = 2  // так не правильно
+  
 </pre>
   </div>
 </div>
