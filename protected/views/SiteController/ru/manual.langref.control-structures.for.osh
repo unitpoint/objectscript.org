@@ -1,0 +1,98 @@
+﻿<p>
+Цикл <code>for</code> ведет себя так же как его аналог в языке C++. Синтаксис цикла for следующий:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+
+for (expr1; expr2; expr3)
+    statement
+
+</pre>
+  </div>
+</div>
+
+<p>
+Первое выражение <code>expr1</code> всегда вычисляется (выполняется) только один раз в начале цикла.
+
+<p>
+В начале каждой итерации оценивается выражение <code>expr2</code>. Если оно принимает значение <code>true</code>, 
+то цикл продолжается, и вложенные операторы будут выполнены. Если оно принимает 
+значение <code>false</code>, выполнение цикла заканчивается.
+
+<p>
+В конце каждой итерации выражение <code>expr3</code> вычисляется (выполняется).
+
+<p>
+Каждое из выражений может быть пустым или содержать одно выражение. Если выражение 
+<code>expr2</code> отсутствует, это означает, что цикл будет выполняться 
+бесконечно (OS неявно воспринимает это значение как <code>true</code>, также, как в языке C++). 
+Это может быть не столь бесполезно, сколь вы могли подумать, так как часто необходимо 
+прервать цикл, используя условный оператор <code>break</code> вместо использования выражения в цикле 
+<code>for</code>, которое принимает истинное значение.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.for.osh"})%>
+
+<h3>for in</h3>
+
+<p>
+Цикл <code>for in</code> в OS предназначен для обхода (итерации) по коллекции. Он имеет следующий синтаксис:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+
+for (i in collection)
+    statement
+
+for (i, v in collection)
+    statement
+
+</pre>
+  </div>
+</div>
+
+<p>
+Где <code>i</code> - ключ элемента коллекции, <code>v</code> - значение элемента коллекции, <code>collection</code> - сама коллекция.
+
+<p>
+Обычно в качестве коллекции выступает массив или объект. Для массива <code>i</code> и <code>v</code> - индекс и элемент массива,
+для объекта - название свойства и его значение.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.for-in.osh"})%>
+
+<h3>Пользовательская итерация по коллекции</h3>
+
+<p>
+Цикл <code>for in</code> в OS использует очень гибкуя архитектуру, позволяя делать перебор по любым видам коллекций, в том числе
+рассчитываемым в реальном времени. Иначе говоря, каждый шаг цикла может рассчитывать очередные значения для шага итерации.
+
+<p>
+Как это работает? OS компилирует цикл <code>for in</code> в следующие команды:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+;{
+  var step_func = collection.__iter();
+  for(var is_step_valid;;){
+    is_step_valid, i, v = step_func();
+    if(!is_step_valid){
+      break;
+    }
+    statement
+  }
+}
+</pre>
+  </div>
+</div>
+
+Поэтому мы можем реализовать свою функцию <code>__iter</code> для собственного вида коллекции, которая вернет функцию обхода  
+коллекции по необходимому алгоритму.
+
+<h3>Пример с Range</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.for-in-range.osh"})%>
+
+<h3>Расширенный пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.for-in-range-ex.osh"})%>
+

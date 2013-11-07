@@ -1,0 +1,15 @@
+﻿<pre style="font-size:18px"><%
+
+    var a = [1, 2, 3]
+    print "\nfor in ${a}\n"
+    for(var i, v in a){
+        print "${i} => ${v}"
+    }
+
+    var a = {username="John", password="qwerty"}
+    print "\nfor in ${a}\n"
+    for(var i, v in a){
+        print "${i} => ${v}"
+    }
+
+%></pre>

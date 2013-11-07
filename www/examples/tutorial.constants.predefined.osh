@@ -1,4 +1,5 @@
 ﻿<pre><%
+  print "dir: "..__DIR__
   print "file: "..__FILE__
   print "line: "..__LINE__
 %></pre>

@@ -1,5 +1,5 @@
 ﻿<% 
-	@controller.pageTitle = "Без компромиссов / ObjectScript"
+	@controller.pageTitle = "Новый язык программирования  / ObjectScript"
 %>
 <div class="jumbotron">
 	<h1>ObjectScript</h1>

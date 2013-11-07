@@ -1,0 +1,17 @@
+﻿<pre style="font-size:18px"><%
+    print "\nfor #1\n"
+    for(var i = 1; i <= 5; i++){
+        print "  i: ${i}"
+    }
+    print "\nfor #2\n"
+    for(var i = 1;; i++){
+        if(i > 5) break
+        print "  i: ${i}"
+    }
+    print "\nfor #3\n"
+    for(var i = 1;;){
+        if(i > 5) break
+        print "  i: ${i}"
+        i++
+    }
+%></pre>

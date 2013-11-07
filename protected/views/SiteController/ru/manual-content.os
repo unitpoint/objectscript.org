@@ -74,8 +74,8 @@
 			"langref.control-structures" = {
 				"Управляющие конструкции", {
 					// "langref.control-structures.intro" = "Введение",
-					"langref.control-structures.if" = "if / else",
-					"langref.control-structures.for" = "for",
+					"langref.control-structures.if" = "if / else / elseif",
+					"langref.control-structures.for" = "for / for in",
 					"langref.control-structures.break" = "break / continue",
 					"langref.control-structures.return" = "return",
 				},

@@ -1,19 +1,28 @@
 ﻿<p>
 В OS существуют следующие <i>волшебные</i> константы:
 
-<ul>
-<li><p><code>__FILE__</code> - путь к текущему файлы
-<li><p><code>__LINE__</code> - номер текущей строки
-</ul>
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Имя</th>
+	  <th>Описание</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>__DIR__</code></td>
+	  <td>Директория текущего файла. Это эквивалентно вызову <code>path.dirname(__FILE__)</code></td>
+	</tr>
+	<tr>
+	  <td><code>__FILE__</code></td>
+	  <td>Полный путь и имя текущего файла.</td>
+	</tr>
+	<tr>
+	  <td><code>__LINE__</code></td>
+	  <td>Текущий номер строки в файле.</td>
+	</tr>
+  </tbody>
+</table>
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.constants.predefined.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  print "file: "..__FILE__
-  print "line: "..__LINE__
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.constants.predefined.osh"})%>

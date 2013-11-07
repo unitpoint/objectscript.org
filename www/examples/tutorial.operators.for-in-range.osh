@@ -1,0 +1,21 @@
+﻿<pre style="font-size:18px"><%
+
+    Range = {
+        __construct = function(a, b){
+            @a, @b = a, b
+        },
+        __iter = function(){
+            var a, b = @a, @b
+            return function(){ 
+                if(a <= b){
+                    return true, a++ 
+                }
+            } 
+        },
+    }
+
+    print "for in Range(3, 5)\n"
+    for(var i in Range(3, 5))
+        print i
+
+%></pre>

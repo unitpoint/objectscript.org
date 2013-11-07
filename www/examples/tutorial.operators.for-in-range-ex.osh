@@ -1,0 +1,31 @@
+﻿<pre style="font-size:18px"><%
+
+    Range = {
+        __construct = function(a, b){
+            if(b){
+                @a, @b = a, b
+            }else{
+                @a, @b = 0, a - 1
+            }
+        },
+        __iter = function(){
+            var a, b = @a, @b
+            return a <= b 
+                ? {|| a <= b && return true, a++ } 
+                : {|| a >= b && return true, a-- }
+        },
+    }
+
+    print "for in Range(3, -2)\n"
+    for(var i in Range(3, -2))
+        print i
+
+    function Number.to(b){
+        return Range(this, b)
+    }
+
+    print "\nfor in 5.to(7)\n"
+    for(var i in 5.to(7))
+        print i
+
+%></pre>
