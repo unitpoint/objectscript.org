@@ -1,0 +1,6 @@
+﻿<p>
+<div class="bs-callout bs-callout-warning">
+Если Вы нашли ошибку, пожалуйста, внесите исправления прямо
+в <a href="<%=@source%>" target="_blank"><b>исходник</b></a> этой страницы и сделайте <b>Pull request</b>. 
+</div>
+</p>

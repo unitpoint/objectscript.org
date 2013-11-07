@@ -126,7 +126,12 @@ $(function(){
 			</div>
 		</div>
 	<% } /* if(!stringOf(content[page])) */ %>
-	<%=@controller.renderPartial(@pageViewPrefix.."${page}.osh")%>
+	<%
+		var pageFilename = @pageViewPrefix.."${page}.osh"
+		echo @controller.renderPartial(pageFilename)
+		
+		@controller.widget('FixTypoWidget', {file=pageFilename})
+	%>
   </div>  
 </div>  
 
