@@ -25,6 +25,6 @@
 
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.operators.ternary"}, "#"="null"}%>">Логические операторы</a>, 
-	<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, "#"="null"}%>">Булев тип</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.ternary"}}%>">Логические операторы</a>, 
+	<a href="<%=@controller.createUrl{params={page="langref.types.bool"}}%>">Булев тип</a>
 </div>

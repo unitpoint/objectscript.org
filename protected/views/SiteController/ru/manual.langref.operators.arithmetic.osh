@@ -66,5 +66,5 @@
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.arithmetic.osh"})%>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.operators.increment"}, "#"="null"}%>">Операторы инкремента и декремента</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.increment"}}%>">Операторы инкремента и декремента</a>
 </div>
