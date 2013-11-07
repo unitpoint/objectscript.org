@@ -3,7 +3,7 @@
   var types = [String, Number, Array, Boolean, Object]
   for(var i, val in a){
     for(var j, type in types){
-      printf("%8s %-7s is %-8s => %-5s\n", 
+      printf("%8s %-7s is %-8s => %s\n", 
         typeOf(val), json.encode(val), type.__name, val is type)
     }
     printf("\n")

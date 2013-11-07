@@ -1,5 +1,5 @@
 ﻿<p>
-Цикл <code>for</code> ведет себя так же как его аналог в языке C++. Синтаксис цикла for следующий:
+Цикл <code>for</code> ведет себя так же как его аналог в языке C++. Синтаксис цикла <code>for</code> следующий:
 
 <div class="row">
   <div class="col-md-10">
@@ -87,8 +87,7 @@ for (i, v in collection)
   </div>
 </div>
 
-Поэтому мы можем реализовать свою функцию <code>__iter</code> для собственного вида коллекции, которая вернет функцию обхода  
-коллекции по необходимому алгоритму.
+Поэтому мы можем реализовать функцию <code>__iter</code> для итерации по собственному виду коллекции.
 
 <h3>Пример с Range</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.for-in-range.osh"})%>
@@ -96,3 +95,7 @@ for (i, v in collection)
 <h3>Расширенный пример</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.for-in-range-ex.osh"})%>
 
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">Объектно-ориентированное программирование</a>,
+	<a href="<%=@controller.createUrl{params={page="langref.functions.alternative"}}%>">Альтернативный синтаксис для анонимных функций</a>
+</div>

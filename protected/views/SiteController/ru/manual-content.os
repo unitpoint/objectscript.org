@@ -67,7 +67,7 @@
 					"langref.operators.ternary" = "Тернарный оператор",
 					"langref.operators.string" = "Строковый оператор",
 					"langref.operators.len" = "Оператор длины",
-					"langref.operators.type" = "Операторы проверки типа",
+					"langref.operators.type" = "Оператор проверки типа",
 					"langref.operators.in" = "Оператор вхождения",
 				},
 			},
