@@ -5,7 +5,7 @@
   <h1>Запускаемая версия ObjectScript под Windows</h1>
 </div>
 <ul class="list-unstyled">
-  <li><a href="https://github.com/unitpoint/os-fcgi-win/blob/master/os-fcgi-1.11.1-dev-win32-x86.zip" 
+  <li><a href="https://github.com/unitpoint/os-fcgi-win/raw/master/os-fcgi-1.11.1-dev-win32-x86.zip" 
 	target="_blank"><b>os-fcgi-1.11.1-dev-win32-x86.zip</b></a> - <a href="https://github.com/unitpoint/os-fcgi-win/tree/master/os-fcgi-1.11.1-dev-win32-x86" 
 	target="_blank">посмотреть содержимое архива</a></li>
 </ul>
