@@ -16,6 +16,5 @@
   </tbody>
 </table>
 
-
 <h3>Пример</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.in.osh"})%>
