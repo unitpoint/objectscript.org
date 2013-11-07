@@ -1,0 +1,10 @@
+<p>
+Оператор расширения класса в OS предназначен для создания нового класса, который расширяет (наследует) функционал др. класса, в основном
+используется в объектно-ориентированном программировании.
+
+<h3>Пример</h3>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.extends.osh"})%>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">Объектно-ориентированное программирование</a>
+</div>

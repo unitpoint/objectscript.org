@@ -1,0 +1,24 @@
+﻿<pre style="font-size:18px"><%
+
+    Person = {
+        __construct = function(firstname, lastname){
+            @firstname = firstname
+            @lastname = lastname
+        },
+        getFullname = function(){
+            return @firstname .. " " .. @lastname
+        },
+    }
+
+    IvanPerson = extends Person {
+        __construct: function(){
+            super("Ivan", "Petrov")
+        },
+        getFullname = function(){
+            return "mr. "..super()
+        }
+    }
+
+    print IvanPerson().getFullname()
+    
+%></pre>
