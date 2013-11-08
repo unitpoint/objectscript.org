@@ -10,7 +10,8 @@
 </p>
 
 <ol>
-<li><p>Для начала скачаем самую последнюю версию <code>OS-FCGI</code> и перейдем в соответствующую папку:
+<li><p>Для начала скачаем самую последнюю версию ObjectScript, в состав которого входит <code>OS-FCGI</code> и перейдем 
+в соответствующую папку:
 <pre>
 git clone https://github.com/unitpoint/objectscript.git
 cd ./objectscript

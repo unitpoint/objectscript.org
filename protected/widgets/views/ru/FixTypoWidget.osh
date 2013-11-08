@@ -1,7 +1,8 @@
 ﻿<p>
 <div class="bs-callout bs-callout-warning text-warning">
 Присоединяйтесь к сообществу <a href="https://github.com/unitpoint/objectscript" target="_blank">ObjectScript</a>. 
-Если Вы нашли ошибку, например, на этой странице, внесите пожалуйста
-исправления прямо в ее <a href="<%=@source%>" target="_blank"><b>исходник</b></a> и сделайте <b>Pull request</b>. 
+Если Вы нашли ошибку, например, на этой странице, Вы можете внести
+исправления прямо в ее <a href="<%=@source%>" target="_blank"><b>исходник</b></a>, 
+после чего достаточно сделать <b>Pull request</b>. 
 </div>
 </p>
