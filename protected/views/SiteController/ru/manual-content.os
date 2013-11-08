@@ -40,17 +40,7 @@
 					"langref.types.string" = "Строки",
 					"langref.types.array" = "Массивы",
 					"langref.types.object" = "Объекты",
-					"langref.types.function" = {
-						"Функции", {
-							"langref.functions.anonymous" = "Анонимные функции",
-							"langref.functions.arguments" = "Аргументы функции",
-							"langref.functions.first-class" = "Функции первого класса",
-							"langref.functions.returning-values" = "Возврат значений",
-							"langref.functions.closures" = "Вложенные функции и замыкания",
-							"langref.functions.alternative" = "Альтернативный синтаксис",
-						},
-					},
-					
+					"langref.types.function" = "Функции",					
 					"langref.types.userdata" = "Объекты C++",
 					"langref.types.null" = "Пустое значение (null)",
 				},
@@ -91,6 +81,17 @@
 					"langref.control-structures.for" = "for / for in",
 					"langref.control-structures.break" = "break / continue",
 					"langref.control-structures.return" = "return",
+				},
+			},
+			"langref.functions" = {
+				"Функции", {
+					"langref.functions.arguments" = "Аргументы функции",
+					"langref.functions.call" = "Вызов функции",
+					"langref.functions.anonymous" = "Анонимные функции",
+					"langref.functions.first-class" = "Функции первого класса",
+					"langref.functions.returning-values" = "Возврат значений",
+					"langref.functions.closures" = "Вложенные функции и замыкания",
+					"langref.functions.alternative" = "Альтернативный синтаксис",
 				},
 			},
 			"langref.oop" = {
