@@ -52,3 +52,8 @@
 
 <h3>Пример</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.bitwise.osh"})%>
+
+<h3>Побитовые операции с <code>null</code></h3>
+
+<p>
+Любые побитовые операции с <code>null</code> всегда возвращаю <code>null</code>. Перегружаемые методы в этом случае не вызываются.

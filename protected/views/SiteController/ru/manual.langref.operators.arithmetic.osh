@@ -65,6 +65,11 @@
 <h3>Пример</h3>
 <%@controller.widget('SourceWidget', {source="examples/tutorial.operators.arithmetic.osh"})%>
 
+<h3>Арифметические операции с <code>null</code></h3>
+
+<p>
+Любые арифметические операции с <code>null</code> всегда возвращаю <code>null</code>. Перегружаемые методы в этом случае не вызываются.
+
 <div class="alert alert-info">
 См. <a href="<%=@controller.createUrl{params={page="langref.operators.increment"}}%>">Операторы инкремента и декремента</a>
 </div>
