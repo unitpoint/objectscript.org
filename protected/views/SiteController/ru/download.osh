@@ -65,3 +65,5 @@ service os-fcgi restart
 </pre>
   </div>
 </div>
+
+<%@controller.widget('FixTypoWidget', {file=__FILE__})%>
