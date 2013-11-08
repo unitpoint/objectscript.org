@@ -5,13 +5,13 @@
   <h1>Запускаемая версия ObjectScript под Windows</h1>
 </div>
 <ul class="list-unstyled">
-  <li><a href="https://github.com/unitpoint/os-fcgi-win/raw/master/os-fcgi-1.11.1-dev-win32-x86.zip" 
-	target="_blank"><b>os-fcgi-1.11.1-dev-win32-x86.zip</b></a> - <a href="https://github.com/unitpoint/os-fcgi-win/tree/master/os-fcgi-1.11.1-dev-win32-x86" 
+  <li><a href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.11.2-rc.zip" 
+	target="_blank"><b>os-1.11.2-rc.zip</b></a> - <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-1.11.2-rc" 
 	target="_blank">посмотреть содержимое архива</a></li>
 </ul>
 
 <div class="page-header">
-  <h1>Репозиторий OS-FCGI</h1>
+  <h1>Репозиторий objectscript</h1>
 </div>
 
 <p>ObjectScript написан на C++ и разбит на два основных проекта:</p>
@@ -20,14 +20,14 @@
   <li><code>os-fcgi</code> - необходим для разработки веб-приложений на ObjectScript (данный сайт работает именно через <code>os-fcgi</code>)</li>
 </ol>
 <dl class="dl-horizontal">
-  <dt><a href="https://github.com/unitpoint/os-fcgi" target="_blank">unitpoint/os-fcgi</a></dt>
+  <dt><a href="https://github.com/unitpoint/objectscript" target="_blank">unitpoint/objectscript</a></dt>
   <dd>Репозиторий <b>OS-FCGI</b> содержит в себе исходники выше описанных проектов и решения для сборки</dd>
   
-  <dt><a href="https://github.com/unitpoint/os-fcgi.git" target="_blank">unitpoint/os-fcgi.git</a></dt>
+  <dt><a href="https://github.com/unitpoint/objectscript.git" target="_blank">unitpoint/objectscript.git</a></dt>
   <dd>Ссылка для клонирования репозитория через git (рекомендую <a href="http://www.syntevo.com/smartgithg/" 
 	target="_blank">SmartGit/Hg</a> в качестве пользовательского интерфейса)</dd>
 	
-  <dt><a href="https://github.com/unitpoint/os-fcgi/archive/master.zip" target="_blank">unitpoint/os-fcgi/archive/master.zip</a></dt>
+  <dt><a href="https://github.com/unitpoint/objectscript/archive/master.zip" target="_blank">unitpoint/objectscript/archive/master.zip</a></dt>
   <dd>Ссылка для загрузки репозитория одним архивом</dd>
 </dl>
 
@@ -48,8 +48,8 @@
 <div class="row">
   <div class="col-md-7">
 <pre class="prettyprint">
-git clone https://github.com/unitpoint/os-fcgi.git
-cd ./os-fcgi
+git clone https://github.com/unitpoint/objectscript.git
+cd ./objectscript
 </pre>
   </div>
 </div>

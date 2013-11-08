@@ -12,11 +12,11 @@
 <ol>
 <li><p>Для начала скачаем самую последнюю версию <code>OS-FCGI</code> и перейдем в соответствующую папку:
 <pre>
-git clone https://github.com/unitpoint/os-fcgi.git
-cd ./os-fcgi
+git clone https://github.com/unitpoint/objectscript.git
+cd ./objectscript
 </pre>
 <p class="text-left">
-	<img src="img/os-fcgi-clone.png">
+	<img src="img/objectscript-clone.png">
 </p>
 
 <li><p>Затем сконфигурируем сборку под нашу платформу:
@@ -25,7 +25,7 @@ mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=/ ..
 </pre>
 <p class="text-left">
-	<img src="img/os-fcgi-configure.png">
+	<img src="img/objectscript-configure.png">
 </p>
 
 <li><p>Теперь запустим компиляцию из исходников и выполним установку сервиса <code>OS-FCGI</code>:
@@ -34,7 +34,7 @@ make
 make install
 </pre>
 <p class="text-left">
-	<img src="img/os-fcgi-make.png">
+	<img src="img/objectscript-make.png">
 </p>
 
 <li><p>Отлично, осталось только запустить сервис <code>OS-FCGI</code>:
@@ -49,8 +49,8 @@ service os-fcgi restart
 <p>
 Для удобства приведем тут полный перечень команд, которые были описаны выше:
 <pre>
-git clone https://github.com/unitpoint/os-fcgi.git
-cd ./os-fcgi
+git clone https://github.com/unitpoint/objectscript.git
+cd ./objectscript
 mkdir build && cd build
 cmake -DCMAKE_INSTALL_PREFIX=/ ..
 make

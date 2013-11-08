@@ -1,6 +1,0 @@
-﻿<p>
-<div class="bs-callout bs-callout-warning text-warning">
-Присоединяйтесь к сообществу ObjectScript. Если Вы нашли ошибку, например, на этой странице, внесите пожалуйста
-исправления прямо в ее <a href="<%=@source%>" target="_blank"><b>исходник</b></a> и сделайте <b>Pull request</b>. 
-</div>
-</p>
