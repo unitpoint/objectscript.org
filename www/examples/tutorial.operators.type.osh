@@ -1,4 +1,5 @@
 ﻿<pre style="font-size:18px"><%
+
   var a = ["Hello", 10, [1, 2], {a=1}, true, false]
   var types = [String, Number, Array, Boolean, Object]
   for(var i, val in a){

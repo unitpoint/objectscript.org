@@ -1,0 +1,8 @@
+﻿<pre style="font-size:18px"><%
+
+	// var p = Person("John")
+	var p = {}
+	p.prototype = Person
+	p.__construct("John")
+    
+%></pre>

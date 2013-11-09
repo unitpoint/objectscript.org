@@ -5,20 +5,11 @@
             this.firstname = firstname
             this.lastname = lastname
         },
-        getFullname = function(){
+        __get@fullname = function(){
             return this.firstname .. " " .. this.lastname
         },
     }
 
-    IvanPerson = extends Person {
-        __construct = function(){
-            super("Ivan", "Petrov")
-        },
-        getFullname = function(){
-            return "mr. "..super()
-        }
-    }
-
-    print IvanPerson().getFullname()
+    print Person("Ivan", "Petrov").fullname
     
 %></pre>

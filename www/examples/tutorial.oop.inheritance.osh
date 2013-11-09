@@ -8,6 +8,9 @@
         getFullname = function(){
             return this.firstname .. " " .. this.lastname
         },
+		play = function(){
+			return this.getFullname() .. " plays!"
+		},		
     }
 
     IvanPerson = extends Person {
@@ -19,6 +22,10 @@
         }
     }
 
-    print IvanPerson().getFullname()
+	var p = Person("James", "Bond")
+	print "#1 "..p.play()
+	
+	var p = IvanPerson()
+	print "#2 "..p.play()
     
 %></pre>

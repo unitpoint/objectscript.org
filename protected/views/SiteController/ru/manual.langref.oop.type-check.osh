@@ -1,0 +1,4 @@
+﻿<p>
+В OS для проверки типа объекта мы используем специальный оператор - <code>is</code>.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.type.osh"})%>

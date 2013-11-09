@@ -1,0 +1,12 @@
+<pre style="font-size:18px"><%
+
+	var arr = [1, 2, 3]
+	print "arr = [1, 2, 3]"
+	print "arr.prototype === Array: "
+			.. arr.prototype === Array
+	print "arr.prototype.prototype === Object: "
+			.. arr.prototype.prototype === Object
+	print "arr.prototype.prototype === Array: "
+			.. arr.prototype.prototype === Array
+		
+%></pre>

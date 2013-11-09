@@ -4,7 +4,10 @@
 <pre class="prettyprint linenums lang-js">
 <%
 	echo html.encode(File.readContents(_SERVER.DOCUMENT_ROOT.."/"..@source)
-				.replace(Regexp("#^(\xef\xbb\xbf)?<pre[^>]+>#s"), "<pre>"))
+				.replace{
+					[Regexp("#^(\xef\xbb\xbf)?<pre[^>]+>#s")] = "<pre>",
+					[Regexp("#\t#")] = "    ",
+				})
 %>
 </pre>
   </div>

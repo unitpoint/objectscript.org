@@ -1,0 +1,12 @@
+﻿<pre style="font-size:18px"><%
+
+	require "../../protected/components/std"
+
+    var a = [1, ["Hello", "World"], 3]
+	var b = a.deepClone()
+	b[0] = "Greate"
+	b[1][0] = "Hi"
+	print "a: ${a}"
+	print "b: ${b}"
+    
+%></pre>

@@ -1,0 +1,21 @@
+<pre style="font-size:18px"><%
+
+	require "../../protected/components/webcore"
+
+	var arr = [1, 2, 3]
+	print "arr = [1, 2, 3]"
+	print "arr.prototype === Array: "
+			.. arr.prototype === Array
+	print "arr.prototype.prototype === Object: "
+			.. arr.prototype.prototype === Object
+		
+	// html encode result of dump to show "&lt;" and "&gt;"
+	ob.push()
+	dump(Object)
+	echo "\nObject => "..html.encode(ob.popContents())
+    
+	ob.push()
+	dump(Array)
+	echo "\nArray => "..html.encode(ob.popContents())
+		
+%></pre>

@@ -1,0 +1,10 @@
+﻿<pre style="font-size:18px"><%
+
+    var a = [1, ["Hello", "World"], 3]
+	var b = a.clone()
+	b[0] = "Greate"
+	b[1][0] = "Hi"
+	print "a: ${a}"
+	print "b: ${b}"
+    
+%></pre>

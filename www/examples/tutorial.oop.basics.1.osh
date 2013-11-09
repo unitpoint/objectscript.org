@@ -1,0 +1,17 @@
+<pre style="font-size:18px"><%
+
+	// example #1
+	var obj = {}
+	obj.lastLoginTime = DateTime.now()
+	print json.encode(obj)
+    
+	// example #2
+	var obj = {}
+	obj["lastLoginTime"] = DateTime.now()
+	print json.encode(obj)
+    
+	// example #2
+	var obj = {lastLoginTime = DateTime.now()}
+	print json.encode(obj)
+
+%></pre>

@@ -1,0 +1,45 @@
+﻿<p>
+OS имеет следующие стандартные классы (типы данных). Чтобы обратится к классу, нужно обратится к 
+соответствующей глобальное переменной, например, <code>Array</code>.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Класс</th>
+	  <th>Описание</th>
+	  <th>Пример</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>Object</code></td>
+	  <td>Базовый класс в OS, все остальные классы унаследованы от него.</td>
+	  <td><code>{user="Ivan"}</code></td>
+	</tr>
+	<tr>
+	  <td><code>Array</code></td>
+	  <td>Массив</td>
+	  <td><code>[1, 2, 3]</code></td>
+	</tr>
+	<tr>
+	  <td><code>String</code></td>
+	  <td>Строка</td>
+	  <td><code>"Hello"</code></td>
+	</tr>
+	<tr>
+	  <td><code>Number</code></td>
+	  <td>Число</td>
+	  <td><code>10</code></td>
+	</tr>
+	<tr>
+	  <td><code>Boolean</code></td>
+	  <td>Булев тип</td>
+	  <td><code>true</code></td>
+	</tr>
+	<tr>
+	  <td><code>Userdata</code></td>
+	  <td>Внешние структуры и данные из <nobr>С++</nobr></td>
+	  <td><code>DateTime.now()</code></td>
+	</tr>
+  </tbody>
+</table>

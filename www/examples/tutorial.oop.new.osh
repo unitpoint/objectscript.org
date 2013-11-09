@@ -1,0 +1,12 @@
+﻿<pre style="font-size:18px"><%
+
+    Person = {
+        __construct = function(name){
+            this.name = name
+        },
+    }
+	
+	var p = Person("John")
+    print "name: ${p.name}"
+    
+%></pre>
