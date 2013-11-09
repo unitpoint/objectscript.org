@@ -6,9 +6,17 @@
 <%@controller.widget('SourceWidget', {source="examples/tutorial.oop.copy-by-ref.osh"})%>
 
 <p>
-Клонирование объектов позволяет сделать копию исходного объекта. В OS это делается вызовом метода <code>clone</code>.
+Мы присвоили значение <code>"Hello"</code> элементу массива по индексу <code>1</code>. Изменения появились
+в переменной <code>a</code> и <code>b</code>. 
+
+<p>
+Клонирование объектов позволяет сделать копию исходного объекта. 
+В OS это делается вызовом метода <code>clone</code>.
 
 <%@controller.widget('SourceWidget', {source="examples/tutorial.oop.clone.osh"})%>
+
+<p>
+Теперь значение <code>"Hello"</code> сохранилось только в переменной <code>b</code>. 
 
 <p>
 Согласно спецификации OS, метод <code>clone</code> делает не глубокое клонирование, т.е. копируется только сам объект-контейнер
@@ -18,7 +26,7 @@
 <%@controller.widget('SourceWidget', {source="examples/tutorial.oop.clone-sub-by-ref.osh"})%>
 
 <p>
-В выше приведенном примере <code>"Greate"</code> сохранится только в массиве <code>b</code>, 
+В выше приведенном примере <code>"Greate"</code> отобразится только в массиве <code>b</code>, 
 а <code>"Hi"</code> - в обоих массивах. Это потому, что оба массива ссылаются на одно и то же 
 значение вложенного массива.
 
