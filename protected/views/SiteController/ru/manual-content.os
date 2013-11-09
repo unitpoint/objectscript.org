@@ -29,7 +29,6 @@
 					"langref.basic-syntax.html" = "Изолирование от HTML",
 					"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 					"langref.basic-syntax.comments" = "Комментарии",
-					"langref.basic-syntax.osh-os" = "Файлы osh, os, osc, ost",
 				},
 			},
 			"langref.types" = {
@@ -113,6 +112,7 @@
 				},
 			},
 			"langref.exceptions" = "Исключения",
+			"langref.os-files" = "Файлы osh, os, osc, ost",
 		},
 	},
 }
