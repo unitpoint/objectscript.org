@@ -40,7 +40,7 @@ if('HTTP_COOKIE' in _SERVER){
 	var cookie = _SERVER.HTTP_COOKIE.trim()
 	if(#cookie > 0)
 		for(var k, v in cookie.split(';')){
-			v = v.trim().split('=', 1)
+			v = v.trim().split('=', 2)
 			if(#v == 2){
 				_COOKIE.setSmartProperty(v[0], v[1])
 			}else{
@@ -53,7 +53,7 @@ if('QUERY_STRING' in _SERVER){
 	var query = _SERVER.QUERY_STRING.trim()
 	if(#query > 0)
 		for(var k, v in query.split('&')){
-			v = v.trim().split('=', 1)
+			v = v.trim().split('=', 2)
 			if(#v == 2){
 				_GET.setSmartProperty(v[0], url.decode(v[1]))
 			}else{
@@ -64,7 +64,7 @@ if('QUERY_STRING' in _SERVER){
 
 var headerList, headerSent = {}, false
 function header(str){
-	var parts = str.split(":", 1)
+	var parts = str.split(":", 2)
 	if(#parts == 2){
 		headerList[parts[0].upper()] = str
 	}else{
