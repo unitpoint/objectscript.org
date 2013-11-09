@@ -11,8 +11,17 @@
 <p>
 При этом OS выполняет следующие команды для создания и инициализации объекта.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.new.2.osh"})%>
-
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-js">
+    // var p = Person("John")
+    var p = {}
+    p.prototype = Person
+    p.__construct("John")
+</pre>
+  </div>
+</div>	
+	
 <p>
 Метод <code>__construct</code> называется конструктором и играет очень важную роль в этом процессе. OS вызывает
 этот метод и передает ему те же параметры, которые использовалиь при вызове класса, как функции. 

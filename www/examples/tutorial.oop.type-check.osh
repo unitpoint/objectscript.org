@@ -1,0 +1,25 @@
+﻿<pre style="font-size:18px"><%
+
+    Person = {
+        __construct = function(firstname, lastname){
+            this.firstname = firstname
+            this.lastname = lastname
+        },
+    }
+
+    IvanPerson = extends Person {
+        __construct = function(){
+            super("Ivan", "Petrov")
+        },
+    }
+
+	var p = Person("James", "Bond")
+	print "Person instance is Person => "..p is Person
+	print "Person instance is IvanPerson => "..p is IvanPerson
+	print ""
+	
+	var p = IvanPerson()
+	print "IvanPerson instance is Person => "..p is Person
+	print "IvanPerson instance is IvanPerson => "..p is IvanPerson
+    
+%></pre>
