@@ -56,11 +56,11 @@
 	},
 	
 	createUrl = function(url){
-		return @owner.createUrl({controller = @controller.controllerId, action = @controller.actionId}.merge(url))
+		return stringOf(url) || @owner.createUrl({controller = @controller.controllerId, action = @controller.actionId}.merge(url))
 	},
 	
 	redirect = function(url){
-		@owner.redirect({controller = @controller.controllerId, action = @controller.actionId}.merge(url))
+		@owner.redirect(stringOf(url) || {controller = @controller.controllerId, action = @controller.actionId}.merge(url))
 	},
 	
 	createWidget = function(classname, params){

@@ -95,6 +95,30 @@ function Array.reverse(){
 	return r
 }
 
+function Object.merge(){
+	for(var _, param in arguments){
+		if(arrayOf(param)){
+			for(var k, v in param){
+				this[] = v
+			}
+		}else{
+			for(var k, v in param){
+				this[k] = v
+			}
+		}
+	}
+	return this
+}
+
+function Array.merge(){
+	for(var _, param in arguments){
+		for(var k, v in param){
+			this[] = v
+		}
+	}
+	return this
+}
+
 function DateTime.__add(b){
 	// b is DateTime && throw "DateTime.__add requires Number"
 	return DateTime {
