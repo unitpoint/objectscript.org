@@ -29,8 +29,7 @@ UrlManager = extends Component {
 	},
 	
 	createUrl = function(p){
-		var url = stringOf(p)
-		url && return url;
+		stringOf(p) && return p
 		
 		delete p.params[@routeVar]
 		
@@ -39,10 +38,10 @@ UrlManager = extends Component {
 		var urlParams = []
 		if(action == app.defaultAction){
 			if(controller != app.defaultController){
-				urlParams.push("${@routeVar}=${controller}");
+				urlParams[] = "${@routeVar}=${controller}"
 			}
 		}else{
-			urlParams.push("${@routeVar}=${controller}/${action}")
+			urlParams[] = "${@routeVar}=${controller}/${action}"
 		}
 		var url = @showScriptName ? @baseUrl : @baseUrl.."/"
 		for(var name, value in p.params){

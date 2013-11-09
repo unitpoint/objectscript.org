@@ -1,5 +1,6 @@
 ﻿<p>
-Пользовательские объекты (userdata) позволяют подключать в OS функционал и классы, которые реализованы на <code>C++</code>. 
+В OS есть специальный тип данных - <code>userdata</code>, который предназначен для подключения в OS структур 
+и данных из <code>C++</code>, в том числе классов <code>C++</code>. 
 
 <p>
 Предполжим, у нас есть следующий класс на C++, который мы хотим использовать в коде на OS.
@@ -28,7 +29,7 @@ public:
 
     void print()
     {
-        printf("test class: %d, %f\n", i, j);
+        printf("print from C++: %d, %f\n", i, j);
     }
 };
 </pre>
@@ -41,9 +42,11 @@ public:
   <div class="col-md-11 badge-src">
 <pre class="prettyprint linenums lang-cpp">
 namespace ObjectScript { OS_DECL_USER_CLASS(TestClass); }
-TestClass * __constructTestClass(int i, float j){ return new TestClass(i, j); }
-OS::FuncDef funcs[] = {
-    def("__construct", __constructTestClass),
+TestClass * constructTestClass(int i, float j){ return new TestClass(i, j); }
+void registerTestClass(OS * os)
+{
+  OS::FuncDef funcs[] = {
+    def("__construct", constructTestClass),
     def("__get@i", &TestClass::getI),
     def("__set@i", &TestClass::setI),
     def("__get@j", &TestClass::getJ),
@@ -51,14 +54,39 @@ OS::FuncDef funcs[] = {
     def("doSomething", &TestClass::doSomething),
     def("print", &TestClass::print),
     {}
-};
-registerUserClass<TestClass>(os, funcs);
+  };
+  registerUserClass&lt;TestClass&gt;(os, funcs); // os is instance of OS
+}
+</pre>
+  </div>
+</div>
+
+<p>Основная функция main в C++
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-cpp">
+int main(int argc, char* argv[])
+{
+  // create ObjectScript instance
+  OS * os = OS::create();
+
+  registerTestClass(os);
+
+  // run program
+  os->require("main.os");
+
+  // release the ObjectScript instance
+  os->release();
+  return 0;
+}
 </pre>
   </div>
 </div>
 
 <p>Готово, проверяем в скрипте OS.
 
+<h3>Файл main.os</h3>
 <div class="row">
   <div class="col-md-11 badge-src">
 <pre class="prettyprint linenums lang-js">
@@ -83,7 +111,7 @@ print "t.doSomething(10, 100.001, 1000.1, t2): "..t.doSomething(10, 100.001, 100
 t.i: 1
 t.j: 0.25
 t2
-test class: 2, 0.500000
+print from C++: 2, 0.500000
 t.doSomething(10, 100.001, 1000.1, t2): 1113.8509994506835
 </pre>
   </div>

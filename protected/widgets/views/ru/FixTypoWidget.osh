@@ -2,7 +2,7 @@
 <div class="bs-callout bs-callout-warning text-warning">
 Присоединяйтесь к сообществу <a href="https://github.com/unitpoint/objectscript" target="_blank">ObjectScript</a>. 
 Если Вы нашли ошибку, например, на этой странице, Вы можете внести
-исправления прямо в ее <a href="<%=@source%>" target="_blank"><b>исходник</b></a>, 
+исправления прямо в ее <a href="<%=@source%>" target="_blank">исходник</a>, 
 после чего сделайте <b>Pull request</b>. 
 </div>
 </p>

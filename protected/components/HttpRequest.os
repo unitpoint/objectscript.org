@@ -90,6 +90,7 @@ HttpRequest = extends Component {
 	
 	redirect = function(url, end, statusCode){
 		// echo "redirect: ${end}<br>"
+		stringOf(url) || throw "required string url"
 		header("Status: "..(statusCode || 302))
 		header("Location: "..(url.sub(0, 1) == '/' ? @hostInfo..url : url))
 		;(end === null || end === true) && app.end()
