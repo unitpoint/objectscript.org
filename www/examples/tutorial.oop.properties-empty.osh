@@ -1,0 +1,13 @@
+﻿<pre style="font-size:18px"><%
+
+	var a = [1, 2, 3]
+	print "a: "..a
+	a[] = 4
+	print "a[] = 4"
+	print "a: "..a
+	var elem = a[]
+	print "elem = a[]"
+	print "elem: "..elem
+	print "a: "..a
+    
+%></pre>

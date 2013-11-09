@@ -1,0 +1,6 @@
+﻿<p>
+Именованный геттер/сеттер выполняют доступ к свойству с определенным названием. Геттер должен иметь имя
+вида  <code>__get@prop</code>, где <code>prop</code> - название свойства, например, <code>__get@color</code>. 
+Сеттер - аналогично, только префикс в имени должен быть <code>__set@</code>.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties.osh"})%>

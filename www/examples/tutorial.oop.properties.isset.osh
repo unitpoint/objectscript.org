@@ -1,0 +1,27 @@
+﻿<pre style="font-size:18px"><%
+
+    Test = {
+        __get = function(name){
+            if(name == "name"){
+                return this._name
+            }
+            throw "property ${name} is not exist in ${this.classname}"
+        },
+		__get@username = function(value){
+			return this._usename
+		},
+		__set@username = function(value){
+			this._usename = value
+		},
+		__isset@username = function(name){
+			return "_usename" in this
+		},
+    }
+
+	var a = Test()
+	print "is a.username exist: "..("username" in a)
+	a.username = "Smith"
+	print 'a.username = "Smith"'
+	print "is a.username exist: "..("username" in a)
+    
+%></pre>

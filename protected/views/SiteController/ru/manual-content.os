@@ -99,7 +99,25 @@
 					"langref.oop.basics" = "Основы",
 					"langref.oop.std" = "Стандартные классы",
 					"langref.oop.new" = "Создание экземпляра объекта",
-					"langref.oop.properties" = "Свойства",
+					"langref.oop.properties" = {
+						"Свойства", {
+							"langref.oop.properties.intro" = "Введение",
+							"langref.oop.properties.named" = "Именованный геттер/сеттер",
+							"langref.oop.properties.common" = "Общий геттер/сеттер",
+							"langref.oop.properties.dim" = "Многомерные свойства",
+							"langref.oop.properties.empty" = "Пустое свойство",
+							"langref.oop.properties.delete" = {
+								"Удаление свойств", {
+									"langref.oop.properties.delete.syntax" = "Синтаксис",
+									"langref.oop.properties.delete.named" = "Именованное удаление свойства",
+									"langref.oop.properties.delete.common" = "Общее удаление свойства",
+									"langref.oop.properties.delete.dim" = "Удаление многомерного свойства",
+									"langref.oop.properties.delete.empty" = "Удаление пустого свойства",
+								},
+							},
+							"langref.oop.properties.isset" = "Проверка существования свойства",
+						},
+					},
 					// "langref.oop.properties-multi" = "Многомерные свойства",
 					// "langref.oop.properties-empty" = "Пустые свойства",
 					// "langref.oop.constructor" = "Конструкторы и деструкторы",

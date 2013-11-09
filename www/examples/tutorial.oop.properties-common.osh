@@ -1,0 +1,37 @@
+﻿<pre style="font-size:18px"><%
+
+    Person = {
+        __construct = function(firstname, lastname){
+            this.firstname = firstname
+            this.lastname = lastname
+        },
+        __get = function(name){
+			if(name == "fullname"){
+				return this.firstname .. " " .. this.lastname
+			}
+			return super(name) // use parent getter
+        },
+		__set = function(name, value){
+			if(name == "fullname"){
+				// use Regexp if you want to support number of spaces
+				// var a = value.split(Regexp("#\s+#"), 2)
+				var a = value.split(" ", 2)
+				this.firstname, this.lastname = a[0], a[1]
+				return
+			}
+			super(name, value) // use parent setter
+		},
+    }
+
+    var p = Person("Ivan", "Petrov")
+	print p
+	print "fullname: ${p.fullname}"
+	print ""
+	
+	print 'set p.fullname to "John Smith"'
+	print ""
+	p.fullname = "John Smith"
+	print p
+	print "fullname: ${p.fullname}"
+    
+%></pre>

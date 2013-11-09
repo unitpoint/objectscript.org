@@ -1,0 +1,15 @@
+﻿<pre style="font-size:18px"><%
+
+    Test = {
+        __get = function(name){
+            if(name == "name"){
+                return this._name
+            }
+            throw "property ${name} is not exist in ${this.classname}"
+        },
+    }
+
+	var a = Test()
+	print "is a.username exist: "..a.username
+    
+%></pre>

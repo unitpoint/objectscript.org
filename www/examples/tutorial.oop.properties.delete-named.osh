@@ -1,0 +1,38 @@
+﻿<pre style="font-size:18px"><%
+
+	Test = {
+		__get@user = function(){
+			return this.__user
+		},
+		__set@user = function(value){
+			this.__user = value
+		},
+		__del@user = function(){
+			delete this.__user
+		}
+	}
+	var a = Test()
+	a.user = "John"
+	a.password = "qwerty"
+	a.age = 23
+	
+	print <<<END'
+var a = Test()
+a.user = "John"
+a.password = "qwerty"
+a.age = 23
+END
+	print "a: "..a
+	print ""
+	
+	delete a.user
+	print "delete a.user"
+	print "a: "..a
+	print ""
+	
+	delete a.password
+	print "delete a.password"
+	print "a: "..a
+	print ""
+    
+%></pre>

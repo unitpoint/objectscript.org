@@ -1,0 +1,12 @@
+﻿<p>
+OS также позволяет получить доступ к свойству вида <code>a[]</code>, такое свойство называется пустыми.
+
+<p>
+Геттер такого свойства имеет имя <code>__getempty</code> (без параметров). 
+Сеттер - <code>__setempty</code>, имеет один параметр - новое значение свойства.
+
+<p>
+По умолчанию <code>__setempty</code> является алиасом на метод <code>push</code>,
+а <code>__getempty</code> - алиасом на <code>pop</code>.
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties-empty.osh"})%>

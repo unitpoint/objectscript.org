@@ -1,15 +1,19 @@
 ﻿<pre style="font-size:18px"><%
 
-    Person = {
-        __construct = function(firstname, lastname){
-            this.firstname = firstname
-            this.lastname = lastname
-        },
-        __get@fullname = function(){
-            return this.firstname .. " " .. this.lastname
-        },
-    }
-
-    print Person("Ivan", "Petrov").fullname
-    
+	var prop = function(){
+		var color = "red"
+		return {
+			__get@color = function(){
+				return color
+			},
+			__set@color = function(value){
+				color = value
+			},
+		}
+	}
+	
+	var a = prop()
+	print a.color
+	a.color = "blue"
+	print a.color
 %></pre>
