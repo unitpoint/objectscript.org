@@ -70,7 +70,7 @@
 	renderWidget = function(classname, params){
 		ob.push()
 		@createWidget(classname, params).run()
-		return ob.popContent()
+		return ob.popContents()
 	},
 	
 	widget = function(classname, params){

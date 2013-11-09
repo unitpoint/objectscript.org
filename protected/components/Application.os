@@ -212,7 +212,7 @@ Application = extends Component {
 		ob.push()
 		var view = @_compiledViews[filename] || @_compiledViews[filename] = compileFile(filename, true, null, true)
 		view.call({controller = controller}.merge(params))
-		return ob.popContent()
+		return ob.popContents()
 	},
 	
 	__get@paths = function(){

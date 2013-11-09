@@ -162,7 +162,7 @@ ob = {
 		echo(buf)
 	},
 
-	popContent = function(){
+	popContents = function(){
 		assert(#buffers > 0, "ob buffer is not exist")
 		var buf = buffers.pop()
 		/* if(#buffers == 0){
@@ -172,7 +172,7 @@ ob = {
 		return toString(buf)
 	},
 
-	getContent = function(){
+	getContents = function(){
 		assert(#buffers > 0, "ob buffer is not exist")
 		return toString(buffers[#buffers-1])
 	}
