@@ -40,7 +40,7 @@
 					"langref.types.array" = "Массивы",
 					"langref.types.object" = "Объекты",
 					"langref.types.function" = "Функции",					
-					"langref.types.userdata" = "Объекты C++",
+					// "langref.types.userdata" = "Данные из C++",
 					"langref.types.null" = "Пустое значение (null)",
 				},
 			},
@@ -112,6 +112,11 @@
 				},
 			},
 			"langref.exceptions" = "Исключения",
+			"langref.intergation-cpp" = {
+				"Интеграция с C++", {
+					"langref.intergation-cpp.classes" = "Подключение классов из C++",
+				},
+			},
 			"langref.os-files" = "Файлы osh, os, osc, ost",
 		},
 	},
