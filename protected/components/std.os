@@ -71,6 +71,22 @@ function File.writeContents(filename, content)
 
 Buffer.__lshift = Buffer.append	// make alias to << operator
 
+function Object.deepClone(){
+	var recurs = {}
+	var clone = function(value){
+		if(recurs[value]){
+			return value
+		}
+		recurs[value] = true;
+		var copy = value.clone()
+		for(var k, v in copy){
+			copy[k] = clone(v)
+		}
+		return copy
+	}
+	return clone(this)
+}
+
 function Object.flip(){
 	var r = {}
 	for(var k, v in this){
@@ -96,13 +112,13 @@ function Array.reverse(){
 }
 
 function Object.merge(){
-	for(var _, param in arguments){
-		if(arrayOf(param)){
-			for(var k, v in param){
+	for(var _, arg in arguments){
+		if(arrayOf(arg)){
+			for(var k, v in arg){
 				this[] = v
 			}
 		}else{
-			for(var k, v in param){
+			for(var k, v in arg){
 				this[k] = v
 			}
 		}
