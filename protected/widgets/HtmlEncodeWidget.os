@@ -4,6 +4,6 @@ HtmlEncodeWidget = extends Widget {
 		ob.push()
 	},
 	run = function(){
-		echo html.encode(ob.popContent())
+		echo html.encode(ob.popContents())
 	},
 }
