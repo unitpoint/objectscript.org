@@ -135,6 +135,8 @@ function Array.merge(){
 	return this
 }
 
+DateTime || throw "DateTime required"
+
 function DateTime.__add(b){
 	// b is DateTime && throw "DateTime.__add requires Number"
 	return DateTime {
@@ -149,16 +151,36 @@ function DateTime.__sub(b){
 	}
 }
 
-var shutdownFunctions = []
+var shutdownFunctions, cleanupFunctions = {}, {}
 
 function registerShutdownFunction(func){
-	shutdownFunctions.push(functionOf(func) || throw "expect function")
+	shutdownFunctions[functionOf(func) || throw "function required"] = true
+}
+
+function unregisterShutdownFunction(func){
+	delete shutdownFunctions[func]
 }
 
 function triggerShutdownFunctions(){
 	var funcs = shutdownFunctions
-	shutdownFunctions = []
-	for(var _, func in funcs.reverseIter()){
+	shutdownFunctions = {}
+	for(var func, _ in funcs.reverseIter()){
+		func()
+	}
+}
+
+function registerCleanupFunction(func){
+	cleanupFunctions[functionOf(func) || throw "function required"] = true
+}
+
+function unregisterCleanupFunction(func){
+	delete cleanupFunctions[func]
+}
+
+function triggerCleanupFunctions(){
+	var funcs = cleanupFunctions
+	cleanupFunctions = {}
+	for(var func, _ in funcs.reverseIter()){
 		func()
 	}
 }
