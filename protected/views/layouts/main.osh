@@ -73,7 +73,7 @@
 	<div id="footer">
 		<div class="container">
 			<div class="pull-right" style="margin-top:15px;">
-				<%=@controller.renderPartial("/layouts/_counter.liveinternet.osh")%>
+				<%=@controller.renderPartial("/layouts/_counter-liveinternet")%>
 			</div>
 			<p class="text-muted credit"><%=_T.FOOTER_CREDIT%></p>
 		</div>

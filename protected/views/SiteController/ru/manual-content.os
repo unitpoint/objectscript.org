@@ -99,6 +99,7 @@
 					"langref.functions.returning-values" = "Возврат значений",
 					"langref.functions.closures" = "Вложенные функции и замыкания",
 					"langref.functions.alternative" = "Альтернативный синтаксис",
+					// функции возвращают последнее выражение автоматически
 				},
 			},
 			"langref.oop" = {
@@ -137,6 +138,7 @@
 					"langref.oop.type-check" = "Контроль типа",
 					"langref.oop.alternative-this" = "Альтернативный this",
 					"langref.oop.autoload" = "Автоматическая загрузка классов",
+					// __object
 				},
 			},
 			"langref.exceptions" = "Исключения",

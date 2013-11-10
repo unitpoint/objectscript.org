@@ -27,7 +27,7 @@
 		<nobr><code>%[flags][width][.precision][length]specifier</code></nobr>
 		</blockquote>
 		<p>
-		Модификатор <code>specifier</code> называется код модифицируемого формата, находится в конце 
+		Модификатор <code>specifier</code> - код модифицируемого формата, находится в конце 
 		синтаксиса и является обязательным. Остальные модификаторы - не обязательны.
 		<p>
 		<table class="table">

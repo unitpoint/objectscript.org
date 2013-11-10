@@ -1,6 +1,6 @@
 ﻿<p>
 <div class="bs-callout bs-callout-warning text-warning">
-Если Вы нашли ошибку на сайте, помогите её исправить. Для этого откройте
+Если Вы нашли ошибку, помогите её исправить. Для этого откройте
 <a href="<%=@source%>" target="_blank">исходник этой страницы</a>,
 исправьте ошибку и сделайте <b>Pull request</b>. 
 Присоединяйтесь к сообществу <a href="https://github.com/unitpoint/objectscript" target="_blank">ObjectScript</a>,
