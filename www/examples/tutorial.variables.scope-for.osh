@@ -2,5 +2,5 @@
   for(var i = 0; i < 5; i++){
     print "i: "..i
   }
-  print "after for: "..i
+  print "i after for: "..i
 %></pre>

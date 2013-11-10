@@ -65,11 +65,7 @@ if('QUERY_STRING' in _SERVER){
 var headerList, headerSent = {}, false
 function header(str){
 	var parts = str.split(":", 2)
-	if(#parts == 2){
-		headerList[parts[0].upper()] = str
-	}else{
-		headerList[str.upper()] = str
-	}
+	headerList[parts[0].upper()] = str
 }
 
 // header "Content-type: text/html; charset=utf-8"
@@ -105,7 +101,7 @@ var function sendHeader(){
 	if(!headerSent && (#headerList > 0 || #cookiesList > 0)){	
 		headerSent = true
 		triggerHeaderSent()
-		for(var k, v in headerList){
+		for(var _, v in headerList){
 			originEcho(v, "\r\n")
 		}
 		for(var _, v in cookiesList){

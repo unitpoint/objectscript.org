@@ -1,4 +1,4 @@
-<pre><%
+﻿<pre><%
 
   function start(a){
     return function(){
@@ -7,9 +7,9 @@
   }
   
   func = start(10)
-  print(func())
-  print(func())
-  print(func())
-  print(func())
+  print(func())    // выведет: 10
+  print(func())    // выведет: 11
+  print(func())    // выведет: 12
+  print(func())    // выведет: 13
 
 %></pre>

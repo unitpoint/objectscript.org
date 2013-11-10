@@ -29,6 +29,8 @@
 					"langref.basic-syntax.html" = "Изолирование от HTML",
 					"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 					"langref.basic-syntax.comments" = "Комментарии",
+					"langref.basic-syntax.functions-call" = "Вызов функции",
+					"langref.basic-syntax.echo" = "Функции вывода информации",
 				},
 			},
 			"langref.types" = {
@@ -85,7 +87,6 @@
 			"langref.functions" = {
 				"Функции", {
 					"langref.functions.arguments" = "Аргументы функции",
-					"langref.functions.call" = "Вызов функции",
 					"langref.functions.anonymous" = "Анонимные функции",
 					"langref.functions.first-class" = "Функции первого класса",
 					"langref.functions.returning-values" = "Возврат значений",
@@ -99,6 +100,7 @@
 					"langref.oop.basics" = "Основы",
 					"langref.oop.std" = "Стандартные классы",
 					"langref.oop.new" = "Создание экземпляра объекта",
+					"langref.oop.inheritance-encapsulation" = "Наследование и Инкапсуляции",
 					"langref.oop.properties" = {
 						"Свойства", {
 							"langref.oop.properties.intro" = "Введение",
@@ -121,12 +123,12 @@
 					// "langref.oop.properties-multi" = "Многомерные свойства",
 					// "langref.oop.properties-empty" = "Пустые свойства",
 					// "langref.oop.constructor" = "Конструкторы и деструкторы",
-					"langref.oop.inheritance-encapsulation" = "Наследование и Инкапсуляции",
 					// "langref.oop.encapsulation" = "Инкапсуляции",
 					"langref.oop.iterations" = "Итераторы объектов",
 					"langref.oop.magic-methods" = "Магические методы",
 					"langref.oop.clone" = "Клонирование объектов",
 					"langref.oop.type-check" = "Контроль типа",
+					"langref.oop.alternative-this" = "Альтернативный this",
 					"langref.oop.autoload" = "Автоматическая загрузка классов",
 				},
 			},
