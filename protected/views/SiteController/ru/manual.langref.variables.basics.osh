@@ -54,27 +54,7 @@ var ex2;
 прямо в момент создания. В случаях когда в одной строке объявляются и инициализируются несколько переменных, используется
 один оператор <code>=</code> с перечислением через запятую значений, каждое из которых присвоится соответствующей переменной.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.basics.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  var ex1;
-  if(ex1 === null){
-    print "ex1 is null";
-  }else{
-    print "ex1 is not null";
-  }
-  var v1 = "hello";
-  var v2 = "world";
-  print "v1:${v1}, v2:${v2}";
-  
-  var a, b, c = 1, 2, 3;
-  print "a:${a}, b:${b}, c:${c}";
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.basics.osh"})%>
 
 <h3>Создание глобальных переменных</h3>
 
@@ -82,26 +62,7 @@ var ex2;
 В OS cоздание глобальных переменных осуществляется без использования команды <code>var</code>. Такие переменные доступны 
 из любой точки программы. Создание функций подчиняется такому же правилу.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.global.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  // sqr - это глобальная функция
-  function sqr(a){      // идентично: sqr = function(a){ ...
-    return a*a
-  }
-  print "sqr(5): "..sqr(5)
-  
-  // sqrt - это локальная функция
-  var function sqrt(a){ // идентично: var sqrt = function(a){ ...
-    return a**0.5
-  }
-  print "sqrt(25): "..sqrt(25)
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.global.osh"})%>
 
 <p>
 Если быть совсем уж точным, то глобальные переменные создаются в текущем окружении. Доступ к глобальной переменной <code>user</code>

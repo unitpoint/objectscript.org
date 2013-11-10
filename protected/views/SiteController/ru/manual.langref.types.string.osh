@@ -37,32 +37,7 @@
 обратной косой черты будут интерпретированы как обычные символы: это означает, что если вы попытаетесь использовать другие 
 управляющие последовательности, такие как <code>\n</code> и др., они будут выведены как есть вместо какого-либо особого поведения.
 
-<div class="row">
-  <div class="col-md-10 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.single.osh"})%>
-	
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  echo 'Это простая строка<br />';
-
-  // Выводит: Однажды Арнольд сказал: "I'll be back"
-  echo 'Однажды Арнольд сказал: "I\'ll be back"<br />';
-
-  // Выводит: Вы удалили C:\*.*?
-  echo 'Вы удалили C:\\*.*?<br />';
-
-  // Выводит: Вы удалили C:\*.*?
-  echo 'Вы удалили C:\*.*?<br />';
-
-  // Выводит: Это не будет развернуто: \n новая строка
-  echo 'Это не будет развернуто: \n новая строка<br />';
-
-  // Выводит: Переменные expand также either не разворачиваются
-  echo 'Переменные ${expand} также ${either} не разворачиваются<br />';
-%&gt;
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.string.single.osh"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -166,29 +141,7 @@
 При использовании простого heredoc-синтаксиса, он не учитывает первые пробельные символы и перевод строки.
 Кроме этого не учитывается последний перевод строки перед маркером, если он начинается со старта строки.
 
-<div class="row">
-  <div class="col-md-10 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.rawheredoc.osh"})%>
-
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  // Выведет: this is a string
-  echo <<<~~'this is a string~~
-
-  // эта строка начинается и заканчивается символами новой строки
-  echo <<<==='
-
-Harry Potter is due to start
-his fifth year at Hogwarts School
-of Witchcraft and Wizardry.
-
-===
-
-  echo 'end'
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.string.rawheredoc.osh"})%>
 
 <h3 class="anchor-mark"><a name="heredoc"></a>Heredoc-синтаксис</h3>
 
@@ -213,34 +166,7 @@ Heredoc-синтаксис начинается с последовательн�
 Вставка переменной начинается символами <code>${</code> и заканчивается <code>}</code>.
 Если в строку необходимо вставить сами символы <b>${</b>, то их нужно предварить обратным слешем: <code>\${</code>.
 
-<div class="row">
-  <div class="col-md-10 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.injection.osh"})%>
-	
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  echo "this is a string\n";
-
-  // outputs: three plus three is 6
-  echo "three plus three is ${3+3}\n";
-
-  foobar = "blah";
-  // outputs: the value of foobar is blah
-  echo "the value of foobar is ${foobar}\n";
-
-  // outputs: the value of foobar in ${foobar}
-  echo "the value of foobar in \${foobar}\n";
-
-  function factorial(a){
-    return a <= 1 ? 1 : a*factorial(a-1)
-  }
-  var p = 10;
-  // outputs: factorial of 10 is 3628800
-  echo "factorial of ${p} is ${factorial(p)}\n";
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.string.injection.osh"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -321,44 +247,10 @@ Heredoc-синтаксис начинается с последовательн�
 </p>
 
 <h3>Пример работы <code>stringOf</code> и <code>toString</code></h3>
-<div class="row">
-  <div class="col-md-10 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.string.convert.osh"})%>
-	
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  var function d(a){
-	return a === null ? "   &lt;null&gt;" : a;
-  }
 
-  printf("        %9s %9s\n", 'stringOf', 'toString')
-  printf("---------------------------\n")
-  printf("  null: %9s %9s\n", d(stringOf(null)), d(toString(null)))
-  printf("  true: %9s %9s\n", d(stringOf(true)), d(toString(true)))
-  printf(" false: %9s %9s\n", d(stringOf(false)), d(toString(false)))
-  printf("  \"12\": %9s %9s\n", d(stringOf("12")), d(toString("12")))
-  printf("\"0x12\": %9s %9s\n", d(stringOf("0x12")), d(toString("0x12")))
-  printf("\"0123\": %9s %9s\n", d(stringOf("0123")), d(toString("0123")))
-  printf("\"0b10\": %9s %9s\n", d(stringOf("0b10")), d(toString("0b10")))
-  printf("    12: %9s %9s\n", d(stringOf(12)), d(toString(12)))
-
-  var obj = {
-    valueOf = function(){
-      return 10
-    }
-  }
-  printf("   obj: %9s %9s\n", d(stringOf(obj)), d(toString(obj)))
-
-  var arr = [1,2,3]
-  printf(" array: %9s %9s\n", d(stringOf(arr)), d(toString(arr)))
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.string.convert.osh"})%>
 
 <p>
-<div class="row">
-  <div class="col-md-10">
 <table class="table table-striped">
   <thead>
 	<tr>
@@ -420,5 +312,3 @@ Heredoc-синтаксис начинается с последовательн�
 	</tr>
   </tbody>
 </table>
-  </div>
-</div>

@@ -3,23 +3,7 @@
 
 <h3>Файл index.osh</h3>
 
-<div class="row">
-  <div class="col-md-10 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.firstpage.osh"})%>
-
-<pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<html>
- <head>
-  <title>Тестируем ObjectScript</title>
- </head>
- <body>
- &lt;% echo '<p>Привет мир!</p>' %&gt; 
- Я программирую на OS, 5 в степени 2 = &lt;%=5**2 %&gt;
- </body>
-</html><% @controller.endWidget("HtmlEncodeWidget") %>
-</pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.firstpage.osh", lang="html"})%>
 
 <p>Откройте данный файл в браузере, набрав имя вашего веб-сервера и <code>/index.osh</code>. При локальной разработке эта ссылка может быть 
 чем-то вроде <code>http://localhost/index.osh</code> или <code>http://127.0.0.1/index.osh</code> (это зависит от настроек вашего веб-сервера).
@@ -42,6 +26,7 @@
 <div class="row">
   <div class="col-md-10">
 <pre class="prettyprint"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<!DOCTYPE html>
 <html>
  <head>
   <title>Тестируем ObjectScript</title>

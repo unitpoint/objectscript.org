@@ -5,44 +5,7 @@
 
 <h3>Вывод браузера</h3>
 
-<div class="row">
-  <div class="col-md-10 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.useful.osh"})%>
-
-<pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<html>
- <head>
-  <title>Show user agent using ObjectScript</title>
- </head>
- <body>
- &lt;% echo _SERVER["HTTP_USER_AGENT"] %&gt; 
- <p>
-  Browser:
-  &lt;%
-    var userAgent = _SERVER["HTTP_USER_AGENT"].lower()
-    if(userAgent.find("firefox/")){
-      echo "Firefox"
-    }else if(userAgent.find("opera/") || userAgent.find("opr/")){
-      echo "Opera"
-    }else if(userAgent.find("chrome/")){
-      echo "Chrome"
-    }else if(userAgent.find("safari/")){
-      echo "Safari"
-    }else if(userAgent.find("iphone/")){
-      echo "Iphone"
-    }else if(userAgent.find("applewebkit/")){
-      echo "AppleWebKit"
-    }else if(userAgent.find("msie ")){
-      echo "MSIE"
-    }else{
-      echo "Not detected"
-    }
-  %&gt;
- </p> </body>
-</html><% @controller.endWidget("HtmlEncodeWidget") %>
-</pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.useful.osh", lang="html"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">

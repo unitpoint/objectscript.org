@@ -40,26 +40,7 @@ taregt="_blank">руководстве по числам с плавающей �
 
 <h3>Пример с точностью чисел</h3>
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.numbers.osh"})%>
-
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  printf("%.20f\n", 0.94 - 0.01)  // outputs: 0.93000000000000005000
-  printf("%f\n", 0.94 - 0.01)     // outputs: 0.930000
-
-  // use human friendly number format
-  printf("%n\n", 0.94 - 0.01)     // outputs: 0.93
-
-  // numbers are converted to string using human friendly format
-  echo(0.94 - 0.01, "\n")         // outputs: 0.93
-
-  echo(typeOf(10.5), "\n")        // outputs: number
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.numbers.osh"})%>
 
 <h3>Сравнение чисел с плавающей точкой</h3>
 
@@ -72,25 +53,7 @@ taregt="_blank">руководстве по числам с плавающей �
 
 <h3><code>a</code> и <code>b</code> равны до 5-ти знаков</h3>
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.numbers.compare.osh"})%>
-
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-&lt;%
-  a = 1.23456789;
-  b = 1.23456780;
-  epsilon = 0.00001;
-
-  if(math.abs(a - b) < epsilon){
-    echo "true";
-  }else{
-    echo "false";
-  }
-%&gt;
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.numbers.compare.osh"})%>
 
 <h3>Преобразование в число</h3>
 
@@ -98,8 +61,6 @@ taregt="_blank">руководстве по числам с плавающей �
 При выполнении математических операций, OS автоматически выполняет следующие преобразования:
 
 <p>
-<div class="row">
-  <div class="col-md-11">
 <table class="table table-striped">
   <thead>
 	<tr>
@@ -131,24 +92,13 @@ taregt="_blank">руководстве по числам с плавающей �
 	</tr>
   </tbody>
 </table>
-  </div>
-</div>
 
 <p>
 По умолчанию в OS математические операторы не работают с др. типами данных. Это сделано для того, 
 чтобы исключить невидимые для программиста преобразования типов и иметь больший контроль над 
 значениями. Если попытаться сложить строку и число, произойдет исключение времени выполнения.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.numbers.num-plus-str.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  echo(12 + "2")
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.numbers.num-plus-str.osh"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -221,41 +171,10 @@ __get@port = function(){
 <%}/*if*/%>
 
 <h3>Пример работы <code>numberOf</code> и <code>toNumber</code></h3>
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.number.convert.osh"})%>
-	
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  printf("        %9s %9s\n", 'numberOf', 'toNumber')
-  printf("---------------------------\n")
-  printf("  null: %9s %9s\n", numberOf(null), toNumber(null))
-  printf("  true: %9s %9s\n", numberOf(true), toNumber(true))
-  printf(" false: %9s %9s\n", numberOf(false), toNumber(false))
-  printf("  \"12\": %9s %9s\n", numberOf("12"), toNumber("12"))
-  printf("\"0x12\": %9s %9s\n", numberOf("0x12"), toNumber("0x12"))
-  printf("\"0123\": %9s %9s\n", numberOf("0123"), toNumber("0123"))
-  printf("\"0b10\": %9s %9s\n", numberOf("0b10"), toNumber("0b10"))
-  printf("\"12lo\": %9s %9s\n", numberOf("12lo"), toNumber("12lo"))
-  printf("    12: %9s %9s\n", numberOf(12), toNumber(12))
 
-  var obj = {
-    valueOf = function(){
-      return 10
-    }
-  }
-  printf("   obj: %9s %9s\n", numberOf(obj), toNumber(obj))
-
-  var arr = [1,2,3]
-  printf(" array: %9s %9s\n", numberOf(arr), toNumber(arr))
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.number.convert.osh"})%>
 
 <p>
-<div class="row">
-  <div class="col-md-11">
 <table class="table table-striped">
   <thead>
 	<tr>
@@ -317,5 +236,4 @@ __get@port = function(){
 	</tr>
   </tbody>
 </table>
-  </div>
-</div>
+

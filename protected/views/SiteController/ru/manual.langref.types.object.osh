@@ -30,37 +30,11 @@
 <p>
 Элементы объекта также называют свойствами объекта.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  b = "age"
-  a = {
-    username = "Ivan", 
-    password = "qwerty", 
-    "additional", 
-    [b] = 23,
-  }
-  printf("      obj: %s\n", a)
-  printf("typeOf(a): %s\n", typeOf(a))
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.osh"})%>
 
 <h3>Пример объекта с индексом, начинающимся с 1</h3>
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.1.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  a = { 1 = 'January ','February','March' }
-  print(a)
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+
+<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.1.osh"})%>
 
 <h3>Доступ к свойствам</h3>
 
@@ -72,20 +46,7 @@
 <li><p>через точку <code>obj.key</code> - это эквивалентно <code>obj["key"]</code>
 </ol>
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.key.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  b = "one";
-  a = { one = "great" };
-  print(a[b])             // outputs: great
-  print(a["one"])         // outputs: great
-  print(a.one)            // outputs: great
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.key.osh"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -102,22 +63,7 @@
 Это означает, что не обязательно сохранять результат во временную переменную, чтобы получить доступ к свойствам
 возвращаемого объекта.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.dereferencing.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  function getObject(){
-    return { one = "awesome" }
-  }
-  b = "one";
-  print(getObject()[b])             // outputs: awesome
-  print(getObject()["one"])         // outputs: awesome
-  print(getObject().one)            // outputs: awesome
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.dereferencing.osh"})%>
 
 <h3>Удаление свойств объекта</h3>
 
@@ -125,45 +71,13 @@
 Удаление свойств объекта осуществляется оператором <code>delete</code>, но в отличии от массива, переиндексации
 свойств не происходит. Это означает, что все существующие свойства остаются с прежними ключами.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.delete.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  a = {
-    username = "Ivan", 
-    password = "qwerty", 
-    age = 23,
-  }
-  printf("before: %s\n", a)
-  delete a.password
-  printf(" after: %s\n", a)
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.delete.osh"})%>
 
 <h3>Итерация по свойствам объекта</h3>
 
 <p>
 Чтобы обойти все свойства объекта в OS существует специальная конструкция <code>for in</code>.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.objects.iter.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  a = {
-    username = "Ivan", 
-    password = "qwerty", 
-    age = 23,
-  }
-  for(key, value in a){
-    print "${key} = ${value}"
-  }
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.iter.osh"})%>
 
 

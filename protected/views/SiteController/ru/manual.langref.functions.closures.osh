@@ -3,23 +3,7 @@
 Ведь OS разрешает создавать функции по ходу выполнения скрипта. И эти функции имеют доступ к переменным внешних функций - это
 и есть замыкание.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.functions.closure.osh"})%>
-<pre class="prettyprint linenums lang-js">
-  function start(a){
-    return function(){
-      return a++;
-    }
-  }
-  func = start(10)
-  print(func())    // выведет: 10
-  print(func())    // выведет: 11
-  print(func())    // выведет: 12
-  print(func())    // выведет: 13
-</pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.closure.osh"})%>
 
 <p>
 В данном примере функция <code>start</code> возвращает др. анонимную функцию, которая присваивается в переменную <code>func</code>, 

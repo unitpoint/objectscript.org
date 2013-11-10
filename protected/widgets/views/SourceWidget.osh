@@ -1,11 +1,22 @@
 ﻿<div class="row">
   <div class="col-md-<%=@width || 11%> badge-src">
 	<%@controller.widget('BadgeSourceWidget', {view=@source})%>
-<pre class="prettyprint linenums lang-js">
+<pre class="prettyprint linenums lang-<%=@lang || "js"%>">
 <%
 	echo html.encode(File.readContents(_SERVER.DOCUMENT_ROOT.."/"..@source)
 				.replace{
-					[Regexp("#^(\xef\xbb\xbf)?<pre[^>]+>#s")] = "<pre>",
+					[Regexp("#(\n\r?)+$#m")] = "\n",
+					[Regexp("#^(\xef\xbb\xbf)?<pre[^>]*><%\n*#s")] = "\n",
+					[Regexp("#\n+%></pre>\s*$#s")] = "\n",
+					[Regexp("#^\s+#s")] = {|m|
+						var lines = m[0].split("\n")
+						for(var count = #lines; count > 1 && lines[0].trim() == ""; ){
+							delete lines[0]
+							count--
+						}
+						return "\n" .. lines.join("\n")
+					},
+					// [Regexp("#^(\xef\xbb\xbf)?<pre[^>]*>#s")] = "<pre>",
 					[Regexp("#\t#")] = "    ",
 				})
 %>

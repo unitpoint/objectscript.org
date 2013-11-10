@@ -1,18 +1,8 @@
 ﻿<p>
 В OS функция может возвращать одно значение, ничего не не возвращать или возвращать много значений, перечисленных через запятую.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.functions.return-values.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  var func = function(){ return 1, 2 }
-  var x, y = func()
-  print "x: ${x}, y: ${y}"
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.return-values.osh"})%>
+
 
 <div class="alert alert-info">
 См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.return"}}%>">Команда return</a>

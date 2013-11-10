@@ -2,23 +2,7 @@
 Область видимости локальной переменной ограничена текущим файлом или текущим блоком кода. Блок кода - это набор команд между 
 фигурными скобками <nobr><code>{ ... }</code></nobr> (не путать с объектом).
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.scope.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  var a = "hello"
-  ;{
-    var a = a   // можно присвоить значение переменной с верхнего блока
-    print "sub a: "..a   // выведет: hello
-    a = "world"
-    print "sub a: "..a   // выведет: world
-  }
-  print "a: "..a         // выведет: hello
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.scope.osh"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -29,19 +13,7 @@
 <p>
 При объявлении переменной в конструкции <code>for</code>, она существует только в рамках цикла.
 
-<div class="row">
-  <div class="col-md-11 badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view="examples/tutorial.variables.scope-for.osh"})%>
-<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<pre>&lt;%
-  for(var i = 0; i < 5; i++){
-    print "i: "..i
-  }
-  print "after for: "..i // тут локальная переменная i не существует
-%&gt;</pre>
-<% @controller.endWidget("HtmlEncodeWidget") %></pre>
-  </div>
-</div>
+<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.scope-for.osh"})%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
