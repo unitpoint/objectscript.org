@@ -103,7 +103,7 @@ Application = extends Component {
 	getComponent = function(name, config){
 		name || throw "Attempt to create \"null\" component"
 		return @_components[name] || {||
-			config || config = @config.components[name] || throw "Component \"${name}\" config is not set"
+			config || config = @config.components[name] || throw "Component \"${name}\" is not configured"
 			config.enabled === false && throw "Component \"${name}\" is disabled"
 			var component
 			@_components[name] = component = _G[@resolveClass(config.classname || name)](this)
@@ -119,6 +119,10 @@ Application = extends Component {
 	
 	setComponent = function(name, value){
 		@_components[name] = value
+	},
+	
+	__get = function(name){
+		return @getComponent(name)
 	},
 	
 	__get@urlManager = function(){

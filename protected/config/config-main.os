@@ -19,6 +19,10 @@ return {
 		"{widgets}",
 	},
 	components = {
+		session = {
+			classname = "FileSession",
+			
+		}.merge(require("session-local.os", false)),
 		urlManager = {
 		
 		},

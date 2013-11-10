@@ -13,6 +13,14 @@ SiteController = extends Controller {
 		echo content
 	}, */
 
+	init = function(){
+		super()
+		
+		var data = app.session.start()
+		data.counter = (data.counter || 0) + 1
+		data.ip = _SERVER.REMOTE_ADDR
+	},
+
 	actionIndex = function(){ // pass, user){
 		// dump([@classname, {pass=pass, user=user}]); terminate()
 		echo @render("index")
