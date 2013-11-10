@@ -7,7 +7,7 @@
 				.replace{
 					[Regexp("#(\n\r?)+$#m")] = "\n",
 					[Regexp("#^(\xef\xbb\xbf)?<pre[^>]*><%\n*#s")] = "\n",
-					[Regexp("#\n+%></pre>\s*$#s")] = "",
+					[Regexp("#\n+%></pre>\s*$#s")] = "\n",
 					[Regexp("#^\s+#s")] = {|m|
 						var lines = m[0].split("\n")
 						for(var count = #lines; count > 1 && lines[0].trim() == ""; ){
