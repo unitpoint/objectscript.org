@@ -1,0 +1,24 @@
+﻿<pre class="prettyprint lang-cpp">
+  void print( arg1 [, arg2 ...] )
+</pre>
+
+<p>
+<table class="table table-striped">
+  <tbody>
+    <tr class="success">
+	  <td colspan="2">
+		Функция <code>print</code> выводит аргументы с помощью функции 
+		<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}}%>">echo</a>.
+		Между аргументами добавляет <code>"\t"</code> (символ табуляции), а после последнего 
+		аргумента - <code>"\n"</code> (символ новой строки). В случае отсутствия 
+		аргументов, выводит <code>"\n"</code>.
+	  </td>
+    </tr>
+    <tr class="active">
+	  <th>Возвращаемое значение</th>
+	  <td width="100%">
+		Функция ничего не возвращает.
+	  </td>
+    </tr>
+  </tbody>
+</table>

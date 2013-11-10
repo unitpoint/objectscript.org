@@ -30,7 +30,14 @@
 					"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 					"langref.basic-syntax.comments" = "Комментарии",
 					"langref.basic-syntax.functions-call" = "Вызов функции",
-					"langref.basic-syntax.echo" = "Функции вывода информации",
+					"langref.basic-syntax.output" = {
+						"Функции вывода информации", {
+							"langref.basic-syntax.output-intro" = "Введение",
+							"langref.basic-syntax.output.echo" = "echo",
+							"langref.basic-syntax.output.print" = "print",
+							"langref.basic-syntax.output.printf" = "printf",
+						},
+					},
 				},
 			},
 			"langref.types" = {
@@ -139,6 +146,8 @@
 				},
 			},
 			"langref.os-files" = "Файлы osh, os, osc, ost",
+			"langref.name-convention" = "Соглашение об именовании",
+			"langref.modules-and-classes" = "Модули и классы",
 		},
 	},
 }
