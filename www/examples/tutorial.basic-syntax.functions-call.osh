@@ -1,0 +1,13 @@
+﻿<pre style="font-size:18px"><%
+
+    function max(a, b){
+		if(a >= b){
+			return a;
+		}
+		return b;
+	}
+	
+	var c = max(5, 7)
+	echo("max(5, 7): ", c)
+    
+%></pre>

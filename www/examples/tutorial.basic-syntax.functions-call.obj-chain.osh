@@ -1,0 +1,17 @@
+﻿<pre style="font-size:18px"><%
+
+	var obj = {
+		do = function(a){
+			print a;
+			return this;
+		}
+	}
+	obj.do{
+		1: "one"
+	}.do{
+		2: "two"
+	}.do{
+		3: "three"
+	}
+    
+%></pre>

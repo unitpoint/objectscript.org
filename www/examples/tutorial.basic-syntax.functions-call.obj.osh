@@ -1,0 +1,5 @@
+﻿<pre style="font-size:18px"><%
+
+    echo {username="John", age=23}
+    
+%></pre>
