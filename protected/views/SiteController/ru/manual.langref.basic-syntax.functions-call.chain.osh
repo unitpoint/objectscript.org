@@ -1,0 +1,8 @@
+﻿<p>
+В OS цепочка вызовов нескольких функций будет выполняться слева направо.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj-chain.osh"}%>
+<div class="alert alert-info">
+См. 
+<a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">ООП</a>
+</div>

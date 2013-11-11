@@ -1,0 +1,10 @@
+﻿<p>
+OS позволяет создавать функцию внутри др. фукнции, возвращать её и, без сохранения во временную переменную, сразу же 
+вызывать.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.ret-as-func.osh"}%>
+
+<div class="alert alert-info">
+См. 
+<a href="<%=@controller.createUrl{params={page="langref.functions.closures"}}%>">Вложенные функции и замыкания</a>
+</div>

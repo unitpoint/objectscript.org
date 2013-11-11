@@ -5,13 +5,13 @@
 		function(curContent){
 			if(curContent[page]){
 				pageTitle = stringOf(curContent[page]) || curContent[page][0]
-				breadcrumb.push([page, pageTitle])
+				breadcrumb.push{page, pageTitle}
 				content = curContent // [page][1]
 				return true
 			}
 			for(var key, subContent in curContent){
 				if(!stringOf(subContent)){
-					breadcrumb.push([key, subContent[0]])
+					breadcrumb.push{key, subContent[0]}
 					if(_F(subContent[1])){
 						return true;
 					}
@@ -22,7 +22,7 @@
 	}else{
 		for(var key, subContent in content){
 			pageTitle = stringOf(subContent) || subContent[0]
-			breadcrumb.push([key, pageTitle])
+			breadcrumb.push{key, pageTitle}
 			page = key
 			break
 		}
@@ -127,11 +127,11 @@ $(function(){
 		</div>
 	<% } /* if(!stringOf(content[page])) */ %>
 	<%
-		var pageFilename = @pageViewPrefix.."${page}.osh"
+		var pageFilename = "${@pageViewPrefix}${page}.osh"
 		var pageContents = @controller.renderPartial(pageFilename).trim()
 		if(pageContents != ""){
 			echo pageContents			
-			@controller.widget('FixTypoWidget', {file=pageFilename})
+			@controller.widget{'FixTypoWidget', file=pageFilename}
 		}
 	%>
   </div>  

@@ -1,6 +1,6 @@
 ﻿<% if(@row){ %><div class="row"><% } /* if */ %>
   <div class="col-md-<%=@width || 11%> badge-src">
-	<%@controller.widget('BadgeSourceWidget', {view=@source})%>
+	<%@controller.widget{'BadgeSourceWidget', view=@source}%>
 <pre class="prettyprint linenums lang-<%=@lang || "js"%>">
 <%
 	var fixLines = function(str){

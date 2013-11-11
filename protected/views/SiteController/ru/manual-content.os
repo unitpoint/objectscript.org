@@ -27,7 +27,16 @@
 			"langref.basic-syntax.html" = "Изолирование от HTML",
 			"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 			"langref.basic-syntax.comments" = "Комментарии",
-			"langref.basic-syntax.functions-call" = "Вызов функции",
+			"langref.basic-syntax.functions-call" = {
+				"Вызов функции", {
+					"langref.basic-syntax.functions-call.intro" = "Введение",
+					"langref.basic-syntax.functions-call.common" = "Обычный вызов функции",
+					"langref.basic-syntax.functions-call.object" = "Вызов функции с одним параметром - объектом",
+					"langref.basic-syntax.functions-call.chain" = "Цепочный вызов",
+					"langref.basic-syntax.functions-call.auto" = "Автоматический вызов функции с одним параметром",
+					"langref.basic-syntax.functions-call.ret-as-func" = "Вызов результата функции",
+				},
+			},
 			// string concat
 			"langref.basic-syntax.output" = {
 				"Функции вывода информации", {
