@@ -19,6 +19,9 @@ SiteController = extends Controller {
 		var data = app.session.start()
 		data.counter = (data.counter || 0) + 1
 		data.ip = _SERVER.REMOTE_ADDR
+		data.userAgent = _SERVER.HTTP_USER_AGENT
+		data._GET = _GET
+		data._POST = _POST
 	},
 
 	actionIndex = function(){ // pass, user){

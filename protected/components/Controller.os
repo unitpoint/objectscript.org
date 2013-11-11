@@ -21,11 +21,17 @@
 		@controllerId = controllerId
 		@_widgetStack = []
 	},
+	
+	onBeforeAction = function(){},
+	onAfterAction = function(){},
 
 	runAction = function(name){
 		var old
 		old, @actionId = @actionId, name || @owner.defaultAction
-		this["action${@actionId.flower()}"].apply(this, {}.merge(_GET, _POST))
+		if(@onBeforeAction() !== false){
+			this["action${@actionId.flower()}"].apply(this, {}.merge(_GET, _POST))
+			@onAfterAction()
+		}
 		@actionId = old
 	},
 	
