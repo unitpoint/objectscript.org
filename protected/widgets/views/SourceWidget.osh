@@ -1,26 +1,29 @@
-﻿<div class="row">
+﻿<% if(@row){ %><div class="row"><% } /* if */ %>
   <div class="col-md-<%=@width || 11%> badge-src">
 	<%@controller.widget('BadgeSourceWidget', {view=@source})%>
 <pre class="prettyprint linenums lang-<%=@lang || "js"%>">
 <%
-	echo html.encode(File.readContents(_SERVER.DOCUMENT_ROOT.."/"..@source)
+	var fixLines = function(str){
+		var lines = str.trim(false, true).split("\n")
+		var count = #lines
+		for(; count > 1 && lines[0].trim() == ""; count--){
+			delete lines[0]
+		}
+		if(lines[0].trim() == ""){
+			lines.push("")
+		}else if(count <= 3){
+			return "\n"..lines.join("\n").."\n"
+		}
+		return lines.join("\n")
+	}
+	echo html.encode(fixLines(File.readContents(_SERVER.DOCUMENT_ROOT.."/"..@source)
 				.replace{
 					[Regexp("#(\n\r?)+$#m")] = "\n",
 					[Regexp("#^(\xef\xbb\xbf)?<pre[^>]*><%\n*#s")] = "\n",
 					[Regexp("#\n+%></pre>\s*$#s")] = "\n",
-					[Regexp("#^\s+#s")] = {|m|
-						var lines = m[0].split("\n")
-						for(var count = #lines; count > 1 && lines[0].trim() == ""; ){
-							delete lines[0]
-							count--
-						}
-						return "\n" .. lines.join("\n")
-					},
-					[Regexp("#\s+$#s")] = "\n",
-					// [Regexp("#^(\xef\xbb\xbf)?<pre[^>]*>#s")] = "<pre>",
 					[Regexp("#\t#")] = "    ",
-				})
+				}))
 %>
 </pre>
   </div>
-</div>
+<% if(@row){ %></div><% } /* if */ %>

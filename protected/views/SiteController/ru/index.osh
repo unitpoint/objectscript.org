@@ -3,20 +3,21 @@
 %>
 <div class="jumbotron">
 	<h1>ObjectScript</h1>
-	<p>ObjectScript (или OS) - это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования, 
-	который сочетает в себе преимущества таких
-	языков, как JavaScript, Lua, Ruby, Python и PHP. ObjectScript имеет синтаксис из JavaScript, 
-	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python и PHP. 
-	Кроме этого ObjectScript предоставляет свои уникальные возможности.</p>
 	<p>
-	  <a class="btn btn-lg btn-primary" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
-	</p>
+	OS (ObjectScript) - это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования. 
+	OS сочетает преимущества таких языков, как JavaScript, Lua, Ruby, Python и PHP. OS имеет синтаксис из JavaScript, 
+	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python, PHP и мн. др.
+	<p>
+	<a class="btn btn-lg btn-primary" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
 </div>
 
 <div class="bs-callout bs-callout-info">
-	<p>ObjectScript - это универсальный язык программирования. Его можно использовать в программам на C++, 
-	для разработки сайтов, а также как скриптовой язык. Например, этот сайт сделан на ObjectScript и вы можете 
-	загрузить <a href="https://github.com/unitpoint/objectscript.org" target="_blank">исходники	сайта</a> с репозитория на гитхабе.</p>
+	<p>
+	OS - это универсальный язык программирования. Вы можете использовать OS 
+	для разработки сайтов, как скриптовой язык, а также встраивать в программы на C++. 
+	Например, этот сайт сделан на OS,
+	<a href="https://github.com/unitpoint/objectscript.org" target="_blank">исходники сайты objectscript.org</a>
+	распространяются абсолютно бесплатно.</p>
 </div>
 
 <div class="page-header">
@@ -24,18 +25,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-<pre class="prettyprint linenums"><% @controller.beginWidget("HtmlEncodeWidget") %>
-<html>
- <head>
-  <title>Тестируем ObjectScript</title>
- </head>
- <body>
- &lt;% echo '<p>Привет мир!</p>' %&gt;
- </body>
-</html><% @controller.endWidget("HtmlEncodeWidget") %>
-</pre>
-  </div>
+  <%@controller.widget('SourceWidget', {source="examples/tutorial.firstpage-simple.osh", lang="html", row=false, width=6})%>
   <div class="col-md-6">
 	<p>Откройте данный файл в браузере, набрав имя вашего веб-сервера и <code>/index.osh</code>. При локальной разработке эта ссылка может быть 
 	чем-то вроде <code>http://localhost/index.osh</code> (это зависит от настроек вашего веб-сервера).</p>
@@ -55,19 +45,7 @@
 </div>
 
 <div class="row">
-  <div class="col-md-6">
-<pre class="prettyprint linenums lang-js">
-function fib(n){
-  var a, b, r = 0, 1, [0];
-  for(; b < n;){
-    r.push(b);
-    a, b = b, a+b;
-  }
-  return r;
-}
-print fib(100);
-</pre>
-  </div>
+  <%@controller.widget('SourceWidget', {source="examples/tutorial.fibonacci.os", row=false, width=6})%>
   <div class="col-md-6">
 	<p>Эта программа выводит числа фибоначчи в интервале от 0 до 100 в виде массива. Для ее запуска,
 	вопользуйтесь консольным приложением для запуска скриптов ObjectScript:</p>
