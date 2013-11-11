@@ -15,6 +15,6 @@
 	<img src="img/denwer-err-500.png" class="img-thumbnail">
 </p>
 <p>
-То это означает, что сервис <code>OS-FCGI</code> не запущен, либо он слушает не тот порт, который прописан в
+То это означает, что сервис <code>os-fcgi</code> не запущен, либо он слушает не тот порт, который прописан в
 настройках веб-сервера. Следуйте инструкции 
 <a href="<%=@controller.createUrl{params={page="install.win.denwer"}}%>">Установка под apache на Denwer</a> для решения этой проблемы. 

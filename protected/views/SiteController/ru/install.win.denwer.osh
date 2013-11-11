@@ -120,4 +120,4 @@ C:\WebServers\denwer\Run.exe
 
 <p>
 Готово! Мы полностью настроили в Denwer-е виртуальный хост с именем <code>http://ostest</code>, который будет обрабатываться
-по интерфейсу FastCGI программой <code>OS-FCGI</code>.
+по интерфейсу FastCGI программой <code>os-fcgi</code>.
