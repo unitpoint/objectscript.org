@@ -1,0 +1,68 @@
+﻿<!-- <script type="text/javascript" src="ZeroClipboard.js"></script> -->
+<script type="text/javascript">
+$(function(){
+	/* clip.on( 'dataRequested', function (client, args) {
+		client.setText( "Copy me!" );
+	}); */
+	$("input").focus(function(){
+		// this.select();
+		// console.log("select", this)
+	}).click(function(){
+		this.select();
+		// console.log("click", this)
+	}).keyup(function(){
+		// console.log("keyup", this)
+		return false;
+	}).keydown(function(){
+		// console.log("keydown", this)
+		return false;
+	});
+});
+</script>
+
+<table class="table vertical-align">
+  <tbody class="bold-sub-links">
+    <tr>
+	  <td width="45%">
+		<a href="https://github.com/unitpoint/objectscript/" 
+			target="_blank" title="Перейти в репозиторий open-source ObjectScript">https://github.com/unitpoint/objectscript/</a>
+	  </td>
+	  <td class="success">
+		Перейти в репозиторий исходных кодов ObjectScript
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control" type="text" value="https://github.com/unitpoint/objectscript.git" />
+	  </td>
+	  <td class="success">
+		Клонировать репозиторий ObjectScript по ссылке HTTPS
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control" type="text" value="git@github.com:unitpoint/objectscript.git" />
+	  </td>
+	  <td class="success">
+		Клонировать репозиторий ObjectScript по ссылке SSH
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control ro-link" type="text" value="https://github.com/unitpoint/objectscript" />
+	  </td>
+	  <td class="success">
+		Клонировать репозиторий ObjectScript по ссылке Subversion
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<a href="https://github.com/unitpoint/objectscript/archive/master.zip" 
+			target="_blank" title="Скачать open-source ObjectScript">master.zip</a>
+	  </td>
+	  <td class="success">
+		Скачать исходники ObjectScript одним архивом
+	  </td>
+	</tr>
+  </tbody>
+</table>

@@ -34,8 +34,8 @@ SiteController = extends Controller {
 		echo @render("install", {page = page})
 	},
 	
-	actionDownload = function(){
-		echo @render("download")
+	actionDownload = function(page){
+		echo @render("download", {page = page})
 	},
 	
 	actionManual = function(page){

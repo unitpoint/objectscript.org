@@ -150,3 +150,11 @@ code, pre {
 .anchor-mark a {
 	position: absolute; top:-70px;
 }
+
+.bold-sub-links a {
+	font-weight: bold;
+}
+
+table.vertical-align td {
+	vertical-align: middle !important;
+}

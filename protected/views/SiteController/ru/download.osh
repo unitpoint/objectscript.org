@@ -1,4 +1,15 @@
 ﻿<% 
+	@controller.widget("ManualWidget", {
+		content = require("download-content.os"),
+		page = @page,
+		pageViewPrefix = path.dirname(__FILE__).."/download-",
+		breadcrumb = {
+			url = @controller.createUrl(),
+			name = _T.MENU_DOWNLOAD,
+		},
+	})
+	return;
+
 	@controller.pageTitle = "Загрузка ObjectScript"
 %>
 <div class="page-header">
