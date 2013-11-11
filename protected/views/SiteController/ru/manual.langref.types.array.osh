@@ -19,7 +19,7 @@
 Новый пустой масив можно создать конструкцией <code>[]</code>.
 
 <h3>Пример массивов</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.arrays.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.arrays.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">

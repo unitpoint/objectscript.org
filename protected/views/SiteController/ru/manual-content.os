@@ -28,6 +28,7 @@
 			"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 			"langref.basic-syntax.comments" = "Комментарии",
 			"langref.basic-syntax.functions-call" = "Вызов функции",
+			// string concat
 			"langref.basic-syntax.output" = {
 				"Функции вывода информации", {
 					"langref.basic-syntax.output-intro" = "Введение",
@@ -139,6 +140,8 @@
 					"langref.oop.alternative-this" = "Альтернативный this",
 					"langref.oop.autoload" = "Автоматическая загрузка классов",
 					// __object
+					// super call, super access
+					// Number.times
 				},
 			},
 			"langref.exceptions" = "Исключения",

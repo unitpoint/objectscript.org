@@ -25,4 +25,4 @@
 </table>
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.constants.predefined.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.constants.predefined.osh"}%>

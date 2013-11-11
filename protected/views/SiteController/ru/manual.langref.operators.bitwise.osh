@@ -51,7 +51,7 @@
 </table>
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.bitwise.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.bitwise.osh"}%>
 
 <h3>Побитовые операции с <code>null</code></h3>
 

@@ -54,7 +54,7 @@ var ex2;
 прямо в момент создания. В случаях когда в одной строке объявляются и инициализируются несколько переменных, используется
 один оператор <code>=</code> с перечислением через запятую значений, каждое из которых присвоится соответствующей переменной.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.basics.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.variables.basics.osh"}%>
 
 <h3>Создание глобальных переменных</h3>
 
@@ -62,7 +62,7 @@ var ex2;
 В OS cоздание глобальных переменных осуществляется без использования команды <code>var</code>. Такие переменные доступны 
 из любой точки программы. Создание функций подчиняется такому же правилу.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.global.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.variables.global.osh"}%>
 
 <p>
 Если быть совсем уж точным, то глобальные переменные создаются в текущем окружении. Доступ к глобальной переменной <code>user</code>

@@ -25,7 +25,7 @@
 </div>
 
 <div class="row">
-  <%@controller.widget('SourceWidget', {source="examples/tutorial.firstpage-simple.osh", lang="html", row=false, width=6})%>
+  <%@controller.widget{'SourceWidget', source="examples/tutorial.firstpage-simple.osh", lang="html", row=false, width=6}%>
   <div class="col-md-6">
 	<p>Откройте данный файл в браузере, набрав имя вашего веб-сервера и <code>/index.osh</code>. При локальной разработке эта ссылка может быть 
 	чем-то вроде <code>http://localhost/index.osh</code> (это зависит от настроек вашего веб-сервера).</p>
@@ -45,7 +45,7 @@
 </div>
 
 <div class="row">
-  <%@controller.widget('SourceWidget', {source="examples/tutorial.fibonacci.os", row=false, width=6})%>
+  <%@controller.widget{'SourceWidget', source="examples/tutorial.fibonacci.os", row=false, width=6}%>
   <div class="col-md-6">
 	<p>Эта программа выводит числа фибоначчи в интервале от 0 до 100 в виде массива. Для ее запуска,
 	вопользуйтесь консольным приложением для запуска скриптов ObjectScript:</p>
@@ -61,4 +61,4 @@
   бинарные файлы в разделе <a href="<%=@controller.createUrl{action="download"}%>">Загрузки</a>.</p>
 </div>
 
-<%@controller.widget('FixTypoWidget', {file=__FILE__})%>
+<%@controller.widget{'FixTypoWidget', file=__FILE__}%>

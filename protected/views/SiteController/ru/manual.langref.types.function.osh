@@ -5,4 +5,4 @@
 Функция может возвращать вычисленное значение, при этом возвращаемое значение подставляется на место вызова функции, 
 где бы этот вызов ни находился. В качестве частного случая функция может не иметь аргументов и не возвращать значения.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.osh"}%>

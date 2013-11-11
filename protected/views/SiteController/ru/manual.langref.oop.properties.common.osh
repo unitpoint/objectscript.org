@@ -6,4 +6,4 @@
 Если геттер/сеттер не реализует доступ к запрашиваемому свойству, необходимо вызвать метод родительского класса
 через конструкцию <code>super</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties-common.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties-common.osh"}%>

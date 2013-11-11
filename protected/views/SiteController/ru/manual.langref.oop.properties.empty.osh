@@ -9,4 +9,4 @@ OS также позволяет получить доступ к свойств
 По умолчанию <code>__setempty</code> является алиасом на метод <code>push</code>,
 а <code>__getempty</code> - алиасом на <code>pop</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties-empty.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties-empty.osh"}%>

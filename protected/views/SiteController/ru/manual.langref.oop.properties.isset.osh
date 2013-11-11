@@ -4,7 +4,7 @@
 будет <code>null</code>, то видимо свойство не существует или не задано. А что если запрашиваемое свойство
 не существует, а в коде объекта реализовано исключение при доступе к несуществующему свойству. Например вот так:
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties.isset-exception.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties.isset-exception.osh"}%>
 
 <p>
 В этом случае описанный выше способ (через чтение свойства) не подойдет. 
@@ -29,4 +29,4 @@
 Если метод не существует, то возвращает <code>false</code>.
 </ol>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties.isset.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties.isset.osh"}%>

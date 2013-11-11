@@ -3,7 +3,7 @@
 остальные - копируются по ссылке. Что это значит? Например, если вы присвоите массив сначало одной переменной, потом присвоите эту переменную 
 другой, то обе переменные будут ссылаться на один и тот же экземпляр массива.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.copy-by-ref.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.copy-by-ref.osh"}%>
 
 <p>
 Мы присвоили значение <code>"Hello"</code> элементу массива по индексу <code>1</code>. Изменения появились
@@ -13,7 +13,7 @@
 Клонирование объектов позволяет сделать копию исходного объекта. 
 В OS это делается вызовом метода <code>clone</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.clone.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.clone.osh"}%>
 
 <p>
 Теперь значение <code>"Hello"</code> сохранилось только в переменной <code>b</code>. 
@@ -23,7 +23,7 @@
 без рекурсивного копирования значений внутри контейнера. Этой спецификации должны придерживаться и пользовательские 
 структуры и данные, подключаемые из C++.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.clone-sub-by-ref.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.clone-sub-by-ref.osh"}%>
 
 <p>
 В выше приведенном примере <code>"Greate"</code> отобразится только в массиве <code>b</code>, 
@@ -36,4 +36,4 @@
 target="_blank">библиотеки std</a> 
 
 <h3>Пример глубокого клонирования</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.clone-deep.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.clone-deep.osh"}%>

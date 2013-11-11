@@ -1,7 +1,7 @@
 ﻿<p>
 В OS функция может возвращать одно значение, ничего не не возвращать или возвращать много значений, перечисленных через запятую.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.return-values.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.return-values.osh"}%>
 
 
 <div class="alert alert-info">

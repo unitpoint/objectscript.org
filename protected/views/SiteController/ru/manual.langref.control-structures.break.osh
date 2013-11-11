@@ -6,7 +6,7 @@
 части текущей итерации цикла и перехода к выполнению следующей итерации.
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.control-structures.break-continue.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.break-continue.osh"}%>
 
 <div class="alert alert-info">
 См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}}%>">for / for in</a>

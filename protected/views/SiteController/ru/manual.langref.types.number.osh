@@ -40,7 +40,7 @@ taregt="_blank">руководстве по числам с плавающей �
 
 <h3>Пример с точностью чисел</h3>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.numbers.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.numbers.osh"}%>
 
 <h3>Сравнение чисел с плавающей точкой</h3>
 
@@ -53,7 +53,7 @@ taregt="_blank">руководстве по числам с плавающей �
 
 <h3><code>a</code> и <code>b</code> равны до 5-ти знаков</h3>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.numbers.compare.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.numbers.compare.osh"}%>
 
 <h3>Преобразование в число</h3>
 
@@ -98,7 +98,7 @@ taregt="_blank">руководстве по числам с плавающей �
 чтобы исключить невидимые для программиста преобразования типов и иметь больший контроль над 
 значениями. Если попытаться сложить строку и число, произойдет исключение времени выполнения.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.numbers.num-plus-str.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.numbers.num-plus-str.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -172,7 +172,7 @@ __get@port = function(){
 
 <h3>Пример работы <code>numberOf</code> и <code>toNumber</code></h3>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.number.convert.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.number.convert.osh"}%>
 
 <p>
 <table class="table table-striped">

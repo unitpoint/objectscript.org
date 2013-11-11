@@ -5,4 +5,4 @@
 В OS анонимную функцию можно передавать в параметр др. функции, можно возвращать, можно вызывать, 
 не сохраняя ее во временную переменную.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.anonymous.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.anonymous.osh"}%>

@@ -91,6 +91,10 @@ Application = extends Component {
 	},
 	
 	createWidget = function(controller, classname, params){
+		if(objectOf(classname)){
+			params && throw "3rd argument should not be used here"
+			classname, params = classname.shift(), classname
+		}
 		var widget = _G[@resolveClass(classname)](controller)
 		widget is Widget || throw "Error widget class: ${widget.classname}"
 		for(var key, value in params){

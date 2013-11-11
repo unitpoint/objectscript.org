@@ -5,7 +5,7 @@
 
 <h3>Вывод браузера</h3>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.useful.osh", lang="html"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.useful.osh", lang="html"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">

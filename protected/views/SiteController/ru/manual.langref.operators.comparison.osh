@@ -105,4 +105,4 @@
 не пустое значение всегда больше, чем пустое.
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.comparison.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.comparison.osh"}%>

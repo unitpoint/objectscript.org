@@ -63,7 +63,7 @@
 </table>
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.arithmetic.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.arithmetic.osh"}%>
 
 <h3>Арифметические операции с <code>null</code></h3>
 

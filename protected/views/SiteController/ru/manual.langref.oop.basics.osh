@@ -3,7 +3,7 @@
 Мы можем получать и устанавливать свойства объекта, используя либо оператор <code>.</code> (точка), 
 либо оператор <code>[]</code>. Следующие три фрагмента кода делают одно и то же.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.basics.1.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.basics.1.osh"}%>
 
 <p>
 Эти примеры показывают, насколько более гибки объекты в OS по сравнению, например, с объектами в C++. 
@@ -21,7 +21,7 @@
 это объект на ряду с другими, которые создаются фигурными скобками, но когда такой объект используется прототипом для значений, 
 то его называют типом или классом значения.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.basics.array.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.basics.array.osh"}%>
 
 <p>
 Когда OS ищет свойство, он делает это сначало в экземпляре объекта, если не находит, ищет в его прототипе, затем в прототипе 

@@ -21,7 +21,7 @@
 </p>
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.ternary.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.ternary.osh"}%>
 
 
 <div class="alert alert-info">

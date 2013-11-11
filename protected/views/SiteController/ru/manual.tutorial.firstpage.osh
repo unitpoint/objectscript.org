@@ -3,7 +3,7 @@
 
 <h3>Файл index.osh</h3>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.firstpage.osh", lang="html"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.firstpage.osh", lang="html"}%>
 
 <p>Откройте данный файл в браузере, набрав имя вашего веб-сервера и <code>/index.osh</code>. При локальной разработке эта ссылка может быть 
 чем-то вроде <code>http://localhost/index.osh</code> или <code>http://127.0.0.1/index.osh</code> (это зависит от настроек вашего веб-сервера).

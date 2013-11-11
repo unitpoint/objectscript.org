@@ -43,7 +43,7 @@
 </p>
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.logical.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.logical.osh"}%>
 
 
 <div class="alert alert-info">

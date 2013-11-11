@@ -3,7 +3,7 @@
 <code>Person</code> и <code>IvanPerson</code>. <code>IvanPerson</code> наследует (расширяет) класс <code>Person</code>, 
 реализуя дополнительный функционал.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.inheritance.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.inheritance.osh"}%>
 
 <h3>Инкапсуляции</h3>
 

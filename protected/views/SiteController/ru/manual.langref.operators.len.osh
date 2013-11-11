@@ -20,4 +20,4 @@ OS транслирует команду <code>#a</code> в <code>a.__len()</cod
 </p>
 
 <h3>Пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.len.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.len.osh"}%>

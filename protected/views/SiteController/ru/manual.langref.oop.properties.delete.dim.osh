@@ -3,4 +3,4 @@ OS разрешает объявить метод для удаления мно
 Такой метод должен иметь имя <code>__deldim</code>, в параметрах которому передаются два (или больше) ключа 
 свойства, которое нужно удалить.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties.delete-dim.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties.delete-dim.osh"}%>

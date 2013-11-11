@@ -15,6 +15,6 @@ OS поддерживает альтернативный синтаксис дл
 Объявление функции начинается с <code>{|</code>, затем следует описание аргументов функции через запятую 
 (аргументы могут отсутствовать), после чего <code>|</code> и само тело функции с командами, в завершении <code>}</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.alternative.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.alternative.osh"}%>
 
 

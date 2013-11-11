@@ -2,7 +2,7 @@
 Область видимости локальной переменной ограничена текущим файлом или текущим блоком кода. Блок кода - это набор команд между 
 фигурными скобками <nobr><code>{ ... }</code></nobr> (не путать с объектом).
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.scope.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.variables.scope.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -13,7 +13,7 @@
 <p>
 При объявлении переменной в конструкции <code>for</code>, она существует только в рамках цикла.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.variables.scope-for.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.variables.scope-for.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">

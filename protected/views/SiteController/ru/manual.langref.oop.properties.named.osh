@@ -3,4 +3,4 @@
 вида  <code>__get@prop</code>, где <code>prop</code> - название свойства, например, <code>__get@color</code>. 
 Сеттер - аналогично, только префикс в имени должен быть <code>__set@</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties.osh"}%>

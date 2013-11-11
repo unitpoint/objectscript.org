@@ -17,7 +17,7 @@
 Результатом выполнения оператора присваивания является само присвоенное значение. Таким образом, результат 
 выполнения <code>a = 3</code> будет равен <code>3</code>. Это позволяет делать некоторые трюки.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.1.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.1.osh"}%>
 
 <p>
 OS позволяет инициализировать несколько переменных за один раз. При этом нужно указать перечисление (через запятую) 
@@ -31,12 +31,12 @@ OS позволяет инициализировать несколько пер
 </div>
 </p>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.2.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.2.osh"}%>
 
 <p>
 Интересное следствие из этого то, что можно менять местами два и более значений переменных одной командой.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.3.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.3.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -62,11 +62,11 @@ OS позволяет инициализировать несколько пер
 <p>
 Кроме этого, OS позволяет возвращать несколько значений из функций и сразу присваивать их переменным.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.functions.return-values.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.return-values.osh"}%>
 
 <%if(false){%>
 <p>
 А еще OS позволяет присваивать одно значение сразу нескольким переменным одной командой.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.operators.assignment.4.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.4.osh"}%>
 <%}/*if*/%>

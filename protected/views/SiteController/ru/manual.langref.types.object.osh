@@ -30,11 +30,11 @@
 <p>
 Элементы объекта также называют свойствами объекта.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.objects.osh"}%>
 
 <h3>Пример объекта с индексом, начинающимся с 1</h3>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.1.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.objects.1.osh"}%>
 
 <h3>Доступ к свойствам</h3>
 
@@ -46,7 +46,7 @@
 <li><p>через точку <code>obj.key</code> - это эквивалентно <code>obj["key"]</code>
 </ol>
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.key.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.objects.key.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -63,7 +63,7 @@
 Это означает, что не обязательно сохранять результат во временную переменную, чтобы получить доступ к свойствам
 возвращаемого объекта.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.dereferencing.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.objects.dereferencing.osh"}%>
 
 <h3>Удаление свойств объекта</h3>
 
@@ -71,13 +71,13 @@
 Удаление свойств объекта осуществляется оператором <code>delete</code>, но в отличии от массива, переиндексации
 свойств не происходит. Это означает, что все существующие свойства остаются с прежними ключами.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.delete.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.objects.delete.osh"}%>
 
 <h3>Итерация по свойствам объекта</h3>
 
 <p>
 Чтобы обойти все свойства объекта в OS существует специальная конструкция <code>for in</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.objects.iter.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.objects.iter.osh"}%>
 
 

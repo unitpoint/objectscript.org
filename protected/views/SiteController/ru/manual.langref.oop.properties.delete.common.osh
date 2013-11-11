@@ -4,4 +4,4 @@
 Если метод не реализует запрашиваемое действие, необходимо вызвать метод родительского класса через конструкцию 
 <code>super</code>.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.oop.properties.delete-common.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties.delete-common.osh"}%>

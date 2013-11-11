@@ -20,7 +20,7 @@ OS поддерживает несколько различных способо
 Обычным способом является конструкция вида <code>max(a, b)</code>. В начале указывается функция,
 затем в круглых скобках передаются параметры вызова через запятую.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.osh"}%>
 
 <h3>Вызов функции с одним параметром - объектом</h3>
 
@@ -28,19 +28,19 @@ OS поддерживает несколько различных способо
 В процессе разработки программы иногда появляется неоходимость вызвать функцию с одним параметром,
 который к тому же является контейнером пар ключ/значения (объектом).
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.obj-in-brackets.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj-in-brackets.osh"}%>
 
 <p>
 OS позволяет вместо стоящих подряд скобок <code>({</code> и <code>})</code> использовать только фигурные.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.obj.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj.osh"}%>
 
 <h3>Цепочный вызов</h3>
 
 <p>
 В OS цепочка вызовов нескольких функций будет выполняться слева направо.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.obj-chain.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj-chain.osh"}%>
 
 <h3>Автоматический вызов функции с одним параметром</h3>
 
@@ -49,7 +49,7 @@ OS позволяет вместо стоящих подряд скобок <cod
 Поэтому рядом стоящие два выражения интерпретируются OS как  функция и ее параметр. Это позволяет не использовать
 скобки в конструкция вида.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.auto.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.auto.osh"}%>
 
 <p>
 <div class="bs-callout bs-callout-danger">
@@ -66,7 +66,7 @@ OS позволяет вместо стоящих подряд скобок <cod
 через квадратные скобки, т.к. такая конструкция обозначает доступ к свойству объекта.
 В такой ситуации нужно использовать обычный вызов функции через круглые скобки.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.auto-array.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.auto-array.osh"}%>
 </div>
 </p>
 
@@ -76,7 +76,7 @@ OS позволяет вместо стоящих подряд скобок <cod
 OS позволяет создавать функцию внутри др. фукнции, возвращать её и, без сохранения во временную переменную, сразу же 
 вызывать.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.basic-syntax.functions-call.ret-as-func.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.ret-as-func.osh"}%>
 
 <div class="alert alert-info">
 См. 

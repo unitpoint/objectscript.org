@@ -31,7 +31,7 @@ for (expr1; expr2; expr3)
 прервать цикл, используя условный оператор <code>break</code> вместо использования выражения в цикле 
 <code>for</code>, которое принимает истинное значение.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.control-structures.for.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for.osh"}%>
 
 <h3>for in</h3>
 
@@ -59,7 +59,7 @@ for (i, v in collection)
 Обычно в качестве коллекции выступает массив или объект. Для массива <code>i</code> и <code>v</code> - индекс и элемент массива,
 для объекта - название свойства и его значение.
 
-<%@controller.widget('SourceWidget', {source="examples/tutorial.control-structures.for-in.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in.osh"}%>
 
 <h3>Пользовательская итерация по коллекции</h3>
 
@@ -90,10 +90,10 @@ for (i, v in collection)
 Поэтому мы можем реализовать функцию <code>__iter</code> для итерации по собственному виду коллекции.
 
 <h3>Пример с Range</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.control-structures.for-in-range.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in-range.osh"}%>
 
 <h3>Расширенный пример</h3>
-<%@controller.widget('SourceWidget', {source="examples/tutorial.control-structures.for-in-range-ex.osh"})%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in-range-ex.osh"}%>
 
 <div class="alert alert-info">
 См. <a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">Объектно-ориентированное программирование</a>,

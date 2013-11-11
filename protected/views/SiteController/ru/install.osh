@@ -1,5 +1,5 @@
 ﻿<% 
-	@controller.widget("ManualWidget", {
+	@controller.widget{"ManualWidget",
 		content = require("install-content.os"),
 		page = @page,
 		pageViewPrefix = path.dirname(__FILE__).."/",
@@ -7,4 +7,4 @@
 			url = @controller.createUrl(),
 			name = _T.MENU_INSTALL,
 		},
-	})
+	}
