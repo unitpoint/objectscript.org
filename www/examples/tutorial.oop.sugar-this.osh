@@ -1,0 +1,16 @@
+﻿<pre style="font-size:18px"><%
+
+    Person = {
+        __construct = function(firstname, lastname){
+            @firstname = firstname
+            @lastname = lastname
+        },
+        __get@fullname = function(){
+			return @firstname .. " " .. @lastname
+		}
+    }
+
+    var p = Person("Ivan", "Petrov")
+	print "fullname: ${p.fullname}"
+    
+%></pre>
