@@ -1,0 +1,25 @@
+﻿<p>
+OS поддерживает короткий (<i>сахарный</i>) синтаксис для описания анонимных функций.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+
+  {|arg1,arg2 ...| statement }
+
+</pre>
+  </div>
+</div>
+
+<p>
+Объявление функции начинается с <code>{|</code>, затем следует описание аргументов функции через запятую 
+(аргументы могут отсутствовать), после чего <code>|</code> и само тело функции с командами, в завершении <code>}</code>.
+Кроме этого, в OS функция автоматически возвращает последнее значение перед ее завершением, что особенно часто
+используется для <i>сахарного</i> синтаксиса.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.alternative.osh"}%>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.variables.predefined"}}%>"><b>_F</b> и др. предопределенные переменные</a>
+</div>
+
