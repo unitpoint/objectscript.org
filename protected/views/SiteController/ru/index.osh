@@ -1,7 +1,7 @@
 ﻿<% 
 	@controller.pageTitle = "Новый язык программирования / ObjectScript Homepage"
 %>
-<div class="jumbotron">
+<div class="jumbotron gradient_ie9">
 	<h1>ObjectScript</h1>
 	<p>
 	OS (ObjectScript) - это новый, встраиваемый, бесплатный и с открытым исходным кодом язык программирования. 
