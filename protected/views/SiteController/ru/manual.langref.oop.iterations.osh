@@ -1,0 +1,49 @@
+﻿<p>
+Цикл <code>for in</code> в OS предназначен для обхода (итерации) по коллекции. 
+Обычно в качестве коллекции выступает массив или объект. 
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in.osh"}%>
+
+<p>
+Для массива <code>i</code> и <code>v</code> - индекс 
+и элемент массива, для объекта - название свойства и его значение.
+
+<h3>Пользовательская итерация по коллекции</h3>
+
+<p>
+Цикл <code>for in</code> в OS использует очень гибкуя архитектуру, позволяя делать перебор по любым видам коллекций, в том числе
+рассчитываемым в реальном времени. Иначе говоря, каждый шаг цикла может рассчитывать очередные значения для шага итерации.
+
+<p>
+Как это работает? OS компилирует цикл <code>for in</code> в следующие команды:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+;{
+  var step_func = collection.__iter();
+  for(var is_step_valid;;){
+    is_step_valid, i, v = step_func();
+    if(!is_step_valid){
+      break;
+    }
+    statement
+  }
+}
+</pre>
+  </div>
+</div>
+
+Поэтому мы можем реализовать функцию <code>__iter</code> для итерации по собственному виду коллекции.
+
+<h3>Пример с Range</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in-range.osh"}%>
+
+<h3>Расширенный пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in-range-ex.osh"}%>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}}%>">for / for in</a>,
+	<a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">Объектно-ориентированное программирование</a>,
+	<a href="<%=@controller.createUrl{params={page="langref.functions.alternative"}}%>">Сахарный синтаксис для анонимных функций</a>
+</div>
