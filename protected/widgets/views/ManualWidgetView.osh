@@ -36,7 +36,7 @@
 		}
 		var htmlTitle = ["ObjectScript"]
 		for(var _, item in breadcrumb){
-			var key, name = item[0], item[1]
+			var key, name = item.unpack()
 			if(key == page){
 				echo "<li class='active'>${name}</li>"
 			}else{

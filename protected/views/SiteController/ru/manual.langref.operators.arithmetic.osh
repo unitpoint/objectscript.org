@@ -56,7 +56,7 @@
 	<tr>
 	  <td><code>-a</code></td>
 	  <td>Унарный минус</td>
-	  <td><code>__neg</code></td>
+	  <td><code>__minus</code></td>
 	  <td></td>
 	</tr>
   </tbody>

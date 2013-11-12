@@ -3,7 +3,10 @@
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.functions.return-values.osh"}%>
 
+<p>
+В OS функция автоматически возвращает последнее значение перед завершением функции.
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.return"}}%>">Команда return</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.return"}}%>">Команда return</a>,
+<a href="<%=@controller.createUrl{params={page="langref.functions.sugar"}}%>">Немного сахара</a>
 </div>

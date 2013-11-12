@@ -9,13 +9,13 @@
 	<tr>
 	  <td><code>a .. b</code></td>
 	  <td>Аргументы (<code>a</code>, <code>b</code>) преобразуются к строковому типу, после чего 
-		к первому значение присоединяется второе.</td>
+		к первому значению присоединяется второе.</td>
 	</tr>
   </tbody>
 </table>
 
 <h3>Пример</h3>
-<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.ternary.osh"}%>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.concat.osh"}%>
 
 
 <div class="alert alert-info">

@@ -322,7 +322,7 @@
 	  <td>Унарный минус</td>
 	  <td><code>-a</code></td>
 	  <td>15</td>
-	  <td><code>__neg</code></td>
+	  <td><code>__minus</code></td>
 	  <td></td>
 	  <td><a href="<%=url("langref.operators.arithmetic")%>">Арифметические операторы</a></td>
 	</tr>

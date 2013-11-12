@@ -27,6 +27,7 @@
 			"langref.basic-syntax.html" = "Изолирование от HTML",
 			"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 			"langref.basic-syntax.comments" = "Комментарии",
+			"langref.basic-syntax.concat" = "Конкатецация строк",
 			"langref.basic-syntax.functions-call" = {
 				"Вызов функции", {
 					"langref.basic-syntax.functions-call.intro" = "Введение",
@@ -83,7 +84,7 @@
 					"langref.operators.increment" = "Операторы инкремента и декремента",
 					"langref.operators.logical" = "Логические операторы",
 					"langref.operators.ternary" = "Тернарный оператор (? :)",
-					"langref.operators.string" = "Строковый оператор (..)",
+					"langref.operators.concat" = "Строковый оператор (..)",
 					"langref.operators.len" = "Оператор длины (#)",
 					"langref.operators.type" = "Оператор проверки типа (is)",
 					"langref.operators.in" = "Оператор вхождения (in)",
@@ -108,8 +109,8 @@
 					"langref.functions.first-class" = "Функции первого класса",
 					"langref.functions.returning-values" = "Возврат значений",
 					"langref.functions.closures" = "Вложенные функции и замыкания",
-					"langref.functions.alternative" = "Альтернативный синтаксис",
-					// функции возвращают последнее выражение автоматически
+					"langref.functions.sugar" = "Немного сахара",
+					// окружение функции - _E
 				},
 			},
 			"langref.oop" = {
@@ -138,15 +139,12 @@
 							"langref.oop.properties.isset" = "Проверка существования свойства",
 						},
 					},
-					// "langref.oop.properties-multi" = "Многомерные свойства",
-					// "langref.oop.properties-empty" = "Пустые свойства",
 					// "langref.oop.constructor" = "Конструкторы и деструкторы",
-					// "langref.oop.encapsulation" = "Инкапсуляции",
-					"langref.oop.iterations" = "Итераторы объектов",
+					"langref.oop.iterations" = "Итерация",
 					"langref.oop.magic-methods" = "Магические методы",
 					"langref.oop.clone" = "Клонирование объектов",
 					"langref.oop.type-check" = "Контроль типа",
-					"langref.oop.alternative-this" = "Альтернативный this",
+					"langref.oop.sugar-this" = "Сахарный this",
 					"langref.oop.autoload" = "Автоматическая загрузка классов",
 					// __object
 					// super call, super access
