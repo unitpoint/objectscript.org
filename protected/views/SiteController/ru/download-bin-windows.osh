@@ -2,11 +2,11 @@
   <tbody class="bold-sub-links">
     <tr>
 	  <td rowspan="3" width="1px">
-		<nobr><a href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.12.4-rc.zip" 
-			target="_blank" title="Скачать ObjectScript">os-1.12.4-rc.zip</a></nobr>
+		<nobr><a href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.12.5-rc.zip" 
+			target="_blank" title="Скачать ObjectScript">os-1.12.5-rc.zip</a></nobr>
 	  </td>
 	  <td rowspan="3" style="padding-right:15px">
-		<a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-1.12.4-rc" 
+		<a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-1.12.5-rc" 
 			target="_blank" title="Открыть архив ObjectScript"><span class="glyphicon glyphicon-folder-open"></span></a>
 	  </td>
 	  <td class="success">
