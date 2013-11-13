@@ -6,6 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="<%=html.encode(@controller.pageDesc)%>">
+	<meta name="keywords" content="<%=html.encode(@controller.pageKeywords)%>">
 	<meta name="author" content="<%=html.encode(@controller.pageAuthor)%>">
 	<link rel="shortcut icon" href="assets/ico/favicon.png?<%=CLIENT_VERSION%>">
 

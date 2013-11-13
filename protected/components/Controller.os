@@ -11,6 +11,7 @@
 	pageTitle = "ObjectScript Title",
 	pageAuthor = "Evgeniy Golovin",
 	pageDesc = "ObjectScript это новый, встраиваемый, бесплатный с открытым исходным кодом язык программирования, сочетает преимущества языков программирования JavaScript, Lua, Ruby, Python, PHP",
+	pageKeywords = "ObjectScript новый встраиваемый бесплатный язык программирования веб разработка",
 	
 	_widgetStack = null,
 
