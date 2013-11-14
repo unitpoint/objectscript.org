@@ -81,8 +81,8 @@ Application = extends Component {
 			actionId = p.pop()
 			count--
 		}
-		var controllerId = p[count-1]
-		p[count-1] = controllerId.flower() .. "Controller"
+		var controllerId = p.last
+		p.last = controllerId.flower() .. "Controller"
 		var controller = _G[@resolveClass(p.join("."))](this, controllerId) // @getComponent(p[0])
 		if(controller){
 			controller is Controller || throw "Error controller class: ${controller.classname}"
@@ -174,10 +174,10 @@ Application = extends Component {
 		if(count > 1){
 			p[0] = @_aliases["{${p[0]}}"] || p[0]
 		}
-		p[count-1] = p[count-1].flower()
+		p.last = p.last.flower()
 		// dump([classname, p.join("/")])
 		require(p.join("/"), false)
-		return p[count-1]
+		return p.last
 	},
 	
 	addAliases = function(aliases){

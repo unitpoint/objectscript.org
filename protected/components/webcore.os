@@ -129,8 +129,7 @@ var function notBufferedEcho(){
 var function obEcho(){
 	var oldEcho = echo
 	echo = notBufferedEcho
-	assert(#buffers > 0, "ob buffer is not exist")
-	var buf = buffers[#buffers-1]
+	var buf = buffers.last || throw "ob buffer is not exist"
 	buf.append.apply(buf, arguments)
 	if(echo === notBufferedEcho){
 		echo = oldEcho // obEcho
@@ -139,38 +138,23 @@ var function obEcho(){
 
 ob = {
 	push = function(){
-		/* if(#buffers == 0){
-			echo = obEcho
-			// printf = obPrintf
-		} */
 		echoFuncs.push(echo)
 		echo = obEcho
 		buffers.push(Buffer())
 	},
 
 	pop = function(){
-		assert(#buffers > 0, "ob buffer is not exist")
-		var buf = buffers.pop()
-		/* if(#buffers == 0){
-			echo = originEcho
-		} */
 		echo = echoFuncs.pop()
-		echo(buf)
+		echo(buffers.pop() || throw "ob buffer is not exist")
 	},
 
 	popContents = function(){
-		assert(#buffers > 0, "ob buffer is not exist")
-		var buf = buffers.pop()
-		/* if(#buffers == 0){
-			echo = originEcho
-		} */
 		echo = echoFuncs.pop()
-		return toString(buf)
+		return toString(buffers.pop() || throw "ob buffer is not exist")
 	},
 
 	getContents = function(){
-		assert(#buffers > 0, "ob buffer is not exist")
-		return toString(buffers[#buffers-1])
+		return toString(buffers.last  || throw "ob buffer is not exist")
 	}
 }
 
