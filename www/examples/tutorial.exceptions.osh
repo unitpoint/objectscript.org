@@ -1,0 +1,36 @@
+<pre><%
+
+function printException(e){
+    print e.message
+    for(var i, t in e.trace){
+        printf("#${i} ${t.file}%s: %s, args: ${t.arguments}\n",
+            t.line > 0 ? "(${t.line},${t.pos})" : "",
+            t.object && t.object !== _G 
+				? "<${typeOf(t.object)}#${t.object.__id}>.${t.func.__name}" 
+				: t.func.__name)
+    }
+}
+
+function testFunction(){
+    try{
+        var a = 1
+        var b = 0
+        var c = a / b
+    }catch(e){
+        print "\ncatch exception #1"
+        printException(e)
+		print "throw 'something happen again'"
+        throw "something happen again"
+    }
+}
+
+try{
+    testFunction()
+}catch(e){
+    print "\ncatch exception #2"
+    printException(e)
+	print "re-throw e"
+	throw e
+}
+
+%></pre>

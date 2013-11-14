@@ -155,13 +155,14 @@
 					// Number.times
 				},
 			},
+			"langref.include-files" = "Механизм подключения файлов",
 			"langref.exceptions" = "Исключения",
 			"langref.intergation-cpp" = {
 				"Интеграция с C++", {
 					"langref.intergation-cpp.classes" = "Подключение классов из C++",
 				},
 			},
-			"langref.name-convention" = "Соглашение об именовании",
+			// "langref.name-convention" = "Соглашение об именовании",
 			"langref.modules-and-classes" = "Модули и классы",
 		},
 	},
