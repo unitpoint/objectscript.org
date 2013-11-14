@@ -70,26 +70,27 @@ function header(str){
 
 // header "Content-type: text/html; charset=utf-8"
 
-var cookiesList = []
+var cookiesList = {}
 function setCookie(name, value, expires, path, domain, secure, httponly){
-	var cookie = Buffer()
+	var buf = Buffer()
 	// value && value = stringOf(value) || throw "setCookie: value should be String"
 	if(!value){ // deleted
-		cookie.append("Set-Cookie: ${name}=deleted; expires="..DateTime(1970, 1, 1).format("D, d-M-Y H:i:s T"))
+		buf.append("Set-Cookie: ${name}=deleted; expires="..DateTime(1970, 1, 1).format("D, d-M-Y H:i:s T"))
 	}else{
-		cookie.append("Set-Cookie: ${name}="..url.encode(value))
+		buf.append("Set-Cookie: ${name}="..url.encode(value))
 		if(expires is DateTime){
-			cookie.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
+			buf.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
 		}else if(expires){
-			cookie.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
+			buf.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
 		}
-		path && cookie.append("; path=${path}")
-		domain && cookie.append("; path=${domain}")
-		secure && cookie.append("; secure")
-		httponly && cookie.append("; httponly")
+		path && buf.append("; path=${path}")
+		domain && buf.append("; path=${domain}")
+		secure && buf.append("; secure")
+		httponly && buf.append("; httponly")
 	}
-	// echo "cookie: "..toString(cookie).."<br />"
-	cookiesList.push(toString(cookie))
+	// echo "cookie: "..toString(buf).."<br />"
+	var str = toString(buf)
+	cookiesList[str] = str
 }
 
 var buffers, echoFuncs = [], []
