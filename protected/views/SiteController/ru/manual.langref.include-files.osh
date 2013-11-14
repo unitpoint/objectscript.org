@@ -1,0 +1,22 @@
+﻿<p>
+В OS подключение файлов (скриптов) осуществляется функцией <code>require</code>.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1"}%>
+<pre class="prettyprint linenums lang-js">
+
+	require "std"
+
+</pre>
+  </div>
+</div>
+
+<p>
+Функция <code>require</code> сначало пытается подключить запрашиваемый файл из директории файла, от куда функция <code>require</code> была вызвана.
+Если файл не найден, то поиск файла продолжается по путям, сохраненным в массиве (или объекте) <code>require.paths</code>. Разработчик может 
+скорректировать <code>require.paths</code> во время исполнения программы, прописав пути с классами и модулями.
+
+<p>
+Если запрашиваемый файл указан без расширения, то OS пытается найти нужный файл, подставляя сначала расширение <code>.os</code>, затем <code>.osh</code> 
+(для каждой тестиируемой директории).
