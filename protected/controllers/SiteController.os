@@ -16,12 +16,12 @@ SiteController = extends Controller {
 	init = function(){
 		super()
 		
-		var data = app.session.start()
-		data.counter = (data.counter || 0) + 1
-		data.ip = _SERVER.REMOTE_ADDR
-		data.userAgent = _SERVER.HTTP_USER_AGENT
-		data._GET = _GET
-		data._POST = _POST
+		app.session.start()
+		_SESSION.counter = (_SESSION.counter || 0) + 1
+		_SESSION.ip = _SERVER.REMOTE_ADDR
+		_SESSION.userAgent = _SERVER.HTTP_USER_AGENT
+		_SESSION._GET = _GET
+		_SESSION._POST = _POST
 	},
 
 	actionIndex = function(){ // pass, user){

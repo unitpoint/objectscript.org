@@ -9,7 +9,7 @@ FileSession = extends CookieSession {
 	_shutdownRunner = null,
 	_clenupRunner = null,
 	
-	data = null,
+	// data = null,
 	
 	__get@id = function(){
 		return @_id
@@ -36,8 +36,8 @@ FileSession = extends CookieSession {
 	
 	start = function(id){
 		@id = id || _COOKIE[@cookieName] || @genId()
-		@data = json.decode(File.readContents(@filename)) || {}
-		if(#@data == 0 && !path.exists(@filename) && @id == _COOKIE[@cookieName]){
+		_SESSION = objectOf(json.decode(File.readContents(@filename))) || {}
+		if(#_SESSION == 0 && !path.exists(@filename) && @id == _COOKIE[@cookieName]){
 			@id = @genId()
 		}
 		
@@ -47,25 +47,23 @@ FileSession = extends CookieSession {
 		var self = this
 		// unregisterShutdownFunction(@_shutdownRunner)
 		registerShutdownFunction(@_shutdownRunner = {|| self.stop() })
-		
-		return @data
 	},
 
 	stop = function(){
 		if(@_filename){
-			var filename, data = @_filename, @data
-			@_id, @_filename, @data, _COOKIE[@cookieName] = null
+			var filename, data = @_filename, _SESSION
+			@_id, @_filename, _SESSION, _COOKIE[@cookieName] = null
 			
 			var self = this
 			unregisterCleanupFunction(@_clenupRunner)
 			registerCleanupFunction(@_clenupRunner = {|| 
 				File.writeContents(filename, json.encode(data))
-				self.cleanup() 
+				self._cleanup() 
 			})
 		}
 	},
 	
-	cleanup = function(){
+	_cleanup = function(){
 		if(math.random() <= @gcProbability){
 			
 		}
@@ -76,11 +74,11 @@ FileSession = extends CookieSession {
 	},
 
 	get = function(name){
-		return @data[name]
+		return _SESSION[name]
 	},
 
 	set = function(name, value){
-		@data[name] = value
+		_SESSION[name] = value
 	},
 }
 
