@@ -20,7 +20,8 @@ $(function(){
 });
 </script>
 <p>
-Язык программирования ObjectScript написан на языке С++.
+Язык программирования ObjectScript написан на языке С++ и распространяется бесплатно 
+с открытыми исходными кодами (open-source).
 
 <table class="table table-striped vertical-align">
   <tbody class="bold-sub-links">

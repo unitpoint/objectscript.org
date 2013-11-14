@@ -1,4 +1,4 @@
-<!-- <script type="text/javascript" src="ZeroClipboard.js"></script> -->
+﻿<!-- <script type="text/javascript" src="ZeroClipboard.js"></script> -->
 <script type="text/javascript">
 $(function(){
 	/* clip.on( 'dataRequested', function (client, args) {
@@ -20,7 +20,8 @@ $(function(){
 });
 </script>
 <p>
-Сайт objectscript.org написан на языке ObjectScript.
+Сайт, на котором вы сейчас находитесь (<a href="http://objectscript.org">objectscript.org</a>), написан 
+на языке ObjectScript и распространяется бесплатно с открытыми исходными кодами (open-source).
 
 <table class="table table-striped vertical-align">
   <tbody class="bold-sub-links">
