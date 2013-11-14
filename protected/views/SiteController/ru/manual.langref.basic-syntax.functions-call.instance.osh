@@ -1,0 +1,12 @@
+﻿<p>
+OS позволяет создавать функцию и, без сохранения во временную переменную, сразу же 
+её вызывать.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.alternative.osh"}%>
+
+<div class="alert alert-info">
+См. 
+<a href="<%=@controller.createUrl{params={page="langref.functions.sugar"}}%>">Немного сахара при создании функций</a>,
+<a href="<%=@controller.createUrl{params={page="langref.variables.predefined"}}%>">Предопределенные переменные</a>,
+<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.print"}}%>">Функция print</a>
+</div>
