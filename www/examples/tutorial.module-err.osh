@@ -1,0 +1,7 @@
+<pre><%
+
+	print "math.random() => "..math.random()
+	
+	var test = math()
+
+%></pre>
