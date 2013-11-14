@@ -2,7 +2,7 @@
   function max(a, b){
     return a > b ? a : b;
   }
-  print(" max(10, 7): "..max(10, 7))
+  print("max( 10, 7): "..max(10, 7))
   print("max(3.5, 5): "..max(3.5, 5))
-  print(" max(-9, 1): "..max(-9, 1))
+  print("max( -9, 1): "..max(-9, 1))
 %></pre>
