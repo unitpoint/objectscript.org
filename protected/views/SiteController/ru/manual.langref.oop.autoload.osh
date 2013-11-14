@@ -1,21 +1,23 @@
+﻿<p>
+Для автоматической загрузки классов в OS используется механизм обращения к неизвестному свойству в глобальной области видимости.
+
 <p>
-Для автоматической загрузки классов мы в OS используем механизм обращения к неизвестному свойству в глобальной области видимости.
-Такая загрузка уже реализована при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1" 
-target="_blank">библиотеки std</a>.
+Автоматическая загрузка уже работает при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1" 
+target="_blank">библиотеки std</a> и реализована следующим образом.
 
 <div class="row">
   <div class="col-md-11 badge-src">
-	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1"}%>
+    <%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1"}%>
 <pre class="prettyprint linenums lang-js">var modulesLoaded = {}
 function __get(name){
-	if(!(name in modulesLoaded)){
-		modulesLoaded[name] = true
-		require(name, false)
-		if(name in this){
-			return this[name]
-		}
-	}
-	throw "unknown class or global property \"${name}\""
+    if(!(name in modulesLoaded)){
+        modulesLoaded[name] = true
+        require(name, false)
+        if(name in this){
+            return this[name]
+        }
+    }
+    throw "unknown class or global property \"${name}\""
 }
 </pre>
   </div>
@@ -26,10 +28,9 @@ function __get(name){
 с названием запрашиваемого свойства (при этом проверяется, что запрос к неизвествному свойству не происходит рекурсивно). 
 Если в результате свойство определено (подгружено), то оно возвращается пользователю. Если нет, то вызывается исключение.
 
-<p>
-Функция <code>require</code> содержит список путей <code>require.paths</code>, по которым OS ищет запрашивай файл.
-
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.include-files"}}%>">Механизм подключения файлов</a>
+<a href="<%=@controller.createUrl{params={page="langref.include-files"}}%>">Механизм подключения файлов</a>,
+<a href="<%=@controller.createUrl{params={page="langref.oop.magic-methods"}}%>">Магические методы</a>
+
 </div>

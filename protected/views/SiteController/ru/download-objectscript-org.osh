@@ -22,22 +22,31 @@ $(function(){
 <p>
 Сайт objectscript.org написан на языке ObjectScript.
 
-<table class="table vertical-align">
+<table class="table table-striped vertical-align">
   <tbody class="bold-sub-links">
     <tr>
 	  <td width="45%">
-		<a href="https://github.com/unitpoint/objectscript.org" 
-			target="_blank" title="Перейти в репозиторий open-source ObjectScript.org">https://github.com/unitpoint/objectscript.org</a>
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript.org" 
+			target="_blank" title="Перейти в репозиторий open-source ObjectScript.org">github.com/unitpoint/objectscript.org</a>
 	  </td>
-	  <td class="success">
+	  <td>
 		Перейти в репозиторий исходных кодов сайта objectscript.org
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript.org/archive/master.zip" 
+			target="_blank" title="Скачать open-source ObjectScript">objectscript.org-master.zip</a>
+	  </td>
+	  <td>
+		Скачать исходники сайта objectscript.org одним архивом
 	  </td>
 	</tr>
     <tr>
 	  <td>
 		<input class="form-control" type="text" value="https://github.com/unitpoint/objectscript.org.git" />
 	  </td>
-	  <td class="success">
+	  <td>
 		Клонировать репозиторий сайта objectscript.org по ссылке HTTPS
 	  </td>
 	</tr>
@@ -45,7 +54,7 @@ $(function(){
 	  <td>
 		<input class="form-control" type="text" value="git@github.com:unitpoint/objectscript.org.git" />
 	  </td>
-	  <td class="success">
+	  <td>
 		Клонировать репозиторий сайта objectscript.org по ссылке SSH
 	  </td>
 	</tr>
@@ -53,17 +62,8 @@ $(function(){
 	  <td>
 		<input class="form-control ro-link" type="text" value="https://github.com/unitpoint/objectscript.org" />
 	  </td>
-	  <td class="success">
-		Клонировать репозиторий сайта objectscript.org по ссылке Subversion
-	  </td>
-	</tr>
-    <tr>
 	  <td>
-		<a href="https://github.com/unitpoint/objectscript.org/archive/master.zip" 
-			target="_blank" title="Скачать open-source ObjectScript">objectscript.org-master.zip</a>
-	  </td>
-	  <td class="success">
-		Скачать исходники сайта objectscript.org одним архивом
+		Клонировать репозиторий сайта objectscript.org по ссылке Subversion
 	  </td>
 	</tr>
   </tbody>

@@ -1,29 +1,25 @@
 ﻿<table class="table">
   <tbody class="bold-sub-links">
-    <tr>
-	  <td rowspan="3" width="1px">
-		<nobr><a href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.12.6-rc.zip" 
-			target="_blank" title="Скачать ObjectScript">os-1.12.6-rc.zip</a></nobr>
-	  </td>
-	  <td rowspan="3" style="padding-right:15px">
-		<a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-1.12.6-rc" 
-			target="_blank" title="Открыть архив ObjectScript"><span class="glyphicon glyphicon-folder-open"></span></a>
-	  </td>
-	  <td class="success">
+	<tr>
+	  <td>
 		<p>
-		Основной пакет под Windows.
+		Основная сборка под Windows
 		<div style="padding-left:40px">
-		    <p><a type="button" class="btn btn-primary btn-sm" href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
-				target="_blank">os-fcgi</a> fastcgi модуль для веб-разработки
-			<p><a type="button" class="btn btn-primary btn-sm" href="https://github.com/unitpoint/objectscript/blob/master/os.cpp" 
-				target="_blank">os</a> консольное приложение для запуска скриптов из командной строки
-		</div>
+		    <p><a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.12.6-rc.zip" 
+				target="_blank">os-1.12.6-rc.zip</a>
+			&nbsp; <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-1.12.6-rc" 
+			target="_blank" title="Открыть архив ObjectScript"><span class="glyphicon glyphicon-folder-open"></span></a>
+		</div>	  
+		<p>Содержит <a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
+			target="_blank">os-fcgi</a> (fastcgi модуль для веб-разработки) и 
+			<a href="https://github.com/unitpoint/objectscript/blob/master/os.cpp" 
+			target="_blank">os</a> (консольное приложение для запуска скриптов из командной строки).
 	  </td>
 	</tr>
 	<tr>
 	  <td class="success">
 		<p>
-		В сборку вошли следующие расширения: 
+		В сборку вошли следующие расширения
 		<div style="padding-left:40px">
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-base64" 
 				target="_blank">base64</a>
@@ -51,7 +47,7 @@
 	<tr>
 	  <td class="danger">
 		<p>
-		В сборку не вошли следующие расширения: 
+		В сборку не вошли следующие расширения
 		<div style="padding-left:40px">
 		    <a type="button" class="btn btn-warning btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-libnoise" 
 				target="_blank">libnoise</a>

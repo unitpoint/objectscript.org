@@ -22,22 +22,31 @@ $(function(){
 <p>
 Язык программирования ObjectScript написан на языке С++.
 
-<table class="table vertical-align">
+<table class="table table-striped vertical-align">
   <tbody class="bold-sub-links">
     <tr>
 	  <td width="45%">
-		<a href="https://github.com/unitpoint/objectscript/" 
-			target="_blank" title="Перейти в репозиторий open-source ObjectScript">https://github.com/unitpoint/objectscript/</a>
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript" 
+			target="_blank" title="Перейти в репозиторий open-source ObjectScript">github.com/unitpoint/objectscript</a>
 	  </td>
-	  <td class="success">
+	  <td>
 		Перейти в репозиторий исходных кодов ObjectScript
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript/archive/master.zip" 
+			target="_blank" title="Скачать open-source ObjectScript">objectscript-master.zip</a>
+	  </td>
+	  <td>
+		Скачать исходники ObjectScript одним архивом
 	  </td>
 	</tr>
     <tr>
 	  <td>
 		<input class="form-control" type="text" value="https://github.com/unitpoint/objectscript.git" />
 	  </td>
-	  <td class="success">
+	  <td>
 		Клонировать репозиторий ObjectScript по ссылке HTTPS
 	  </td>
 	</tr>
@@ -45,7 +54,7 @@ $(function(){
 	  <td>
 		<input class="form-control" type="text" value="git@github.com:unitpoint/objectscript.git" />
 	  </td>
-	  <td class="success">
+	  <td>
 		Клонировать репозиторий ObjectScript по ссылке SSH
 	  </td>
 	</tr>
@@ -53,17 +62,8 @@ $(function(){
 	  <td>
 		<input class="form-control ro-link" type="text" value="https://github.com/unitpoint/objectscript" />
 	  </td>
-	  <td class="success">
-		Клонировать репозиторий ObjectScript по ссылке Subversion
-	  </td>
-	</tr>
-    <tr>
 	  <td>
-		<a href="https://github.com/unitpoint/objectscript/archive/master.zip" 
-			target="_blank" title="Скачать open-source ObjectScript">objectscript-master.zip</a>
-	  </td>
-	  <td class="success">
-		Скачать исходники ObjectScript одним архивом
+		Клонировать репозиторий ObjectScript по ссылке Subversion
 	  </td>
 	</tr>
   </tbody>
