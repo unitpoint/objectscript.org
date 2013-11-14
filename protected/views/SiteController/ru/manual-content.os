@@ -9,7 +9,7 @@
 				},
 			},
 			tutorial = {
-				"Простой учебник", {
+				"Веб - это просто", {
 					"tutorial.firstpage" = "Первая страница на OS",
 					"tutorial.useful" = "Делаем что-нибудь полезное",
 					"tutorial.forms" = "Работа с формами",
@@ -33,9 +33,10 @@
 					"langref.basic-syntax.functions-call.intro" = "Введение",
 					"langref.basic-syntax.functions-call.common" = "Обычный вызов функции",
 					"langref.basic-syntax.functions-call.object" = "Вызов функции с одним параметром - объектом",
-					"langref.basic-syntax.functions-call.chain" = "Цепочный вызов",
 					"langref.basic-syntax.functions-call.auto" = "Автоматический вызов функции с одним параметром",
 					"langref.basic-syntax.functions-call.ret-as-func" = "Вызов результата функции",
+					"langref.basic-syntax.functions-call.instance" = "Вызов созданной функции",
+					"langref.basic-syntax.functions-call.chain" = "Цепочный вызов",
 				},
 			},
 			// string concat
@@ -92,7 +93,7 @@
 							"langref.operators.in" = "Оператор вхождения (in)",
 							"langref.operators.delete" = "Оператор удаления элемента (delete)",
 							// "langref.operators.arguments" = "Операторы получения аргументов",
-							"langref.operators.extends" = "Оператор расширения класса (extends)",
+							"langref.operators.extends" = "Оператор расширение класса (extends)",
 						},
 					},
 				},
@@ -114,7 +115,7 @@
 					"langref.functions.returning-values" = "Возврат значений",
 					"langref.functions.closures" = "Вложенные функции и замыкания",
 					"langref.functions.sugar" = "Немного сахара",
-					// окружение функции - _E
+					"langref.functions.env" = "Окружение функции",
 				},
 			},
 			"langref.oop" = {

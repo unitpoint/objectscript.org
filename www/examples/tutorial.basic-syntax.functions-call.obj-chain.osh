@@ -1,11 +1,12 @@
 ﻿<pre style="font-size:18px"><%
-
+	// create object
 	var obj = {
 		do = function(a){
 			print a;
 			return this;
 		}
 	}
+	// call
 	obj.do{
 		1: "one"
 	}.do{

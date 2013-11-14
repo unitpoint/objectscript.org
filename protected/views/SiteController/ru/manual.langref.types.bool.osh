@@ -21,13 +21,8 @@
   <div class="col-md-10">
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
 &lt;%
-  // .. это оператор строковой конкатенации
   if (action == "show_version") {
     echo "Current OS version is "..OS_VERSION;
-  }
-
-  if (show_separators == true) {
-    echo "<hr>";
   }
 
   if (show_separators) {

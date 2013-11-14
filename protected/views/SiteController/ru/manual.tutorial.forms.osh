@@ -1,20 +1,20 @@
 ﻿<p>
 Одно из главнейших достоинств OS - то, как он работает с формами HTML. Здесь основным является то, что каждый элемент формы 
 автоматически становится доступным программам на OS. Для подробной информации об использовании форм в OS читайте раздел 
-<a href="">Переменные из внешних источников</a>. 
+<a href="<%=@controller.createUrl{params={page="langref.variables.external"}}%>">Переменные извне OS</a>. 
 
 <h3>Cтраница с формой HTML</h3>
 <%@controller.widget{'SourceWidget', source="examples/tutorial.forms.osh"}%>
 
-<p>
-В начале страницы мы подключаем библиотеку <code>webcore</code> с помощью функции <code>require</code>.
+<p><% var WEBCORE_LINK = <<<END'<a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/webcore.os" 
+	target="_blank">webcore</a>END; %>
+В начале страницы мы подключаем библиотеку <%=WEBCORE_LINK%> с помощью функции <code>require</code>.
 
 <p>
 <div class="bs-callout bs-callout-danger">
 <h4>Замечание</h4>
-Библиотека <a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/webcore.os" 
-	target="_blank">webcore</a> содержит базовые функции для веб-разработки, такие как <code>header</code>, <code>setCookie</code>,
-буферизованный вывод <code>ob</code>, а также механизм автоматической подгрузки файлов используемых библиотек.
+Библиотека <%=WEBCORE_LINK%> содержит базовые функции для веб-разработки, такие как <code>header</code>, <code>setCookie</code>,
+буферизованный вывод <code>ob</code>, а также механизм автоматической подгрузки файлов используемых классов.
 </div>
 </p>
 
@@ -37,13 +37,16 @@
   </div>
 </div>
 
+<p>
+Обратите внимание, как чередуются вставки OS и HTML.
+
 <h3>Пример вывода нашей программы</h3>
 
 <pre>Hi Evgeniy. You are 35 years old.</pre>
 
 <p>
 Если не принимать во внимание куски кода с <code>html.encode</code> и <code>toNumber</code>, то принцип работы данного кода 
-должен быть прост и понятен. <code>html.encode</code> обеспечивает правильную кодировку "особых" HTML-символов так, 
+должен быть прост и понятен. <code>html.encode</code> обеспечивает правильную кодировку <i>особых</i> HTML-символов так, 
 чтобы вредоносный HTML или Javascript не был вставлен на нашу страницу. Поле <code>age</code>, о котором нам известно, 
 что оно должно быть числом, мы можем просто преобразовать в число, вызвав функцию <code>toNumber</code>, что автоматически 
 избавит нас от нежелательных символов. 
