@@ -1,8 +1,6 @@
-var appAlias = path.dirname(__FILE__) .. "/.."
-// require.paths.push(appAlias)
+var appAlias = path.dirname(__DIR__)
 
 require "common"
-
 
 app = null
 Application = extends Component {
