@@ -5,7 +5,7 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in.osh"}%>
 
 <p>
-Для массива <code>i</code> и <code>v</code> - индекс 
+Для массива, <code>i</code> и <code>v</code> - индекс 
 и элемент массива, для объекта - название свойства и его значение.
 
 <h3>Пользовательская итерация по коллекции</h3>

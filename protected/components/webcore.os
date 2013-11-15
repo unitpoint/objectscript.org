@@ -20,7 +20,7 @@ function unhandledException(e){
 	for(var i, t in e.trace){
 		printf("#${i} ${removeRootPath(t.file)}%s: %s, args: ${removeRootPath(t.arguments)}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
-			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.__name)
+			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.func.__name)
 
 	}
 	echo END_PRE
@@ -31,7 +31,7 @@ function printBackTrace(skipNumFuncs){
 	for(var i, t in debugBackTrace((skipNumFuncs || 0) + 1)){ // skip printBackTrace
 		printf("#${i} ${removeRootPath(t.file)}%s: %s, args: ${removeRootPath(t.arguments)}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
-			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.__name)
+			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.func.__name)
 	}
 	echo END_PRE
 }

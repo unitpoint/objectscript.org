@@ -1,5 +1,5 @@
-var app_alias = path.dirname(__FILE__) .. "/.."
-// require.paths.push(app_alias)
+var appAlias = path.dirname(__FILE__) .. "/.."
+// require.paths.push(appAlias)
 
 require "common"
 
@@ -8,7 +8,7 @@ app = null
 Application = extends Component {
 	__get@defaultAliases = function(){
 		return {
-			"{app}" = app_alias,
+			"{app}" = appAlias,
 		}
 	},
 	
@@ -154,8 +154,7 @@ Application = extends Component {
 	},
 	
 	resolveAliases = function(path){
-		var r = {}
-		var aliases = @_aliases
+		var r, aliases = {}, @_aliases
 		var function replace(path){
 			return path.replace(Regexp("#{[\w\d\._]+?}#"), {|m| 
 				var alias = m[0]
