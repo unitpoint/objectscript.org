@@ -158,6 +158,7 @@
 			},
 			"langref.include-files" = "Механизм подключения файлов",
 			"langref.exceptions" = "Исключения",
+			"langref.null-safe" = "Безопасный код (null-safe)",
 			"langref.intergation-cpp" = {
 				"Интеграция с C++", {
 					"langref.intergation-cpp.classes" = "Подключение классов из C++",
