@@ -30,7 +30,7 @@ return {
 			classname = "HttpRequest",
 		},
 		// db = require("db-local.os"),
-		db = extends require("db-local.os") {}, // hide db user & password while print config
+		db = extends require("db-local.os", false) {}, // hide db user & password while print config
 	},
 	params = require("config-params.os"),
 }

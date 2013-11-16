@@ -41,4 +41,9 @@ SiteController = extends Controller {
 	actionManual = function(page){
 		echo @render("manual", {page = page})
 	},
+	
+	actionLangref = function(page){
+		echo @render("langref", {page = page})
+	},
+	
 }

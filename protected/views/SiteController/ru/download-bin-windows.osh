@@ -1,13 +1,4 @@
-﻿<p>
-Язык ObjectScript распространяется как в откомпилированном виде, так и с открытыми исходными кодами под 
-<a href="https://github.com/unitpoint/objectscript/blob/master/LICENSE" target="_blank">MIT лицензией</a>.
-Эта лицензия подразумевает полное свободное и бесплатное использование ObjectScript в ваших продуктах,
-в том числе в коммерческих.
-
-<p>
-Здесь вы можете скачать бинарные и запускаемые файлы под Windows.
-
-<table class="table">
+﻿<table class="table">
   <tbody class="bold-sub-links">
 	<tr>
 	  <td>
@@ -67,3 +58,9 @@
     </tr>
   </tbody>
 </table>
+
+<p>
+Язык ObjectScript распространяется как в откомпилированном виде, так и с открытыми исходными кодами под 
+<a href="https://github.com/unitpoint/objectscript/blob/master/LICENSE" target="_blank">MIT лицензией</a>.
+Эта лицензия подразумевает полное свободное и бесплатное использование ObjectScript в ваших продуктах,
+в том числе в коммерческих.

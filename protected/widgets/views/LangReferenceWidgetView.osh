@@ -1,0 +1,197 @@
+<%
+	var getContent = function(name){
+		return objectOf(name) || require(name) 
+	}
+	
+	var parts, links = @page.split("."), []
+	var fullContent = @content ? getContent(@content) : require(@pageViewPrefix .. links.push(parts.shift()) .. ".os")
+	
+	var breadcrumb, content, prevContent, name = [], fullContent
+	for(; #parts > 0; ){
+		name = parts[0]
+		var cur = content.funcs[name] || content.props[name]
+		if(!cur) break
+		links[] = name
+		name != "globals" && breadcrumb.push{links.join("."), name}
+		var key = cur === content.funcs[name] ? "funcs" : "props"
+		prevContent, content = content, (content[key][name] = getContent(cur))
+		delete parts[0]
+	}
+	var pageTitle = links.join(".").replace(Regexp("#^globals\.?#s"), "")
+	
+	var controller = @controller
+	var decode = function(str){
+		return str.replace(Regexp("#\#url\((.*?)\)#s"), {|m|
+			var params = m[1].split(",")
+			if(#params == 1){
+				params = {params={page=params[0].trim()}}
+			}else{
+				throw "error url ${m[1]}"
+			}
+			return controller.createUrl(params)
+		})
+	}
+%>
+<ol class="breadcrumb">
+	<%
+		if(@breadcrumb){
+			echo "<li><a href='${@breadcrumb.url}'>${@breadcrumb.name}</a></li>"
+		}
+		var htmlTitle = ["ObjectScript", _T.MENU_REFERENCE]
+		for(var _, item in breadcrumb){
+			var key, name = item.unpack()
+			if(key == @page){
+				echo "<li class='active'>${name}</li>"
+			}else{
+				var url = @controller.createUrl{params={page=key}}
+				echo "<li><a href='${url}'>${name}</a></li>"
+			}
+			htmlTitle.push(name)
+		}
+		@controller.pageTitle = htmlTitle.reverse().join(" / ")
+	%>
+</ol>
+
+<div class="row">
+  <div class="col-md-3">
+	<ul class="nav nav-pills nav-stacked">
+	<%
+		if(!prevContent){
+			prevContent = content
+		}else{
+			// prevContent = content
+			links.pop()
+		}
+		var compare = function(a, b, ka, kb){
+			return ka.lower() <=> kb.lower()
+		}
+		var list = function(title, items, depth, allowSub){
+			echo "<li"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><b>${title}</b></li>"
+			for(var name, content in items.sort(compare)){
+				links.push(name)
+				var page = links.join(".")
+				var url = @controller.createUrl{params={page=page}}
+				var activeClass = page == @page ? " class='active'" : ""
+				echo "<li${activeClass}"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><a href='${url}'>${name}</a></li>"
+				if(allowSub && activeClass != "" && (content.funcs || content.props)){
+					_F.call(this, _T.PROPERTIES, content.props, depth+1)
+					_F.call(this, _T.FUNCTIONS, content.funcs, depth+1)
+				}
+				links.pop()
+			}
+		}
+		list.call(this, _T.PROPERTIES, prevContent.props, 0, true)
+		list.call(this, _T.FUNCTIONS, prevContent.funcs, 0, true)
+	%>
+	</ul>
+  </div>
+  <div class="col-md-9 manual">
+	<%
+		var pageHeader = function(){
+			%>
+			<div class="page-header">
+			  <h1><%=pageTitle%></h1>
+			</div>
+			<%
+		}
+		if(pageTitle && pageTitle == ""){
+			content.desc && echo(decode(content.desc))
+		}else if(!content.ret){
+			pageHeader()
+			echo "<table class='table'><tbody>"
+			echo "<tr class='active'>"
+				echo "<td>"..(content.type || "").."</td>"
+				echo "<th><code>${name}</code></th>"
+				echo "<td width='100%'>"
+				if(content.def){
+					if(content.def == "true" || content.def == "false" || content.def == "null"){
+						content.def = "<code>${content.def}</code>"
+					}
+					echo "<p>${decode(content.def)}</p>"
+				}
+				content.desc && echo(decode(content.desc))
+				echo "</td>"
+			echo "</tr>"
+			echo "</tbody></table>"
+		}else{		
+			pageHeader()
+			echo '<pre class="prettyprint lang-js prettyprinted">'
+			echo "  <span class='kwd'>${content.ret}</span> <span class='pln'>${name}</span><span class='pun'>(</span> "
+			var paramNum = 0
+			for(var paramName, v in content.params){
+				paramNum++ > 0 && echo("<span class='pun'>,</span> ")
+				echo "<span class='pln'>${paramName}</span>"
+			}
+			content.rest && echo(" <span class='pun'>[</span>", 
+				paramNum > 0 ? ", " : "", "arg${paramNum+1} ...<span class='pun'>]</span>")
+			echo " <span class='pun'>)</span>"
+			echo '</pre>'
+	%>
+		<p>
+		<table class="table">
+		  <tbody>
+		    <%if(content.desc){%>
+			<tr class="success">
+			  <td colspan="3">
+				<%=decode(content.desc)%>
+			  </td>
+			</tr>
+			<%}/*if(content.desc)*/%>
+			
+			<%if(content.params){%>
+			<tr class="info">
+			  <th colspan="3"><%=_T.PARAM_LIST%></th>
+			</tr>
+			<%
+				var paramNum = 0
+				for(var paramName, param in content.params){
+					echo "<tr"..(paramNum++ % 2 == 1 ? " class='active'" : "")..">"
+						echo "<td>"..(param.type || "").."</td>"
+						echo "<th><code>${paramName}</code></th>"
+						echo "<td width='100%'>"
+						if(param.def){
+							if(param.def == "true" || param.def == "false" || param.def == "null"){
+								param.def = "<code>${param.def}</code>"
+							}
+							echo "<p><b>${_T.DEFAULT_VALUE}:</b> ${decode(param.def)}</p>"
+						}
+						echo decode(param.desc)
+						echo "</td>"
+					echo "</tr>"
+				}
+			%>
+			<%}/*if(content.params)*/%>
+			
+			<%if(content.ret && content.ret != "void"){%>
+			<tr>
+			  <th colspan="3" class="info"><%=_T.RETURN_VALUE%></th>
+			</tr>
+			<tr>
+			  <td><%=content.ret%></td>
+			  <td></td>
+			  <td><%=content.retDesc || ""%></td>
+			</tr>
+			<%}else if(content.retDesc || !content.ret || content.ret == "void"){%>
+			<tr>
+			  <th colspan="2" class="info"><%=_T.RETURN_VALUE%></th>
+			  <td width="100%"><%=content.retDesc || _T.FUNC_RETURN_VOID%></td>
+			</tr>
+			<%}/*if(content.retDesc)*/%>
+		  </tbody>
+		</table>
+	<% } /*if*/ %>
+	
+  </div>
+</div>
+
+<%
+	/*
+	echo "<pre>"
+	@controller.beginWidget('HtmlEncodeWidget')
+	dump(links)
+	dump(breadcrumb)
+	dump(content)
+	dump(prevContent)
+	@controller.endWidget('HtmlEncodeWidget')
+	echo "</pre>"
+	*/

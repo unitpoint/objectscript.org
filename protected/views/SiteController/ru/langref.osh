@@ -1,0 +1,10 @@
+<% 
+	@controller.widget{"LangReferenceWidget",
+		// content = require("langref-content.globals.os"),
+		page = @page || "globals",
+		pageViewPrefix = __DIR__.."/langref-content.",
+		breadcrumb = {
+			url = @controller.createUrl(),
+			name = _T.MENU_REFERENCE,
+		},
+	}
