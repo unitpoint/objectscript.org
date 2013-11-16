@@ -138,7 +138,6 @@ function Array.merge(){
 DateTime || throw "DateTime required"
 
 function DateTime.__add(b){
-	// b is DateTime && throw "DateTime.__add requires Number"
 	return DateTime {
 		comdate = @comdate + (numberOf(b) || throw "DateTime.__add requires Number")
 	}

@@ -8,7 +8,7 @@
 	OS сочетает преимущества таких языков, как JavaScript, Lua, Ruby, Python и PHP. OS имеет синтаксис из JavaScript, 
 	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python, PHP и мн. др.
 	<p>
-	<a class="btn btn-lg btn-primary" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
+	<a class="btn btn-lg btn-primary btn-download" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
 </div>
 
 <div class="bs-callout bs-callout-info">

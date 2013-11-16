@@ -1,3 +1,3 @@
 return {
-	CLIENT_VERSION = 12,
+	CLIENT_VERSION = 13,
 }
