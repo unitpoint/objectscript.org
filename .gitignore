@@ -1,3 +1,5 @@
 *.osc
 *.ost
 /protected/config/*?-local.os
+/scripts/
+/in-progress/

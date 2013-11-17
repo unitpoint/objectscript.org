@@ -1,5 +1,5 @@
 return {
-	classname = "DbConnection",
+	classname = "CDbConnection",
 	tablePrefix = "ox_",
 	type = "mysql",
 	params = {

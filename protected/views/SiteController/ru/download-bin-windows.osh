@@ -1,9 +1,11 @@
-﻿<table class="table">
+﻿<p>
+Самая новая сборка под Windows.
+
+<table class="table">
   <tbody class="bold-sub-links">
 	<tr>
 	  <td>
-		<p>
-		Самая новая сборка под Windows
+		
 		<div style="padding-left:40px">
 		    <p><a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.13-rc.zip" 
 				target="_blank">os-1.13-rc.zip</a>
