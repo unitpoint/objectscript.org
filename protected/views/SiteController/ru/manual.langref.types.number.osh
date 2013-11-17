@@ -107,7 +107,7 @@ href="<%=@controller.createUrl{params={page="langref.oop.magic-methods"}}%>">М�
 <h3>Пример <code>numberOf</code> в DateTime.__add</h3>
 <div class="row">
   <div class="col-md-11 badge-src">
-	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L140"}%>
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L140"}%>
 <pre class="prettyprint linenums lang-js">
 function DateTime.__add(b){
   return DateTime {
@@ -145,7 +145,7 @@ function DateTime.__add(b){
 <h3>Пример <code>numberOf</code> в HttpRequest</h3>
 <div class="row">
   <div class="col-md-11 badge-src">
-	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/HttpRequest.os#L39"
+	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/CHttpRequest.os#L39"
 		target="_blank" title="Исходник"><span class="glyphicon glyphicon-paperclip"></span></a></span>
 <pre class="prettyprint linenums lang-js">
 __get@port = function(){

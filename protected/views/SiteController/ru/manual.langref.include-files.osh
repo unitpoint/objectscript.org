@@ -3,7 +3,7 @@
 
 <div class="row">
   <div class="col-md-11 badge-src">
-	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1"}%>
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L1"}%>
 <pre class="prettyprint linenums lang-js">
 
 	require "std"

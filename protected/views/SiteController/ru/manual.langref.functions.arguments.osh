@@ -37,7 +37,7 @@
 <h3>Пример из класса Controller</h3>
 <div class="row">
   <div class="col-md-11 badge-src">
-	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/Controller.os#L25"}%>
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/CController.os#L25"}%>
 <pre class="prettyprint linenums lang-js">
   runAction = function(name){
     var old;

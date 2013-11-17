@@ -228,7 +228,7 @@ Heredoc-синтаксис начинается с последовательн�
 <h3>Пример <code>stringOf</code> в setCookie</h3>
 <div class="row">
   <div class="col-md-11 badge-src">
-	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/webcore.os#L81"}%>
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/webcore.os#L81"}%>
 <pre class="prettyprint linenums lang-js">
   if(expires is DateTime){
     buf.append("; expires="..expires.format("D, d-M-Y H:i:s T"))

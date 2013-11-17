@@ -1,4 +1,4 @@
-<p>
+﻿<p>
 В OS применяется несколько подходов для реализации функционала, например класс, модуль и библиотека.
 
 <h3>Класс</h3>
@@ -23,5 +23,5 @@
 <p>
 В OS библиотекой называется сгруппированный в один файл набор функций и констант, 
 добавляющий или изменяющий функционал в глобальной области видимости или в существующем классе или модуле.
-Например, <a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os" 
+Например, <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os" 
 target="_blank">библиотека std</a>.

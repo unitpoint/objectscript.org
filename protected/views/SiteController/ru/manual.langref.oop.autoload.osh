@@ -2,12 +2,12 @@
 Для автоматической загрузки классов в OS используется механизм обращения к неизвестному свойству в глобальной области видимости.
 
 <p>
-Автоматическая загрузка уже работает при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1" 
+Автоматическая загрузка уже работает при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L1" 
 target="_blank">библиотеки std</a> и реализована следующим образом.
 
 <div class="row">
   <div class="col-md-11 badge-src">
-    <%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/protected/components/std.os#L1"}%>
+    <%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L1"}%>
 <pre class="prettyprint linenums lang-js">var modulesLoaded = {}
 function __get(name){
     if(!(name in modulesLoaded)){
