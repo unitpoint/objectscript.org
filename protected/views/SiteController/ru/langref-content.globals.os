@@ -33,19 +33,24 @@ END,
 			desc = "Список загруженных модулей.",
 		},
 		
-		OS_SOURCECODE_AUTO = {
-			type = "number",
-			def = "0",
+		OS_VERSION = {
+			type = "string",
+			def = json.encode(OS_VERSION),
 		},
 		
-		OS_SOURCECODE_PLAIN = {
+		SOURCECODE_AUTO = {
 			type = "number",
-			def = "1",
+			def = SOURCECODE_AUTO,
 		},
 		
-		OS_SOURCECODE_TEMPLATE = {
+		SOURCECODE_PLAIN = {
 			type = "number",
-			def = "2",
+			def = SOURCECODE_PLAIN,
+		},
+		
+		SOURCECODE_TEMPLATE = {
+			type = "number",
+			def = SOURCECODE_TEMPLATE,
 		},
   },
 	

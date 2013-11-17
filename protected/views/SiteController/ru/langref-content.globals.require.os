@@ -21,18 +21,18 @@ END,
 Если <code>false</code>, то не важно, существует файл или нет.
 END,
 		},
-		sourceCodeType = {
+		type = {
 			type = "number",
-			def = "<a href='#url(globals.OS_SOURCECODE_AUTO)'>OS_SOURCECODE_AUTO</a>",
-			// defUrl = {params={page="globals.OS_SOURCECODE_AUTO"}},
+			def = "<a href='#url(globals.SOURCECODE_AUTO)'>SOURCECODE_AUTO</a>",
+			// defUrl = {params={page="globals.SOURCECODE_AUTO"}},
 			desc = <<<END'
 <p>Тип подключаемого файла.					
-<p>Если <a href="#url(globals.OS_SOURCECODE_AUTO)">OS_SOURCECODE_AUTO</a>, то тип файла будет определен автоматически. <br />
-Если <a href="#url(globals.OS_SOURCECODE_PLAIN)">OS_SOURCECODE_PLAIN</a>, то файл будет подключен, как исходный код на OS. <br />
-Если <a href="#url(globals.OS_SOURCECODE_TEMPLATE)">OS_SOURCECODE_TEMPLATE</a>, то файл будет подключен, как шаблон.
+<p>Если <a href="#url(globals.SOURCECODE_AUTO)">SOURCECODE_AUTO</a>, то тип файла будет определен автоматически. <br />
+Если <a href="#url(globals.SOURCECODE_PLAIN)">SOURCECODE_PLAIN</a>, то файл будет подключен, как исходный код на OS. <br />
+Если <a href="#url(globals.SOURCECODE_TEMPLATE)">SOURCECODE_TEMPLATE</a>, то файл будет подключен, как шаблон.
 END,					
 		},
-		checkUtf8BOM = {
+		utf8 = {
 			type = "boolean",
 			def = "true",
 			desc = <<<END'
@@ -46,6 +46,7 @@ END,
 		// require.paths = []
 		paths = {
 			type = "array",
+			// def = "[ ]",
 			desc = <<<END'
 Список директорий, которые используются при поиске подключаемых файлов.
 END,

@@ -1,6 +1,6 @@
 <%
 	var getContent = function(name){
-		return objectOf(name) || require(name) 
+		return objectOf(name) || require(stringOf(name) || throw "string or object required") 
 	}
 	
 	var parts, links = @page.split("."), []
@@ -9,8 +9,7 @@
 	var breadcrumb, content, prevContent, name = [], fullContent
 	for(; #parts > 0; ){
 		name = parts[0]
-		var cur = content.funcs[name] || content.props[name]
-		if(!cur) break
+		var cur = content.funcs[name] || content.props[name] || break
 		links[] = name
 		name != "globals" && breadcrumb.push{links.join("."), name}
 		var key = cur === content.funcs[name] ? "funcs" : "props"
@@ -21,15 +20,19 @@
 	
 	var controller = @controller
 	var decode = function(str){
-		return str.replace(Regexp("#\#url\((.*?)\)#s"), {|m|
-			var params = m[1].split(",")
-			if(#params == 1){
-				params = {params={page=params[0].trim()}}
-			}else{
-				throw "error url ${m[1]}"
-			}
-			return controller.createUrl(params)
-		})
+		return toString(str).replace {
+			[Regexp("#\#url\((.*?)\)#s")] = {|m|
+				var params = m[1].split(",")
+				if(#params == 1){
+					params = {params={page=params[0].trim()}}
+				}else{
+					throw "error url ${m[1]}"
+				}
+				return controller.createUrl(params)
+			},
+			[Regexp("#^\".*?\"$#s")] = "<span class='str'>$0</span>",
+			[Regexp("#^\d+$#s")] = "<span class='lit'>$0</span>",
+		}
 	}
 %>
 <ol class="breadcrumb">
@@ -37,7 +40,7 @@
 		if(@breadcrumb){
 			echo "<li><a href='${@breadcrumb.url}'>${@breadcrumb.name}</a></li>"
 		}
-		var htmlTitle = ["ObjectScript", _T.MENU_REFERENCE]
+		var htmlTitle = [] // "ObjectScript", _T.MENU_REFERENCE]
 		for(var _, item in breadcrumb){
 			var key, name = item.unpack()
 			if(key == @page){
@@ -48,7 +51,10 @@
 			}
 			htmlTitle.push(name)
 		}
-		@controller.pageTitle = htmlTitle.reverse().join(" / ")
+		#htmlTitle > 0 && htmlTitle = [htmlTitle.join(".")]
+		@breadcrumb && htmlTitle[] = @breadcrumb.name
+		htmlTitle[] = "ObjectScript"
+		@controller.pageTitle = htmlTitle.join(" / ")
 	%>
 </ol>
 
@@ -94,20 +100,20 @@
 			</div>
 			<%
 		}
-		if(pageTitle && pageTitle == ""){
+		if(!pageTitle || pageTitle == ""){
 			content.desc && echo(decode(content.desc))
 		}else if(!content.ret){
 			pageHeader()
 			echo "<table class='table'><tbody>"
 			echo "<tr class='active'>"
-				echo "<td>"..(content.type || "").."</td>"
+				echo "<td nowrap>"..(content.type || "").."</td>"
 				echo "<th><code>${name}</code></th>"
 				echo "<td width='100%'>"
 				if(content.def){
 					if(content.def == "true" || content.def == "false" || content.def == "null"){
 						content.def = "<code>${content.def}</code>"
 					}
-					echo "<p>${decode(content.def)}</p>"
+					echo "<p>= ${decode(content.def)}</p>"
 				}
 				content.desc && echo(decode(content.desc))
 				echo "</td>"
@@ -115,15 +121,26 @@
 			echo "</tbody></table>"
 		}else{		
 			pageHeader()
-			echo '<pre class="prettyprint lang-js prettyprinted">'
-			echo "  <span class='kwd'>${content.ret}</span> <span class='pln'>${name}</span><span class='pun'>(</span> "
+			echo '<pre class="prettyprint lang-js prettyprinted" style="padding-left:20px">'
+			echo "<span class='kwd'>${content.ret}</span> <span class='pln'>${name}</span><span class='pun'>(</span>"
 			var paramNum = 0
-			for(var paramName, v in content.params){
-				paramNum++ > 0 && echo("<span class='pun'>,</span> ")
+			for(var paramName, param in content.params){
+				echo(paramNum++ > 0 ? "<span class='pun'>,</span> " : " ")
+				echo "<nobr>"
 				echo "<span class='pln'>${paramName}</span>"
+				if(param.def){
+					if(param.def == "true" || param.def == "false" || param.def == "null"){
+						param.def = "<span class='kwd'>${param.def}</span>"
+					}
+					// echo "<p><b>${_T.DEFAULT_VALUE}:</b> ${decode(param.def)}</p>"
+					echo " = ${decode(param.def)}"
+				}
+				echo "</nobr>"
 			}
-			content.rest && echo(" <span class='pun'>[</span>", 
-				paramNum > 0 ? ", " : "", "arg${paramNum+1} ...<span class='pun'>]</span>")
+			if(content.rest){
+				echo paramNum == 0 ? " ..." 
+						: " <span class='pun'>[</span>, arg${paramNum+1} ...<span class='pun'>]</span>"
+			}
 			echo " <span class='pun'>)</span>"
 			echo '</pre>'
 	%>
@@ -149,12 +166,13 @@
 						echo "<td>"..(param.type || "").."</td>"
 						echo "<th><code>${paramName}</code></th>"
 						echo "<td width='100%'>"
-						if(param.def){
+						/* if(param.def){
 							if(param.def == "true" || param.def == "false" || param.def == "null"){
 								param.def = "<code>${param.def}</code>"
 							}
-							echo "<p><b>${_T.DEFAULT_VALUE}:</b> ${decode(param.def)}</p>"
-						}
+							// echo "<p><b>${_T.DEFAULT_VALUE}:</b> ${decode(param.def)}</p>"
+							echo "<p>= ${decode(param.def)}</p>"
+						} */
 						echo decode(param.desc)
 						echo "</td>"
 					echo "</tr>"
