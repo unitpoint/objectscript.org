@@ -1,5 +1,5 @@
 ﻿<%
-  require "../../protected/components/webcore"
+  require "../../framework/components/webcore"
 %><!DOCTYPE html>
 <html>
 <head>

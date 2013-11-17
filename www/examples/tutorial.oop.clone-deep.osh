@@ -1,6 +1,6 @@
 ﻿<pre style="font-size:18px"><%
 
-	require "../../protected/components/std"
+	require "../../framework/components/std"
 
     var a = [1, ["Hello", "World"], 3]
 	var b = a.deepClone()

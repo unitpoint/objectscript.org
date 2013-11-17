@@ -1,6 +1,6 @@
 <pre style="font-size:18px"><%
 
-	require "../../protected/components/webcore"
+	require "../../framework/components/webcore"
 
 	var arr = [1, 2, 3]
 	print "arr = [1, 2, 3]"
