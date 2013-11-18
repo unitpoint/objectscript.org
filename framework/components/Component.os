@@ -1,4 +1,4 @@
-CComponent = {
+Component = {
 	__construct = function(){
 		super()
 	},

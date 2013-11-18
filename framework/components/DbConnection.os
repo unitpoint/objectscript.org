@@ -1,4 +1,4 @@
-CDbConnection = extends CComponent {
+DbConnection = extends Component {
 	handle = null,
 	tablePrefix = "",
 	type = null,

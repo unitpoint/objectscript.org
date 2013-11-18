@@ -1,10 +1,10 @@
 ﻿<%
 	// require framework
-	require("../framework/components/CApplication")
+	require("../framework/components/Application")
 	
-	// require application main class
-	require("../protected/components/Application")
+	// require OS site application class
+	require("../protected/components/OSApplication")
 	
 	// run application
-	Application(require("../protected/config/config-main")).run()
+	OSApplication(require("../protected/config/config-main")).run()
 	

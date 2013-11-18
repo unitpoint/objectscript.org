@@ -21,14 +21,14 @@ return {
 	},
 	components = {
 		session = {
-			classname = "CFileSession",
+			classname = "FileSession",
 			
 		}.merge(require("session-local.os", false)),
 		/* urlManager = {
-			classname = "CUrlManager",
+			classname = "UrlManager",
 		},
 		request = {
-			classname = "CHttpRequest",
+			classname = "HttpRequest",
 		}, */
 		// db = require("db-local.os"),
 		db = extends require("db-local.os", false) {}, // hide db user & password while print config

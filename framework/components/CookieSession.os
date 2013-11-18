@@ -1,4 +1,4 @@
-CCookieSession = extends CComponent {
+CookieSession = extends Component {
 	cookieName = "OSSESSION",
 	cookieLifetime = 60*60*24*2,
 	cookiePath = "/",
@@ -7,7 +7,7 @@ CCookieSession = extends CComponent {
 	cookieHttponly = null,
 
 	init = function(){
-		@prototype === CCookieSession && throw "you should not create instance of CookieSession"
+		@prototype === CookieSession && throw "you should not create instance of CookieSession"
 		super()
 	},
 	

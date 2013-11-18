@@ -30,7 +30,7 @@ cd ./objectscript
 <li><p>Затем сконфигурируем сборку под нашу платформу:
 <pre>
 mkdir build && cd build
-cmake -DCMAKE_INSTALL_PREFIX=/ ..
+cmake -DBUILD_SOCI=ON -DCMAKE_INSTALL_PREFIX=/ ..
 </pre>
 <p class="text-left">
 	<img src="img/objectscript-configure.png">

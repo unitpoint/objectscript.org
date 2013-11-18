@@ -2,7 +2,7 @@ require "common"
 
 app = null
 
-CApplication = extends CComponent {
+Application = extends Component {
 	__get@defaultAliases = function(){
 		return {
 			"{framework}" = path.dirname(__DIR__),
@@ -23,13 +23,13 @@ CApplication = extends CComponent {
 	__get@defaultComponents = function(){
 		return {
 			session = {
-				classname = "CFileSession",
+				classname = "FileSession",
 			},
 			urlManager = {
-				classname = "CUrlManager",
+				classname = "UrlManager",
 			},
 			request = {
-				classname = "CHttpRequest",
+				classname = "HttpRequest",
 			},			
 		}
 	},

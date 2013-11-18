@@ -1,4 +1,4 @@
-html = extends CComponent {
+html = extends Component {
 	encode = function(str){
 		return str.replace { 
 			// "&" = "&amp;", don't use it here

@@ -1,4 +1,4 @@
-CUrlManager = extends CComponent {
+UrlManager = extends Component {
 	routeVar = "r",
 	_showScriptName = true,
 	_baseUrl = null,

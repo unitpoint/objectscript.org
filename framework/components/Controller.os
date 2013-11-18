@@ -1,4 +1,4 @@
-﻿CController = extends CComponent {
+﻿Controller = extends Component {
 	/* __object = {
 		owner = null,
 		actionId = "",

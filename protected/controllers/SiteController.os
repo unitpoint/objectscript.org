@@ -1,4 +1,4 @@
-SiteController = extends Controller {
+SiteController = extends OSController {
 
 	/* runAction = function(name){
 		ob.push()

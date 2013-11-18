@@ -1,4 +1,4 @@
-CHttpRequest = extends CComponent {
+HttpRequest = extends Component {
 	_baseUrl = null,
 	_scriptUrl = null,
 	_hostInfo = null,

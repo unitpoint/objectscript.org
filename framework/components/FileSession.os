@@ -1,4 +1,4 @@
-CFileSession = extends CCookieSession {
+FileSession = extends CookieSession {
 	savePath = OS_CACHE_PATH,
 	hashFunc = "md5",
 	gcProbability = 0.001,
