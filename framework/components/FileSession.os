@@ -1,4 +1,4 @@
-FileSession = extends CookieSession {
+FileSession = extends BaseSession {
 	savePath = OS_CACHE_PATH,
 	hashFunc = "md5",
 	gcProbability = 0.001,
@@ -9,7 +9,7 @@ FileSession = extends CookieSession {
 	_shutdownRunner = null,
 	_clenupRunner = null,
 	
-	// data = null,
+	_data = null,
 	
 	__get@id = function(){
 		return @_id
@@ -34,25 +34,32 @@ FileSession = extends CookieSession {
 		throw "function required but hashlib.${@hashFunc} is not "..(hashlib[@hashFunc] ? "function" : "found")
 	},
 	
-	start = function(id){
-		@id = id || _COOKIE[@cookieName] || @genId()
-		_SESSION = objectOf(json.decode(File.readContents(@filename))) || {}
-		if(#_SESSION == 0 && !path.exists(@filename) && @id == _COOKIE[@cookieName]){
-			@id = @genId()
+	data = function(){
+		@open()
+		return @_data
+	},
+	
+	open = function(id){
+		if(!@isOpen || id !== @id){
+			@id = id || _COOKIE[@cookieName] || @genId()
+			@_data = objectOf(json.decode(File.readContents(@filename))) || {}
+			if(#@data == 0 && @id == _COOKIE[@cookieName] && !path.exists(@filename)){
+				@id = @genId()
+			}
+			
+			setCookie(@cookieName, @id, @cookieLifetime && DateTime.now() + @cookieLifetime/(60*60*24), 
+				@cookiePath, @cookieDomain, @cookieSecure, @cookieHttponly)	
+			
+			var self = this
+			// unregisterShutdownFunction(@_shutdownRunner)
+			registerShutdownFunction(@_shutdownRunner = {|| self.close() })
 		}
-		
-		setCookie(@cookieName, @id, @cookieLifetime && DateTime.now() + @cookieLifetime/(60*60*24), 
-			@cookiePath, @cookieDomain, @cookieSecure, @cookieHttponly)	
-		
-		var self = this
-		// unregisterShutdownFunction(@_shutdownRunner)
-		registerShutdownFunction(@_shutdownRunner = {|| self.stop() })
 	},
 
-	stop = function(){
-		if(@_filename){
-			var filename, data = @_filename, _SESSION
-			@_id, @_filename, _SESSION, _COOKIE[@cookieName] = null
+	close = function(){
+		if(@isOpen){
+			var filename, data = @_filename, @_data
+			@_id, @_filename, @_data, _COOKIE[@cookieName] = null
 			
 			var self = this
 			unregisterCleanupFunction(@_clenupRunner)
@@ -74,11 +81,11 @@ FileSession = extends CookieSession {
 	},
 
 	get = function(name){
-		return _SESSION[name]
+		return @_data[name]
 	},
 
 	set = function(name, value){
-		_SESSION[name] = value
+		@_data[name] = value
 	},
 }
 

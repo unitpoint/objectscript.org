@@ -108,7 +108,7 @@ Application = extends Component {
 		}
 	},
 	
-	createWidget = function(controller, classname, params){
+	createWidget = function(classname, params, controller){
 		if(objectOf(classname)){
 			params && throw "3rd argument should not be used here"
 			classname, params = classname.shift(), classname
@@ -215,7 +215,7 @@ Application = extends Component {
 		echo "</pre>" */
 	},
 
-	resolveView = function(controller, name){
+	resolveView = function(name, controller){
 		if(!path.exists(name) && !path.absolute(name)){
 			if(name.sub(0, 2) == "//"){
 				name = "{views}/${name.sub(2)}"
@@ -234,7 +234,7 @@ Application = extends Component {
 		return require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
 	},
 	
-	renderView = function(controller, filename, params){
+	renderView = function(filename, params, controller){
 		ob.push()
 		var view = @_compiledViews[filename] || @_compiledViews[filename] = compileFile(filename, true, null, true)
 		view.call({controller = controller}.merge(params))

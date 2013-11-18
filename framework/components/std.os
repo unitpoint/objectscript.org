@@ -201,6 +201,7 @@ function String.__div(count){
 	return this * (1 / count)
 }
 
+/*
 function String.__add(b){
 	return this .. b
 }
@@ -208,7 +209,17 @@ function String.__add(b){
 function String.__radd(b){
 	return b .. this
 }
+*/
 
 function String.flower(){
 	return @sub(0, 1).upper() .. @sub(1)
+}
+
+	
+function url.buildQuery(p, amp){
+	var r = []
+	for(var k, v in p){
+		r[] = url.encode(k)..'='..url.encode(v)
+	}
+	return r.join(amp || '&')
 }

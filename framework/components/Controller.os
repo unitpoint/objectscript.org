@@ -46,15 +46,15 @@
 	},
 	
 	resolveView = function(name){
-		return @owner.resolveView(@controller, name)
+		return @owner.resolveView(name, @controller)
 	},
 	
 	renderPartial = function(name, params, checkWidgetStack){
 		if(checkWidgetStack === false){
-			return @owner.renderView(@controller, @resolveView(name), params)
+			return @owner.renderView(@resolveView(name), params, @controller)
 		}
 		var widgetCount = #@_widgetStack
-		var content = @owner.renderView(@controller, @resolveView(name), params)
+		var content = @owner.renderView(@resolveView(name), params, @controller)
 		if(widgetCount != #@_widgetStack){
 			throw "${@classname} has "..(widgetCount > #@_widgetStack ? 'extra' : 'error')
 					.." stack widgets (before ${widgetCount} != after ${#@_widgetStack})"
@@ -71,7 +71,7 @@
 	},
 	
 	createWidget = function(classname, params){
-		return @owner.createWidget(@controller, classname, params)
+		return @owner.createWidget(classname, params, @controller)
 	},
 	
 	renderWidget = function(classname, params){

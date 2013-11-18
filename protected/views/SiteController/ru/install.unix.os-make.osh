@@ -1,24 +1,23 @@
 ﻿<p>
-В состав исходников ObjectScript входят два проекта: <code>os</code>, <code>os-fcgi</code>.
+В состав исходников ObjectScript входят два проекта:
 
-<p>
-<code>os</code> - консольное приложение для запуска скриптов ObjectScript из командной строки.
+<ul>
+<li><p><code>os</code> - консольное приложение для запуска скриптов ObjectScript из командной строки.
 
-<p>
-<code>os-fcgi</code> - это сервис, предназначенный для веб-программирования на языке OS (ObjectScript). 
+<li><p><code>os-fcgi</code> - это сервис, предназначенный для веб-программирования на языке OS (ObjectScript). 
 <code>os-fcgi</code> реализует 
 клиент-серверный интерфейс FastCGI для взаимодействия с веб-сервером. Интерфейс FastCGI поддерживается большинством современных 
 веб-серверов, например, apache, nginx и мн. др.
+</ul>
 
 <p>
 <div class="bs-callout bs-callout-danger">
-Установку os-fcgi следует выполнять из под пользователя <code>root</code>
+Установку следует выполнять из под пользователя <code>root</code>
 </div>
 </p>
 
 <ol>
-<li><p>Для начала скачаем самую последнюю версию ObjectScript, в состав которого входит <code>os-fcgi</code> и перейдем 
-в соответствующую папку:
+<li><p>Для начала скачаем самую последнюю версию ObjectScript и перейдем в соответствующую папку:
 <pre>
 git clone https://github.com/unitpoint/objectscript.git
 cd ./objectscript
@@ -36,7 +35,7 @@ cmake -DBUILD_SOCI=ON -DCMAKE_INSTALL_PREFIX=/ ..
 	<img src="img/objectscript-configure.png">
 </p>
 
-<li><p>Теперь запустим компиляцию из исходников и выполним установку сервиса <code>os-fcgi</code>:
+<li><p>Теперь запустим компиляцию и установку <code>os</code> и <code>os-fcgi</code>:
 <pre>
 make
 make install
@@ -60,7 +59,7 @@ service os-fcgi restart
 git clone https://github.com/unitpoint/objectscript.git
 cd ./objectscript
 mkdir build && cd build
-cmake -DCMAKE_INSTALL_PREFIX=/ ..
+cmake -DBUILD_SOCI=ON -DCMAKE_INSTALL_PREFIX=/ ..
 make
 make install
 service os-fcgi restart

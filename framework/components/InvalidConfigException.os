@@ -1,0 +1,3 @@
+InvalidConfigException = extends Exception {
+
+}
