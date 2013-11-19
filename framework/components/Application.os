@@ -84,7 +84,7 @@ Application = extends Component {
 		var controller, actionId, old = @createController(route)
 		if(controller){
 			old, @_controller = @_controller, controller
-			controller.init()
+			// controller.init()
 			controller.runAction(actionId)
 			@_controller = old
 		}else{
@@ -104,13 +104,14 @@ Application = extends Component {
 		var controller = _G[@resolveClass(p.join("."))](this, controllerId) // @getComponent(p[0])
 		if(controller){
 			controller is Controller || throw "Error controller class: ${controller.classname}"
+			controller.init()
 			return controller, actionId
 		}
 	},
 	
 	createWidget = function(classname, params, controller){
 		if(objectOf(classname)){
-			params && throw "3rd argument should not be used here"
+			params && throw "2rd argument should not be used here"
 			classname, params = classname.shift(), classname
 		}
 		var widget = _G[@resolveClass(classname)](controller)
@@ -123,8 +124,7 @@ Application = extends Component {
 	},
 	
 	getComponent = function(name, config){
-		name || throw "Attempt to create \"null\" component"
-		return @_components[name] || {||
+		return @_components[name || throw "Attempt to create empty component"] || {||
 			config || config = @config.components[name] || throw "Component \"${name}\" is not configured"
 			config.enabled === false && throw "Component \"${name}\" is disabled"
 			var component
@@ -216,7 +216,7 @@ Application = extends Component {
 	},
 
 	resolveView = function(name, controller){
-		if(!path.exists(name) && !path.absolute(name)){
+		if(!fs.exists(name) && !path.absolute(name)){
 			if(name.sub(0, 2) == "//"){
 				name = "{views}/${name.sub(2)}"
 			}else{ 

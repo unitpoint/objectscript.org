@@ -43,7 +43,7 @@ FileSession = extends BaseSession {
 		if(!@isOpen || id !== @id){
 			@id = id || _COOKIE[@cookieName] || @genId()
 			@_data = objectOf(json.decode(File.readContents(@filename))) || {}
-			if(#@data == 0 && @id == _COOKIE[@cookieName] && !path.exists(@filename)){
+			if(#@data == 0 && @id == _COOKIE[@cookieName] && !fs.exists(@filename)){
 				@id = @genId()
 			}
 			
