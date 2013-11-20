@@ -6,7 +6,7 @@
 </p>
 <p>
 Теперь самое время сделать что-нибудь интересное на OS. Для этого познакомьтесь с примерами в разделе документации
-<a href="<%=@controller.createUrl{action="manual", params={page="tutorial"}}%>">Простой учебник для веб-разработчика</a>.
+<a href="<%=@controller.createUrl{action="manual", params={page="tutorial"}, amp="&amp;"}%>">Простой учебник для веб-разработчика</a>.
 
 <h3>Что делать, если не заработало?</h3>
 <p>
@@ -17,4 +17,4 @@
 <p>
 То это означает, что сервис <code>os-fcgi</code> не запущен, либо он слушает не тот порт, который прописан в
 настройках веб-сервера. Следуйте инструкции 
-<a href="<%=@controller.createUrl{params={page="install.win.denwer"}}%>">Установка под apache на Denwer</a> для решения этой проблемы. 
+<a href="<%=@controller.createUrl{params={page="install.win.denwer"}, amp="&amp;"}%>">Установка под apache на Denwer</a> для решения этой проблемы. 

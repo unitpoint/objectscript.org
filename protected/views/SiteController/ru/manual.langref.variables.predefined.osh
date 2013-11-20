@@ -18,5 +18,5 @@
 
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.functions.env"}}%>">Окружение функции</a>
+<a href="<%=@controller.createUrl{params={page="langref.functions.env"}, amp="&amp;"}%>">Окружение функции</a>
 </div>

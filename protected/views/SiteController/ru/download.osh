@@ -4,7 +4,7 @@
 		page = @page,
 		pageViewPrefix = path.dirname(__FILE__).."/download-",
 		breadcrumb = {
-			url = @controller.createUrl(),
+			url = @controller.createUrl{amp="&amp;"},
 			name = _T.MENU_DOWNLOAD,
 		},
 	}

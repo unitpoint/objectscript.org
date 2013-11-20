@@ -10,5 +10,5 @@ OS позволяет вместо стоящих подряд скобок <cod
 <%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj.osh"}%>
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">ООП</a>
+<a href="<%=@controller.createUrl{params={page="langref.oop"}, amp="&amp;"}%>">ООП</a>
 </div>

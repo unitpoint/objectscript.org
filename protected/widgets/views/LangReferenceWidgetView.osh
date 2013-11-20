@@ -19,12 +19,12 @@
 	var pageTitle = links.join(".").replace(Regexp("#^globals\.?#s"), "")
 	
 	var controller = @controller
-	var decode = function(str){
+	var decode = function(str, amp){
 		return toString(str).replace {
 			[Regexp("#\@url\((.*?)\)#s")] = {|m|
 				var params = m[1].split(",")
 				if(#params == 1){
-					params = {params={page=params[0].trim()}}
+					params = {params={page=params[0].trim()}, amp=amp}
 				}else{
 					throw "error url ${m[1]}"
 				}
@@ -46,7 +46,7 @@
 			if(key == @page){
 				echo "<li class='active'>${name}</li>"
 			}else{
-				var url = @controller.createUrl{params={page=key}}
+				var url = @controller.createUrl{params={page=key}, amp="&amp;"}
 				echo "<li><a href='${url}'>${name}</a></li>"
 			}
 			htmlTitle.push(name)
@@ -76,7 +76,7 @@
 			for(var name, content in items.sort(compare)){
 				links.push(name)
 				var page = links.join(".")
-				var url = @controller.createUrl{params={page=page}}
+				var url = @controller.createUrl{params={page=page}, amp="&amp;"}
 				var activeClass = page == @page ? " class='active'" : ""
 				echo "<li${activeClass}"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><a href='${url}'>${name}</a></li>"
 				if(allowSub && activeClass != "" && (content.funcs || content.props)){

@@ -30,7 +30,7 @@ function __get(name){
 
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.include-files"}}%>">Механизм подключения файлов</a>,
-<a href="<%=@controller.createUrl{params={page="langref.oop.magic-methods"}}%>">Магические методы</a>
+<a href="<%=@controller.createUrl{params={page="langref.include-files"}, amp="&amp;"}%>">Механизм подключения файлов</a>,
+<a href="<%=@controller.createUrl{params={page="langref.oop.magic-methods"}, amp="&amp;"}%>">Магические методы</a>
 
 </div>

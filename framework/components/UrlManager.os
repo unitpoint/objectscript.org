@@ -45,7 +45,7 @@ UrlManager = extends Component {
 		}
 		var url = @showScriptName ? @baseUrl : @baseUrl.."/"
 		for(var name, value in p.params){
-			urlParams.push(_E.url.encode(name).."=".._E.url.encode(value))
+			urlParams[] = _E.url.encode(name).."=".._E.url.encode(value)
 		}
 		if(#urlParams > 0){
 			url = url.."?"..urlParams.join(p.amp || "&")

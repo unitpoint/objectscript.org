@@ -19,5 +19,5 @@
 
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.types.string"}, "#"="convert"}%>">Преобразование в строку</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.types.string"}, amp="&amp;", "#"="convert"}%>">Преобразование в строку</a>
 </div>

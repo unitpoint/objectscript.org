@@ -24,6 +24,6 @@
 <p>
 <div class="bs-callout bs-callout-danger">
 Если требуется использовать не только числовые индексы, а, например, строковые, то необходимо воспользоваться 
-<a href="<%=@controller.createUrl{params={page="langref.types.object"}}%>">объектом</a> вместо массива.
+<a href="<%=@controller.createUrl{params={page="langref.types.object"}, amp="&amp;"}%>">объектом</a> вместо массива.
 </div>
 </p>

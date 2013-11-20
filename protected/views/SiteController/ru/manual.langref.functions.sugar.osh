@@ -20,6 +20,6 @@ OS поддерживает короткий (<i>сахарный</i>) синт�
 <%@controller.widget{'SourceWidget', source="examples/tutorial.functions.alternative.osh"}%>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.variables.predefined"}}%>"><b>_F</b> и др. предопределенные переменные</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.variables.predefined"}, amp="&amp;"}%>"><b>_F</b> и др. предопределенные переменные</a>
 </div>
 

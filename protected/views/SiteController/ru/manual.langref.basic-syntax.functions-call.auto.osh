@@ -25,6 +25,6 @@
 </p>
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}}%>">Свойства объектов</a>,
-<a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">ООП</a>
+<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, amp="&amp;"}%>">Свойства объектов</a>,
+<a href="<%=@controller.createUrl{params={page="langref.oop"}, amp="&amp;"}%>">ООП</a>
 </div>

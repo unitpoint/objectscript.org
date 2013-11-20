@@ -7,6 +7,6 @@
 В OS функция автоматически возвращает последнее значение перед завершением функции.
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.return"}}%>">Команда return</a>,
-<a href="<%=@controller.createUrl{params={page="langref.functions.sugar"}}%>">Немного сахара</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.return"}, amp="&amp;"}%>">Команда return</a>,
+<a href="<%=@controller.createUrl{params={page="langref.functions.sugar"}, amp="&amp;"}%>">Немного сахара</a>
 </div>

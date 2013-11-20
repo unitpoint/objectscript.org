@@ -1,7 +1,7 @@
 ﻿<%
 	var controller = @controller
 	var url = function(page, anchor){
-		var urlParams = {params={page=page}}
+		var urlParams = {params={page=page}, amp="&amp;"}
 		if(anchor){
 			urlParams["#"] = anchor
 		}

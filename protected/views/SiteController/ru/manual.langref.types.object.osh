@@ -52,7 +52,7 @@
 <div class="bs-callout bs-callout-danger">
 Попытка доступа к несуществующему свойству, приведет к вызову метода геттера (getter) запрошенного свойста.
 Если геттер не реализован, то вернется <code>null</code>. Подробнее о геттерах и сеттерах читайте в разделе
-<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}}%>">Свойства</a>.
+<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, amp="&amp;"}%>">Свойства</a>.
 </div>
 </p>
 
@@ -82,6 +82,6 @@
 
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}}%>">Свойства</a>,
-<a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}}%>">for / for in</a>
+<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, amp="&amp;"}%>">Свойства</a>,
+<a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}, amp="&amp;"}%>">for / for in</a>
 </div>

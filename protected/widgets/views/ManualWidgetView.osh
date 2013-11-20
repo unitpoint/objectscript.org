@@ -40,7 +40,7 @@
 			if(key == page){
 				echo "<li class='active'>${name}</li>"
 			}else{
-				var url = @controller.createUrl{params={page=key}}
+				var url = @controller.createUrl{params={page=key}, amp="&amp;"}
 				echo "<li><a href='${url}'>${name}</a></li>"
 			}
 			htmlTitle.push(name)
@@ -72,7 +72,7 @@ $(function(){
 			<%
 				for(var key, subContent in content){
 					var name = stringOf(subContent) || subContent[0]
-					var url = @controller.createUrl(subContent.url || {params={page=key}})
+					var url = @controller.createUrl(subContent.url || {params={page=key}, amp="&amp;"})
 					var activeClass = key == page ? " active" : ""
 					echo "<a class='list-group-item${activeClass}' href='${url}'>${name}</a>"
 				}
@@ -83,7 +83,7 @@ $(function(){
 			<%
 				for(var key, subContent in content){
 					var name = stringOf(subContent) || subContent[0]
-					var url = @controller.createUrl(subContent.url || {params={page=key}})
+					var url = @controller.createUrl(subContent.url || {params={page=key}, amp="&amp;"})
 					var activeClass = key == page ? " class='active'" : ""
 					echo "<li${activeClass}><a href='${url}'>${name}</a></li>"
 				}
@@ -105,16 +105,16 @@ $(function(){
 					for(var key, subContent in content[page][1]){
 						if(stringOf(subContent)){
 							var name = subContent
-							var url = @controller.createUrl{params={page=key}}
+							var url = @controller.createUrl{params={page=key}, amp="&amp;"}
 							echo "<li><a href='${url}'>${name}</a></li>"
 						}else{
 							var name = subContent[0]
-							var url = @controller.createUrl{params={page=key}}
+							var url = @controller.createUrl{params={page=key}, amp="&amp;"}
 							echo "<li><a href='${url}'>${name}</a>"
 								echo "<p><ul>"
 								for(var key2, subContent2 in subContent[1]){
 									var name = stringOf(subContent2) || subContent2[0]
-									var url = @controller.createUrl{params={page=key2}}
+									var url = @controller.createUrl{params={page=key2}, amp="&amp;"}
 									echo "<li><a href='${url}'>${name}</a></li>"
 								}
 								echo "</ul></p>"

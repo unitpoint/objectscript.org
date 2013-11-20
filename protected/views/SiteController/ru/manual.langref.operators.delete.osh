@@ -19,6 +19,6 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.operators.delete.osh"}%>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, "#"="delete"}%>">Удаление свойств объектов</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, amp="&amp;", "#"="delete"}%>">Удаление свойств объектов</a>
 </div>
 

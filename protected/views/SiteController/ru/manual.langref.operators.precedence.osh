@@ -1,7 +1,7 @@
 ﻿<%
 	var controller = @controller
 	var url = function(page){
-		return controller.createUrl{params={page=page}}
+		return controller.createUrl{params={page=page}, amp="&amp;"}
 	}
 %>
 <p>
@@ -36,7 +36,7 @@
 	  <td>0</td>
 	  <td></td>
 	  <td></td>
-	  <td>Выполняется справа налево. См. <a href="<%=@controller.createUrl{params={page="langref.oop.properties"}}%>">Чтение и запись свойств</a></td>
+	  <td>Выполняется справа налево. См. <a href="<%=url("langref.oop.properties")%>">Чтение и запись свойств</a></td>
 	</tr>
 	<tr>
 	  <td><code>,</code></td>
@@ -369,7 +369,7 @@
 	  <td>16</td>
 	  <td></td>
 	  <td></td>
-	  <td>см. <a href="<%=@controller.createUrl{params={page="langref.oop.properties"}}%>">Чтение и запись свойств</a></td>
+	  <td>см. <a href="<%=url("langref.oop.properties")%>">Чтение и запись свойств</a></td>
 	</tr>
 	<tr>
 	  <td><code>[]</code></td>
@@ -378,7 +378,7 @@
 	  <td>16</td>
 	  <td></td>
 	  <td></td>
-	  <td>см. <a href="<%=@controller.createUrl{params={page="langref.oop.properties"}}%>">Чтение и запись свойств</a></td>
+	  <td>см. <a href="<%=url("langref.oop.properties")%>">Чтение и запись свойств</a></td>
 	</tr>
   </tbody>
 </table>

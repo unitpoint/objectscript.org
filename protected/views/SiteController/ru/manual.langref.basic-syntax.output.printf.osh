@@ -8,7 +8,7 @@
     <tr class="success">
 	  <td colspan="2">
 		Функция <code>printf</code> выводит с помощью функции 
-		<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}}%>">echo</a>
+		<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}, amp="&amp;"}%>">echo</a>
 		неограниченное количество параметров, следуя преобразованиям, полученным в первом параметре.
 		Идентична соответствующей функции в <code>C++</code>.
 	  </td>

@@ -56,5 +56,5 @@ for (i, v in collection)
 Где <code>i</code> - ключ элемента коллекции, <code>v</code> - значение элемента коллекции, <code>collection</code> - сама коллекция.
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.oop.iterations"}}%>">Итераторы объектов</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.oop.iterations"}, amp="&amp;"}%>">Итераторы объектов</a>
 </div>

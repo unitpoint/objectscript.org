@@ -9,5 +9,5 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.break-continue.osh"}%>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}}%>">for / for in</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}, amp="&amp;"}%>">for / for in</a>
 </div>

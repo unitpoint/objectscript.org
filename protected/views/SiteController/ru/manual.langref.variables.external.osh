@@ -5,10 +5,10 @@
 <ul>
 <li><p><code>_SERVER</code> - содержит информацию о запросе, например, <code>_SERVER["HTTP_USER_AGENT"]</code> - полная 
 строка о названии и версии браузера, в котором открыта наша страница 
-<nobr>(см. <a href="<%=@controller.createUrl{params={page="tutorial.useful"}}%>">Делаем что-нибудь полезное</a>).</nobr>
+<nobr>(см. <a href="<%=@controller.createUrl{params={page="tutorial.useful"}, amp="&amp;"}%>">Делаем что-нибудь полезное</a>).</nobr>
 
 <li><p><code>_POST</code> - параметры формы, заполненные пользователем в браузере и переданные на сервер для обработки
-<nobr>(см. <a href="<%=@controller.createUrl{params={page="tutorial.forms"}}%>">Работа с формами</a>).</nobr>
+<nobr>(см. <a href="<%=@controller.createUrl{params={page="tutorial.forms"}, amp="&amp;"}%>">Работа с формами</a>).</nobr>
 
 <li><p><code>_GET</code> - параметры запроса, переданные в адресной строке.
 

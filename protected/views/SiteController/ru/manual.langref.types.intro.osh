@@ -4,30 +4,30 @@ OS поддерживает восемь типов данных.
 <p>
 Три скалярных типа:
 <ul>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.bool"}}%>">boolean</a> - <code>true</code> или <code>false</code>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.number"}}%>">number</a> - <code>10</code>, <code>0xf0</code>, <code>2.4</code>, <code>5.7e20</code>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.string"}}%>">string</a> - <code>"Hello, World!"</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.bool"}, amp="&amp;"}%>">boolean</a> - <code>true</code> или <code>false</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.number"}, amp="&amp;"}%>">number</a> - <code>10</code>, <code>0xf0</code>, <code>2.4</code>, <code>5.7e20</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.string"}, amp="&amp;"}%>">string</a> - <code>"Hello, World!"</code>
 </ul>
 
 <p>
 Два смешанных типа:
 
 <ul>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.array"}}%>">array</a> - <code>[1, 2, 3, "value"]</code>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.object"}}%>">object</a> - <code>{name="Ivan", lastname="Petrov"}</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.array"}, amp="&amp;"}%>">array</a> - <code>[1, 2, 3, "value"]</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.object"}, amp="&amp;"}%>">object</a> - <code>{name="Ivan", lastname="Petrov"}</code>
 </ul>
 
 <p>
 Два специальных типа:
 <ul>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.null"}}%>">null</a> - только одно значение  <code>null</code>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.userdata"}}%>">userdata</a> - пользовательские данные для интеграции с кодом на <code>C++</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.null"}, amp="&amp;"}%>">null</a> - только одно значение  <code>null</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.userdata"}, amp="&amp;"}%>">userdata</a> - пользовательские данные для интеграции с кодом на <code>C++</code>
 </ul>
 
 <p>
 И один тип для функций:
 <ul>
-<li><p><a href="<%=c.createUrl{params={page="langref.types.function"}}%>">function</a> - <code>function(){ print "Hello, World!" }</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.function"}, amp="&amp;"}%>">function</a> - <code>function(){ print "Hello, World!" }</code>
 </ul>
 
 <p>
@@ -46,19 +46,19 @@ OS - язык с динамической типизацией, это озна�
 
 <p>
 К простым типам относятся: 
-<a href="<%=c.createUrl{params={page="langref.types.bool"}}%>">boolean</a>,
-<a href="<%=c.createUrl{params={page="langref.types.number"}}%>">number</a>,
-<a href="<%=c.createUrl{params={page="langref.types.string"}}%>">string</a> и
-<a href="<%=c.createUrl{params={page="langref.types.null"}}%>">null</a>. Они так называются, потому что не могут являться
+<a href="<%=c.createUrl{params={page="langref.types.bool"}, amp="&amp;"}%>">boolean</a>,
+<a href="<%=c.createUrl{params={page="langref.types.number"}, amp="&amp;"}%>">number</a>,
+<a href="<%=c.createUrl{params={page="langref.types.string"}, amp="&amp;"}%>">string</a> и
+<a href="<%=c.createUrl{params={page="langref.types.null"}, amp="&amp;"}%>">null</a>. Они так называются, потому что не могут являться
 контейнерами для др. значений.
 
 <h3>Сложные типы</h3>
 
 <p>
 К сложным типам относятся: 
-<a href="<%=c.createUrl{params={page="langref.types.array"}}%>">array</a>,
-<a href="<%=c.createUrl{params={page="langref.types.object"}}%>">object</a>,
-<a href="<%=c.createUrl{params={page="langref.types.userdata"}}%>">userdata</a> и
-<a href="<%=c.createUrl{params={page="langref.types.function"}}%>">function</a>. Значения этих типов могут являться
+<a href="<%=c.createUrl{params={page="langref.types.array"}, amp="&amp;"}%>">array</a>,
+<a href="<%=c.createUrl{params={page="langref.types.object"}, amp="&amp;"}%>">object</a>,
+<a href="<%=c.createUrl{params={page="langref.types.userdata"}, amp="&amp;"}%>">userdata</a> и
+<a href="<%=c.createUrl{params={page="langref.types.function"}, amp="&amp;"}%>">function</a>. Значения этих типов могут являться
 контейнерами для др. значений.
 

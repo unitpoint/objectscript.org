@@ -6,7 +6,7 @@ OS позволяет создавать функцию и, без сохран�
 
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.functions.sugar"}}%>">Немного сахара при создании функций</a>,
-<a href="<%=@controller.createUrl{params={page="langref.variables.predefined"}}%>">Предопределенные переменные</a>,
-<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.print"}}%>">Функция print</a>
+<a href="<%=@controller.createUrl{params={page="langref.functions.sugar"}, amp="&amp;"}%>">Немного сахара при создании функций</a>,
+<a href="<%=@controller.createUrl{params={page="langref.variables.predefined"}, amp="&amp;"}%>">Предопределенные переменные</a>,
+<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.print"}, amp="&amp;"}%>">Функция print</a>
 </div>

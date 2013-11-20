@@ -1,7 +1,7 @@
 ﻿<p>
 Одно из главнейших достоинств OS - то, как он работает с формами HTML. Здесь основным является то, что каждый элемент формы 
 автоматически становится доступным программам на OS. Для подробной информации об использовании форм в OS читайте раздел 
-<a href="<%=@controller.createUrl{params={page="langref.variables.external"}}%>">Переменные извне OS</a>. 
+<a href="<%=@controller.createUrl{params={page="langref.variables.external"}, amp="&amp;"}%>">Переменные извне OS</a>. 
 
 <h3>Cтраница с формой HTML</h3>
 <%@controller.widget{'SourceWidget', source="examples/tutorial.forms.osh"}%>

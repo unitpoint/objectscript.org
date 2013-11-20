@@ -46,7 +46,7 @@
 </div>
 
 <p>Эта программа чрезвычайно проста. Все, что она делает, это выводит <code>Привет мир!</code>, используя функцию 
-OS <a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}}%>">echo</a>, 
+OS <a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}, amp="&amp;"}%>">echo</a>, 
 а также выводит рассчитанное на этапе выполнения значение <code>5**2</code>. 
 Заметьте, что файл не обязан быть выполняемым или как-то отличаться от других файлов. Сервер знает, что этот файл должен быть обработан OS, 
 так как файл имеет расширение <code>.osh</code>. Рассматривайте его как обычный HTML-файл, в который можно встраивать программы на OS и делать кучу интересных вещей.</p>
@@ -55,7 +55,7 @@ OS <a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.e
 <div class="bs-callout bs-callout-danger">
   Если у вас этот пример ничего не отображает или выводит окно загрузки, или если вы видите весь этот файл в текстовом виде, то, 
   скорее всего, ваш веб-сервер не имеет поддержки OS или был сконфигурирован неправильно. 
-  Следуйте инструкции по <a href="<%=@controller.createUrl{action="install"}%>">Установке OS</a>, 
+  Следуйте инструкции по <a href="<%=@controller.createUrl{action="install", amp="&amp;"}%>">Установке OS</a>, 
   чтобы подготовить ваш веб-сервер для работы с OS.
 </div>
 </p>
@@ -105,5 +105,5 @@ OS <a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.e
 
 <div class="alert alert-info">
 См. 
-<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}}%>">Функция echo</a>
+<a href="<%=@controller.createUrl{params={page="langref.basic-syntax.output.echo"}, amp="&amp;"}%>">Функция echo</a>
 </div>

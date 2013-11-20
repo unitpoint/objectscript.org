@@ -47,6 +47,6 @@
 
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.operators.ternary"}}%>">Тернарный оператор</a>, 
-	<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, "#"="convert"}%>">Преобразование в булев тип</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.ternary"}, amp="&amp;"}%>">Тернарный оператор</a>, 
+	<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, amp="&amp;", "#"="convert"}%>">Преобразование в булев тип</a>
 </div>

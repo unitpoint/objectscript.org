@@ -8,7 +8,7 @@
 	OS сочетает преимущества таких языков, как JavaScript, Lua, Ruby, Python и PHP. OS имеет синтаксис из JavaScript, 
 	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python, PHP и мн. др.
 	<p>
-	<a class="btn btn-lg btn-primary btn-download" href="<%=@controller.createUrl{action="download"}%>" role="button">Загрузить &raquo;</a>
+	<a class="btn btn-lg btn-primary btn-download" href="<%=@controller.createUrl{action="download", amp="&amp;"}%>" role="button">Загрузить &raquo;</a>
 </div>
 
 <div class="bs-callout bs-callout-info">
@@ -37,7 +37,8 @@
 
 <div class="bs-callout bs-callout-danger">
   <p>Если у вас этот пример ничего не отображает или выводит окно загрузки, или если вы видите весь этот файл в текстовом виде, то, скорее всего, 
-	ваш веб-сервер не имеет поддержки OS или был сконфигурирован неправильно. Следуйте инструкции по <a href="<%=@controller.createUrl{action="install"}%>">Установке</a>, чтобы подготовить ваш веб-сервер для работы с OS.</p>
+	ваш веб-сервер не имеет поддержки OS или был сконфигурирован неправильно. Следуйте инструкции по 
+	<a href="<%=@controller.createUrl{action="install", amp="&amp;"}%>">Установке</a>, чтобы подготовить ваш веб-сервер для работы с OS.</p>
 </div>
 
 <div class="page-header">
@@ -58,7 +59,7 @@
 
 <div class="bs-callout bs-callout-danger">
   <p>Вы можете скачать исходники консольного приложения <code>os</code> или уже откомпилированные и готовые для запуска 
-  бинарные файлы в разделе <a href="<%=@controller.createUrl{action="download"}%>">Загрузки</a>.</p>
+  бинарные файлы в разделе <a href="<%=@controller.createUrl{action="download", amp="&amp;"}%>">Загрузки</a>.</p>
 </div>
 
 <%@controller.widget{'FixTypoWidget', file=__FILE__}%>

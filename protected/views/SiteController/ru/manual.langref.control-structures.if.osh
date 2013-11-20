@@ -17,7 +17,7 @@
 Выражение вычисляется в булево значение. Если выражение принимает значение <code>true</code>, то OS выполнит инструкцию, 
 а если оно принимает значение <code>false</code> - проигнорирует. Информацию о том, какие значения считаются равными 
 значению <code>true</code>, можно найти в разделе 
-<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, "#"="convert"}%>">Преобразование в булев тип</a>.
+<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, amp="&amp;", "#"="convert"}%>">Преобразование в булев тип</a>.
 
 <p>
 Следующий пример выведет <span class="text-success"><b>a больше b</b></span>, если значение переменной 

@@ -6,5 +6,5 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.operators.extends.osh"}%>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">Объектно-ориентированное программирование</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.oop"}, amp="&amp;"}%>">Объектно-ориентированное программирование</a>
 </div>

@@ -27,5 +27,5 @@
 </p>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.operators.comparison"}, "#"="null"}%>">Сравнение с <b>null</b></a>
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.comparison"}, amp="&amp;", "#"="null"}%>">Сравнение с <b>null</b></a>
 </div>

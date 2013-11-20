@@ -43,7 +43,7 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.control-structures.for-in-range-ex.osh"}%>
 
 <div class="alert alert-info">
-См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}}%>">for / for in</a>,
-	<a href="<%=@controller.createUrl{params={page="langref.oop"}}%>">Объектно-ориентированное программирование</a>,
-	<a href="<%=@controller.createUrl{params={page="langref.functions.alternative"}}%>">Сахарный синтаксис для анонимных функций</a>
+См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.for"}, amp="&amp;"}%>">for / for in</a>,
+	<a href="<%=@controller.createUrl{params={page="langref.oop"}, amp="&amp;"}%>">Объектно-ориентированное программирование</a>,
+	<a href="<%=@controller.createUrl{params={page="langref.functions.alternative"}, amp="&amp;"}%>">Сахарный синтаксис для анонимных функций</a>
 </div>
