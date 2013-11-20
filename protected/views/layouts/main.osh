@@ -59,6 +59,8 @@
 								download = _T.MENU_DOWNLOAD,
 								install = _T.MENU_INSTALL,
 								manual = _T.MENU_MANUAL,
+								langref = _T.MENU_REFERENCE,
+								// test = _T.MENU_TEST,
 							}
 							var curAction = @controller.actionId
 							for(var action, name in menuItems){

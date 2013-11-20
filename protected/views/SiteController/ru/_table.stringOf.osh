@@ -1,0 +1,61 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th></th>
+	  <th>stringOf</th>
+	  <th>toString</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>null</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"null"</span></td>
+	</tr>
+	<tr>
+	  <td><code>true</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"true"</span></td>
+	</tr>
+	<tr>
+	  <td><code>false</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"false"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"12"</span></td>
+	  <td><span class="str">"12"</span></td>
+	  <td><span class="str">"12"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"0x12"</span></td>
+	  <td><span class="str">"0x12"</span></td>
+	  <td><span class="str">"0x12"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"0123"</span></td>
+	  <td><span class="str">"0123"</span></td>
+	  <td><span class="str">"0123"</span></td>
+	</tr>
+	<tr>
+	  <td><span class="str">"0b10"</span></td>
+	  <td><span class="str">"0b10"</span></td>
+	  <td><span class="str">"0b10"</span></td>
+	</tr>
+	<tr>
+	  <td><code>12</code></td>
+	  <td><span class="str">"12"</span></td>
+	  <td><span class="str">"12"</span></td>
+	</tr>
+	<tr>
+	  <td><code>obj</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"10"</span></td>
+	</tr>
+	<tr>
+	  <td><code>array</code></td>
+	  <td><code>null</code></td>
+	  <td><span class="str">"[1,2,3]"</span></td>
+	</tr>
+  </tbody>
+</table>
