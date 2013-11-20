@@ -223,3 +223,20 @@ function url.buildQuery(p, amp){
 	}
 	return r.join(amp || '&')
 }
+
+if('path' in _E){
+	function path.normalize(path){
+		var parts, r = (stringOf(path) || throw "string required").split(Regexp("#[/\\\\]#")), []
+		for(var i, p in parts){
+			if(p == "" || p == "."){
+				continue
+			}
+			if(p == ".."){
+				delete r.last
+				continue
+			}
+			r[] = p
+		}
+		return r.join("/").replace(Regexp("#^\w+:/#s"), "$0/")
+	}
+}
