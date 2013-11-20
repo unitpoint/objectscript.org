@@ -16,6 +16,9 @@ SiteController = extends OSController {
 	init = function(){
 		super()
 		
+		header("Expires: "..(DateTime.now()+1).format("D, d-M-Y H:i:s T"))
+		header("Last-Modified: "..(DateTime.now()-2).format("D, d-M-Y H:i:s T"))
+		
 		var data = app.session.data()
 		data.counter = (data.counter || 0) + 1
 		data.ip = _SERVER.REMOTE_ADDR
