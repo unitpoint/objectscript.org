@@ -80,6 +80,10 @@ Application = extends Component {
 		@runController(route);
 	},
 	
+	__get@controller = function(){
+		return @_controller
+	},
+	
 	runController = function(route){
 		var controller, actionId, old = @createController(route)
 		if(controller){
@@ -210,9 +214,6 @@ Application = extends Component {
 			newPaths[path] = path
 		}
 		require.paths = newPaths.values
-		/* echo "<pre>"
-		dump({paths, newPaths, require.paths});
-		echo "</pre>" */
 	},
 
 	resolveView = function(name, controller){
@@ -254,28 +255,42 @@ Application = extends Component {
 	},
 	
 	__set@lang = function(value){
-		if(@lang != value){
-			@config.lang, @_strings = value, {}
-		}
+		@config.lang = value
 	},
 	
-	loadStrings = function(group){
+	__get@baseLang = function(){
+		return @config.baseLang || "en"
+	},
+	
+	__set@baseLang = function(value){
+		@config.baseLang = value
+	},
+	
+	getLangStrings = function(lang){
+		lang || lang = @lang
+		return @_strings[lang] || @_strings[lang] = {}
+	},
+	
+	loadStrings = function(group, lang, required){
 		group || group = "strings"
+		lang || lang = @lang
 		// echo "app.loadStrings: ${group}${BR}"
-		return @_strings[group] = require(@resolveAliases("{langs}/${@lang}/${group}"))
+		return @getLangStrings(lang)[group] = require(@resolveAliases("{langs}/${lang}/${group}"), required) || {}
 	},
 	
-	getStringsGroup = function(group){
+	getStringsGroup = function(group, lang, required){
 		group || group = "strings"
-		return @_strings[group] || @loadStrings(group)
+		lang || lang = @lang
+		return @getLangStrings(lang)[group] || @loadStrings(group, lang, required)
 	},
 	
-	setStringsGroup = function(group, value){
-		@_strings[group || "strings"] = value
+	setStringsGroup = function(group, value, lang){
+		@getLangStrings(lang)[group || "strings"] = value
 	},
 	
-	getString = function(name, group){
-		return @getStringsGroup(group)[name]
+	getString = function(name, group, lang){
+		return @getStringsGroup(group, lang)[name] 
+			|| ((lang || @lang) != @baseLang ? @getStringsGroup(group, @baseLang, false)[name] : null)
 	},
 	
 	__get@strings = function(){
