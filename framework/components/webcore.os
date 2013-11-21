@@ -75,11 +75,11 @@ function setCookie(name, value, expires, path, domain, secure, httponly){
 	var buf = Buffer()
 	// value && value = stringOf(value) || throw "setCookie: value should be String"
 	if(!value){ // deleted
-		buf.append("Set-Cookie: ${url.encode(name)}=deleted; expires="..DateTime(1970, 1, 1).format("D, d-M-Y H:i:s T"))
+		buf.append("Set-Cookie: ${url.encode(name)}=deleted; expires="..DateTime(1970, 1, 1).format("R"))
 	}else{
 		buf.append("Set-Cookie: ${url.encode(name)}=${url.encode(value)}")
 		if(expires is DateTime){
-			buf.append("; expires="..expires.format("D, d-M-Y H:i:s T"))
+			buf.append("; expires="..expires.format("R"))
 		}else if(expires){
 			buf.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
 		}

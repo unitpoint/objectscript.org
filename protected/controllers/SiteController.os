@@ -16,8 +16,8 @@ SiteController = extends OSController {
 	init = function(){
 		super()
 		
-		header("Expires: "..(DateTime.now()+0).format("D, d-M-Y H:i:s T"))
-		header("Last-Modified: "..(DateTime.now()-2).format("D, d-M-Y H:i:s T"))
+		header("Expires: "..(DateTime.now()-1).format("R"))
+		header("Last-Modified: "..(DateTime.now()-2).format("R"))
 		
 		var data = app.session.data()
 		data.counter = (data.counter || 0) + 1
