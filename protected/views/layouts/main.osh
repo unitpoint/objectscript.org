@@ -11,9 +11,11 @@
 
 	<title><%=html.encode(@controller.pageTitle)%></title>
 
+	<link href="assets/jquery-treeview/jquery.treeview.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	
 	<!-- Bootstrap core CSS -->
 	<link href="assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
-
+	
 	<!-- Just for debugging purposes. Don't actually copy this line! -->
 	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
@@ -36,6 +38,7 @@
 	<script src="assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
 	<link href="assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
+	<script src="assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
 	<script src="assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
 	
 	<!-- Custom styles for this template -->

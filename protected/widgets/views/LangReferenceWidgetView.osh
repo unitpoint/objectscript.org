@@ -66,8 +66,9 @@
 
 <div class="row">
   <div class="col-md-3">
-	<ul class="nav nav-pills nav-stacked">
+	<ul id="tree-menu-content" class="filetree treeview">
 	<%
+		// <ul class="nav nav-pills nav-stacked">
 		if(!prevContent){
 			prevContent = content
 		}else{
@@ -77,28 +78,39 @@
 		var compare = function(a, b, ka, kb){
 			return ka.lower() <=> kb.lower()
 		}
-		var list = function(title, items, depth, allowSub){
+		var list = function(title, items, allowSub){
 			items || return;
-			echo "<li"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><b>${title}</b></li>"
+			echo "<li><span class='folder'>${title}</span>"
+			echo "<ul>"
 			for(var name, content in items.sort(compare)){
 				links.push(name)
 				var page = links.join(".")
 				var url = @controller.createUrl{params={page=page}, amp="&amp;"}
-				var activeClass = page == @page ? " class='active'" : ""
-				echo "<li${activeClass}"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><a href='${url}'>${name}</a></li>"
-				if(allowSub && activeClass != ""){
-					_F.call(this, _T.PROPERTIES, content.props, depth+1)
-					_F.call(this, _T.FUNCTIONS, content.funcs, depth+1)
-					_F.call(this, _T.CLASSES, content.classes, depth+1)
-					_F.call(this, _T.MODULES, content.modules, depth+1)
+				if(page == @page){
+					echo "<li class='open'><span class='item'><b>${name}</b></span>"
+					if(allowSub){
+						ob.push()
+						_F.call(this, _T.PROPERTIES, content.props)
+						_F.call(this, _T.FUNCTIONS, content.funcs)
+						_F.call(this, _T.CLASSES, content.classes)
+						_F.call(this, _T.MODULES, content.modules)
+						var sub = ob.popContents()
+						if(sub != ""){
+							echo "<ul>${sub}</ul>"
+						}
+					}
+					echo "</li>"
+				}else{
+					echo "<li><span class='item'><a href='${url}'>${name}</a></span>"
 				}
 				links.pop()
 			}
+			echo "</ul></li>"
 		}
-		list.call(this, _T.PROPERTIES, prevContent.props, 0, true)
-		list.call(this, _T.FUNCTIONS, prevContent.funcs, 0, true)
-		list.call(this, _T.CLASSES, prevContent.classes, 0, true)
-		list.call(this, _T.MODULES, prevContent.modules, 0, true)
+		list.call(this, _T.PROPERTIES, prevContent.props, true)
+		list.call(this, _T.FUNCTIONS, prevContent.funcs, true)
+		list.call(this, _T.CLASSES, prevContent.classes, true)
+		list.call(this, _T.MODULES, prevContent.modules, true)
 	%>
 	</ul>
   </div>
@@ -211,18 +223,20 @@
 	<% } /*if*/ %>
 	<%
 		if(content !== fullContent){
+			// echo "<pre>"; echo json.encode({name, links}); echo "</pre>";
+			links[] = pageTitle
 			ob.push()
-			list.call(this, _T.PROPERTIES, content.props, 0, true)
-			list.call(this, _T.FUNCTIONS, content.funcs, 0, true)
-			list.call(this, _T.CLASSES, content.classes, 0, true)
-			list.call(this, _T.MODULES, content.modules, 0, true)
+			list.call(this, _T.PROPERTIES, content.props, true)
+			list.call(this, _T.FUNCTIONS, content.funcs, true)
+			list.call(this, _T.CLASSES, content.classes, true)
+			list.call(this, _T.MODULES, content.modules, true)
 			var data = ob.popContents()
 			if(data != ""){
 				%>
 				<hr>
 				<div class="row">
 				  <div class="col-md-5">
-					<ul class="nav nav-pills nav-stacked">
+					<ul id="tree-content" class="filetree treeview">
 						<%=data%>
 					</ul>
 				  </div>
@@ -234,6 +248,12 @@
 	
   </div>
 </div>
+
+<script type="text/javascript">
+$(function(){
+	$("#tree-menu-content, #tree-content").treeview();
+});
+</script>
 
 <%
 	/*
