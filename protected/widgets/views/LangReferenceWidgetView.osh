@@ -14,7 +14,7 @@
 					|| break
 		links[] = name
 		name != "globals" && breadcrumb[] = [links.join("."), name]
-		var key = cur === content.funcs[name] ? "funcs" 
+		var key = cur === content.funcs[name] ? "funcs"
 				: cur === content.props[name] ? "props"
 				: cur === content.classes[name] ? "classes"
 				: "modules"
