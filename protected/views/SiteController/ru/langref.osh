@@ -4,7 +4,7 @@
 		page = @page || "globals",
 		pageViewPrefix = __DIR__.."/langref-content.",
 		breadcrumb = {
-			url = @controller.createUrl(),
+			url = @controller.createUrl{amp="&amp;"},
 			name = _T.MENU_REFERENCE,
 		},
 	}
