@@ -1,12 +1,13 @@
+var function checkProps(val){
+	if(val.hasOwnProperty()){ 
+		printf("<%s:%d> ", typeOf(val), val.__id)
+		return true
+	}
+}
+
 function dump(val){
 	var dump_recurse_check = {}
-	var function checkProps(val){
-		if(val.hasOwnProperty()){ 
-			printf("<%s:%d> ", typeOf(val), val.id)
-			return true
-		}
-	}
-	function(val, deep, is_key){
+	{|val, deep, is_key|
 		echo is_key ? "  " * deep : ""
 		if(objectOf(val) || checkProps(val)){
 			if(val in dump_recurse_check){

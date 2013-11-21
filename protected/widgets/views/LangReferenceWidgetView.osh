@@ -9,24 +9,30 @@
 	var breadcrumb, content, prevContent, name = [], fullContent
 	for(; #parts > 0; ){
 		name = parts[0]
-		var cur = content.funcs[name] || content.props[name] || break
+		var cur = content.funcs[name] || content.props[name] 
+					|| content.classes[name] || content.modules[name] 
+					|| break
 		links[] = name
-		name != "globals" && breadcrumb.push{links.join("."), name}
-		var key = cur === content.funcs[name] ? "funcs" : "props"
+		name != "globals" && breadcrumb[] = [links.join("."), name]
+		var key = cur === content.funcs[name] ? "funcs" 
+				: cur === content.props[name] ? "props"
+				: cur === content.classes[name] ? "classes"
+				: "modules"
 		prevContent, content = content, (content[key][name] = getContent(cur))
 		delete parts[0]
 	}
-	var pageTitle = links.join(".").replace(Regexp("#^globals\.?#s"), "")
+	var pageTitle = links.join(".").replace(Regexp("#^globals\.|^globals$#s"), "")
 	
 	var controller = @controller
-	var decode = function(str, amp){
+	var decode = function(str){
 		return toString(str).replace {
-			[Regexp("#\@url\((.*?)\)#s")] = {|m|
-				var params = m[1].split(",")
+			[Regexp("#\@(url|plainUrl)\((.*?)\)#s")] = {|m|
+				var params = m[2].split(",")
 				if(#params == 1){
-					params = {params={page=params[0].trim()}, amp=amp}
+					params = {params = {page=params[0].trim()}, 
+						amp = m[1] == "url" ? "&amp;" : null}
 				}else{
-					throw "error url ${m[1]}"
+					throw "error url ${m[2]}"
 				}
 				return controller.createUrl(params)
 			},
@@ -49,7 +55,7 @@
 				var url = @controller.createUrl{params={page=key}, amp="&amp;"}
 				echo "<li><a href='${url}'>${name}</a></li>"
 			}
-			htmlTitle.push(name)
+			htmlTitle[] = name
 		}
 		#htmlTitle > 0 && htmlTitle = [htmlTitle.join(".")]
 		@breadcrumb && htmlTitle[] = @breadcrumb.name
@@ -72,6 +78,7 @@
 			return ka.lower() <=> kb.lower()
 		}
 		var list = function(title, items, depth, allowSub){
+			items || return;
 			echo "<li"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><b>${title}</b></li>"
 			for(var name, content in items.sort(compare)){
 				links.push(name)
@@ -79,15 +86,19 @@
 				var url = @controller.createUrl{params={page=page}, amp="&amp;"}
 				var activeClass = page == @page ? " class='active'" : ""
 				echo "<li${activeClass}"..(depth > 0 ? " style='margin-left:${depth*40}px'" : "").."><a href='${url}'>${name}</a></li>"
-				if(allowSub && activeClass != "" && (content.funcs || content.props)){
+				if(allowSub && activeClass != ""){
 					_F.call(this, _T.PROPERTIES, content.props, depth+1)
 					_F.call(this, _T.FUNCTIONS, content.funcs, depth+1)
+					_F.call(this, _T.CLASSES, content.classes, depth+1)
+					_F.call(this, _T.MODULES, content.modules, depth+1)
 				}
 				links.pop()
 			}
 		}
 		list.call(this, _T.PROPERTIES, prevContent.props, 0, true)
 		list.call(this, _T.FUNCTIONS, prevContent.funcs, 0, true)
+		list.call(this, _T.CLASSES, prevContent.classes, 0, true)
+		list.call(this, _T.MODULES, prevContent.modules, 0, true)
 	%>
 	</ul>
   </div>
@@ -198,6 +209,28 @@
 		  </tbody>
 		</table>
 	<% } /*if*/ %>
+	<%
+		if(content !== fullContent){
+			ob.push()
+			list.call(this, _T.PROPERTIES, content.props, 0, true)
+			list.call(this, _T.FUNCTIONS, content.funcs, 0, true)
+			list.call(this, _T.CLASSES, content.classes, 0, true)
+			list.call(this, _T.MODULES, content.modules, 0, true)
+			var data = ob.popContents()
+			if(data != ""){
+				%>
+				<hr>
+				<div class="row">
+				  <div class="col-md-5">
+					<ul class="nav nav-pills nav-stacked">
+						<%=data%>
+					</ul>
+				  </div>
+				</div>
+				<%
+			}
+		}
+	%>
 	
   </div>
 </div>
