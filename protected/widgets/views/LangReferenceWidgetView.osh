@@ -40,6 +40,12 @@
 			[Regexp("#^\d+$#s")] = "<span class='lit'>$0</span>",
 		}
 	}
+	var decodeSourceFile = function(url){
+		return toString(url).replace{
+			[Regexp("#^https://github\.com/unitpoint/objectscript\.org/blob/master/#s")] = "",
+			[Regexp("#\#.*?$#s")] = "",
+		}
+	}
 %>
 <ol class="breadcrumb">
 	<%
@@ -174,6 +180,28 @@
 			<tr class="success">
 			  <td colspan="3">
 				<%=decode(content.desc)%>
+			  </td>
+			</tr>
+			<%}/*if(content.desc)*/%>
+
+		    <%if(content.package){%>
+			<tr>
+			  <td colspan="2" class="info">
+			    <b><%=_T.PACKAGE%></b>
+			  </td>
+			  <td>
+				<code><%=content.package%></code>
+			  </td>
+			</tr>
+			<%}/*if(content.package)*/%>
+			
+		    <%if(content.sourceFile){%>
+			<tr>
+			  <td colspan="2" class="info" nowrap>
+			    <b><%=_T.SOURCE_CODE%></b>
+			  </td>
+			  <td>
+				<a href="<%=content.sourceFile%>" target="_blank"><%=decodeSourceFile(content.sourceFile)%></a>
 			  </td>
 			</tr>
 			<%}/*if(content.desc)*/%>

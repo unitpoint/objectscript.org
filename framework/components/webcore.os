@@ -68,10 +68,14 @@ function header(str){
 	headerList[parts[0].upper()] = str
 }
 
-// header "Content-type: text/html; charset=utf-8"
+function getHeaderSent(){
+	return headerSent
+}
 
 var cookiesList = {}
 function setCookie(name, value, expires, path, domain, secure, httponly){
+	headerSent && header() // throw exception
+	
 	var buf = Buffer()
 	// value && value = stringOf(value) || throw "setCookie: value should be String"
 	if(!value){ // deleted
@@ -98,10 +102,16 @@ var buffers, echoFuncs = [], []
 var originEcho = echo
 // var orgPrintf = printf
 
+HttpHeaderSentException = extends Exception {
+}
+
 var function sendHeader(){
-	if(!headerSent && (#headerList > 0 || #cookiesList > 0)){	
+	if(!headerSent){ // && (#headerList > 0 || #cookiesList > 0)){	
 		headerSent = true
 		triggerHeaderSent()
+		if(#headerList == 0){
+			headerList[] = "Content-type: text/html; charset=utf-8"
+		}
 		for(var _, v in headerList){
 			originEcho(v, "\r\n")
 		}
@@ -109,8 +119,12 @@ var function sendHeader(){
 			originEcho(v, "\r\n")
 		}
 		originEcho "\r\n"
+		var trace = debugBackTrace(2)
 		header = function(){
-			originEcho "HTTP headers are already sent"..BR
+			var e = HttpHeaderSentException("HTTP headers are already sent")
+			e.trace = trace
+			throw e			
+			// originEcho "HTTP headers are already sent"..BR
 		}
 		sendHeader = function(){}
 	}
