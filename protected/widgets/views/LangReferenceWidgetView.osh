@@ -70,6 +70,25 @@
 	%>
 </ol>
 
+<script type="text/javascript">
+$(function(){
+	$("#tree-menu-content").treeview({
+		animated: "fast",
+		// collapsed: true,
+		unique: true,
+		// persist: "cookie",
+		// cookieId: "tree-<%=links.clone().do{||@pop()}.join("-")%>",
+	});
+	$("#tree-content").treeview({
+		animated: "fast",
+		// collapsed: true,
+		// unique: true,
+		// persist: "cookie",	
+		// cookieId: "treeview-black",
+	});
+});
+</script>
+
 <div class="row">
   <div class="col-md-3">
 	<ul id="tree-menu-content" class="filetree treeview">
@@ -276,12 +295,6 @@
 	
   </div>
 </div>
-
-<script type="text/javascript">
-$(function(){
-	$("#tree-menu-content, #tree-content").treeview();
-});
-</script>
 
 <%
 	/*

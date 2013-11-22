@@ -16,7 +16,9 @@
 	FUNCTIONS = "Функции",
 	CLASSES = "Классы",
 	MODULES = "Модули",
-	FOOTER_CREDIT = <<<END"Сделано на <a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
-		target="_blank">ObjectScript FastCGI daemon</a>, OS ${OS_VERSION}
+	FOOTER_CREDIT = <<<END"Сделано на <a href="https://github.com/unitpoint/objectscript/" 
+		target="_blank">ObjectScript ${OS_VERSION}</a> /
+		<a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
+		target="_blank">os-fcgi ${OS_FCGI_VERSION}</a> 
 		Copyright (C) 2012-2013 <a href="mailto:evgeniy.golovin@unitpoint.ru" target="_blank">Евгений Головин</a>END
 }

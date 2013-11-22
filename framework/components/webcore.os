@@ -62,19 +62,23 @@ if('QUERY_STRING' in _SERVER){
 		}	
 }
 
-var headerList, headerSent = {}, false
+var headerList, headersSent = {}, false
 function header(str){
 	var parts = str.split(":", 2)
 	headerList[parts[0].upper()] = str
 }
 
-function getHeaderSent(){
-	return headerSent
+function __get@headersSent(){
+	return headersSent
 }
 
-var cookiesList = {}
+function __set@headersSent(){
+	throw "headersSent is readonly property"
+}
+
+var cookieList = {}
 function setCookie(name, value, expires, path, domain, secure, httponly){
-	headerSent && header() // throw exception
+	headersSent && header() // header throws exception in this situation
 	
 	var buf = Buffer()
 	// value && value = stringOf(value) || throw "setCookie: value should be String"
@@ -94,7 +98,7 @@ function setCookie(name, value, expires, path, domain, secure, httponly){
 	}
 	// echo "cookie: "..toString(buf).."<br />"
 	var str = toString(buf)
-	cookiesList[name] = str
+	cookieList[str] = str
 }
 
 var buffers, echoFuncs = [], []
@@ -102,26 +106,26 @@ var buffers, echoFuncs = [], []
 var originEcho = echo
 // var orgPrintf = printf
 
-HttpHeaderSentException = extends Exception {
+HttpHeadersSentException = extends Exception {
 }
 
 var function sendHeader(){
-	if(!headerSent){ // && (#headerList > 0 || #cookiesList > 0)){	
-		headerSent = true
-		triggerHeaderSent()
+	if(!headersSent){ // && (#headerList > 0 || #cookieList > 0)){	
+		headersSent = true
+		notifyHeadersSent()
 		if(#headerList == 0){
 			headerList[] = "Content-type: text/html; charset=utf-8"
 		}
 		for(var _, v in headerList){
 			originEcho(v, "\r\n")
 		}
-		for(var _, v in cookiesList){
+		for(var _, v in cookieList){
 			originEcho(v, "\r\n")
 		}
 		originEcho "\r\n"
 		var trace = debugBackTrace(2)
 		header = function(){
-			var e = HttpHeaderSentException("HTTP headers are already sent")
+			var e = HttpHeadersSentException("HTTP headers are already sent")
 			e.trace = trace
 			throw e			
 			// originEcho "HTTP headers are already sent"..BR

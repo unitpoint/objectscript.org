@@ -40,6 +40,7 @@
 	
 	<script src="assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
 	<script src="assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
+	<script src="assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
 	
 	<!-- Custom styles for this template -->
 	<link href="assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
@@ -88,6 +89,9 @@
 			<div class="pull-right" style="margin-top:15px;">
 				<%=@controller.renderPartial("/layouts/_counter-liveinternet")%>
 			</div>
+			<p class="text-muted credit pull-right" style="margin-right:15px;">
+				<%=sprintf("%dms", (DateTime.now() - scriptStartTime) * (60*60*24*1000))%>
+			</p>
 			<p class="text-muted credit"><%=_T.FOOTER_CREDIT%></p>
 		</div>
 	</div>

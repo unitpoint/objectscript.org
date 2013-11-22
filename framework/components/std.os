@@ -71,13 +71,17 @@ function File.writeContents(filename, content)
 
 Buffer.__lshift = Buffer.append	// make alias to << operator
 
+function Object.do(func){
+	return func() || this
+}
+
 function Object.deepClone(){
 	var recurs = {}
 	var clone = function(value){
 		if(recurs[value]){
 			return value
 		}
-		recurs[value] = true;
+		recurs[value] = true
 		var copy = value.clone()
 		for(var k, v in copy){
 			copy[k] = clone(v)
@@ -111,6 +115,59 @@ function Array.reverse(){
 	return r
 }
 
+function Object.map(func){
+	var r = {}
+	for(var k, v in this){
+		r[k] = func(v, k, this)
+	}
+	return r
+}
+
+function Array.map(func){
+	var r = []
+	for(var k, v in this){
+		r[] = func(v, k, this)
+	}
+	return r
+}
+
+function Object.filter(func){
+	var r = {}
+	for(var k, v in this){
+		func(v, k, this) && r[k] = v
+	}
+	return r
+}
+
+function Array.filter(func){
+	var r = []
+	for(var k, v in this){
+		func(v, k, this) && r[] = v
+	}
+	return r
+}
+
+function Object.each(func){
+	for(var k, v in this){
+		func(v, k, this) === false && break
+	}
+	return this
+}
+
+function Object.reduce(func, value){
+	for(var k, v in this){
+		value = func(value, v, k, this)
+	}
+	return value
+}
+
+function Object.reduceRight(func, value){
+	for(var k, v in @reverseIter()){
+		value = func(value, v, k, this)
+	}
+	return value
+}
+
 function Object.merge(){
 	for(var _, arg in arguments){
 		if(arrayOf(arg)){
@@ -136,6 +193,8 @@ function Array.merge(){
 }
 
 DateTime || throw "DateTime required"
+
+scriptStartTime = DateTime.now()
 
 function DateTime.__add(b){
 	return DateTime {
@@ -184,9 +243,17 @@ function triggerCleanupFunctions(){
 	}
 }
 
+function String.reverse(){
+	var buf = Buffer()
+	for(var i = #this-1; i >= 0; i--){
+		buf.append(@sub(i, 1))
+	}
+	return toString(buf)
+}
+
 function String.__mul(count){
+	count < 0 && return this.reverse() * -count
 	count == 1 && return this
-	count <= 0 && return ""
 	var buf = Buffer()
 	for(; count >= 1; count--){
 		buf.append(this)
@@ -214,8 +281,9 @@ function String.__radd(b){
 function String.flower(){
 	return @sub(0, 1).upper() .. @sub(1)
 }
-
 	
+url || throw "url module required"
+
 function url.buildQuery(p, amp){
 	var r = []
 	for(var k, v in p){
@@ -227,8 +295,8 @@ function url.buildQuery(p, amp){
 path || throw "path module required"
 
 function path.normalize(path){
-	var parts, r = (stringOf(path) || throw "string required").split(Regexp("#[/\\\\]#")), []
-	for(var i, p in parts){
+	var r = []
+	for(var _, p in (stringOf(path) || throw "string required").split(Regexp("#[/\\\\]#"))){
 		if(p == "" || p == "."){
 			continue
 		}
