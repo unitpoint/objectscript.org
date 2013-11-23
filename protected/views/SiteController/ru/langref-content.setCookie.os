@@ -1,5 +1,7 @@
 ﻿return {
 	ret = "void",
+	package = "webcore.os",
+	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/webcore.os#L80",
 	desc = <<<END'
 <p>
 Функция задает куку (cookie), которая будет передана клиенту вместе с другими HTTP заголовками. Как и любой другой заголовок, 

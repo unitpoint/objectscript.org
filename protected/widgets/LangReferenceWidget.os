@@ -3,6 +3,7 @@ LangReferenceWidget = extends Widget {
 	page = null,
 	pageViewPrefix = null,
 	breadcrumb = null,
+	file = null,
 	
 	run = function(){
 		echo @renderPartial("{widgets}/views/LangReferenceWidgetView", {
@@ -10,6 +11,7 @@ LangReferenceWidget = extends Widget {
 			page = @page,
 			pageViewPrefix = @pageViewPrefix,
 			breadcrumb = @breadcrumb,
+			file = @file,
 		})
 	},	
 }

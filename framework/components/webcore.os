@@ -26,9 +26,9 @@ function unhandledException(e){
 	echo END_PRE
 }
 
-function printBackTrace(skipNumFuncs){
+function printBackTrace(skipFuncs){
 	echo BEGIN_PRE
-	for(var i, t in debugBackTrace((skipNumFuncs || 0) + 1)){ // skip printBackTrace
+	for(var i, t in objectOf(skipFuncs) || debugBackTrace((skipFuncs || 0) + 1)){ // skip printBackTrace
 		printf("#${i} ${removeRootPath(t.file)}%s: %s, args: ${removeRootPath(t.arguments)}${BR}",
 			t.line > 0 ? "(${t.line},${t.pos})" : "",
 			t.object && t.object !== _G ? "{${typeOf(t.object)}#${t.object.__id}}.${t.func.__name}" : t.func.__name)

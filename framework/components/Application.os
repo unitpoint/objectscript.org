@@ -98,11 +98,7 @@ Application = extends Component {
 	
 	createController = function(route){
 		var p = (stringOf(route) || @defaultController).split("/")
-		var count, actionId = #p
-		if(count > 1){
-			actionId = p.pop()
-			count--
-		}
+		var actionId = #p > 1 ? p.pop() : null
 		var controllerId = p.last
 		p.last = controllerId.flower() .. "Controller"
 		var controller = _G[@resolveClass(p.join("."))](this, controllerId) // @getComponent(p[0])
@@ -115,7 +111,7 @@ Application = extends Component {
 	
 	createWidget = function(classname, params, controller){
 		if(objectOf(classname)){
-			params && throw "2rd argument should not be used here"
+			params && throw "2rd argument should be null here"
 			classname, params = classname.shift(), classname
 		}
 		var widget = _G[@resolveClass(classname)](controller)
@@ -133,6 +129,7 @@ Application = extends Component {
 			config.enabled === false && throw "Component \"${name}\" is disabled"
 			var component
 			@_components[name] = component = _G[@resolveClass(config.classname || name)](this)
+			component is Component || throw "Error component class: ${component.classname}"
 			for(var key, value in config){
 				if(key != "classname" && key != "enabled"){
 					component[key] = value
@@ -190,9 +187,7 @@ Application = extends Component {
 	
 	resolveClass = function(classname){
 		var p = (stringOf(classname) || throw "classname required").split(".")
-		var count = #p
-		// assert(count > 0)
-		if(count > 1){
+		if(#p > 1){
 			p[0] = @_aliases["{${p[0]}}"] || p[0]
 		}
 		p.last = p.last.flower()
@@ -232,7 +227,10 @@ Application = extends Component {
 			}
 		}
 		var filename = @resolveAliases(name)
-		return require.resolve(path.dirname(filename).."/${@lang}/"..path.basename(filename)) || filename
+		var dirname, basename = path.dirname(filename), path.basename(filename)
+		return require.resolve("${dirname}/${@lang}/${basename}") 
+			|| (@lang != @baseLang ? require.resolve("${dirname}/${@baseLang}/${basename}") : null)
+			|| filename
 	},
 	
 	renderView = function(filename, params, controller){
@@ -303,8 +301,8 @@ Application = extends Component {
 	
 }
 
-function _T(name, group){
-	return app.getString(name, group) || name
+function _T(name, group, lang){
+	return app.getString(name, group, lang) || name
 }
 
 _T.__get = _T

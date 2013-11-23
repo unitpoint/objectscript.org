@@ -1,10 +1,12 @@
 <%
+	var file = @file
 	var getContent = function(name){
-		return objectOf(name) || require(stringOf(name) || throw "string or object required") 
+		// echo "getContent: ${name} <br />"
+		return objectOf(name) || require(file = stringOf(name) || throw "string or object required") 
 	}
 	
 	var parts, links = @page.split("."), []
-	var fullContent = @content ? getContent(@content) : require(@pageViewPrefix .. links.push(parts.shift()) .. ".os")
+	var fullContent = @content ? getContent(@content) : require(file = @pageViewPrefix .. links.push(parts.shift()) .. ".os")
 	
 	var breadcrumb, content, prevContent, name = [], fullContent
 	for(; #parts > 0; ){
@@ -29,8 +31,12 @@
 			[Regexp("#\@(url|plainUrl)\((.*?)\)#s")] = {|m|
 				var params = m[2].split(",")
 				if(#params == 1){
-					params = {params = {page=params[0].trim()}, 
-						amp = m[1] == "url" ? "&amp;" : null}
+					var route = params[0].trim().split("/")
+					var count = #route
+					count == 1 ? params = {params={page=route[0]}}
+						: count == 2 ? params = {action=route[0], params={page=route[1]}}
+						: params = {controller=route[0], action=route[1], params={page=route[2]}}
+					m[1] == "url" && params.amp = "&amp;"
 				}else{
 					throw "error url ${m[2]}"
 				}
@@ -50,7 +56,7 @@
 <ol class="breadcrumb">
 	<%
 		if(@breadcrumb){
-			echo "<li><a href='${@breadcrumb.url}'>${@breadcrumb.name}</a></li>"
+			echo "<li><a href='${@controller.createUrl(@breadcrumb.url)}'>${@breadcrumb.name}</a></li>"
 		}
 		var htmlTitle = [] // "ObjectScript", _T.MENU_REFERENCE]
 		for(var _, item in breadcrumb){
@@ -291,6 +297,8 @@ $(function(){
 				<%
 			}
 		}
+		
+		file && @controller.widget{'FixTypoWidget', file=file}
 	%>
 	
   </div>

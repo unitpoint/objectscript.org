@@ -1,7 +1,7 @@
-var modulesLoaded = {}
+var filesChecked = {}
 function __get(name){
-	if(!(name in modulesLoaded)){
-		modulesLoaded[name] = true
+	if(!(name in filesChecked)){
+		filesChecked[name] = true
 		require(name, false)
 		if(name in this){
 			return this[name]

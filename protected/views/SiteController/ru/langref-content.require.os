@@ -1,5 +1,6 @@
 ﻿return {
-	// show = 'mixed require(filename, required, sourceCodeType, checkUtf8BOM)',
+	// package = "core",
+	// sourceFile = "https://github.com/unitpoint/objectscript/blob/master/src/objectscript.cpp#L24751",
 	desc = <<<END'
 Функция подключает и исполняет файл.
 END,
