@@ -32,7 +32,7 @@
 
 <p>
 Если вам нужно сделать глубокое (рекурсивное) клонирование, то используйте метод <code>deepClone</code>. 
-Этот метод добавляется при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L74" 
+Этот метод добавляется при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L78" 
 target="_blank">библиотеки std</a> 
 
 <h3>Пример глубокого клонирования</h3>

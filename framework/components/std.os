@@ -78,9 +78,7 @@ function Object.do(func){
 function Object.deepClone(){
 	var recurs = {}
 	var clone = function(value){
-		if(recurs[value]){
-			return value
-		}
+		recurs[value] && return value
 		recurs[value] = true
 		var copy = value.clone()
 		for(var k, v in copy){
@@ -149,7 +147,7 @@ function Array.filter(func){
 
 function Object.each(func){
 	for(var k, v in this){
-		func(v, k, this) === false && break
+		return func(v, k, this) || continue
 	}
 	return this
 }
@@ -194,7 +192,7 @@ function Array.merge(){
 
 DateTime || throw "DateTime required"
 
-scriptStartTime = DateTime.now()
+appStartTime = DateTime.now()
 
 function DateTime.__add(b){
 	return DateTime {

@@ -14,12 +14,13 @@
   printf("\"0b10\": %9s %9s\n", d(stringOf("0b10")), d(toString("0b10")))
   printf("    12: %9s %9s\n", d(stringOf(12)), d(toString(12)))
 
-  var obj = {
+  var MyClass = {
     valueOf = function(){
       return 10
     }
   }
-  printf("   obj: %9s %9s\n", d(stringOf(obj)), d(toString(obj)))
+  var instance = MyClass()
+  printf("   obj: %9s %9s\n", d(stringOf(instance)), d(toString(instance)))
 
   var arr = [1,2,3]
   printf(" array: %9s %9s\n", d(stringOf(arr)), d(toString(arr)))

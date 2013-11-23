@@ -11,12 +11,13 @@
   printf("\"12lo\": %9s %9s\n", numberOf("12lo"), toNumber("12lo"))
   printf("    12: %9s %9s\n", numberOf(12), toNumber(12))
 
-  var obj = {
+  var MyClass = {
     valueOf = function(){
       return 10
     }
   }
-  printf("   obj: %9s %9s\n", numberOf(obj), toNumber(obj))
+  var instance = MyClass()
+  printf("   obj: %9s %9s\n", numberOf(instance), toNumber(instance))
 
   var arr = [1,2,3]
   printf(" array: %9s %9s\n", numberOf(arr), toNumber(arr))

@@ -9,6 +9,7 @@ var function removeRootPath(path){
 }
 
 function unhandledException(e){
+	// ob.popAll()
 	echo BEGIN_PRE
 	// dump _SERVER
 	if(e is CompilerException){
@@ -174,14 +175,18 @@ ob = {
 
 	getContents = function(){
 		return toString(buffers.last  || throw "ob buffer is not exist")
+	},
+	
+	popAll = function(){
+		for(; #buffers > 0;){
+			@pop()
+		}	
 	}
 }
 
 registerShutdownFunction {||
-	for(; #buffers > 0;){
-		ob.pop()
-	}
-	sendHeader();
+	ob.popAll()
+	sendHeader()
 }
 
 var savedTerminate = terminate

@@ -1,26 +1,39 @@
 <%
-	var file = @file
+	// echo "${this} <br />"
+	var parts, links, file = @page.split("."), [], @file
 	var getContent = function(name){
-		// echo "getContent: ${name} <br />"
-		return objectOf(name) || require(file = stringOf(name) || throw "string or object required") 
+		// echo "getContent: ${name}, ${links} <br />"
+		var r = objectOf(name) || require(file = stringOf(name) || throw "string or object required") 
+		// echo "getContent ret: ${name}, ${r} <br />"
+		return r
 	}
-	
-	var parts, links = @page.split("."), []
-	var fullContent = @content ? getContent(@content) : require(file = @pageViewPrefix .. links.push(parts.shift()) .. ".os")
+	var fullContent = @content ? getContent(@content) : require(file = "${@pageViewPrefix}${links.push(parts.shift())}.os")
 	
 	var breadcrumb, content, prevContent, name = [], fullContent
+	var prop = function(obj, name, value){
+		if(value){
+			Object.setProperty.call(obj, name, value)
+			return value
+		}
+		return Object.getProperty.call(obj, name)
+	}
 	for(; #parts > 0; ){
 		name = parts[0]
-		var cur = content.funcs[name] || content.props[name] 
-					|| content.classes[name] || content.modules[name] 
+		// don't allow content.funcs[name] usage because of content.funcs can contains magics names
+		var cur = prop(content.funcs, name) || prop(content.magics, name)
+					|| prop(content.methods, name) || prop(content.props, name) 
+					|| prop(content.classes, name) || prop(content.modules, name) 
 					|| break
 		links[] = name
+		// name != "globals" && echo("part ${name}, ${links}, ${Object.valueOf.call(cur)} <br />")
 		name != "globals" && breadcrumb[] = [links.join("."), name]
-		var key = cur === content.funcs[name] ? "funcs"
-				: cur === content.props[name] ? "props"
-				: cur === content.classes[name] ? "classes"
+		var key = cur === prop(content.funcs, name) ? "funcs"
+				: cur === prop(content.magics, name) ? "magics"
+				: cur === prop(content.methods, name) ? "methods"
+				: cur === prop(content.props, name) ? "props"
+				: cur === prop(content.classes, name) ? "classes"
 				: "modules"
-		prevContent, content = content, (content[key][name] = getContent(cur))
+		prevContent, content = content, prop(content[key], name, getContent(cur))
 		delete parts[0]
 	}
 	var pageTitle = links.join(".").replace(Regexp("#^globals\.|^globals$#s"), "")
@@ -113,16 +126,21 @@ $(function(){
 			items || return;
 			echo "<li><span class='folder'>${title}</span>"
 			echo "<ul>"
-			for(var name, content in items.sort(compare)){
+			// items can contain 'sort' so call Object.sort instead of items.sort
+			items = Object.sort.call(items, compare)
+			// items can contain '__iter' so call Object.__iter instead of items.sort
+			for(var name, content in items){
 				links.push(name)
 				var page = links.join(".")
 				var url = @controller.createUrl{params={page=page}, amp="&amp;"}
 				if(page == @page){
 					echo "<li class='open'><span class='item'><b>${name}</b></span>"
-					if(allowSub){
+					if(allowSub && false){
 						ob.push()
 						_F.call(this, _T.PROPERTIES, content.props)
 						_F.call(this, _T.FUNCTIONS, content.funcs)
+						_F.call(this, _T.METHODS, content.methods)
+						_F.call(this, _T.MAGICS, content.magics)
 						_F.call(this, _T.CLASSES, content.classes)
 						_F.call(this, _T.MODULES, content.modules)
 						var sub = ob.popContents()
@@ -140,6 +158,8 @@ $(function(){
 		}
 		list.call(this, _T.PROPERTIES, prevContent.props, true)
 		list.call(this, _T.FUNCTIONS, prevContent.funcs, true)
+		list.call(this, _T.METHODS, prevContent.methods, true)
+		list.call(this, _T.MAGICS, prevContent.magics, true)
 		list.call(this, _T.CLASSES, prevContent.classes, true)
 		list.call(this, _T.MODULES, prevContent.modules, true)
 	%>
@@ -193,9 +213,11 @@ $(function(){
 			}
 			if(content.rest){
 				echo paramNum == 0 ? " ..." 
-						: " <span class='pun'>[</span>, arg${paramNum+1} ...<span class='pun'>]</span>"
+						: " <span class='pun'>[</span>, arg${paramNum+1} ...<span class='pun'>]</span> "
+			}else if(paramNum > 0){
+				echo " "
 			}
-			echo " <span class='pun'>)</span>"
+			echo "<span class='pun'>)</span>"
 			echo '</pre>'
 	%>
 		<p>
@@ -263,7 +285,7 @@ $(function(){
 			<tr>
 			  <td><%=content.ret%></td>
 			  <td></td>
-			  <td><%=content.retDesc || ""%></td>
+			  <td width="100%"><%=content.retDesc || ""%></td>
 			</tr>
 			<%}else if(content.retDesc || !content.ret || content.ret == "void"){%>
 			<tr>
@@ -275,12 +297,18 @@ $(function(){
 		</table>
 	<% } /*if*/ %>
 	<%
+		if(content.extDesc){
+			echo decode(content.extDesc)
+		}
+		
 		if(content !== fullContent){
 			// echo "<pre>"; echo json.encode({name, links}); echo "</pre>";
 			links[] = pageTitle
 			ob.push()
 			list.call(this, _T.PROPERTIES, content.props, true)
 			list.call(this, _T.FUNCTIONS, content.funcs, true)
+			list.call(this, _T.METHODS, content.methods, true)
+			list.call(this, _T.MAGICS, content.magics, true)
 			list.call(this, _T.CLASSES, content.classes, true)
 			list.call(this, _T.MODULES, content.modules, true)
 			var data = ob.popContents()

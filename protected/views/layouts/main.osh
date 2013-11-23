@@ -90,7 +90,7 @@
 				<%=@controller.renderPartial("/layouts/_counter-liveinternet")%>
 			</div>
 			<p class="text-muted credit pull-right" style="margin-right:15px;">
-				<%=sprintf("%dms", (DateTime.now() - scriptStartTime) * (60*60*24*1000))%>
+				<%=sprintf("%dms", (DateTime.now() - appStartTime) * (60*60*24*1000))%>
 			</p>
 			<p class="text-muted credit"><%=_T.FOOTER_CREDIT%></p>
 		</div>

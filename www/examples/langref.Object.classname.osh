@@ -1,0 +1,14 @@
+﻿<pre style="font-size:18px"><%
+
+    a = [1, 2, 3]
+	print "${a}.classname => "..a.classname
+	print ""
+
+    a = {username="Ival", age=23}
+	print "${a}.classname => "..a.classname
+	print ""
+
+    a = 23
+	print "${a}.classname => "..a.classname
+    
+%></pre>

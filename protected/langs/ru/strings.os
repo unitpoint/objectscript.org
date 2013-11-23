@@ -14,6 +14,8 @@
 	PACKAGE = "Пакет",
 	PROPERTIES = "Свойства",
 	FUNCTIONS = "Функции",
+	METHODS = "Методы",
+	MAGICS = "Магические методы",
 	CLASSES = "Классы",
 	MODULES = "Модули",
 	FOOTER_CREDIT = <<<END"Сделано на <a href="https://github.com/unitpoint/objectscript/" 

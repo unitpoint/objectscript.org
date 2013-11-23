@@ -7,15 +7,16 @@ var function checkProps(val){
 
 function dump(val){
 	var dump_recurse_check = {}
-	{|val, deep, is_key|
+	function(val, deep, is_key){
 		echo is_key ? "  " * deep : ""
-		if(objectOf(val) || checkProps(val)){
+		// don't allow userdata, so let's check exact type
+		if(typeOf(val) == "object" || checkProps(val)){
 			if(val in dump_recurse_check){
 				echo "<<RECURSE>>\n"
 			}else{
 				dump_recurse_check[val] = true
 				echo "{\n"
-				for(var k, v in val.dumpIter()){
+				for(var k, v in val){
 					_F(k, deep+1, true)
 					echo " = "
 					_F(v, deep+1)
