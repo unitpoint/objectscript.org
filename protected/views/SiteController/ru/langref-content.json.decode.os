@@ -1,5 +1,5 @@
 ﻿return {
-	ret = "string",
+	ret = "mixed",
 	retDesc = <<<END'
 Декодированная строка.
 END,
