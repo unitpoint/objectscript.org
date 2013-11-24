@@ -1,7 +1,7 @@
 ﻿return {
 	ret = "void",
 	package = "std.os",
-	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L214",
+	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L212",
 	desc = <<<END'
 <p>
 Регистрирует функцию, которая будет вызвана при завершении скрипта. 

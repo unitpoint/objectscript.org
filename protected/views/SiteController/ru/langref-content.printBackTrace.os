@@ -2,7 +2,7 @@
 	ret = "void",
 	desc = "Функция выводит стек вызовов функций в ObjectScript.",
 	package = "webcore.os",
-	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/webcore.os#L29",
+	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/webcore.os#L30",
 	params = {
 		skipFuncs = {
 			type = "mixed",

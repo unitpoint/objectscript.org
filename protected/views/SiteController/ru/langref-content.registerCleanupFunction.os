@@ -1,7 +1,7 @@
 ﻿return {
 	ret = "void",
 	package = "std.os",
-	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L230",
+	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L228",
 	desc = <<<END'
 <p>
 Регистрирует функцию, которая будет вызвана при завершении скрипта в фазе отчистки данных. 

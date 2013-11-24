@@ -33,7 +33,7 @@ function toArray(a){
 		return arr
 	}
 	if(type == "null"){
-		return null
+		return []
 	}
 	return [a]
 }
@@ -49,7 +49,7 @@ function toObject(a){
 		return object
 	}
 	if(type == "null"){
-		return null
+		return {}
 	}
 	return {a}
 }
