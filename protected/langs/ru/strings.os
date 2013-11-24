@@ -9,7 +9,7 @@
 	RETURN_VALUE = "Возвращаемое значение",
 	FUNC_RETURN_VOID = "Функция ничего не возвращает",
 	CONTENT = "Содержание",
-	ONLINE_EXAMPLE = "Онлайн пример",
+	ONLINE_EXAMPLE = "Запустить онлайн",
 	SOURCE_CODE = "Исходный код",
 	PACKAGE = "Пакет",
 	EXTENSION = "Расширение",
