@@ -1,4 +1,4 @@
 ﻿<p>
-В OS есть возможность для удаления значения из контейнера. Такое действие выполняет оператор <code>delete</code>.
+В ObjectScript есть возможность для удаления значения из контейнера. Такое действие выполняет оператор <code>delete</code>.
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.operators.delete.osh"}%>

@@ -5,7 +5,7 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj-in-brackets.osh"}%>
 
 <p>
-OS позволяет вместо стоящих подряд скобок <code>({</code> и <code>})</code> использовать только фигурные.
+ObjectScript позволяет вместо стоящих подряд скобок <code>({</code> и <code>})</code> использовать только фигурные.
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj.osh"}%>
 <div class="alert alert-info">

@@ -33,13 +33,13 @@ Browser: Chrome
 
 <p>
 <div class="bs-callout bs-callout-danger">
-<code>lower</code> и <code>find</code> - встроенные в OS функции, они реализованны в классе <code>String</code>.
+<code>lower</code> и <code>find</code> - встроенные в ObjectScript функции, они реализованны в классе <code>String</code>.
 </div>
 </p>
 
 <p>
 <div class="bs-callout bs-callout-danger">
-В OS преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
+В ObjectScript преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
 все другие значения возвращают <i>истину</i>, включая число <code>0</code> и пустую строку <code>""</code>.
 </div>
 </p>

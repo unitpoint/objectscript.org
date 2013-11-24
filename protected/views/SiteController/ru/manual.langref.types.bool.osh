@@ -22,7 +22,7 @@
 <pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
 &lt;%
   if (action == "show_version") {
-    echo "Current OS version is "..OS_VERSION;
+    echo "Current ObjectScript version is "..OS_VERSION;
   }
 
   if (show_separators) {
@@ -36,14 +36,14 @@
 <h3 class="anchor-mark"><a name="convert"></a>Преобразование в булев тип</h3>
 
 <p>
-Для явного преобразования в <i>boolean</i>, мы используем в OS оператор двойного отрицания <code>!!</code>. 
+Для явного преобразования в <i>boolean</i>, мы используем в ObjectScript оператор двойного отрицания <code>!!</code>. 
 В большинстве случаев приведение типа необязательно, 
 так как значение будет автоматически преобразовано, если оператор, функция или управляющая конструкция 
 требует <i>boolean</i> аргумент.
 
 <p>
 <div class="bs-callout bs-callout-danger">
-В OS преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
+В ObjectScript преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
 все другие значения возвращают <i>истину</i>, включая число <code>0</code> и пустую строку <code>""</code>.
 </div>
 </p>

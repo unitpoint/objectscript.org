@@ -15,7 +15,7 @@
 
 <p>
 <div class="bs-callout bs-callout-danger">
-OS транслирует команду <code>#a</code> в <code>a.__len()</code>, т.е. вызывает магический метод <code>__len</code> и возвращает его результат.
+ObjectScript транслирует команду <code>#a</code> в <code>a.__len()</code>, т.е. вызывает магический метод <code>__len</code> и возвращает его результат.
 </div>
 </p>
 

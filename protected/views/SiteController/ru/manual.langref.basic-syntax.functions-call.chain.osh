@@ -1,5 +1,5 @@
 ﻿<p>
-В OS следующая цепочка вызовов нескольких функций будет выполняться слева направо.
+В ObjectScript следующая цепочка вызовов нескольких функций будет выполняться слева направо.
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj-chain.osh"}%>
 <div class="alert alert-info">

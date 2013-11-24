@@ -1,5 +1,5 @@
 ﻿<p>
-В OS есть специальный тип данных - <code>userdata</code>, который предназначен для подключения в OS структур 
+В ObjectScript есть специальный тип данных - <code>userdata</code>, который предназначен для подключения в ObjectScript структур 
 и данных из <code>C++</code>, в том числе классов <code>C++</code>. 
 
 <p>
@@ -36,7 +36,7 @@ public:
   </div>
 </div>
 
-<p>Подключаем его к OS (следующий код на C++).
+<p>Подключаем его к ObjectScript (следующий код на C++).
 
 <div class="row">
   <div class="col-md-11 badge-src">

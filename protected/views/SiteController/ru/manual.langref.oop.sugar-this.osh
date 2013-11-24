@@ -1,10 +1,10 @@
 ﻿<p>
-В OS существует зарезервированое слово <code>this</code> - это текущий контекст работы функции или ссылка на
-объект, для которого выполняется функция (метод). В целом <code>this</code> в OS - это 
+В ObjectScript существует зарезервированое слово <code>this</code> - это текущий контекст работы функции или ссылка на
+объект, для которого выполняется функция (метод). В целом <code>this</code> в ObjectScript - это 
 то же самое, что <code>this</code> в <code>C++</code>.
 <p>
-OS допускает доступ к свойствам вида <code>this.prop</code>, где <code>prop</code> - имя свойства. 
-Но обычно мы в OS используем более короткий (сахарный) синтаксис <code>@prop</code>
+ObjectScript допускает доступ к свойствам вида <code>this.prop</code>, где <code>prop</code> - имя свойства. 
+Но обычно мы в ObjectScript используем более короткий (сахарный) синтаксис <code>@prop</code>
 
 <h3>Пример</h3>
 <%@controller.widget{'SourceWidget', source="examples/tutorial.oop.sugar-this.osh"}%>

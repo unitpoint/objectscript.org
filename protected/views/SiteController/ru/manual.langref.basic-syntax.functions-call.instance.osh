@@ -1,5 +1,5 @@
 ﻿<p>
-OS позволяет создавать функцию и, без сохранения во временную переменную, сразу же 
+ObjectScript позволяет создавать функцию и, без сохранения во временную переменную, сразу же 
 её вызывать.
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.functions.alternative.osh"}%>

@@ -11,7 +11,7 @@
 
 <p>
 Клонирование объектов позволяет сделать копию исходного объекта. 
-В OS это делается вызовом метода <code>clone</code>.
+В ObjectScript это делается вызовом метода <code>clone</code>.
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.oop.clone.osh"}%>
 

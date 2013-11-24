@@ -1,10 +1,10 @@
 ﻿<p>
-В OS функция может возвращать одно значение, ничего не не возвращать или возвращать много значений, перечисленных через запятую.
+В ObjectScript функция может возвращать одно значение, ничего не не возвращать или возвращать много значений, перечисленных через запятую.
 
 <%@controller.widget{'SourceWidget', source="examples/tutorial.functions.return-values.osh"}%>
 
 <p>
-В OS функция автоматически возвращает последнее значение перед завершением функции.
+В ObjectScript функция автоматически возвращает последнее значение перед завершением функции.
 
 <div class="alert alert-info">
 См. <a href="<%=@controller.createUrl{params={page="langref.control-structures.return"}, amp="&amp;"}%>">Команда return</a>,
