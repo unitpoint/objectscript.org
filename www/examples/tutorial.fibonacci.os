@@ -6,4 +6,4 @@ function fib(n){
   }
   return r;
 }
-print fib(100);
+print(fib(100));
