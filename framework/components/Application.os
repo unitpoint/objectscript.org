@@ -124,7 +124,7 @@ Application = extends Component {
 	},
 	
 	getComponent = function(name, config){
-		return @_components[name || throw "Attempt to create empty component"] || {||
+		return @_components[name || throw "Attempt to create empty component"] || @{
 			config || config = @config.components[name] || throw "Component \"${name}\" is not configured"
 			config.enabled === false && throw "Component \"${name}\" is disabled"
 			var component
@@ -137,7 +137,7 @@ Application = extends Component {
 			}
 			component.init()
 			return component
-		}.call(this)
+		}
 	},
 	
 	setComponent = function(name, value){
