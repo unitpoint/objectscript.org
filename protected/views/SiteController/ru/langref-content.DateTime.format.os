@@ -13,171 +13,166 @@ END,
 <p>
 Строка преобразования параметров.
 <p>
-Синтакис форматирования значения имеет имеет следующий вид:
-<blockquote>
-<nobr><code>%specifier</code></nobr>
-</blockquote>
-<p>
 <table class="table">
   <thead>
 	<tr>
-	  <th>specifier</th>
+	  <th>Модификатор</th>
 	  <th>Описание</th>
 	</tr>
   </thead>
   <tbody>
 	<tr>
-	  <td><code>%d</code></td>
+	  <td><code>d</code></td>
 	  <td width="100%">День месяца, 2 цифры с ведущим нулём.</td>
 	</tr>
 	<tr>
-	  <td><code>%D</code></td>
+	  <td><code>D</code></td>
 	  <td width="100%">Текствое представление дня недели, 3 символа.</td>
 	</tr>
 	<tr>
-	  <td><code>%j</code></td>
+	  <td><code>j</code></td>
 	  <td width="100%">День месяца без ведущего нуля.</td>
 	</tr>
 	<tr>
-	  <td><code>%l</code></td>
+	  <td><code>l</code></td>
 	  <td width="100%">Полное наименование дня недели.</td>
 	</tr>
 	<tr>
-	  <td><code>%S</code></td>
+	  <td><code>S</code></td>
 	  <td width="100%">Английский суффикс порядкового числительного дня месяца, 2 символа.</td>
 	</tr>
 	<tr>
-	  <td><code>%w</code></td>
+	  <td><code>w</code></td>
 	  <td width="100%">Порядковый номер дня недели. От 0 (понедельник) до 6 (воскресенье).</td>
 	</tr>
 	<tr>
-	  <td><code>%N</code></td>
+	  <td><code>N</code></td>
 	  <td width="100%">Порядковый номер дня недели в соответствии со стандартом ISO-8601. 
 			От 1 (понедельник) до 7 (воскресенье).</td>
 	</tr>
 	<tr>
-	  <td><code>%z</code></td>
+	  <td><code>z</code></td>
 	  <td width="100%">Порядковый номер дня в году (начиная с 1).</td>
 	</tr>
 	<tr>
-	  <td><code>%W</code></td>
+	  <td><code>W</code></td>
 	  <td width="100%">Порядковый номер недели года в соответствии со стандартом ISO-8601. 
 			Недели начинаются с понедельника.</td>
 	</tr>
 	<tr>
-	  <td><code>%o</code></td>
+	  <td><code>o</code></td>
 	  <td width="100%">Номер года в соответствии со стандартом ISO-8601. 
 			Имеет то же значение, что и Y, кроме случая, когда номер недели ISO (W) принадлежит 
 			предыдущему или следующему году, тогда будет использован год этой недели.</td>
 	</tr>
 	<tr>
-	  <td><code>%F</code></td>
+	  <td><code>F</code></td>
 	  <td width="100%">Полное наименование месяца, например January или March.</td>
 	</tr>
 	<tr>
-	  <td><code>%m</code></td>
+	  <td><code>m</code></td>
 	  <td width="100%">Порядковый номер месяца с ведущим нулём.</td>
 	</tr>
 	<tr>
-	  <td><code>%M</code></td>
+	  <td><code>M</code></td>
 	  <td width="100%">Сокращенное наименование месяца, 3 символа.</td>
 	</tr>
 	<tr>
-	  <td><code>%n</code></td>
+	  <td><code>n</code></td>
 	  <td width="100%">Порядковый номер месяца без ведущего нуля.</td>
 	</tr>
 	<tr>
-	  <td><code>%t</code></td>
+	  <td><code>t</code></td>
 	  <td width="100%">Количество дней в месяце.</td>
 	</tr>
 	<tr>
-	  <td><code>%L</code></td>
+	  <td><code>L</code></td>
 	  <td width="100%">Признак високосного года. 1, если год високосный, иначе 0.</td>
 	</tr>
 	<tr>
-	  <td><code>%y</code></td>
+	  <td><code>y</code></td>
 	  <td width="100%">Номер года, 2 цифры.</td>
 	</tr>
 	<tr>
-	  <td><code>%Y</code></td>
+	  <td><code>Y</code></td>
 	  <td width="100%">Порядковый номер года, 4 цифры.</td>
 	</tr>
 	<tr>
-	  <td><code>%a</code></td>
+	  <td><code>a</code></td>
 	  <td width="100%">Ante meridiem (англ. "до полудня") или Post meridiem (англ. "после полудня") 
 			в нижнем регистре два символа (am или pm).</td>
 	</tr>
 	<tr>
-	  <td><code>%A</code></td>
+	  <td><code>A</code></td>
 	  <td width="100%">Ante meridiem (англ. "до полудня") или Post meridiem (англ. "после полудня") 
 			в верхнем регистре два символа (AM или PM).</td>
 	</tr>
 	<tr>
-	  <td><code>%B</code></td>
+	  <td><code>B</code></td>
 	  <td width="100%">Время в формате Интернет-времени (альтернативной системы отсчета времени суток)
 			от 000 до 999.</td>
 	</tr>
 	<tr>
-	  <td><code>%g</code></td>
+	  <td><code>g</code></td>
 	  <td width="100%">Часы в 12-часовом формате без ведущего нуля от 1 до 12.</td>
 	</tr>
 	<tr>
-	  <td><code>%G</code></td>
+	  <td><code>G</code></td>
 	  <td width="100%">Часы в 24-часовом формате без ведущего нуля от 0 до 23.</td>
 	</tr>
 	<tr>
-	  <td><code>%h</code></td>
+	  <td><code>h</code></td>
 	  <td width="100%">Часы в 12-часовом формате с ведущим нулём от 01 до 12.</td>
 	</tr>
 	<tr>
-	  <td><code>%H</code></td>
+	  <td><code>H</code></td>
 	  <td width="100%">Часы в 24-часовом формате с ведущим нулём от 00 до 23.</td>
 	</tr>
 	<tr>
-	  <td><code>%i</code></td>
+	  <td><code>i</code></td>
 	  <td width="100%">Минуты с ведущим нулём от 00 до 59.</td>
 	</tr>
 	<tr>
-	  <td><code>%s</code></td>
+	  <td><code>s</code></td>
 	  <td width="100%">Секунды с ведущим нулём от 00 до 59.</td>
 	</tr>
 	<tr>
-	  <td><code>%u</code></td>
+	  <td><code>u</code></td>
 	  <td width="100%">Микросекунды (в 1 секунде 1000000 микросекунд).</td>
 	</tr>
 	<tr>
-	  <td><code>%P</code></td>
+	  <td><code>P</code></td>
 	  <td width="100%">Разница с временем по Гринвичу с двоеточием между часами и минутами.
 			Например: +02:00</td>
 	</tr>
 	<tr>
-	  <td><code>%O</code></td>
+	  <td><code>O</code></td>
 	  <td width="100%">Разница с временем по Гринвичу. Например: +0200</td>
 	</tr>
 	<tr>
-	  <td><code>%T</code></td>
+	  <td><code>T</code></td>
 	  <td width="100%">Временная зона. Например: GMT+0200</td>
 	</tr>
 	<tr>
-	  <td><code>%Z</code></td>
+	  <td><code>Z</code></td>
 	  <td width="100%">Смещение временной зоны в секундах. Для временных зон, расположенных западнее 
 			UTC возвращаются отрицательные числа, а расположенных восточнее UTC - положительные.</td>
 	</tr>
 	<tr>
-	  <td><code>%c</code></td>
+	  <td><code>c</code></td>
 	  <td width="100%">Дата в формате стандарта ISO 8601. Например: 2013-12-10T08:00:21+00:00</td>
 	</tr>
 	<tr>
-	  <td><code>%r</code></td>
+	  <td><code>r</code></td>
 	  <td width="100%">Дата в формате <a href="http://www.faqs.org/rfcs/rfc2822" target="_blank">RFC 2822</a>.
 			Например: Thu, 21 Dec 2013 16:01:07 +0200</td>
 	</tr>
 	<tr>
-	  <td><code>%R</code></td>
+	  <td><code>R</code></td>
 	  <td width="100%">Дата по Гринвичу в формате HTTP-date. Например: Thu, 21 Dec 2013 16:01:07 GMT</td>
 	</tr>
 	<tr>
-	  <td><code>%U</code></td>
+	  <td><code>U</code></td>
 	  <td width="100%">Количество секунд, прошедших с начала Эпохи Unix 
 			(The Unix Epoch, 1 января 1970 00:00:00 GMT).</td>
 	</tr>
