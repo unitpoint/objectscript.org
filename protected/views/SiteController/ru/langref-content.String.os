@@ -5,7 +5,6 @@ return {
 Класс строки.
 <p>
 В ObjectScript строка создается конструкцией вида <span class="str">"Hello World!"</span>
-
 END,
 	props = {
 		length = "${dir}/langref-content.String.length.os",

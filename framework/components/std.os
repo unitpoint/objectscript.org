@@ -201,7 +201,7 @@ function DateTime.__add(b){
 }
 
 function DateTime.__sub(b){
-	b is DateTime && return @comdate - b.comdate;
+	b is DateTime && return @comdate - b.comdate
 	return DateTime {
 		comdate = @comdate - (numberOf(b) || throw "DateTime.__sub requires DateTime or Number")
 	}

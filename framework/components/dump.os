@@ -16,7 +16,7 @@ function dump(val){
 			}else{
 				dump_recurse_check[val] = true
 				echo "{\n"
-				for(var k, v in val){
+				for(var k, v in val.dumpIter()){
 					_F(k, deep+1, true)
 					echo " = "
 					_F(v, deep+1)

@@ -19,20 +19,18 @@
 	}
 	for(; #parts > 0; ){
 		name = parts[0]
-		// don't allow content.funcs[name] usage because of content.funcs can contains magics names
-		var cur = prop(content.funcs, name) || prop(content.magics, name)
-					|| prop(content.methods, name) || prop(content.props, name) 
-					|| prop(content.classes, name) || prop(content.modules, name) 
-					|| break
+		// don't allow content.methods[name] usage because of content.methods can contains magics names
+		var key
+		var cur =  @{ key = "funcs"; 	prop(content.funcs,		name) }
+				|| @{ key = "magics";	prop(content.magics, 	name) }
+				|| @{ key = "methods";	prop(content.methods, 	name) }
+				|| @{ key = "props"; 	prop(content.props, 	name) }
+				|| @{ key = "classes"; 	prop(content.classes, 	name) }
+				|| @{ key = "modules"; 	prop(content.modules, 	name) }
+				|| break
 		links[] = name
 		// name != "globals" && echo("part ${name}, ${links}, ${Object.valueOf.call(cur)} <br />")
 		name != "globals" && breadcrumb[] = [links.join("."), name]
-		var key = cur === prop(content.funcs, name) ? "funcs"
-				: cur === prop(content.magics, name) ? "magics"
-				: cur === prop(content.methods, name) ? "methods"
-				: cur === prop(content.props, name) ? "props"
-				: cur === prop(content.classes, name) ? "classes"
-				: "modules"
 		prevContent, content = content, prop(content[key], name, getContent(cur))
 		delete parts[0]
 	}
@@ -82,7 +80,7 @@
 			}
 			htmlTitle[] = name
 		}
-		#htmlTitle > 0 && htmlTitle = [htmlTitle.join(".")]
+		#htmlTitle > 0 && htmlTitle = [ htmlTitle.join(".") ]
 		@breadcrumb && htmlTitle[] = @breadcrumb.name
 		htmlTitle[] = "ObjectScript"
 		@controller.pageTitle = htmlTitle.join(" / ")
@@ -122,8 +120,16 @@ $(function(){
 		var compare = function(a, b, ka, kb){
 			return ka.lower() <=> kb.lower()
 		}
+		var sections = {
+			props = _T.PROPERTIES,
+			funcs = _T.FUNCTIONS,
+			methods = _T.METHODS,
+			magics = _T.MAGICS,
+			classes = _T.CLASSES,
+			modules = _T.MODULES,
+		}
 		var list = function(title, items, allowSub){
-			items || return;
+			(!items || #items == 0) && return;
 			echo "<li><span class='folder'>${title}</span>"
 			echo "<ul>"
 			// items can contain 'sort' so call Object.sort instead of items.sort
@@ -137,12 +143,9 @@ $(function(){
 					echo "<li class='open'><span class='item'><b>${name}</b></span>"
 					if(allowSub && false){
 						ob.push()
-						_F.call(this, _T.PROPERTIES, content.props)
-						_F.call(this, _T.FUNCTIONS, content.funcs)
-						_F.call(this, _T.METHODS, content.methods)
-						_F.call(this, _T.MAGICS, content.magics)
-						_F.call(this, _T.CLASSES, content.classes)
-						_F.call(this, _T.MODULES, content.modules)
+						for(var section, name in sections){
+							list.call(this, name, content[section])
+						}
 						var sub = ob.popContents()
 						if(sub != ""){
 							echo "<ul>${sub}</ul>"
@@ -156,12 +159,9 @@ $(function(){
 			}
 			echo "</ul></li>"
 		}
-		list.call(this, _T.PROPERTIES, prevContent.props, true)
-		list.call(this, _T.FUNCTIONS, prevContent.funcs, true)
-		list.call(this, _T.METHODS, prevContent.methods, true)
-		list.call(this, _T.MAGICS, prevContent.magics, true)
-		list.call(this, _T.CLASSES, prevContent.classes, true)
-		list.call(this, _T.MODULES, prevContent.modules, true)
+		for(var section, name in sections){
+			list.call(this, name, prevContent[section], true)
+		}
 	%>
 	</ul>
   </div>
@@ -242,6 +242,17 @@ $(function(){
 			</tr>
 			<%}/*if(content.package)*/%>
 			
+		    <%if(content.extension){%>
+			<tr>
+			  <td colspan="2" class="info">
+			    <b><%=_T.EXTENSION%></b>
+			  </td>
+			  <td>
+				<code><%=content.extension%></code>
+			  </td>
+			</tr>
+			<%}/*if(content.extension)*/%>
+			
 		    <%if(content.sourceFile){%>
 			<tr>
 			  <td colspan="2" class="info" nowrap>
@@ -264,13 +275,6 @@ $(function(){
 						echo "<td>"..(param.type || "").."</td>"
 						echo "<th><code>${paramName}</code></th>"
 						echo "<td width='100%'>"
-						/* if(param.def){
-							if(param.def == "true" || param.def == "false" || param.def == "null"){
-								param.def = "<code>${param.def}</code>"
-							}
-							// echo "<p><b>${_T.DEFAULT_VALUE}:</b> ${decode(param.def)}</p>"
-							echo "<p>= ${decode(param.def)}</p>"
-						} */
 						echo decode(param.desc)
 						echo "</td>"
 					echo "</tr>"
@@ -305,12 +309,9 @@ $(function(){
 			// echo "<pre>"; echo json.encode({name, links}); echo "</pre>";
 			links[] = pageTitle
 			ob.push()
-			list.call(this, _T.PROPERTIES, content.props, true)
-			list.call(this, _T.FUNCTIONS, content.funcs, true)
-			list.call(this, _T.METHODS, content.methods, true)
-			list.call(this, _T.MAGICS, content.magics, true)
-			list.call(this, _T.CLASSES, content.classes, true)
-			list.call(this, _T.MODULES, content.modules, true)
+			for(var section, name in sections){
+				list.call(this, name, content[section], true)
+			}
 			var data = ob.popContents()
 			if(data != ""){
 				%>
@@ -331,15 +332,3 @@ $(function(){
 	
   </div>
 </div>
-
-<%
-	/*
-	echo "<pre>"
-	@controller.beginWidget('HtmlEncodeWidget')
-	dump(links)
-	dump(breadcrumb)
-	dump(content)
-	dump(prevContent)
-	@controller.endWidget('HtmlEncodeWidget')
-	echo "</pre>"
-	*/

@@ -12,6 +12,7 @@
 	ONLINE_EXAMPLE = "Онлайн пример",
 	SOURCE_CODE = "Исходный код",
 	PACKAGE = "Пакет",
+	EXTENSION = "Расширение",
 	PROPERTIES = "Свойства",
 	FUNCTIONS = "Функции",
 	METHODS = "Методы",
