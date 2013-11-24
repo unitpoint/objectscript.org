@@ -6,7 +6,7 @@ END,
 	package = "std.os",
 	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L203",
 	desc = <<<END"
-Создает новый экземпляр даты и времени.  
+Инициализирует новый экземпляр даты и времени.  
 END,
 	params = {
 		year = {
