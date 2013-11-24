@@ -1,5 +1,7 @@
 ﻿return {
 	ret = "void",
+	package = "webcore.os",
+	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/webcore.os#L67",
 	desc = <<<END'
 <p>
 Функция используется для отправки HTTP заголовка. В <a href="http://www.faqs.org/rfcs/rfc2616" 

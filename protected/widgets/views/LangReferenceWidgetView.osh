@@ -174,25 +174,31 @@ $(function(){
 			</div>
 			<%
 		}
+		var descPrinted, retPrinted = true, false
 		if(!pageTitle || pageTitle == ""){
 			content.desc && echo(decode(content.desc))
 		}else if(!content.ret){
 			pageHeader()
-			echo "<table class='table'><tbody>"
-			echo "<tr class='active'>"
-				echo "<td nowrap>"..(content.type || "").."</td>"
-				echo "<th><code>${name}</code></th>"
-				echo "<td width='100%'>"
-				if(content.def){
-					if(content.def == "true" || content.def == "false" || content.def == "null"){
-						content.def = "<code>${content.def}</code>"
+			if(content.type || content.def){
+				echo "<table class='table'><tbody>"
+				echo "<tr class='active'>"
+					echo "<td nowrap>"..(content.type || "").."</td>"
+					echo "<th><code>${name}</code></th>"
+					echo "<td width='100%'>"
+					if(content.def){
+						if(content.def == "true" || content.def == "false" || content.def == "null"){
+							content.def = "<code>${content.def}</code>"
+						}
+						echo "<p>= ${decode(content.def)}</p>"
 					}
-					echo "<p>= ${decode(content.def)}</p>"
-				}
-				content.desc && echo(decode(content.desc))
-				echo "</td>"
-			echo "</tr>"
-			echo "</tbody></table>"
+					content.desc && echo(decode(content.desc))
+					echo "</td>"
+				echo "</tr>"
+				echo "</tbody></table>"
+				retPrinted = true
+			}else{
+				descPrinted = false
+			}
 		}else{		
 			pageHeader()
 			echo '<pre class="prettyprint lang-js prettyprinted" style="padding-left:20px">'
@@ -219,11 +225,13 @@ $(function(){
 			}
 			echo "<span class='pun'>)</span>"
 			echo '</pre>'
+			descPrinted = false
+		}
 	%>
 		<p>
 		<table class="table">
 		  <tbody>
-		    <%if(content.desc){%>
+		    <%if(!descPrinted && content.desc){%>
 			<tr class="success">
 			  <td colspan="3">
 				<%=decode(content.desc)%>
@@ -282,24 +290,26 @@ $(function(){
 			%>
 			<%}/*if(content.params)*/%>
 			
-			<%if(content.ret && content.ret != "void"){%>
-			<tr>
-			  <th colspan="3" class="info"><%=_T.RETURN_VALUE%></th>
-			</tr>
-			<tr>
-			  <td><%=content.ret%></td>
-			  <td></td>
-			  <td width="100%"><%=content.retDesc || ""%></td>
-			</tr>
-			<%}else if(content.retDesc || !content.ret || content.ret == "void"){%>
-			<tr>
-			  <th colspan="2" class="info"><%=_T.RETURN_VALUE%></th>
-			  <td width="100%"><%=content.retDesc || _T.FUNC_RETURN_VOID%></td>
-			</tr>
-			<%}/*if(content.retDesc)*/%>
+			<%if(!retPrinted){%>
+				<%if(content.ret && content.ret != "void"){%>
+				<tr>
+				  <th colspan="3" class="info"><%=_T.RETURN_VALUE%></th>
+				</tr>
+				<tr>
+				  <td><%=content.ret%></td>
+				  <td></td>
+				  <td width="100%"><%=content.retDesc || ""%></td>
+				</tr>
+				<%}else if(content.retDesc || content.ret == "void"){%>
+				<tr>
+				  <th colspan="2" class="info"><%=_T.RETURN_VALUE%></th>
+				  <td width="100%"><%=content.retDesc || _T.FUNC_RETURN_VOID%></td>
+				</tr>
+				<%}/*if(content.retDesc)*/%>
+			<%}/*if(!retPrinted)*/%>
 		  </tbody>
 		</table>
-	<% } /*if*/ %>
+	<%  /*if*/ %>
 	<%
 		if(content.extDesc){
 			echo decode(content.extDesc)

@@ -1,10 +1,9 @@
 ﻿var dir = __DIR__
 return {
+	extension = "datetime",
+	sourceFile = "https://github.com/unitpoint/objectscript/tree/master/src/ext-datetime",
 	desc = <<<END'
-<p>
-Класс даты и времени для григорианского календаря.
-<p>
-ObjectScript поддерживает диапазон лет в дате от <code>-5000000</code> до <code>5000000</code>.
+Класс даты и времени григорианского календаря.
 END,
 	props = {
 		absdays = "${dir}/langref-content.DateTime.absdays.os",
