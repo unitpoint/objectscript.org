@@ -38,29 +38,25 @@ function printBackTrace(skipFuncs){
 }
 
 if('HTTP_COOKIE' in _SERVER){
-	var cookie = _SERVER.HTTP_COOKIE.trim()
-	if(#cookie > 0)
-		for(var k, v in cookie.split(';')){
-			v = v.trim().split('=', 2)
-			if(#v == 2){
-				_COOKIE.setSmartProperty(v[0], v[1])
-			}else{
-				_COOKIE.setSmartProperty(v[0], '')
-			}
-		}	
+	for(var k, v in _SERVER.HTTP_COOKIE.trim().split(';')){
+		v = v.trim().split('=', 2)
+		if(#v == 2){
+			_COOKIE.setSmartProperty(url.decode(v[0]), url.decode(v[1]))
+		}else{
+			_COOKIE.setSmartProperty(url.decode(v[0]), '')
+		}
+	}	
 }
 
 if('QUERY_STRING' in _SERVER){
-	var query = _SERVER.QUERY_STRING.trim()
-	if(#query > 0)
-		for(var k, v in query.split('&')){
-			v = v.trim().split('=', 2)
-			if(#v == 2){
-				_GET.setSmartProperty(v[0], url.decode(v[1]))
-			}else{
-				_GET.setSmartProperty(v[0], '')
-			}
-		}	
+	for(var k, v in _SERVER.QUERY_STRING.trim().split('&')){
+		v = v.trim().split('=', 2)
+		if(#v == 2){
+			_GET.setSmartProperty(url.decode(v[0]), url.decode(v[1]))
+		}else{
+			_GET.setSmartProperty(url.decode(v[0]), '')
+		}
+	}	
 }
 
 var headerList, headersSent = {}, false

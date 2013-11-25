@@ -129,7 +129,8 @@ $(function(){
 			modules = _T.MODULES,
 		}
 		var list = function(title, items, allowSub){
-			(!items || #items == 0) && return;
+			// if items is null then compare returns false
+			#items > 0 || return;
 			echo "<li><span class='folder'>${title}</span>"
 			echo "<ul>"
 			// items can contain 'sort' so call Object.sort instead of items.sort

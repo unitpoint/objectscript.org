@@ -257,7 +257,7 @@ function String.__mul(count){
 		buf.append(this)
 	}
 	if(count > 0){
-		buf.append(@sub(0, #this * count))
+		buf.append(@sub(0, #this * count + 0.5))
 	}
 	return toString(buf)
 }
