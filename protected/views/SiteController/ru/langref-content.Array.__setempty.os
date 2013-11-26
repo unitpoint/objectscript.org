@@ -5,7 +5,7 @@
 END,
 	desc = <<<END"
 Добавляет значение в массив с конца (аналог метода <a href="@url(globals.Array.push)">push</a>). 
-Вызывается в конструкции вида <code>arr[] = value</code>.
+Вызывается в конструкции вида <code>arr[] = value</code>
 END,
 	params = {
 		value = {
