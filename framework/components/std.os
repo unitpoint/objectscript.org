@@ -248,6 +248,30 @@ function String.reverse(){
 	return toString(buf)
 }
 
+function String.reverseAnsi(){
+	var buf = Buffer()
+	for(var i = @lenAnsi()-1; i >= 0; i--){
+		buf.append(@subAnsi(i, 1))
+	}
+	return toString(buf)
+}
+
+function String.reverseUtf8(){
+	var buf = Buffer()
+	for(var i = @lenUtf8()-1; i >= 0; i--){
+		buf.append(@subUtf8(i, 1))
+	}
+	return toString(buf)
+}
+
+function String.reverseIconv(){
+	var buf = Buffer()
+	for(var i = @lenIconv()-1; i >= 0; i--){
+		buf.append(@subIconv(i, 1))
+	}
+	return toString(buf)
+}
+
 function String.__mul(count){
 	count < 0 && return this.reverse() * -count
 	count == 1 && return this
@@ -277,6 +301,24 @@ function String.__radd(b){
 
 function String.flower(){
 	return @sub(0, 1).upper() .. @sub(1)
+}
+
+function String.switchToAnsi(){
+	String.__len = String.lenAnsi
+	String.find = String.findAnsi
+	String.sub = String.subAnsi
+}
+	
+function String.switchToUtf8(){
+	String.__len = String.lenUtf8
+	String.find = String.findUtf8
+	String.sub = String.subUtf8
+}
+	
+function String.switchToIconv(){
+	String.__len = String.lenIconv
+	String.find = String.findIconv
+	String.sub = String.subIconv
 }
 	
 url || throw "url module required"
