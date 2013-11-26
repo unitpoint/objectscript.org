@@ -17,22 +17,28 @@
 		}
 		return Object.getProperty.call(obj, name)
 	}
+	var sections = {
+		props = _T.PROPERTIES,
+		funcs = _T.FUNCTIONS,
+		methods = _T.METHODS,
+		magics = _T.MAGICS,
+		classes = _T.CLASSES,
+		modules = _T.MODULES,
+	}	
 	for(; #parts > 0; ){
-		name = parts[0]
+		name = parts.first
 		// don't allow content.methods[name] usage because of content.methods can contains magics names
-		var key
-		var cur =  @{ key = "funcs"; 	prop(content.funcs,		name) }
-				|| @{ key = "magics";	prop(content.magics, 	name) }
-				|| @{ key = "methods";	prop(content.methods, 	name) }
-				|| @{ key = "props"; 	prop(content.props, 	name) }
-				|| @{ key = "classes"; 	prop(content.classes, 	name) }
-				|| @{ key = "modules"; 	prop(content.modules, 	name) }
-				|| break
+		// so use prop function
+		var cur, key
+		for(key in sections){
+			(cur = prop(content[key], name)) && break
+		}
+		cur || break
 		links[] = name
 		// name != "globals" && echo("part ${name}, ${links}, ${Object.valueOf.call(cur)} <br />")
 		name != "globals" && breadcrumb[] = [links.join("."), name]
 		prevContent, content = content, prop(content[key], name, getContent(cur))
-		delete parts[0]
+		delete parts.first
 	}
 	var pageTitle = links.join(".").replace(Regexp("#^globals\.|^globals$#s"), "")
 	
@@ -91,7 +97,7 @@
 $(function(){
 	$("#tree-menu-content").treeview({
 		animated: "fast",
-		// collapsed: true,
+		collapsed: true,
 		unique: true,
 		// persist: "cookie",
 		// cookieId: "tree-<%=links.clone().do{||@pop()}.join("-")%>",
@@ -120,19 +126,12 @@ $(function(){
 		var compare = function(a, b, ka, kb){
 			return ka.lower() <=> kb.lower()
 		}
-		var sections = {
-			props = _T.PROPERTIES,
-			funcs = _T.FUNCTIONS,
-			methods = _T.METHODS,
-			magics = _T.MAGICS,
-			classes = _T.CLASSES,
-			modules = _T.MODULES,
-		}
 		var list = function(title, items, allowSub){
 			// if items is null then compare returns false
 			#items > 0 || return;
-			echo "<li><span class='folder'>${title}</span>"
-			echo "<ul>"
+			var open = false
+			
+			ob.push()
 			// items can contain 'sort' so call Object.sort instead of items.sort
 			items = Object.sort.call(items, compare)
 			// items can contain '__iter' so call Object.__iter instead of items.sort
@@ -141,6 +140,7 @@ $(function(){
 				var page = links.join(".")
 				var url = @controller.createUrl{params={page=page}, amp="&amp;"}
 				if(page == @page){
+					open = true
 					echo "<li class='open'><span class='item'><b>${name}</b></span>"
 					if(allowSub && false){
 						ob.push()
@@ -158,6 +158,9 @@ $(function(){
 				}
 				links.pop()
 			}
+			var sub = ob.popContents()
+			echo "<li"..(open ? " class='open'" : "").."><span class='folder'>${title}</span><ul>"
+			echo sub
 			echo "</ul></li>"
 		}
 		for(var section, name in sections){
