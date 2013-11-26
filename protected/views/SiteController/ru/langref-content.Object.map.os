@@ -7,7 +7,7 @@ END,
 	package = "std.os",
 	sourceFile = "https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L116",
 	desc = <<<END"
-Вызывает заданную функцию обратного вызова для каждого элемента массива и возвращает массив, содержащий результаты.
+Вызывает заданную функцию обратного вызова для каждого элемента массива и возвращает объект, содержащий результаты.
 END,
 	params = {
 		func = {

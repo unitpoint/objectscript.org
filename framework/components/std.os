@@ -149,7 +149,6 @@ function Object.each(func){
 	for(var k, v in this){
 		return func(v, k, this) || continue
 	}
-	return this
 }
 
 function Object.reduce(func, value){
