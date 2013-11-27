@@ -23,7 +23,7 @@ git clone https://github.com/unitpoint/objectscript.git
 cd ./objectscript
 </pre>
 <p class="text-left">
-	<img src="img/objectscript-clone.png">
+	<img src="/img/objectscript-clone.png">
 </p>
 
 <li><p>Затем сконфигурируем сборку под нашу платформу:
@@ -32,7 +32,7 @@ mkdir build && cd build
 cmake -DBUILD_SOCI=ON -DCMAKE_INSTALL_PREFIX=/ ..
 </pre>
 <p class="text-left">
-	<img src="img/objectscript-configure.png">
+	<img src="/img/objectscript-configure.png">
 </p>
 
 <li><p>Теперь запустим компиляцию и установку <code>os</code> и <code>os-fcgi</code>:
@@ -41,7 +41,7 @@ make
 make install
 </pre>
 <p class="text-left">
-	<img src="img/objectscript-make.png">
+	<img src="/img/objectscript-make.png">
 </p>
 
 <li><p>Отлично, осталось только запустить сервис <code>os-fcgi</code>:
@@ -49,7 +49,7 @@ make install
 service os-fcgi restart
 </pre>
 <p class="text-left">
-	<img src="img/os-fcgi-start.png">
+	<img src="/img/os-fcgi-start.png">
 </p>
 </ol>
 

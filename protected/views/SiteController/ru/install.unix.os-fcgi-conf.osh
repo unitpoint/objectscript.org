@@ -4,7 +4,7 @@
 cat /etc/os-fcgi/conf.os
 </pre>
 <p class="text-left">
-	<img src="img/os-fcgi-conf.png">
+	<img src="/img/os-fcgi-conf.png">
 </p>
 
 <p>

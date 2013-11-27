@@ -7,7 +7,7 @@ ObjectScript разработан таким образом, чтобы имет
 <p>
 Пример BOM при просмотре тестового файла в шестнадцатиричном виде: 
 <p class="text-center">
-<img src="img/utf8bom.png" class="img-thumbnail">
+<img src="/img/utf8bom.png" class="img-thumbnail">
 
 <p>
 ObjectScript автоматически обрабатывает BOM, делая это прозрачно для разработчика. 

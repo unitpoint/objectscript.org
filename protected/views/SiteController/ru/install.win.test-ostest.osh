@@ -2,7 +2,7 @@
 Чтобы проверить наш тестовый виртуальный хост, впишем его имя (<code>http://ostest</code>) в адресную строку браузера. 
 Если все сделано правильно, то мы увидем что-то вроде:
 <p class="text-center">
-	<img src="img/os-fcgi-just-ready.png" class="img-thumbnail">
+	<img src="/img/os-fcgi-just-ready.png" class="img-thumbnail">
 </p>
 <p>
 Теперь самое время сделать что-нибудь интересное на OS. Для этого познакомьтесь с примерами в разделе документации
@@ -12,7 +12,7 @@
 <p>
 Если браузер показывает ошибку 500, например, такую:
 <p class="text-center">
-	<img src="img/denwer-err-500.png" class="img-thumbnail">
+	<img src="/img/denwer-err-500.png" class="img-thumbnail">
 </p>
 <p>
 То это означает, что сервис <code>os-fcgi</code> не запущен, либо он слушает не тот порт, который прописан в
