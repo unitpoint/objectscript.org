@@ -1,6 +1,9 @@
 ﻿<!DOCTYPE html>
 <html lang="<%=app.lang%>">
-<% var CLIENT_VERSION = app.params.CLIENT_VERSION %>
+<% 
+	var CLIENT_VERSION = app.params.CLIENT_VERSION
+	// var baseUrl = app.request.getBaseUrl(true)
+%>
 <head>
 	<meta charset="<%=html.encode(app.charset)%>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +14,10 @@
 
 	<title><%=html.encode(@controller.pageTitle)%></title>
 
-	<link href="assets/jquery-treeview/jquery.treeview.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<link href="/assets/jquery-treeview/jquery.treeview.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
 	<!-- Bootstrap core CSS -->
-	<link href="assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<link href="/assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
 	<!-- Just for debugging purposes. Don't actually copy this line! -->
 	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -35,15 +38,15 @@
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	
-	<script src="assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
-	<link href="assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<script src="/assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
+	<link href="/assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
-	<script src="assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
-	<script src="assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
-	<script src="assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
+	<script src="/assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
+	<script src="/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
+	<script src="/assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
 	
 	<!-- Custom styles for this template -->
-	<link href="assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<link href="/assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 </head>
 
 <body>
@@ -97,7 +100,7 @@
 	</div>
 	
 	<a id="github" href="https://github.com/unitpoint/objectscript" target="_blank"><img 
-		src="img/forkme_left_red_aa0000.png?<%=CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
+		src="/img/forkme_left_red_aa0000.png?<%=CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
 	
 	<%if(false){%>
 	<pre class="prettyprint linenums lang-js"><%

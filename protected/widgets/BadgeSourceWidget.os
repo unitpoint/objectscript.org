@@ -5,7 +5,11 @@ BadgeSourceWidget = extends Widget {
 	run = function(){
 		echo '<span class="badge">'
 		if(@view){
-			echo <<<END"<a href="${@view}" target="_blank" 
+			var url = @view
+			if(!Regexp("#^((https?|ftp)://)?/#").test(url)){
+				url = "/"..url
+			}
+			echo <<<END"<a href="${url}" target="_blank" 
 				title="${_T.ONLINE_EXAMPLE}"><span class="glyphicon glyphicon-eye-open"></span></a>END
 		}
 		if(@view || @source){

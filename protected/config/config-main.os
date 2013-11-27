@@ -27,6 +27,10 @@ return {
 		urlManager = {
 			class = "UrlManager",
 			rules = {
+				'<action:(langref|download|manual|install)>/<page:[\w\d\.\-]+>.html' = 'site/<action>',
+				'' = 'site/index',
+				'<action>.html' = 'site/<action>',
+				/*
                 'articles' = 'post/articles',
                 'apps' = 'post/apps',
                 'apps/create' = 'profile/createApp',
@@ -39,11 +43,9 @@ return {
                 '<title>~<url:[\w\d\-_]+?>' = {'post/', 'urlSuffix' = '.html'},
                 'posts/<title>~<url:[\w\d\-_]+?>' = {'post/', 'urlSuffix' = '.html'},
                 'posts/<id:\d+>' = 'post/',
-                // 'posts' = 'post/',
-				// '<controller:\w+>/<action:\w+>/<id:\d+>' = '<controller>/<action>',
-				'<controller:\w+>/<action:\w+>' = '<controller>/<action>',
-				'<controller:\w+>/' = '<controller>/',
-				// '<controller:\w+>/<action:\w+>' = '<controller>/<action>'
+				*/
+				// '<controller:\w+>/<action:\w+>' = '<controller>/<action>',
+				// '<controller:\w+>/' = '<controller>/',
 			},			
 		},
 		/* request = {

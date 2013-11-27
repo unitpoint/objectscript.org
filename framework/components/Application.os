@@ -76,7 +76,7 @@ Application = extends Component {
 	},
 	
 	processRequest = function(){
-		var route = @urlManager.parseUrl(@request)
+		var route = @urlManager.parseRequest(@request)
 		@runController(route);
 	},
 	

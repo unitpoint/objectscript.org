@@ -1,7 +1,9 @@
 HttpRequest = extends Component {
 	_baseUrl = null,
 	_scriptUrl = null,
+	_url = null,
 	_hostInfo = null,
+	_pathInfo = null,
 	_port = null,
 	_securePort = null,
 	_isSecureConnection = null,
@@ -26,10 +28,70 @@ HttpRequest = extends Component {
 			else if(_SERVER.DOCUMENT_ROOT && _SERVER.SCRIPT_FILENAME.find(_SERVER.DOCUMENT_ROOT) === 0)
 				@_scriptUrl = _SERVER.SCRIPT_FILENAME.sub(#_SERVER.DOCUMENT_ROOT)
 			else
-				throw _T('HttpRequest is unable to determine the entry script URL.')
+				throw 'HttpRequest is unable to determine the entry script URL.'
 			// echo "scriptUrl: "..@_scriptUrl.."<br />"
 		}
 		return @_scriptUrl
+	},
+
+	__get@url = function(){
+		return @_url || @_url = @{
+			var requestUri
+			if (_SERVER.HTTP_X_REWRITE_URL) { // IIS
+				requestUri = _SERVER.HTTP_X_REWRITE_URL
+			} elseif (_SERVER.REQUEST_URI) {
+				requestUri = _SERVER.REQUEST_URI
+				if (requestUri !== '' && requestUri.sub(0, 1) !== '/') {
+					requestUri = requestUri.replace(Regexp('/^(http|https):\/\/[^\/]+/i'), '')
+				}
+			} elseif (_SERVER.ORIG_PATH_INFO) { // IIS 5.0 CGI
+				requestUri = _SERVER.ORIG_PATH_INFO
+				if (_SERVER.QUERY_STRING) {
+					requestUri = requestUri..'?'.._SERVER.QUERY_STRING
+				}
+			} else {
+				throw 'Unable to determine the request URI.'
+			}
+			return requestUri
+		}
+	},
+	
+	__get@pathInfo = function(){
+		return @_pathInfo || @_pathInfo = @{
+			var pathInfo = @url
+			
+			var pos = pathInfo.find("?")
+			pos && pathInfo = pathInfo.sub(0, pos)
+			
+			pathInfo = url.decode(pathInfo)
+
+			// try to encode in UTF8 if not so
+			// http://w3.org/International/questions/qa-forms-utf-8.html
+			/* if (!preg_match('%^(?:
+					[\x09\x0A\x0D\x20-\x7E]              # ASCII
+					| [\xC2-\xDF][\x80-\xBF]             # non-overlong 2-byte
+					| \xE0[\xA0-\xBF][\x80-\xBF]         # excluding overlongs
+					| [\xE1-\xEC\xEE\xEF][\x80-\xBF]{2}  # straight 3-byte
+					| \xED[\x80-\x9F][\x80-\xBF]         # excluding surrogates
+					| \xF0[\x90-\xBF][\x80-\xBF]{2}      # planes 1-3
+					| [\xF1-\xF3][\x80-\xBF]{3}          # planes 4-15
+					| \xF4[\x80-\x8F][\x80-\xBF]{2}      # plane 16
+					)*$%xs', $pathInfo)) {
+				$pathInfo = utf8_encode($pathInfo);
+			} */
+
+			var scriptUrl = @scriptUrl
+			var baseUrl = @baseUrl
+			if (pathInfo.find(scriptUrl) === 0) {
+				pathInfo = pathInfo.sub(#scriptUrl)
+			} elseif (baseUrl === '' || pathInfo.find(baseUrl) === 0) {
+				pathInfo = pathInfo.sub(#baseUrl)
+			} else {
+				throw 'Unable to determine the path info of the current request.'
+			}
+
+			return pathInfo.replace(Regexp("#^/+#"), '')
+		}
 	},
 	
 	__get@isSecureConnection = function(){

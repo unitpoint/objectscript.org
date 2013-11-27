@@ -39,6 +39,7 @@ function printBackTrace(skipFuncs){
 
 if('HTTP_COOKIE' in _SERVER){
 	for(var k, v in _SERVER.HTTP_COOKIE.trim().split(';')){
+		v == '' && continue
 		v = v.trim().split('=', 2)
 		if(#v == 2){
 			_COOKIE.setSmartProperty(url.decode(v[0]), url.decode(v[1]))
@@ -50,6 +51,7 @@ if('HTTP_COOKIE' in _SERVER){
 
 if('QUERY_STRING' in _SERVER){
 	for(var k, v in _SERVER.QUERY_STRING.trim().split('&')){
+		v == '' && continue
 		v = v.trim().split('=', 2)
 		if(#v == 2){
 			_GET.setSmartProperty(url.decode(v[0]), url.decode(v[1]))
