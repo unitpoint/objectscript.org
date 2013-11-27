@@ -23,13 +23,13 @@ Application = extends Component {
 	__get@defaultComponents = function(){
 		return {
 			session = {
-				classname = "FileSession",
+				class = "FileSession",
 			},
 			urlManager = {
-				classname = "UrlManager",
+				class = "UrlManager",
 			},
 			request = {
-				classname = "HttpRequest",
+				class = "HttpRequest",
 			},			
 		}
 	},
@@ -123,19 +123,27 @@ Application = extends Component {
 		return widget
 	},
 	
+	createComponent = function(name, config){
+		var component = _G[@resolveClass(config.class || name)](this)
+		component is Component || throw "Error component class: ${component.classname}"
+		for(var key, value in config){
+			if(key != "class" && key != "enabled"){
+				component[key] = value
+			}
+		}
+		component.init()
+		return component
+	},
+	
+	_componentsInCreation = {},
 	getComponent = function(name, config){
 		return @_components[name || throw "Attempt to create empty component"] || @{
 			config || config = @config.components[name] || throw "Component \"${name}\" is not configured"
 			config.enabled === false && throw "Component \"${name}\" is disabled"
-			var component
-			@_components[name] = component = _G[@resolveClass(config.classname || name)](this)
-			component is Component || throw "Error component class: ${component.classname}"
-			for(var key, value in config){
-				if(key != "classname" && key != "enabled"){
-					component[key] = value
-				}
-			}
-			component.init()
+			@_componentsInCreation[name] && throw "Component \"${name}\" creation in progress"
+			@_componentsInCreation[name] = true
+			var component = (@_components[name] = @createComponent(name, config))
+			delete @_componentsInCreation[name]
 			return component
 		}
 	},
@@ -187,9 +195,7 @@ Application = extends Component {
 	
 	resolveClass = function(classname){
 		var p = (stringOf(classname) || throw "classname required").split(".")
-		if(#p > 1){
-			p[0] = @_aliases["{${p[0]}}"] || p[0]
-		}
+		#p > 1 && p.first = @_aliases["{${p.first}}"] || p.first
 		p.last = p.last.flower()
 		// dump([classname, p.join("/")])
 		require(p.join("/"), false)

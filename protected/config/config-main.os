@@ -21,14 +21,33 @@ return {
 	},
 	components = {
 		session = {
-			classname = "FileSession",
+			class = "FileSession",
 			
 		}.merge(require("session-local.os", false)),
-		/* urlManager = {
-			classname = "UrlManager",
+		urlManager = {
+			class = "UrlManager",
+			rules = {
+                'articles' = 'post/articles',
+                'apps' = 'post/apps',
+                'apps/create' = 'profile/createApp',
+                'presentations' = 'post/presentations',
+                'presentations/create' = 'profile/createPresentation',
+                'dreambook' = 'post/dreambook',
+                'dreambook/create' = 'post/createDreampost',
+                '<title>-p<id:\d+>' = {'post/', 'urlSuffix' = '.html'},
+                'posts/<title>-<id:\d+>' = {'post/', 'urlSuffix' = '.html'},
+                '<title>~<url:[\w\d\-_]+?>' = {'post/', 'urlSuffix' = '.html'},
+                'posts/<title>~<url:[\w\d\-_]+?>' = {'post/', 'urlSuffix' = '.html'},
+                'posts/<id:\d+>' = 'post/',
+                // 'posts' = 'post/',
+				// '<controller:\w+>/<action:\w+>/<id:\d+>' = '<controller>/<action>',
+				'<controller:\w+>/<action:\w+>' = '<controller>/<action>',
+				'<controller:\w+>/' = '<controller>/',
+				// '<controller:\w+>/<action:\w+>' = '<controller>/<action>'
+			},			
 		},
-		request = {
-			classname = "HttpRequest",
+		/* request = {
+			class = "HttpRequest",
 		}, */
 		// db = require("db-local.os"),
 		db = extends require("db-local.os", false) {}, // hide db user & password while print config

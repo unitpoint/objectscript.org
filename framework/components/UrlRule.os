@@ -84,16 +84,18 @@ UrlRule = extends Component {
 	 * Initializes this rule.
 	 */
 	init = function(){
-		@pattern = stringOf(@pattern) || throw InvalidConfigException('UrlRule::pattern must be string.')
-		@route = stringOf(@route) || throw InvalidConfigException('UrlRule::route must be string.')
+		super()
+		// echo "${@classname}.init <br />"
+		@pattern = stringOf(@pattern || '') || throw 'UrlRule.pattern must be string.'
+		@route = stringOf(@route || '') || throw 'UrlRule.route must be string.'
 		if (arrayOf(@verb)) {
 			for(var i, verb in @verb) {
-				@verb[$i] = (stringOf(verb) || throw "string expected in @verb item").upper()
+				@verb[i] = (stringOf(verb) || throw "string expected in @verb item").upper()
 			}
 		} else if(@verb) {
 			@verb = [(stringOf(@verb) || throw "string expected in @verb").upper()]
 		}
-		@name = stringOf(@name || @pattern) || throw InvalidConfigException('UrlRule::name must be string.')
+		@name = stringOf(@name || @pattern) || throw 'UrlRule.name must be string.'
 
 		@pattern = trimSlesh(@pattern)
 
@@ -108,7 +110,6 @@ UrlRule = extends Component {
 		}
 
 		@route = trimSlesh(@route)
-		
 		if (@route.find('<')) {
 			for (var _, name in Regexp('/<(\w+)>/g').exec(@route)[1]) {
 				@_routeParams[name] = "<${name}>"
@@ -142,7 +143,7 @@ UrlRule = extends Component {
 		if (@_routeParams) {
 			@_routeRule = '#^' .. @route.replace(tr2) .. '$#u'
 		}
-	}
+	},
 
 	/**
 	 * Parses the given request and returns the corresponding route and parameters.
@@ -153,18 +154,15 @@ UrlRule = extends Component {
 	 */
 	parseRequest = function(manager, request){
 		@mode === @CREATION_ONLY && return;
-		@verb && !(request.getMethod() in @verb) && return;
+		@verb && !(request.method in @verb) && return;
 		
-		var pathInfo = request.getPathInfo()
+		var pathInfo = request.pathInfo
 		var suffix = toString(@suffix || manager.suffix)
 		if (suffix !== '' && pathInfo !== '') {
 			var n = #suffix
-			if (pathInfo.sub(-n) === suffix) {
-				pathInfo = pathInfo.sub(0, -n)
-				pathInfo === '' && return
-			} else {
-				return
-			}
+			pathInfo.sub(-n) !== suffix && return;
+			pathInfo = pathInfo.sub(0, -n)
+			pathInfo === '' && return
 		}
 
 		@host && pathInfo = request.hostInfo.lower() .. '/' .. pathInfo
@@ -186,7 +184,7 @@ UrlRule = extends Component {
 		}
 		var route = @_routeRule ? @route.replace(tr) : @route
 		return [route, params]
-	}
+	},
 
 	/**
 	 * Creates a URL according to the given route and parameters.
@@ -203,16 +201,13 @@ UrlRule = extends Component {
 		// match the route part first
 		if (route !== @route) {
 			var matches
-			if (@_routeRule && matches = Regexp(@_routeRule).exec(route)) {
-				for (var name, token in @_routeParams) {
-					if (@defaults[name] && @defaults[name] == matches[name]) {
-						tr[token] = ''
-					} else {
-						tr[token] = matches[name]
-					}
+			(@_routeRule && matches = Regexp(@_routeRule).exec(route)) || return;
+			for (var name, token in @_routeParams) {
+				if (@defaults[name] && @defaults[name] == matches[name]) {
+					tr[token] = ''
+				} else {
+					tr[token] = matches[name]
 				}
-			} else {
-				return
 			}
 		}
 
@@ -239,7 +234,7 @@ UrlRule = extends Component {
 			}
 		}
 
-		var url = trimSlesh(@_template.replace($tr))
+		var url = trimSlesh(@_template.replace(tr))
 		if (@host) {
 			var pos = url.find('/', 8)
 			if (pos) {
@@ -252,5 +247,5 @@ UrlRule = extends Component {
 		url !== ''	&& url = url .. (@suffix || manager.suffix)
 		params 		&& url = url .. '?' .. _E.url.buildQuery(params)
 		return url
-	}
+	},
 }
