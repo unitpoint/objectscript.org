@@ -44,7 +44,7 @@ server {
     }
     charset utf-8;
     location ~ ^.+\.osh? {
-        fastcgi_split_path_info ^(.+\.osh?)(.*)$;
+        fastcgi_split_path_info ^(.+?\.osh?)(.*)$;
         fastcgi_pass    127.0.0.1:9000;
         fastcgi_index   index.osh;
         include fastcgi_params;
