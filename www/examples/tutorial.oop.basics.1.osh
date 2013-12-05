@@ -10,7 +10,7 @@
 	obj["lastLoginTime"] = DateTime.now()
 	print json.encode(obj)
     
-	// example #2
+	// example #3
 	var obj = {lastLoginTime = DateTime.now()}
 	print json.encode(obj)
 

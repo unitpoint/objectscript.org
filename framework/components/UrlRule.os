@@ -94,49 +94,48 @@ UrlRule = extends Component {
 		// echo "${@classname}.init <br />"
 		@pattern = stringOf(@pattern) || throw 'UrlRule.pattern must be string.'
 		@route = stringOf(@route) || throw 'UrlRule.route must be string.'
-		if (arrayOf(@verb)) {
-			for(var i, verb in @verb) {
+		if(arrayOf(@verb)){
+			for(var i, verb in @verb){
 				@verb[i] = (stringOf(verb) || throw "string expected in @verb item").upper()
 			}
-		} else if(@verb) {
+		}else if(@verb){
 			@verb = [(stringOf(@verb) || throw "string expected in @verb").upper()]
 		}
 		@name = stringOf(@name) || @pattern // || throw 'UrlRule.name must be string.'
 
 		@pattern = trimSlesh(@pattern)
-		if (@host = stringOf(@host)) {
+		if(@host = stringOf(@host)){
 			@pattern = trimRightSlesh(@host).."/${@pattern}/"
-		} elseif (@pattern === '') {
-			@_template = ''
-			@pattern = '#^$#u'
+		}elseif(@pattern === ''){
+			@_template, @pattern = '', '#^$#u'
 			return
-		} else {
+		}else{
 			@pattern = "/${@pattern}/"
 		}
 
 		@route = trimSlesh(@route)
-		if (@route.find('<')) {
-			for (var _, name in Regexp('/<(\w+)>/g').exec(@route)[1]) {
+		if(@route.find('<')){
+			for (var _, name in Regexp('/<(\w+)>/g').exec(@route)[1]){
 				@_routeParams[name] = "<${name}>"
 			}
 		}
 
 		var tr, tr2 = {}, {}
-		for(var _, match in Regexp('/<(\w+):?([^>]+)?>/g').exec(@pattern, Regexp.OFFSET_CAPTURE | Regexp.SET_ORDER)) {
+		for(var _, match in Regexp('/<(\w+):?([^>]+)?>/g').exec(@pattern, Regexp.OFFSET_CAPTURE | Regexp.SET_ORDER)){
 			var name, pattern = match[1][0], #match[2][0] > 0 ? match[2][0] : '[^\/]+'
-			if (@defaults[name]) {
+			if(@defaults[name]){
 				var length, offset = #match[0][0], match[0][1]
-				if (offset > 1 && @pattern.sub(offset - 1, 1) === '/' && @pattern.sub(offset + length, 1) === '/') {
+				if(offset > 1 && @pattern.sub(offset - 1, 1) === '/' && @pattern.sub(offset + length, 1) === '/'){
 					tr["/<${name}>"] = "(/(?P<${name}>${pattern}))?"
-				} else {
+				}else{
 					tr["<${name}>"] = "(?P<${name}>${pattern})?"
 				}
-			} else {
+			}else{
 				tr["<${name}>"] = "(?P<${name}>${pattern})"
 			}
-			if (@_routeParams[name]) {
+			if(@_routeParams[name]){
 				tr2["<${name}>"] = "(?P<${name}>${pattern})"
-			} else {
+			}else{
 				@_paramRules[name] = pattern === '[^\/]+' ? '' : "#^${pattern}$#"
 			}
 		}
@@ -147,9 +146,7 @@ UrlRule = extends Component {
 		@_template = @pattern.replace(Regexp('/<(\w+):?([^>]+)?>/g'), '<$1>')
 		@pattern = '#^' .. trimSlesh(@_template.replace(tr)) .. '$#u'
 
-		if (@_routeParams) {
-			@_routeRule = '#^' .. @route.replace(tr2) .. '$#u'
-		}
+		@_routeParams && @_routeRule = '#^' .. @route.replace(tr2) .. '$#u'
 	},
 
 	/**
@@ -160,12 +157,12 @@ UrlRule = extends Component {
 	 * If null, it means this rule cannot be used to parse this path info.
 	 */
 	parseRequest = function(manager, request){
-		@mode === @CREATION_ONLY && return;
+		// @mode === @CREATION_ONLY && return;
 		@verb && !(request.method in @verb) && return;
 		
 		var pathInfo = request.pathInfo
 		var suffix = @suffix || manager.suffix || ''
-		if (suffix !== '' && pathInfo !== '') {
+		if(suffix !== '' && pathInfo !== ''){
 			var n = #suffix
 			pathInfo.sub(-n) !== suffix && return;
 			pathInfo = pathInfo.sub(0, -n)
@@ -176,17 +173,17 @@ UrlRule = extends Component {
 		
 		var matches = Regexp(@pattern).exec(pathInfo) || return;
 		// echo "<pre>"; ob.push(); echo "Regexp(${@pattern}).exec(${pathInfo})\n"; dump(matches); echo html.encode(ob.popContents()); echo "</pre>"
-		for(var name, value in @defaults) {
-			if (!matches[name] || matches[name] === '') {
+		for(var name, value in @defaults){
+			if(!matches[name] || matches[name] === ''){
 				matches[name] = value
 			}
 		}
 		var params, tr = @defaults.clone(), {}
-		for (var name, value in matches) {
-			if (@_routeParams[name]) {
+		for (var name, value in matches){
+			if(@_routeParams[name]){
 				tr[@_routeParams[name]] = value
 				delete params[name]
-			} elseif (@_paramRules[name]) {
+			}elseif(@_paramRules[name]){
 				params[name] = value
 			}
 		}
@@ -199,10 +196,10 @@ UrlRule = extends Component {
 	 * @param UrlManager $manager the URL manager
 	 * @param string $route the route. It should not have slashes at the beginning or the end.
 	 * @param array $params the parameters
-	 * @return string|boolean the created URL, or false if this rule cannot be used for creating this URL.
+	 * @return string|null the created URL, or null if this rule cannot be used for creating this URL.
 	 */
 	createUrl = function(manager, route, params){
-		@mode === @PARSING_ONLY && return;
+		// @mode === @PARSING_ONLY && return;
 
 		var tr = {}
 
@@ -221,41 +218,44 @@ UrlRule = extends Component {
 
 		// match default params
 		// if a default param is not in the route pattern, its value must also be matched
-		for (var name, value in @defaults) {
+		// dump{route, tr, params}
+		for (var name, value in @defaults){
 			@_routeParams[name] && continue
-			!params[name] && return;
-			if (params[name] == value) { // strcmp will do string conversion automatically
+			params[name] || return;
+			if(params[name] == value){ // strcmp will do string conversion automatically
 				delete params[name]
 				@_paramRules[name] && tr["<${name}>"] = ''
-			} elseif (!@_paramRules[name]) {
+			}elseif(!@_paramRules[name]){
 				return
 			}
 		}
 
 		// match params in the pattern
-		// dump(@_paramRules)
-		for (var name, rule in @_paramRules) {
-			if (params[name] && (rule === '' || Regexp(rule).test(params[name]))) {
+		// dump{@_paramRules, params}
+		for (var name, rule in @_paramRules){
+			if(params[name] && (rule === '' || Regexp(rule).test(params[name]))){
 				tr["<${name}>"] = _E.url.encode(params[name])
 				delete params[name]
-			} elseif (!@defaults[name] || params[name]) {
+			}elseif(!@defaults[name] || params[name]){
 				return
 			}
 		}
 
 		var url = trimSlesh(@_template.replace(tr))
 		// dump{tr, @_template, url}
-		if (@host) {
+		if(@host){
 			var pos = url.find('//', 8)
-			if (pos) {
+			if(pos){
 				url = url.sub(0, pos) .. url.sub(pos).replace(Regexp('#/+#'), '/')
 			}
-		} elseif (url.find('//')) {
+		}elseif(url.find('//')){
 			url = url.replace(Regexp('#/+#'), '/')
 		}
 
 		url !== ''	&& url = url .. (@suffix || manager.suffix || '')
 		#params > 0 && url = url .. '?' .. _E.url.buildQuery(params)
+		
+		// p && throw "createUrl: ${url}"
 		return url
 	},
 }

@@ -94,9 +94,7 @@ UrlManager = extends Component {
 		for(var name, value in p.params){
 			urlParams[] = _E.url.encode(name).."=".._E.url.encode(value)
 		}
-		if(#urlParams > 0){
-			url = url.."?"..urlParams.join(p.amp || "&")
-		}
+		#urlParams > 0 && url = url.."?"..urlParams.join(p.amp || "&")
 		return p["#"] ? url.."#".._E.url.encode(p["#"]) : url
 	},
 	

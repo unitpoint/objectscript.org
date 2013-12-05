@@ -21,4 +21,5 @@ fastcgi_param   SERVER_ADDR             $server_addr;
 fastcgi_param   SERVER_PORT             $server_port;
 fastcgi_param   SERVER_NAME             $server_name;
 
+fastcgi_param	HTTPS			$https;
 fastcgi_param   REDIRECT_STATUS         200;

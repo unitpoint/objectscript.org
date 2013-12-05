@@ -3,6 +3,7 @@
 	retDesc = <<<END'
 Новая подстрока.
 END,	
+	extension = "iconv",
 	desc = <<<END"
 <p>
 Возвращает строку с символами, начинающимися с позиции <code>start</code> 

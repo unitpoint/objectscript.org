@@ -1,8 +1,9 @@
 server {
 	listen			80;
 
-	server_name		objectscript.org;
-	server_name		www.objectscript.org;
+	server_name		objectscript.org www.objectscript.org;
+	server_name		objectscript.ru www.objectscript.ru;
+	server_name		objectscript.net www.objectscript.net;
 
 	root	/home/os/objectscript.org/www;
 
