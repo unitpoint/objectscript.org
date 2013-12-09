@@ -20,6 +20,8 @@ server {
 	error_log		/var/log/nginx/error.objectscript_org.log;
 	# access_log		/var/log/nginx/access.objectscript_org.log;
 	access_log		off;
+	
+	rewrite ^(.+\.html)/$	$1 permanent;
 
 	location ~ /\.ht {
 		deny all;
