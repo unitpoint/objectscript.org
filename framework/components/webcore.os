@@ -64,7 +64,7 @@ if('QUERY_STRING' in _SERVER){
 var headerList, headersSent = {}, false
 function header(str){
 	var parts = str.split(":", 2)
-	headerList[parts[0].upper()] = str
+	headerList[parts[0].trim().upper()] = str
 }
 
 function __get@headersSent(){
