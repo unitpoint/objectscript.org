@@ -56,6 +56,7 @@ UrlManager = extends Component {
 				}
 			}
 			// echo "<pre>NOT FOUND parseRequest: ${request} <br />"; terminate()
+			request.redirect("/")
 		}
 	},
 	
