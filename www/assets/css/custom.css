@@ -79,15 +79,9 @@ code, pre {
   font-size: 100%;
 }
 
-@media (min-width: 768px) {
-	#github {
-		position: fixed;
-		top: 0;
-		left: 0;
-		border: 0;
-		z-index: 100000;
-		background: none !important;
-	}
+.github-fork-ribbon-wrapper.left .github-fork-ribbon {
+	top: 35px;
+	left: -50px;
 }
 
 .navbar-brand {

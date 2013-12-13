@@ -45,6 +45,14 @@
 	<script src="/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
 	<script src="/assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
 	
+
+    <!-- START COPYING HERE -->
+    <link rel="stylesheet" href="/assets/css/gh-fork-ribbon.css" />
+    <!--[if IE]>
+        <link rel="stylesheet" href="/assets/css/gh-fork-ribbon.ie.css" />
+    <![endif]-->
+    <!-- END COPYING HERE -->
+	
 	<!-- Custom styles for this template -->
 	<link href="/assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 </head>
@@ -99,8 +107,13 @@
 		</div>
 	</div>
 	
-	<a id="github" href="https://github.com/unitpoint/objectscript" target="_blank"><img 
-		src="/img/forkme_left_red_aa0000.png?<%=CLIENT_VERSION%>" alt="Fork me on GitHub"></a>
+    <!-- TOP LEFT RIBBON: START COPYING HERE -->
+    <div class="github-fork-ribbon-wrapper left">
+        <div class="github-fork-ribbon">
+            <a href="https://github.com/unitpoint/objectscript">Fork me on GitHub</a>
+        </div>
+    </div>
+    <!-- TOP LEFT RIBBON: END COPYING HERE -->
 	
 	<%if(false){%>
 	<pre class="prettyprint linenums lang-js"><%
