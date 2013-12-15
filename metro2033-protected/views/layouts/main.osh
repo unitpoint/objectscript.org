@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="<%=app.lang%>">
+<% 
+	var CLIENT_VERSION = app.params.CLIENT_VERSION
+	var baseUrl = app.request.getBaseUrl(true)
+%>
+<head>
+	<meta charset="<%=html.encode(app.charset)%>">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="<%=html.encode(@controller.pageDesc)%>">
+	<meta name="keywords" content="<%=html.encode(@controller.pageKeywords)%>">
+	<meta name="author" content="<%=html.encode(@controller.pageAuthor)%>">
+	<link rel="shortcut icon" href="assets/ico/favicon.png?<%=CLIENT_VERSION%>">
+
+	<title><%=html.encode(@controller.pageTitle)%></title>
+
+	<link href="<%=baseUrl%>/assets/jquery-treeview/jquery.treeview.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	
+	<!-- Bootstrap core CSS -->
+	<link href="<%=baseUrl%>/assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	
+	<!-- Just for debugging purposes. Don't actually copy this line! -->
+	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+
+	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!--[if lt IE 9]>
+	  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	  <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+	<![endif]-->
+	
+	<!--[if gte IE 9]>
+	<style type="text/css">
+		.gradient_ie9 {
+		   filter: none;
+		}
+	</style>
+	<![endif]-->
+	
+	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	
+	<script src="<%=baseUrl%>/assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
+	<link href="<%=baseUrl%>/assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	
+	<script src="<%=baseUrl%>/assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
+	<script src="<%=baseUrl%>/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
+	<script src="<%=baseUrl%>/assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
+	
+
+    <!-- START COPYING HERE -->
+    <link rel="stylesheet" href="<%=baseUrl%>/assets/css/gh-fork-ribbon.css" />
+    <!--[if IE]>
+        <link rel="stylesheet" href="<%=baseUrl%>/assets/css/gh-fork-ribbon.ie.css" />
+    <![endif]-->
+    <!-- END COPYING HERE -->
+	
+	<!-- Custom styles for this template -->
+	<link href="<%=baseUrl%>/assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+</head>
+
+<body>
+
+	<div id="wrap">
+		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="<%=baseUrl%>/">Metro 2033</a>
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<%
+							var menuItems = {
+								index = _T.MENU_HOME,
+								download = _T.MENU_DOWNLOAD,
+								install = _T.MENU_INSTALL,
+								manual = _T.MENU_MANUAL,
+								langref = _T.MENU_REFERENCE,
+								// test = _T.MENU_TEST,
+							}
+							var curAction = @controller.actionId
+							for(var action, name in menuItems){
+								var isActive = curAction == action
+								var url = @controller.createUrl{action=action}
+								echo "<li"..(isActive ? " class='active'" : "").."><a href='${url}'>${name}</a></li>"
+							}
+						%>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="container">
+			<%=@content%>
+		</div>
+		
+		<p></p>
+	</div>
+
+	<%if(false){%>
+	<div id="footer">
+		<div class="container">
+			<div class="pull-right" style="margin-top:15px;">
+				<%=@controller.renderPartial("/layouts/_counter-liveinternet")%>
+			</div>
+			<p class="text-muted credit pull-right" style="margin-right:15px;">
+				<%=sprintf("%dms", (DateTime.now() - appStartTime) * (60*60*24*1000))%>
+			</p>
+			<p class="text-muted credit"><%=_T.FOOTER_CREDIT%></p>
+		</div>
+	</div>
+	<%}%>
+	
+	<%if(false){%>
+	<pre class="prettyprint linenums lang-js"><%
+		dump(_SERVER)
+	%></pre>
+	<%}%>
+</body>
+
+</html>

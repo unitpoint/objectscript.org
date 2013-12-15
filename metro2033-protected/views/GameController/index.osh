@@ -1,0 +1,169 @@
+﻿<% 
+	@controller.pageTitle = "Metro 2033"
+%>
+<style>
+
+.reg-panel {
+	width: 448px;
+	min-height: 150px;
+	/* background-color:red; */
+	margin-right: auto;
+	margin-left: auto;
+	position:relative;
+	/* color:#eee !important; */
+}
+
+.reg-panel .reg-panel-bg {
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	/* background-color:green; */
+	position:absolute;
+	z-index:-1;
+}
+
+.reg-panel .reg-panel-bg .top {
+	background: url(assets/img/panel-top.png) no-repeat center 0;
+	position:absolute;
+	width: 448px;
+	height: 43px;
+}
+
+.reg-panel .reg-panel-bg .bottom {
+	background: url(assets/img/panel-bottom.png) no-repeat center 0;
+	position:absolute;
+	bottom: 0px;
+	width: 448px;
+	height: 43px;
+}
+
+.reg-panel .reg-panel-bg .mid {
+	background: url(assets/img/panel-mid.png) repeat-y center 0;
+	position:absolute;
+	top: 43px;
+	bottom: 42px;
+	width: 448px;
+}
+
+.reg-panel .reg-panel-header {
+	position:absolute;
+	top:-10px;
+	left:0px;
+	width: 448px;
+	height:50px;
+	padding: 0 40px;
+	text-align: center;
+}
+
+.reg-panel .reg-panel-header h3 {
+	/* padding-top:10px; */
+}
+
+.reg-panel .reg-panel-footer {
+	position:absolute;
+	bottom:-10px;
+	left:0px;
+	width: 448px;
+	height:50px;
+	padding-top:7px;
+	text-align: center;
+}
+
+.reg-panel .reg-panel-body {
+	padding: 70px 40px;
+	position: relative;
+}
+
+</style>
+
+<div style="position: absolute; left: 50%; height: 80%;">
+    <div style="position: relative; left: -50%; display: table; height: 100%;">
+        <div style="display: table-cell; vertical-align: middle;">
+		
+<div class="row">
+	<div class="col-xs-12">
+	
+		<div class="reg-panel">
+			<div class="reg-panel-bg">
+				<div class="top"></div>
+				<div class="mid"></div>
+				<div class="bottom"></div>
+			</div>
+			<div class="reg-panel-header">
+				<h3><%=_T.SIGN_IN%></h3>
+			</div>
+			<div class="reg-panel-body">
+			
+				<div class="row">
+					<div class="col-xs-12">
+			
+						<form class="form-horizontal" role="form" method="post" action="<%=@controller.createUrl{action="login"}%>">
+						  <div class="form-group">
+							<label for="LoginForm_email" class="col-sm-3 control-label"><%=_T.EMAIL%></label>
+							<div class="col-sm-9">
+							  <input type="email" class="form-control" name="LoginForm[email]" id="LoginForm_email" placeholder="<%=_T.EMAIL_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="LoginForm_password" class="col-sm-3 control-label"><%=_T.PASSWORD%></label>
+							<div class="col-sm-9">
+							  <input type="password" class="form-control" name="LoginForm[password]" id="LoginForm_password" placeholder="<%=_T.PASSWORD_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="LoginForm_invite" class="col-sm-3 control-label"><%=_T.INVITE%></label>
+							<div class="col-sm-9">
+							  <input type="invite" class="form-control" name="LoginForm[invite]" id="LoginForm_invite" placeholder="<%=_T.INVITE_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <%if(false){%>
+						  <div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+							  <div class="checkbox">
+								<label>
+								  <input type="checkbox" name="LoginForm[rememberMe]" id="LoginForm_remember_me" ><%=_T.REMEMBER_ME%>
+								</label>
+							  </div>
+							</div>
+						  </div>
+						  <%}/*if*/%>
+						  <div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+							  <button type="submit" class="btn btn-primary"><%=_T.SIGN_IN%></button>
+							</div>
+						  </div>
+						</form>
+				
+					</div>
+				</div>
+
+				<%if(false){%>
+				<div class="row">
+					<div class="col-xs-12 text-left">
+			
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+						sdh asdjhaskj dhaksjd kjasdh jkshd ajskhd
+				
+					</div>
+				</div>
+				<%}/*if*/%>
+			</div>
+			<div class="reg-panel-footer">
+				Test test
+			</div>
+		</div>
+	
+	</div>
+</div>
+
+        </div>
+    </div>
+</div>
