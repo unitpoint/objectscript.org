@@ -1,0 +1,2 @@
+SafeValidator = extends Validator {
+}

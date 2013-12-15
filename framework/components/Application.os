@@ -17,6 +17,8 @@ Application = extends Component {
 			"{framework}/widgets",
 			"{framework}/langs",
 			"{framework}/views",
+			"{framework}/models",
+			"{framework}/validators",
 		}
 	},
 	
@@ -30,6 +32,9 @@ Application = extends Component {
 			},
 			request = {
 				class = "HttpRequest",
+			},			
+			user = {
+				class = "WebUser",
 			},			
 		}
 	},
@@ -77,7 +82,7 @@ Application = extends Component {
 	
 	processRequest = function(){
 		var route = @urlManager.parseRequest(@request)
-		@runController(route);
+		@runController(route)
 	},
 	
 	__get@controller = function(){
@@ -121,6 +126,20 @@ Application = extends Component {
 		}
 		widget.init()
 		return widget
+	},
+	
+	createValidator = function(classname, params){
+		if(objectOf(classname)){
+			params && throw "2rd argument should be null here"
+			classname, params = classname.shift(), classname
+		}
+		var validator = _G[@resolveClass(classname)]()
+		validator is Validator || throw "Error validator class: ${validator.classname}"
+		for(var key, value in params){
+			validator[key] = value
+		}
+		validator.init()
+		return validator
 	},
 	
 	createComponent = function(name, config){
