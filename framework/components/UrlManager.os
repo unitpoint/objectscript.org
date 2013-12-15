@@ -55,8 +55,17 @@ UrlManager = extends Component {
 					return route
 				}
 			}
-			// echo "<pre>NOT FOUND parseRequest: ${request} <br />"; terminate()
-			request.redirect("/")
+			/* echo <<<END"<pre>NOT FOUND parseRequest: ${request}, 
+				baseUrl: ${request.baseUrl} <br />
+				scriptUrl: ${request.scriptUrl} <br />
+				url: ${request.url} <br />
+				pathInfo: ${request.pathInfo} <br />
+				hostInfo: ${request.hostInfo} <br />
+				END; terminate() */
+				
+			if("${request.baseUrl}/" != request.url){
+				request.redirect(request.baseUrl)
+			}
 		}
 	},
 	

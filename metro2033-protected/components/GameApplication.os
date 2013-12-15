@@ -1,0 +1,3 @@
+GameApplication = extends Application {
+
+}

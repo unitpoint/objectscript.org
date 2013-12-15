@@ -1,4 +1,4 @@
-﻿OSController = extends Controller {
+﻿BaseController = extends Controller {
 	pageTitle = "Metro 2033 Title",
 	
 	pageAuthor = "Evgeniy Golovin",

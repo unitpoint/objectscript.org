@@ -1,11 +1,11 @@
 return {
 	classname = "DbConnection",
-	tablePrefix = "ox_",
+	tablePrefix = "m_",
 	type = "mysql",
 	params = {
 		user = "root",
 		// password = "",
-		dbname = "oxsar3-loc"			
+		dbname = "metro2033"			
 	},
 }
 		

@@ -9,7 +9,7 @@ LoginForm = extends Model {
 	__get@rules = function(){
 		return {
 			// username and password are both required
-			{{'username', 'password'}, 'required', requiredValue=123},
+			{{'username', 'password'}, 'required'},
 			// password is validated by validatePassword()
 			{'password', 'validatePassword'},
 			// rememberMe must be a boolean value
@@ -23,6 +23,9 @@ LoginForm = extends Model {
 	},
 	
 	validatePassword = function(){
+		if(!@user.validatePassword(@password)){
+		
+		}
 		// echo "validatePassword <pre>"; dump(this)
 	},
 	

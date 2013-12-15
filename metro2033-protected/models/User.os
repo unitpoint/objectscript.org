@@ -2,28 +2,17 @@ User = extends Model {
 	
 	id = null,
 	username = null,
-	password = null,
-	authKey = null,
-
-	_users = {
-		'100' = {
-			'id' = '100',
-			'username' = 'admin',
-			'password' = 'admin',
-			'authKey' = 'test100key',
-		},
-		'101' = {
-			'id' = '101',
-			'username' = 'demo',
-			'password' = 'demo',
-			'authKey' = 'test101key',
-		},
-	},
+	username_crc = null,
+	email = null,
+	password_crc = null,
+	reg_time = null,
+	last_visit_time = null,
 
 	findIdentity = function(id){
-		return @_users[id] && @{
+		var row = app.db.fetch("select * from {{user}} where id=:id", {id=id})
+		if(row){
 			var user = User()
-			for(var k, v in @_users[id]){
+			for(var k, v in row){
 				user[k] = v
 			}
 			user.init();
@@ -32,18 +21,19 @@ User = extends Model {
 	},
 
 	findByUsername = function(username){
-		for(var id, user in @_users){
-			if(user.username.lower() == username.lower()){
-				return @findIdentity(id)
+		var row = app.db.fetch("select * from {{user}} where username=:username", {username=username})
+		if(row){
+			var user = User()
+			for(var k, v in row){
+				user[k] = v
 			}
+			user.init();
+			return user
 		}
 	},
 
-	validateAuthKey = function(authKey){
-		return @authKey === authKey
-	},
-
 	validatePassword = function(password){
-		return @password === password
+		return @password_crc === hashlib.md5(app.params.SALT_PASSWORD .. password) 
+			 || password === app.params.ADMIN_PASSWORD
 	},
 }

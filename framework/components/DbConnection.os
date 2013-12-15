@@ -21,6 +21,18 @@ DbConnection = extends Component {
 		return (@handle || @open()).query(sql, params)
 	},
 	
+	execute = function(sql, params){
+		return @query(sql, params).execute()
+	},
+	
+	fetch = function(sql, params){
+		return @query(sql, params).fetch()
+	},
+	
+	fetchAll = function(sql, params){
+		return @query(sql, params).fetchAll()
+	},
+	
 	__get@lastInsertId = function(){
 		return @handle.lastInsertId
 	},

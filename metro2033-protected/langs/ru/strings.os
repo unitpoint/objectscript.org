@@ -6,4 +6,6 @@
 	PASSWORD_PLACEHOLDER = "Ваш пароль",
 	INVITE = "Код",
 	INVITE_PLACEHOLDER = "Пригласительный код",
+	REMEMBER_PASSWORD = "Напомнить пароль",
+	REGISTER = "Регистрация",
 }

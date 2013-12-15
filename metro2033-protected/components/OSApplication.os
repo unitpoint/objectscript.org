@@ -1,3 +1,0 @@
-OSApplication = extends Application {
-
-}

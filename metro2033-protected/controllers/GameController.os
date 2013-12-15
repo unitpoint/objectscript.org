@@ -1,4 +1,4 @@
-GameController = extends OSController {
+GameController = extends BaseController {
 
 	init = function(){
 		super()

@@ -66,7 +66,7 @@
 	left:0px;
 	width: 448px;
 	height:50px;
-	padding-top:7px;
+	padding: 7px 0 0;
 	text-align: center;
 }
 
@@ -77,6 +77,35 @@
 
 </style>
 
+<script>
+var cur_panel = "";
+
+$(function(){
+	$(".btn-remember-password").click(function(){
+		selectPanel("form-remember-password");
+	});
+	$(".btn-register").click(function(){
+		selectPanel("form-register");
+	});
+	$(".btn-sign-in").click(function(){
+		selectPanel("form-sign-in");
+	});
+	selectPanel("form-sign-in");
+});
+
+function selectPanel(id){
+	if(cur_panel == ""){
+		$("#"+id).delay(200).fadeIn(500);
+		cur_panel = id;
+	}else if(cur_panel != id){
+		$("#"+cur_panel).fadeOut(150);
+		$("#"+id).delay(200).fadeIn(300);
+		cur_panel = id;
+	}
+}
+
+</script>
+
 <div style="position: absolute; left: 50%; height: 80%;">
     <div style="position: relative; left: -50%; display: table; height: 100%;">
         <div style="display: table-cell; vertical-align: middle;">
@@ -84,7 +113,7 @@
 <div class="row">
 	<div class="col-xs-12">
 	
-		<div class="reg-panel">
+		<div class="reg-panel" id="form-sign-in" style="display:none">
 			<div class="reg-panel-bg">
 				<div class="top"></div>
 				<div class="mid"></div>
@@ -109,12 +138,6 @@
 							<label for="LoginForm_password" class="col-sm-3 control-label"><%=_T.PASSWORD%></label>
 							<div class="col-sm-9">
 							  <input type="password" class="form-control" name="LoginForm[password]" id="LoginForm_password" placeholder="<%=_T.PASSWORD_PLACEHOLDER%>">
-							</div>
-						  </div>
-						  <div class="form-group">
-							<label for="LoginForm_invite" class="col-sm-3 control-label"><%=_T.INVITE%></label>
-							<div class="col-sm-9">
-							  <input type="invite" class="form-control" name="LoginForm[invite]" id="LoginForm_invite" placeholder="<%=_T.INVITE_PLACEHOLDER%>">
 							</div>
 						  </div>
 						  <%if(false){%>
@@ -157,7 +180,96 @@
 				<%}/*if*/%>
 			</div>
 			<div class="reg-panel-footer">
-				Test test
+				<button type="button" class="btn btn-primary btn-xs btn-remember-password"><%=_T.REMEMBER_PASSWORD%></button>
+				<button type="button" class="btn btn-primary btn-xs btn-register"><%=_T.REGISTER%></button>
+			</div>
+		</div>
+	
+		<div class="reg-panel" id="form-remember-password" style="display:none">
+			<div class="reg-panel-bg">
+				<div class="top"></div>
+				<div class="mid"></div>
+				<div class="bottom"></div>
+			</div>
+			<div class="reg-panel-header">
+				<h3><%=_T.REMEMBER_PASSWORD%></h3>
+			</div>
+			<div class="reg-panel-body">
+			
+				<div class="row">
+					<div class="col-xs-12">
+			
+						<form class="form-horizontal" role="form" method="post" action="<%=@controller.createUrl{action="rememberPassword"}%>">
+						  <div class="form-group">
+							<label for="LoginForm_email" class="col-sm-3 control-label"><%=_T.EMAIL%></label>
+							<div class="col-sm-9">
+							  <input type="email" class="form-control" name="LoginForm[email]" id="LoginForm_email" placeholder="<%=_T.EMAIL_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+							  <button type="submit" class="btn btn-primary"><%=_T.REMEMBER_PASSWORD%></button>
+							</div>
+						  </div>
+						</form>
+				
+					</div>
+				</div>
+				
+			</div>
+			<div class="reg-panel-footer">
+				<button type="button" class="btn btn-primary btn-xs btn-sign-in"><%=_T.SIGN_IN%></button>
+				<button type="button" class="btn btn-primary btn-xs btn-register"><%=_T.REGISTER%></button>
+			</div>
+		</div>
+	
+		<div class="reg-panel" id="form-register" style="display:none">
+			<div class="reg-panel-bg">
+				<div class="top"></div>
+				<div class="mid"></div>
+				<div class="bottom"></div>
+			</div>
+			<div class="reg-panel-header">
+				<h3><%=_T.REGISTER%></h3>
+			</div>
+			<div class="reg-panel-body">
+			
+				<div class="row">
+					<div class="col-xs-12">
+			
+						<form class="form-horizontal" role="form" method="post" action="<%=@controller.createUrl{action="register"}%>">
+						  <div class="form-group">
+							<label for="LoginForm_email" class="col-sm-3 control-label"><%=_T.EMAIL%></label>
+							<div class="col-sm-9">
+							  <input type="email" class="form-control" name="LoginForm[email]" id="LoginForm_email" placeholder="<%=_T.EMAIL_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="LoginForm_password" class="col-sm-3 control-label"><%=_T.PASSWORD%></label>
+							<div class="col-sm-9">
+							  <input type="password" class="form-control" name="LoginForm[password]" id="LoginForm_password" placeholder="<%=_T.PASSWORD_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<label for="LoginForm_invite" class="col-sm-3 control-label"><%=_T.INVITE%></label>
+							<div class="col-sm-9">
+							  <input type="invite" class="form-control" name="LoginForm[invite]" id="LoginForm_invite" placeholder="<%=_T.INVITE_PLACEHOLDER%>">
+							</div>
+						  </div>
+						  <div class="form-group">
+							<div class="col-sm-offset-3 col-sm-9">
+							  <button type="submit" class="btn btn-primary"><%=_T.REGISTER%></button>
+							</div>
+						  </div>
+						</form>
+				
+					</div>
+				</div>
+				
+			</div>
+			<div class="reg-panel-footer">
+				<button type="button" class="btn btn-primary btn-xs btn-remember-password"><%=_T.REMEMBER_PASSWORD%></button>
+				<button type="button" class="btn btn-primary btn-xs btn-sign-in"><%=_T.SIGN_IN%></button>
 			</div>
 		</div>
 	
