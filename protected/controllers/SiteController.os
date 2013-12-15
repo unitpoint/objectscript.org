@@ -19,7 +19,7 @@ SiteController = extends OSController {
 		header("Expires: "..(DateTime.now()-1).format("R"))
 		header("Last-Modified: "..(DateTime.now()-2).format("R"))
 		
-		var data = app.session.data()
+		var data = app.session.data
 		data.counter = (data.counter || 0) + 1
 		data.ip = _SERVER.REMOTE_ADDR
 		data.userAgent = _SERVER.HTTP_USER_AGENT

@@ -139,6 +139,6 @@ HttpRequest = extends Component {
 		url = stringOf(url) || throw "required string url"
 		header("Status: "..(statusCode || 302))
 		header("Location: "..(url.sub(0, 1) == '/' ? @hostInfo..url : url))
-		;(end || end === null) && app.end()
+		end !== false && app.end()
 	},
 }

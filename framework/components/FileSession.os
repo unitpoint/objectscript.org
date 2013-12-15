@@ -34,13 +34,21 @@ FileSession = extends BaseSession {
 		throw "function required but hashlib.${@hashFunc} is not "..(hashlib[@hashFunc] ? "function" : "found")
 	},
 	
-	data = function(){
-		@open()
-		return @_data
+	__get@data = function(){
+		return @open()
 	},
 	
+	__get@isOpen = function(){
+		return !!@_filename
+	},
+	
+	new = function(id){
+		@close()
+		return @open()
+	},
+
 	open = function(id){
-		if(!@isOpen || id !== @id){
+		if(!@isOpen || (id && id !== @id)){
 			@id = id || _COOKIE[@cookieName] || @genId()
 			@_data = objectOf(json.decode(File.readContents(@filename))) || {}
 			if(#@data == 0 && @id == _COOKIE[@cookieName] && !fs.exists(@filename)){
@@ -54,6 +62,7 @@ FileSession = extends BaseSession {
 			// unregisterShutdownFunction(@_shutdownRunner)
 			registerShutdownFunction(@_shutdownRunner = {|| self.close() })
 		}
+		return @_data
 	},
 
 	close = function(){
@@ -74,10 +83,6 @@ FileSession = extends BaseSession {
 		if(math.random() <= @gcProbability){
 			
 		}
-	},
-
-	__get@isOpen = function(){
-		return !!@_filename
 	},
 
 	get = function(name){
