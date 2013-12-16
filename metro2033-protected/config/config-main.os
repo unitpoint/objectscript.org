@@ -33,6 +33,9 @@ return {
 				'<controller:\w+>/' = '<controller>/',
 			},			
 		},
+		user = {
+			class = "GameWebUser",
+		},
 		db = extends require("db-local.os", false) {}, // hide db user & password while print config
 		// db = require("db-local.os", false),
 	},

@@ -1,5 +1,6 @@
 ﻿<% 
 	@controller.pageTitle = "Metro 2033"
+	@form || @form = "sign-in"
 %>
 <script>
 var cur_panel = "";
@@ -14,7 +15,7 @@ $(function(){
 	$(".btn-sign-in").click(function(){
 		selectPanel("form-sign-in");
 	});
-	selectPanel("form-<%=@form || "sign-in"%>");
+	selectPanel("form-<%=@form%>");
 });
 
 function selectPanel(id){
@@ -52,24 +53,8 @@ function selectPanel(id){
 					<div class="col-xs-12">
 			
 						<form class="form-horizontal" role="form" method="post" action="<%=@controller.createUrl{action="login"}%>">
-						  <div class="form-group<%=@model.hasErrors("email") ? " has-error" : ""%>">
-							<label for="LoginForm_email" class="col-sm-3 control-label"><%=_T.EMAIL%></label>
-							<div class="col-sm-9">
-							  <input type="email" class="form-control" name="LoginForm[email]" id="LoginForm_email" placeholder="<%=_T.EMAIL_PLACEHOLDER%>">
-							  <%if(@model.hasErrors("email")){%>
-							  <p class="help-block has-error"><%=@model.getError("email")%></p>
-							  <%}/*if*/%>
-							</div>
-						  </div>
-						  <div class="form-group<%=@model.hasErrors("password") ? " has-error" : ""%>">
-							<label for="LoginForm_password" class="col-sm-3 control-label"><%=_T.PASSWORD%></label>
-							<div class="col-sm-9">
-							  <input type="password" class="form-control" name="LoginForm[password]" id="LoginForm_password" placeholder="<%=_T.PASSWORD_PLACEHOLDER%>">
-							  <%if(@model.hasErrors("password")){%>
-							  <p class="help-block has-error"><%=@model.getError("password")%></p>
-							  <%}/*if*/%>
-							</div>
-						  </div>
+							<%@controller.widget{'FormGroupWidget', model=@model, attribute="email", showState=@form=="sign-in"}%>
+							<%@controller.widget{'FormGroupWidget', model=@model, attribute="password", showState=@form=="sign-in"}%>
 						  <%if(false){%>
 						  <div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
@@ -110,6 +95,7 @@ function selectPanel(id){
 				<%}/*if*/%>
 			</div>
 			<div class="reg-panel-footer">
+				<button type="button" class="btn btn-primary btn-xs btn-sign-in" disabled="disabled"><%=_T.SIGN_IN%></button>
 				<button type="button" class="btn btn-primary btn-xs btn-remember-password"><%=_T.REMEMBER_PASSWORD%></button>
 				<button type="button" class="btn btn-primary btn-xs btn-register"><%=_T.REGISTER%></button>
 			</div>
@@ -130,12 +116,7 @@ function selectPanel(id){
 					<div class="col-xs-12">
 			
 						<form class="form-horizontal" role="form" method="post" action="<%=@controller.createUrl{action="rememberPassword"}%>">
-						  <div class="form-group">
-							<label for="LoginForm_email" class="col-sm-3 control-label"><%=_T.EMAIL%></label>
-							<div class="col-sm-9">
-							  <input type="email" class="form-control" name="LoginForm[email]" id="LoginForm_email" placeholder="<%=_T.EMAIL_PLACEHOLDER%>">
-							</div>
-						  </div>
+							<%@controller.widget{'FormGroupWidget', model=@model, attribute="email", showState=@form=="remember-password"}%>
 						  <div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 							  <button type="submit" class="btn btn-primary"><%=_T.REMEMBER_PASSWORD%></button>
@@ -149,6 +130,7 @@ function selectPanel(id){
 			</div>
 			<div class="reg-panel-footer">
 				<button type="button" class="btn btn-primary btn-xs btn-sign-in"><%=_T.SIGN_IN%></button>
+				<button type="button" class="btn btn-primary btn-xs btn-remember-password" disabled="disabled"><%=_T.REMEMBER_PASSWORD%></button>
 				<button type="button" class="btn btn-primary btn-xs btn-register"><%=_T.REGISTER%></button>
 			</div>
 		</div>
@@ -168,24 +150,9 @@ function selectPanel(id){
 					<div class="col-xs-12">
 			
 						<form class="form-horizontal" role="form" method="post" action="<%=@controller.createUrl{action="register"}%>">
-						  <div class="form-group">
-							<label for="LoginForm_email" class="col-sm-3 control-label"><%=_T.EMAIL%></label>
-							<div class="col-sm-9">
-							  <input type="email" class="form-control" name="LoginForm[email]" id="LoginForm_email" placeholder="<%=_T.EMAIL_PLACEHOLDER%>">
-							</div>
-						  </div>
-						  <div class="form-group">
-							<label for="LoginForm_password" class="col-sm-3 control-label"><%=_T.PASSWORD%></label>
-							<div class="col-sm-9">
-							  <input type="password" class="form-control" name="LoginForm[password]" id="LoginForm_password" placeholder="<%=_T.PASSWORD_PLACEHOLDER%>">
-							</div>
-						  </div>
-						  <div class="form-group">
-							<label for="LoginForm_invite" class="col-sm-3 control-label"><%=_T.INVITE%></label>
-							<div class="col-sm-9">
-							  <input type="invite" class="form-control" name="LoginForm[invite]" id="LoginForm_invite" placeholder="<%=_T.INVITE_PLACEHOLDER%>">
-							</div>
-						  </div>
+							<%@controller.widget{'FormGroupWidget', model=@model, attribute="email", showState=@form=="register"}%>
+							<%@controller.widget{'FormGroupWidget', model=@model, attribute="password", showState=@form=="register"}%>
+							<%@controller.widget{'FormGroupWidget', model=@model, attribute="invite_code", showState=@form=="register"}%>
 						  <div class="form-group">
 							<div class="col-sm-offset-3 col-sm-9">
 							  <button type="submit" class="btn btn-primary"><%=_T.REGISTER%></button>
@@ -198,8 +165,9 @@ function selectPanel(id){
 				
 			</div>
 			<div class="reg-panel-footer">
-				<button type="button" class="btn btn-primary btn-xs btn-remember-password"><%=_T.REMEMBER_PASSWORD%></button>
 				<button type="button" class="btn btn-primary btn-xs btn-sign-in"><%=_T.SIGN_IN%></button>
+				<button type="button" class="btn btn-primary btn-xs btn-remember-password"><%=_T.REMEMBER_PASSWORD%></button>
+				<button type="button" class="btn btn-primary btn-xs btn-register" disabled="disabled"><%=_T.REGISTER%></button>
 			</div>
 		</div>
 	
