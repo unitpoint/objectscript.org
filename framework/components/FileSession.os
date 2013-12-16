@@ -22,6 +22,10 @@ FileSession = extends BaseSession {
 		return @_filename
 	},
 	
+	__set@filename = function(){
+		throw "error to set filename, set id instead of"
+	},
+	
 	init = function(){
 		super()
 	},
@@ -72,7 +76,8 @@ FileSession = extends BaseSession {
 	delete = function(){
 		if(@isOpen){
 			setCookie(@cookieName, null)
-			@close()
+			fs.unlink(@_filename)
+			@_id, @_filename, @_data, _COOKIE[@cookieName] = null
 		}
 	},
 

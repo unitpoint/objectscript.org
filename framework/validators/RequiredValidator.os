@@ -8,7 +8,7 @@ RequiredValidator = extends Validator {
 
 	init = function(){
 		super()
-		@message || @message = !@requiredValue ? _T('{attribute} cannot be blank.')	: _T('{attribute} must be "{requiredValue}".')
+		@message || @message = !@requiredValue ? _T('{attribute} cannot be blank')	: _T('{attribute} must be "{requiredValue}"')
 	},
 
 	validateAttribute = function(object, attribute){

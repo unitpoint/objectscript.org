@@ -2,6 +2,7 @@ Model = extends Component {
 	const DEFAULT_SCENARIO = 'default',
 	
 	_errors = null,
+	_messages = null,
 	_validators = null,
 	_scenario = null,
 	
@@ -19,6 +20,9 @@ Model = extends Component {
 	
 	__get@labels = function(){
 		return {}
+	},
+	
+	__get@placeHolders = function(){
 	},
 	
 	__get@validators = function(){
@@ -51,24 +55,31 @@ Model = extends Component {
 		return scenarios
 	},
 	
-	__get@attributes = function(names, except){
-		var values = names ? names.flip() : @{
-			var names = {}
-			for(var name, value in this){
+	getAttributes = function(names, except){
+		var values = {}
+		if(names){
+			for(var _, name in names){
+				var value = this[name] 
 				if(!functionOf(value) && typeOf(name) == "string" && name.sub(0, 1) != "_"){
-					names[name] = true 
+					values[name] = value 
 				}
 			}
-			return names
+		}else{
+			for(var name, value in this){
+				if(!functionOf(value) && typeOf(name) == "string" && name.sub(0, 1) != "_"){
+					values[name] = value 
+				}
+			}
 		}
 		for(var _, name in except){
 			delete values[name]
 		}
-		return values.keys
+		return values // .keys
 	},
-
-	__set@attributes = function(values, safeOnly){
+	
+	setAttributes = function(values, safeOnly){
 		if(values){
+			objectOf(values) || throw "object required for values"
 			var attributes = (safeOnly !== false ? @getActiveAttributes() : @attributes).flip()
 			// echo "__set@attributes <pre>"; dump(attributes)
 			for(var name, value in values){
@@ -79,6 +90,14 @@ Model = extends Component {
 				}
 			}
 		}
+	},
+	
+	__get@attributes = function(){
+		return @getAttributes()
+	},
+
+	__set@attributes = function(values){
+		@setAttributes(values)
 	},
 	
 	onUnsafeAttribute = function(name, value){
@@ -142,6 +161,26 @@ Model = extends Component {
 		}
 	},
 	
+	hasMessages = function(attribute){
+		return attribute ? !!@_messages[attribute] : #@_messages > 0
+	},
+	
+	getMessage = function(attribute){
+		return @_messages[attribute][0]
+	},
+	
+	addMessage = function(attribute, message){
+		((@_messages || @_messages = {})[attribute] || @_messages[attribute] = {})[] = message || "unknown message"
+	},
+	
+	clearMessages = function(attribute){
+		if(!attribute){
+			@_messages = null
+		}else{
+			delete @_messages[attribute]
+		}
+	},
+	
 	getActiveAttributes = function(){
 		var scenario, scenarios = @scenario || @DEFAULT_SCENARIO, @scenarios
 		var attributes = scenarios[scenario] || return []
@@ -157,9 +196,49 @@ Model = extends Component {
 		return @labels[attribute] || @genLabel(attribute)
 	},
 	
-	genLabel = function(name){
-		return (stringOf(name) || throw "string required").replace(
+	genLabel = function(attribute){
+		return (stringOf(attribute) || throw "string required for attribute").replace(
 			Regexp('/(?<![A-Z])[A-Z]/'), ' $0').trim().flower()
 	},
 	
+	getPlaceHolder = function(attribute){
+		return @placeHolders[attribute] || @getLabel(attribute)
+	},
+	
+	__get@tableName = function(){
+		return "{{"..(Object.getName.call(this) || @classname)
+			.replace(Regexp('/(?<![A-Z])[A-Z]/'), '_$0')
+			.replace(Regexp('/^_/'), '').lower().."}}"
+	},
+
+	find = function(where, params){
+		// echo "Model.find: ${@name}"; dump(this)
+		if(objectOf(where)){
+			where, params = [], where			
+			for(var k, v in params){
+				where[] = "${k}=:${k}"
+			}
+			where = where.join(" and ")
+		}else{
+		}
+		var row = app.db.fetch("select * from ${@tableName}"..(where != "" ? " where ${where}" : ""), params)
+		if(row){
+			var model = _G[Object.getName.call(this) || @classname]()
+			for(var k, v in row){
+				model[k] = v
+			}
+			model.init()
+			return model
+		}
+	},
+
+	insert = function(params){	
+		var names, valueNames = [], []
+		for(var k, v in params){
+			valueNames[] = k.sub(0, 1) == ":" ? k : ":"..k
+			names[] = valueNames.last.sub(1)
+		}
+		app.db.execute("insert into ${@tableName} (${names.join(',')}) values(${valueNames.join(',')})", params)
+		return app.db.lastInsertId
+	},
 }

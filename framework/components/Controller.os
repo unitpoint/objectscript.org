@@ -50,6 +50,10 @@
 	},
 	
 	renderPartial = function(name, params, checkWidgetStack){
+		if(objectOf(name)){
+			params && throw "2rd argument should be null here"
+			name, params = name.shift(), name
+		}
 		if(checkWidgetStack === false){
 			return @owner.renderView(@resolveView(name), params, @controller)
 		}
@@ -63,11 +67,12 @@
 	},
 	
 	createUrl = function(url){
-		return stringOf(url) || @owner.createUrl({controller = @controller.controllerId, action = @controller.actionId}.merge(url))
+		return stringOf(url) || @owner.createUrl(url.controller ? url 
+			: {controller = @controller.controllerId, action = @controller.actionId}.merge(url))
 	},
 	
 	redirect = function(url){
-		@owner.redirect(stringOf(url) || {controller = @controller.controllerId, action = @controller.actionId}.merge(url))
+		@owner.redirect(@createUrl(url))
 	},
 	
 	createWidget = function(classname, params){

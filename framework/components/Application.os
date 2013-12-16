@@ -266,7 +266,7 @@ Application = extends Component {
 	renderView = function(filename, params, controller){
 		ob.push()
 		var view = @_compiledViews[filename] || @_compiledViews[filename] = compileFile(filename, true, null, true)
-		view.call({controller = controller}.merge(params))
+		view.call(__extends(Component, {controller = controller}.merge(params)))
 		return ob.popContents()
 	},
 	

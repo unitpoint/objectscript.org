@@ -1,6 +1,23 @@
 WebUser = extends Component {
 	_user = null,
 	
+	__get@isLogged = function(){
+		return !!@_user
+	},
+	
+	__get@user = function(){
+		return @_user
+	},
+	
+	init = function(){
+		super()
+		if(app.session.data.identity.id){
+			if(!(@_user = User.find{id = app.session.data.identity.id})){
+				app.session.delete()
+			}
+		}
+	},
+	
 	login = function(user, duration){
 		if(user){
 			@_user = user
@@ -11,12 +28,4 @@ WebUser = extends Component {
 			return true
 		}
 	},
-	
-	loginBySession = function(){
-		if(app.session.data.identity.id){
-			@_user = User.find{id = app.session.data.identity.id}
-			return !!@_user
-		}
-	},
-	
 }

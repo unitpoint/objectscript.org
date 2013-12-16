@@ -12,8 +12,8 @@ Validator = extends Component {
 	
 	init = function(){
 		super()
-		arrayOf(@except) || throw "array required in 'except' but ${@except.classname} found"
-		arrayOf(@on) || throw "array required in 'on' but ${@on.classname} found"
+		@except = toArray(@except)
+		@on = toArray(@on)
 	},
 	
 	createValidator = function(type, model, attributes, params){
