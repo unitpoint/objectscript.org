@@ -21,7 +21,7 @@ RequiredValidator = extends Validator {
 
 	validateValue = function(value){
 		try{
-			echo "validateValue <pre>"; dump([value, @requiredValue, value == @requiredValue])
+			// echo "validateValue <pre>"; dump([value, @requiredValue, value == @requiredValue])
 			if(!@requiredValue){
 				if(@strict && @value || !@strict && !@isEmpty(value, true)){
 					return true

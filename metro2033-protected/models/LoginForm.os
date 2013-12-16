@@ -1,36 +1,32 @@
 LoginForm = extends Model {
-	// email = null,
-	username = null,
+	email = null,
+	// username = null,
 	password = null,
-	rememberMe = true,
+	// rememberMe = true,
 	
 	_user = null,
 
 	__get@rules = function(){
 		return {
-			// username and password are both required
-			{{'username', 'password'}, 'required'},
-			// password is validated by validatePassword()
+			{{'email', 'password'}, 'required'},
 			{'password', 'validatePassword'},
-			// rememberMe must be a boolean value
-			{'rememberMe', 'boolean'},
-			{'email', 'safe'},
+			// {'rememberMe', 'boolean'},
+			// {'email', 'safe'},
 		}
 	},
 	
 	__get@user = function(){
-		return @_user || @_user = User.findByUsername(@username)
+		return @_user || @_user = User.find{email = @email}
 	},
 	
 	validatePassword = function(){
 		if(!@user.validatePassword(@password)){
-		
+			@addError("password", _T("Wrong email or password"))
 		}
 		// echo "validatePassword <pre>"; dump(this)
 	},
 	
 	login = function(){
-		@password = true
-		return @validate() && app.user.login(@user, @rememberMe ? 3600*24*30 : 0)
+		return @validate() && app.user.login(@user) // , @rememberMe ? 3600*24*30 : 0)
 	},
 }

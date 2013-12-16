@@ -6,6 +6,7 @@ DbConnection = extends Component {
 	
 	open = function(){
 		// @type || throw "ODBO type is not set"
+		// echo "<pre>"; dump(this)
 		return @handle || @handle = ODBO(@type || throw "ODBO type is not set", @params)
 	},
 	

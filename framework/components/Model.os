@@ -47,7 +47,7 @@ Model = extends Component {
 			scenarios[scenario] = attributes.keys
 		}
 		scenarios[@DEFAULT_SCENARIO] = defaults.keys
-		echo "scenarios <pre>"; dump(scenarios)
+		// echo "scenarios <pre>"; dump(scenarios)
 		return scenarios
 	},
 	
@@ -107,14 +107,14 @@ Model = extends Component {
 				validators[] = validator
 			}
 		}
-		echo "getActiveValidators <pre>"; dump(validators)
+		// echo "getActiveValidators <pre>"; dump(validators)
 		return validators
 	},
 	
 	validate = function(attributes, clearErrors){
 		clearErrors !== false && @clearErrors()
 		attributes || attributes = @getActiveAttributes()
-		echo "validate attributes <pre>"; dump(attributes)
+		// echo "validate attributes <pre>"; dump(attributes)
 		// echo "validate getActiveValidators <pre>"; dump(@getActiveValidators())
 		for(var _, validator in @getActiveValidators()){
 			validator.validate(this, attributes)
@@ -124,6 +124,10 @@ Model = extends Component {
 	
 	hasErrors = function(attribute){
 		return attribute ? !!@_errors[attribute] : #@_errors > 0
+	},
+	
+	getError = function(attribute){
+		return @_errors[attribute][0]
 	},
 	
 	addError = function(attribute, error){

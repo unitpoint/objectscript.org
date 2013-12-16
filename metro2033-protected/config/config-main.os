@@ -1,7 +1,7 @@
 return {
 	charset = "utf-8",
 	lang = "ru",
-	defaultController = "game",
+	defaultController = "site",
 	aliases = {
 		"{app}" = path.dirname(__DIR__),
 		"{components}" = "{app}/components",
@@ -33,11 +33,8 @@ return {
 				'<controller:\w+>/' = '<controller>/',
 			},			
 		},
-		/* request = {
-			class = "HttpRequest",
-		}, */
-		// db = require("db-local.os"),
 		db = extends require("db-local.os", false) {}, // hide db user & password while print config
+		// db = require("db-local.os", false),
 	},
 	params = require("config-params.os"),
 }

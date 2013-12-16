@@ -75,11 +75,12 @@
 								manual = _T.MENU_MANUAL,
 								langref = _T.MENU_REFERENCE,
 								// test = _T.MENU_TEST,
+								logout = _T.MENU_LOGOUT,
 							}
 							var curAction = @controller.actionId
 							for(var action, name in menuItems){
 								var isActive = curAction == action
-								var url = @controller.createUrl{action=action}
+								var url = @controller.createUrl{controller="site", action=action}
 								echo "<li"..(isActive ? " class='active'" : "").."><a href='${url}'>${name}</a></li>"
 							}
 						%>

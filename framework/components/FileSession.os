@@ -8,7 +8,6 @@ FileSession = extends BaseSession {
 	_filename = null,
 	_shutdownRunner = null,
 	_clenupRunner = null,
-	
 	_data = null,
 	
 	__get@id = function(){
@@ -38,20 +37,25 @@ FileSession = extends BaseSession {
 		return @open()
 	},
 	
+	__set@data = function(value){
+		@open()
+		@_data = value
+	},
+	
 	__get@isOpen = function(){
 		return !!@_filename
 	},
 	
 	new = function(id){
 		@close()
-		return @open()
+		return @open(id)
 	},
 
 	open = function(id){
 		if(!@isOpen || (id && id !== @id)){
 			@id = id || _COOKIE[@cookieName] || @genId()
 			@_data = objectOf(json.decode(File.readContents(@filename))) || {}
-			if(#@data == 0 && @id == _COOKIE[@cookieName] && !fs.exists(@filename)){
+			if(#@_data == 0 && @id == _COOKIE[@cookieName] && !fs.exists(@filename)){
 				@id = @genId()
 			}
 			
@@ -64,6 +68,13 @@ FileSession = extends BaseSession {
 		}
 		return @_data
 	},
+	
+	delete = function(){
+		if(@isOpen){
+			setCookie(@cookieName, null)
+			@close()
+		}
+	},
 
 	close = function(){
 		if(@isOpen){
@@ -71,7 +82,7 @@ FileSession = extends BaseSession {
 			@_id, @_filename, @_data, _COOKIE[@cookieName] = null
 			
 			var self = this
-			unregisterCleanupFunction(@_clenupRunner)
+			// unregisterCleanupFunction(@_clenupRunner)
 			registerCleanupFunction(@_clenupRunner = {|| 
 				File.writeContents(filename, json.encode(data))
 				self._cleanup() 

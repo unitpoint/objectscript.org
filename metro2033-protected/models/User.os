@@ -8,20 +8,13 @@ User = extends Model {
 	reg_time = null,
 	last_visit_time = null,
 
-	findIdentity = function(id){
-		var row = app.db.fetch("select * from {{user}} where id=:id", {id=id})
-		if(row){
-			var user = User()
-			for(var k, v in row){
-				user[k] = v
-			}
-			user.init();
-			return user
+	find = function(params){
+		var where = []
+		for(var k, v in params){
+			where[] = "${k}=:${k}"
 		}
-	},
-
-	findByUsername = function(username){
-		var row = app.db.fetch("select * from {{user}} where username=:username", {username=username})
+		var row = app.db.fetch("select * from {{user}} where "..where.join(" and "), params)
+		// echo "find ${params} <pre>"; dump(row)
 		if(row){
 			var user = User()
 			for(var k, v in row){

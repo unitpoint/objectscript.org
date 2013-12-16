@@ -36,6 +36,9 @@ Application = extends Component {
 			user = {
 				class = "WebUser",
 			},			
+			db = {
+				class = "DbConnection",
+			},			
 		}
 	},
 	
@@ -143,6 +146,8 @@ Application = extends Component {
 	},
 	
 	createComponent = function(name, config){
+		// allow hide config in prototype to prevent dump password for example
+		#config == 0 && config.prototype !== Object && config = config.prototype
 		var component = _G[@resolveClass(config.class || name)](this)
 		component is Component || throw "Error component class: ${component.classname}"
 		for(var key, value in config){

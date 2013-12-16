@@ -3,8 +3,8 @@
 	require("../../framework/components/Application")
 	
 	// require OS site application class
-	require("../../metro2033-protected/components/OSApplication")
+	require("../../metro2033-protected/components/GameApplication")
 	
 	// run application
-	OSApplication(require("../../metro2033-protected/config/config-main")).run()
+	GameApplication(require("../../metro2033-protected/config/config-main")).run()
 	

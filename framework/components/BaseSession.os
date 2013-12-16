@@ -11,8 +11,12 @@ BaseSession = extends Component {
 		super()
 	},
 	
-	data = function(){
+	__get@data = function(){
 		throw "you have to override method ${classname}.data"
+	},
+	
+	__set@data = function(){
+		throw "you have to override set ${classname}.data"
 	},
 	
 	open = function(id){
