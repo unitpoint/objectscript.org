@@ -1,15 +1,11 @@
-<div class="form-group<%=@showState ? (@model.hasErrors(@attribute) ? " has-error" : @model.hasMessages(@attribute) ? " has-success" : "") : ""%>">
+<div class="form-group<%=@showState && @model.hasMessages(@attribute) ? " has-"..@model.getMessageClass(@attribute) : ""%>">
 	<label for="<%=@model.classname%>_<%=@attribute%>" class="col-xs-3 control-label"><%=@model.getLabel(@attribute)%></label>
 	<div class="col-xs-9">
 	  <input type="<%=@inputType || "text"%>" class="form-control" name="<%=@model.classname%>[<%=@attribute%>]" 
 		id="<%=@model.classname%>_<%=@attribute%>" 
 		placeholder="<%=@model.getPlaceHolder(@attribute)%>" value="<%=html.encode(@model[@attribute] || "")%>">
-		<%if(@showState){%>
-			<%if(@model.hasErrors(@attribute)){%>
-			<p class="help-block has-error"><%=@model.getError(@attribute)%></p>
-			<%}elseif(@model.hasMessages(@attribute)){%>
-			<p class="help-block has-success"><%=@model.getMessage(@attribute)%></p>
-			<%}/*if*/%>
+		<%if(@showState && @model.hasMessages(@attribute)){%>
+			<p class="help-block has-<%=@model.getMessageClass(@attribute)%>"><%=@model.getMessage(@attribute)%></p>
 		<%}/*if*/%>
 	</div>
 </div>

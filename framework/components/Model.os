@@ -1,8 +1,8 @@
 Model = extends Component {
 	const DEFAULT_SCENARIO = 'default',
 	
-	_errors = null,
 	_messages = null,
+	_errors = null,
 	_validators = null,
 	_scenario = null,
 	
@@ -130,8 +130,8 @@ Model = extends Component {
 		return validators
 	},
 	
-	validate = function(attributes, clearErrors){
-		clearErrors !== false && @clearErrors()
+	validate = function(attributes, clearMessages){
+		clearMessages !== false && @clearMessages()
 		attributes || attributes = @getActiveAttributes()
 		// echo "validate attributes <pre>"; dump(attributes)
 		// echo "validate getActiveValidators <pre>"; dump(@getActiveValidators())
@@ -141,45 +141,52 @@ Model = extends Component {
 		return !@hasErrors()
 	},
 	
-	hasErrors = function(attribute){
-		return attribute ? !!@_errors[attribute] : #@_errors > 0
-	},
-	
-	getError = function(attribute){
-		return @_errors[attribute][0]
-	},
-	
-	addError = function(attribute, error, params){
-		params && error = error.replace(Regexp("#\{(\w+)\}#is"), {|m| params[m[1]] })
-		;((@_errors || @_errors = {})[attribute] || @_errors[attribute] = {})[] = error || "unknown error"
-	},
-	
-	clearErrors = function(attribute){
-		if(!attribute){
-			@_errors = null
-		}else{
-			delete @_errors[attribute]
-		}
-	},
-	
 	hasMessages = function(attribute){
 		return attribute ? !!@_messages[attribute] : #@_messages > 0
 	},
 	
+	hasErrors = function(attribute){
+		return attribute ? !!@_errors[attribute] : #@_errors > 0
+	},
+	
 	getMessage = function(attribute){
-		return @_messages[attribute][0]
+		return @_messages[attribute][0].message
+	},
+	
+	getMessageClass = function(attribute){
+		return @_messages[attribute][0].class
 	},
 	
 	addMessage = function(attribute, message, params){
-		params && message = message.replace(Regexp("#\{(\w+)\}#is"), {|m| params[m[1]] })
-		;((@_messages || @_messages = {})[attribute] || @_messages[attribute] = {})[] = message || "unknown message"
+		if(objectOf(attribute)){
+			params = attribute
+			attribute, message = params.attribute, params.message
+		}
+		attribute	|| throw "attribute required"
+		message 	|| throw "message required"
+		params 		|| params = {}
+		params.class || params.class = "success"
+		if(message.find("{")){
+			message = message.replace(Regexp("#\{(\w+)\}#is"), {|m| params[m[1]] })
+		}
+		params.attribute, params.message = attribute, message
+		;((@_messages || @_messages = {})[attribute] || @_messages[attribute] = {})[] = params
+		if(params.class === "error"){
+			;((@_errors || @_errors = {})[attribute] || @_errors[attribute] = {})[] = params
+		}
+	},
+	
+	addError = function(attribute, message, params){
+		(params || params = {}).class = "error"
+		@addMessage(attribute, message, params)
 	},
 	
 	clearMessages = function(attribute){
 		if(!attribute){
-			@_messages = null
+			@_messages, @_errors = null
 		}else{
 			delete @_messages[attribute]
+			delete @_errors[attribute]
 		}
 	},
 	

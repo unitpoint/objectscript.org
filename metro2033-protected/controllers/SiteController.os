@@ -16,10 +16,7 @@ SiteController = extends BaseController {
 		if(app.user.isLogged){
 			@redirect{controller="game", action="index"}
 		}
-		echo @render("index", {
-			form = "sign-in",
-			model = LoginForm(),
-		})
+		@redirect{controller="site", action="login"}
 	},
 	
 	actionLogin = function(){
@@ -30,6 +27,15 @@ SiteController = extends BaseController {
 			if(model.login()){
 				@redirect{controller="game", action="index"}
 			}
+		}else{
+			model.addMessage("email", _T("Test email: {email}"), {
+				email = "admin2@admin.ru",
+				class = "info",
+			})
+			model.addMessage("password", _T("Test password: {password}"), {
+				password = "123",
+				class = "info",
+			})
 		}
 		model.password = ""
 		echo @render{"index",
