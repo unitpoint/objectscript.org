@@ -33,6 +33,12 @@ $(function(){
 	}).appendTo($("#map"));
 
 	var paper = Raphael(document.getElementById("map-bg"), map.width, map.height);
+	var bg_grad = paper.circle(map.width/2, map.height/2, Math.min(map.width, map.height)/2)
+			.attr({
+			  "fill": "r#908888:0-#000",
+			  // "fill-opacity": 0.1,
+			  opacity: 0
+			});
 	var bg_img = paper.image("<%=baseUrl%>/assets/img/metro-map.png", 0, 0, map.width, map.height);
 	
 	for(var id in map.stations){

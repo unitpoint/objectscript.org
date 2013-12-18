@@ -42,8 +42,8 @@ Validator = extends Component {
 		var value = object[attribute]
 		objectOf(params) || params = {}
 		params.attribute = object.getLabel(attribute)
-		params.value = value; // arrayOf(value) ? '[]' : value;
-		object.addError(attribute, message.replace(Regexp("#\{(\w+)\}#is"), {|m| params[m[1]] }))
+		params.value = value;
+		object.addError(attribute, message, params)
 	},
 	
 	validate = function(object, attributes){

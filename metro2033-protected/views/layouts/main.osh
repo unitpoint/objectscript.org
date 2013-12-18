@@ -54,11 +54,11 @@
 					<ul class="nav navbar-nav">
 						<%
 							var menuItems = {
-								events = _T.MENU_EVENTS,
-								mobilization = _T.MENU_MOBILIZATION,
-								aemy = _T.MENU_ARMY,
 								hero = _T.MENU_HERO,
-								logout = _T.MENU_LOGOUT,
+								army = _T.MENU_ARMY,
+								mobilization = _T.MENU_MOBILIZATION,
+								events = _T.MENU_EVENTS,
+								// logout = _T.MENU_LOGOUT,
 							}
 							var curAction = @controller.actionId
 							for(var action, name in menuItems){
@@ -67,6 +67,12 @@
 								echo "<li"..(isActive ? " class='active'" : "").."><a href='${url}'>${name}</a></li>"
 							}
 						%>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<%if(app.user.isLogged){%>
+						<li><a href="<%=@controller.createUrl{controller="site", action="logout"}%>"><%=_T.MENU_LOGOUT%></a></li>
+						<%}/*if*/%>
+						<li><a href="/">ObjectScript</a></li>					
 					</ul>
 				</div>
 			</div>

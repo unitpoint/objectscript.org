@@ -59,7 +59,9 @@ SiteController = extends BaseController {
             model.scenario = "remember-password"
 			model.attributes = _POST.LoginForm
 			if(model.rememberPassword()){
-				model.addMessage("email", _T("Your password has been successfully sent to your email"))
+				model.addMessage("email", _T("Your password has been successfully sent to your email {email}"), {
+					email = model.email,
+				})
 				model.email = ""
 			}else{
 				model.addError("email", _T("The email address you entered was not found"))

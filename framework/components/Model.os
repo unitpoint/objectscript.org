@@ -149,8 +149,9 @@ Model = extends Component {
 		return @_errors[attribute][0]
 	},
 	
-	addError = function(attribute, error){
-		((@_errors || @_errors = {})[attribute] || @_errors[attribute] = {})[] = error || "unknown error"
+	addError = function(attribute, error, params){
+		params && error = error.replace(Regexp("#\{(\w+)\}#is"), {|m| params[m[1]] })
+		;((@_errors || @_errors = {})[attribute] || @_errors[attribute] = {})[] = error || "unknown error"
 	},
 	
 	clearErrors = function(attribute){
@@ -169,8 +170,9 @@ Model = extends Component {
 		return @_messages[attribute][0]
 	},
 	
-	addMessage = function(attribute, message){
-		((@_messages || @_messages = {})[attribute] || @_messages[attribute] = {})[] = message || "unknown message"
+	addMessage = function(attribute, message, params){
+		params && message = message.replace(Regexp("#\{(\w+)\}#is"), {|m| params[m[1]] })
+		;((@_messages || @_messages = {})[attribute] || @_messages[attribute] = {})[] = message || "unknown message"
 	},
 	
 	clearMessages = function(attribute){

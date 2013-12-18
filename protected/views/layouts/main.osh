@@ -2,7 +2,7 @@
 <html lang="<%=app.lang%>">
 <% 
 	var CLIENT_VERSION = app.params.CLIENT_VERSION
-	// var baseUrl = app.request.getBaseUrl(true)
+	var baseUrl = app.request.getBaseUrl(true)
 %>
 <head>
 	<meta charset="<%=html.encode(app.charset)%>">
@@ -14,13 +14,13 @@
 
 	<title><%=html.encode(@controller.pageTitle)%></title>
 
-	<link href="/assets/jquery-treeview/jquery.treeview.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<link href="<%=baseUrl%>/assets/jquery-treeview/jquery.treeview.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
 	<!-- Bootstrap core CSS -->
-	<link href="/assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<link href="<%=baseUrl%>/assets/css/bootstrap.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
 	<!-- Just for debugging purposes. Don't actually copy this line! -->
-	<!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+	<!--[if lt IE 9]><script src="<%=baseUrl%>/assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
@@ -38,23 +38,23 @@
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	
-	<script src="/assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
-	<link href="/assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<script src="<%=baseUrl%>/assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
+	<link href="<%=baseUrl%>/assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	
-	<script src="/assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
-	<script src="/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
+	<script src="<%=baseUrl%>/assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
+	<script src="<%=baseUrl%>/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
 	<script src="/assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
 	
 
     <!-- START COPYING HERE -->
-    <link rel="stylesheet" href="/assets/css/gh-fork-ribbon.css" />
+    <link rel="stylesheet" href="<%=baseUrl%>/assets/css/gh-fork-ribbon.css" />
     <!--[if IE]>
-        <link rel="stylesheet" href="/assets/css/gh-fork-ribbon.ie.css" />
+        <link rel="stylesheet" href="<%=baseUrl%>/assets/css/gh-fork-ribbon.ie.css" />
     <![endif]-->
     <!-- END COPYING HERE -->
 	
 	<!-- Custom styles for this template -->
-	<link href="/assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<link href="<%=baseUrl%>/assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 </head>
 
 <body>
@@ -83,6 +83,14 @@
 								echo "<li"..(isActive ? " class='active'" : "").."><a href='${url}'>${name}</a></li>"
 							}
 						%>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					  <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=_T.MENU_EXAMPLES%> <b class="caret"></b></a>
+						<ul class="dropdown-menu">
+						  <li><a href="<%=baseUrl%>/metro2033"><%=_T.MENU_EXAMPLE_METRO2033%></a></li>
+						</ul>
+					  </li>					
 					</ul>
 				</div>
 			</div>

@@ -10,7 +10,7 @@
 	TITLE_GAME = "Метро 2033",
 	MENU_EVENTS = "События",
 	MENU_MOBILIZATION = "Мобилизация",
-	MENU_ARMY = "Армии",
+	MENU_ARMY = "Армия",
 	MENU_HERO = "Герой",
 	MENU_LOGOUT = "Выход",
 	
