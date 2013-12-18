@@ -79,11 +79,12 @@ Application = extends Component {
 	},
 	
 	run = function(){
-		header "Content-type: text/html; charset=${@charset}"
+		@init()
 		@processRequest()
 	},
 	
 	processRequest = function(){
+		header "Content-type: text/html; charset=${@charset}"
 		var route = @urlManager.parseRequest(@request)
 		@runController(route)
 	},

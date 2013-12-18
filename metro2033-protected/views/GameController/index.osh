@@ -17,10 +17,12 @@
 $(function(){
 	<%
 		for(var id, station in app.params.map.stations){
+			station.id = id
 			station.name = _T("STATION_${id.upper()}")
 		}
 	%>
-	var map = <%=json.encode(app.params.map)%>, stationSize=26;
+	var map = <%=json.encode(app.params.map)%>;
+	var stationSize = 26;
 	
 	$("<div id='map-bg' class='map-bg'>").css({
 		width: map.width+"px", 
@@ -33,13 +35,49 @@ $(function(){
 	}).appendTo($("#map"));
 
 	var paper = Raphael(document.getElementById("map-bg"), map.width, map.height);
-	var bg_grad = paper.circle(map.width/2, map.height/2, Math.min(map.width, map.height)/2)
-			.attr({
-			  "fill": "r#908888:0-#000",
-			  // "fill-opacity": 0.1,
-			  opacity: 0
-			});
+	
+	paper.circle(map.width/2, map.height/2, Math.min(map.width, map.height)/2)
+		.attr({
+		  "fill": "r#908888:0-#000",
+		  // "fill-opacity": 0.1,
+		  opacity: 0
+		});
+	
 	var bg_img = paper.image("<%=baseUrl%>/assets/img/metro-map.png", 0, 0, map.width, map.height);
+	
+	$("#side").css({position: "relative"});
+	
+	var selectedStation = null;
+	function selectStation(id){
+		if(selectedStation === id){
+			return;
+		}
+		selectedStation = id;
+		
+		$("#side").empty().append($("<div class=\"panel panel-default\">"
+			+ "<div class=\"panel-heading\">"
+			+ map.stations[id].name
+			+ "</div>"
+			+ "<div class=\"panel-body text-center\">"
+			+ "<img width=\"100%\" src=\"<%=baseUrl%>/assets/img/stations/"+id+".jpg\">"
+			+ "</div></div>").fadeIn(500));
+			
+		$.ajax({
+			cache: false,
+			url: "<%=@controller.createUrl{controller="gameAjax", action="stationInfo"}%>",
+			type: "POST",
+			data: {id: id},
+			dataType: "json",
+			timeout: 10000,
+			success: function(data, status, jqXHR){
+				console.log("success", id, data, status);
+			},
+			error: function(jqXHR, status){
+				console.log("error", id, status);
+			},
+			
+		});
+	}
 	
 	for(var id in map.stations){
 		var station = map.stations[id];
@@ -51,44 +89,27 @@ $(function(){
 				title: station.name
 			})
 			.data("station", station)
-			.data("name", name)
 			.click(function(){
-				console.log(this.data("name"));
+				console.log(this.data("station").id);
+				selectStation(this.data("station").id);
 			});
-		/*
-		$("<div class='map-station'>").css({
-			width: stationSize+"px",
-			height: stationSize+"px",
-			position: "absolute",
-			top: (station.y - stationSize/2)+"px",
-			left: (station.x - stationSize/2)+"px"
-		}).appendTo($("#map-bg"));
-		*/
 	}
-	/*
-	$("#map").css({
-		"background-image": "<%=baseUrl%>/assets/img/metro-map.png",
-	});
-	
-	each(function(){
-		$(this).css({width:'<%=app.params.map.width%>px', height:'<%=app.params.map.height%>px'});
-		console.log($(window).height(), $(this).outerHeight(), $(window).scrollTop());
-		$(this).css({
-			position: "absolute",
-			top: ((($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop() + 30) + "px",
-			left: ((($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px"
-		});
-	});
-<div id="metro-map" style="position:relative">
-	<img id="metro-map-image" src="<%=baseUrl%>/assets/img/metro-map.png">
-</div>
-	*/
 });
 </script>
 
 
 <div class="row">
-	<div class="col-xs-12">
+	<div class="col-xs-3" id="side">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<%=_T.MENU_HERO%>
+			</div>
+			<div class="panel-body text-center">
+				<img width="100%" src="<%=baseUrl%>/assets/img/hero-hunter.jpg">
+			</div>
+		</div>
+	</div>
+	<div class="col-xs-9">
 		<div id="map" width="100%"></div>
 	</div>
 </div>

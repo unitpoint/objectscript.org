@@ -134,6 +134,10 @@ HttpRequest = extends Component {
 		return @hostInfo
 	},
 	
+	__get@isAjax = function(){
+		return _SERVER.HTTP_X_REQUESTED_WITH === 'XMLHttpRequest'
+	},
+	
 	redirect = function(url, end, statusCode){
 		// echo "redirect: ${end}<br>"
 		url = stringOf(url) || throw "required string url"

@@ -34,17 +34,27 @@
 	</style>
 	<![endif]-->
 	
-	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	
 	<script src="<%=baseUrl%>/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
 	<script src="<%=baseUrl%>/assets/js/raphael.js?<%=CLIENT_VERSION%>"></script>
 
 	<!-- Custom styles for this template -->
+	<link href="<%=baseUrl%>/assets/css/custom-theme.css?<%=CLIENT_VERSION%>" rel="stylesheet">
 	<link href="<%=baseUrl%>/assets/css/custom.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	
+	<script>
+		$(function(){
+			$('.disable-selection').disableSelection();
+		});
+	</script>
+	
 </head>
 
 <body>
 
-	<div id="wrap">
+	<div id="wrap" class="disable-selection">
 		<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<div class="container">
 				<div class="navbar-header">
