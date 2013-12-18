@@ -65,7 +65,7 @@ function File.readContents(filename)
 function File.writeContents(filename, content)
 {
 	var f = File(filename, "wb")
-	f.write(content)
+	content !== null && f.write(content)
 	f.close()
 }
 

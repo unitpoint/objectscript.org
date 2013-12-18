@@ -1,11 +1,88 @@
 ﻿<% 
 	@controller.pageTitle = "Metro 2033"
+	var baseUrl = app.request.getBaseUrl(true)
 %>
+<style>
+
+.map-bg {
+}
+
+.map-station {
+	background-color:red;
+}
+
+</style>
+
 <script>
+$(function(){
+	<%
+		for(var id, station in app.params.map.stations){
+			station.name = _T("STATION_${id.upper()}")
+		}
+	%>
+	var map = <%=json.encode(app.params.map)%>, stationSize=26;
+	
+	$("<div id='map-bg' class='map-bg'>").css({
+		width: map.width+"px", 
+		height: map.height+"px",
+		// "background-image": "url(<%=baseUrl%>/assets/img/metro-map.png)",
+		// margin: "0 auto"
+		position: "absolute",
+		top: ($(window).height() - map.height) / 2,
+		left: ($("#map").width() - map.width) / 2,
+	}).appendTo($("#map"));
+
+	var paper = Raphael(document.getElementById("map-bg"), map.width, map.height);
+	var bg_img = paper.image("<%=baseUrl%>/assets/img/metro-map.png", 0, 0, map.width, map.height);
+	
+	for(var id in map.stations){
+		var station = map.stations[id];
+		var s = paper.circle(station.x, station.y, stationSize/2)
+			.attr({
+				fill: "#A33",
+				opacity: 0.1,
+				cursor: "pointer",
+				title: station.name
+			})
+			.data("station", station)
+			.data("name", name)
+			.click(function(){
+				console.log(this.data("name"));
+			});
+		/*
+		$("<div class='map-station'>").css({
+			width: stationSize+"px",
+			height: stationSize+"px",
+			position: "absolute",
+			top: (station.y - stationSize/2)+"px",
+			left: (station.x - stationSize/2)+"px"
+		}).appendTo($("#map-bg"));
+		*/
+	}
+	/*
+	$("#map").css({
+		"background-image": "<%=baseUrl%>/assets/img/metro-map.png",
+	});
+	
+	each(function(){
+		$(this).css({width:'<%=app.params.map.width%>px', height:'<%=app.params.map.height%>px'});
+		console.log($(window).height(), $(this).outerHeight(), $(window).scrollTop());
+		$(this).css({
+			position: "absolute",
+			top: ((($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop() + 30) + "px",
+			left: ((($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px"
+		});
+	});
+<div id="metro-map" style="position:relative">
+	<img id="metro-map-image" src="<%=baseUrl%>/assets/img/metro-map.png">
+</div>
+	*/
+});
 </script>
+
 
 <div class="row">
 	<div class="col-xs-12">
-		test
+		<div id="map" width="100%"></div>
 	</div>
 </div>

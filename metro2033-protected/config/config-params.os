@@ -4,4 +4,5 @@ return extends {
 	ADMIN_PASSWORD = "Yie2Phoo",
 } {
 	CLIENT_VERSION = 2,
+	map = require("config-map"),
 }

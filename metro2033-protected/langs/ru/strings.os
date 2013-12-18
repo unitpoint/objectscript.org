@@ -7,6 +7,15 @@
 	INVITE_CODE_PLACEHOLDER = "Пригласительный код",
 	REMEMBER_PASSWORD = "Напомнить пароль",
 	REGISTER = "Регистрация",
+	TITLE_GAME = "Метро 2033",
+	MENU_EVENTS = "События",
+	MENU_MOBILIZATION = "Мобилизация",
+	MENU_ARMY = "Армии",
+	MENU_HERO = "Герой",
+	MENU_LOGOUT = "Выход",
+	
+	STATION_LUBYANKA = "Лубянка",
+	STATION_KUZNETSKY_MOST = "Кузнецкий мост",
 	
 	"{attribute} cannot be blank" = "Введите {attribute}",
 	"Wrong email or password" = "Неверный пароль или емайл",

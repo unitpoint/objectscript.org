@@ -9,7 +9,7 @@ body {
 }
 
 body { 
-	background: url(../img/bg-01.jpg) no-repeat center 0;
+	background: url(../img/bg-01.jpg) no-repeat fixed 100% 100%;
 	
 	-webkit-background-size: 100%;
 	-o-background-size: 100%;

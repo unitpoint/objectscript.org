@@ -90,6 +90,6 @@ LoginForm = extends Model {
 	},
 	
 	rememberPassword = function(){
-		return math.random() < 0.5
+		return @validate() && math.random() < 0.5
 	},
 }
