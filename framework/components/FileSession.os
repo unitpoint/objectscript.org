@@ -66,9 +66,10 @@ FileSession = extends BaseSession {
 			setCookie(@cookieName, @id, @cookieLifetime && DateTime.now() + @cookieLifetime/(60*60*24), 
 				@cookiePath, @cookieDomain, @cookieSecure, @cookieHttponly)	
 			
-			var self = this
+			/* var self = this
 			// unregisterShutdownFunction(@_shutdownRunner)
-			registerShutdownFunction(@_shutdownRunner = {|| self.close() })
+			registerShutdownFunction(@_shutdownRunner = {|| self.close() }) */
+			registerShutdownFunction(@_shutdownRunner = delegate(this, @close))
 		}
 		return @_data
 	},
@@ -86,12 +87,16 @@ FileSession = extends BaseSession {
 			var filename, data = @_filename, @_data
 			@_id, @_filename, @_data, _COOKIE[@cookieName] = null
 			
-			var self = this
+			/* var self = this
 			// unregisterCleanupFunction(@_clenupRunner)
 			registerCleanupFunction(@_clenupRunner = {|| 
 				File.writeContents(filename, json.encode(data))
 				self._cleanup() 
-			})
+			}) */
+			registerCleanupFunction(@_clenupRunner = delegate(this, {|| 
+				File.writeContents(filename, json.encode(data))
+				@_cleanup() 
+			}))
 		}
 	},
 	
