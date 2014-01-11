@@ -4,9 +4,9 @@
 исключению <code>NullPointerException</code> или подобному. Проблема встречается настолько часто, что
 получила аббревиатуру NPE, также известную, как 
 <a href="http://qconlondon.com/london-2009/presentation/Null+References:+The+Billion+Dollar+Mistake"
-target="_blank"><i>Ошибка на миллиард долларов</i></a> 
+target="_blank" rel="nofollow"><i>Ошибка на миллиард долларов</i></a> 
 (<a href="http://qconlondon.com/london-2009/presentation/Null+References:+The+Billion+Dollar+Mistake"
-target="_blank"><i>The Billion Dollar Mistake</i></a>).
+target="_blank" rel="nofollow"><i>The Billion Dollar Mistake</i></a>).
 
 <p>
 Для решения проблемы NPE, обычно программист вынужден везде в коде при обращении к свойству 

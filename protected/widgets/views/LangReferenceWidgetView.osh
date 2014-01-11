@@ -271,7 +271,7 @@ $(function(){
 			    <b><%=_T.SOURCE_CODE%></b>
 			  </td>
 			  <td>
-				<a href="<%=content.sourceFile%>" target="_blank"><%=decodeSourceFile(content.sourceFile)%></a>
+				<a href="<%=content.sourceFile%>" target="_blank" rel="nofollow"><%=decodeSourceFile(content.sourceFile)%></a>
 			  </td>
 			</tr>
 			<%}/*if(content.desc)*/%>

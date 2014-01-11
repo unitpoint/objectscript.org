@@ -7,7 +7,7 @@
 <%@controller.widget{'SourceWidget', source="examples/tutorial.forms.osh"}%>
 
 <p><% var WEBCORE_LINK = <<<END'<a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/webcore.os" 
-	target="_blank">webcore</a>END; %>
+	target="_blank" rel="nofollow">webcore</a>END; %>
 В начале страницы мы подключаем библиотеку <%=WEBCORE_LINK%> с помощью функции <code>require</code>.
 
 <p>

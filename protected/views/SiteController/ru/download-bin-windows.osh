@@ -8,14 +8,14 @@
 		
 		<div style="padding-left:40px">
 		    <p><a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-1.16.7-rc.zip" 
-				target="_blank">os-1.16.7-rc.zip</a>
+				target="_blank" rel="nofollow">os-1.16.7-rc.zip</a>
 			&nbsp; <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-1.16.7-rc" 
 			target="_blank" title="Открыть архив ObjectScript"><span class="glyphicon glyphicon-folder-open"></span></a>
 		</div>	  
 		<p>Содержит <a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
-			target="_blank">os-fcgi</a> (fastcgi модуль для веб-разработки) и 
+			target="_blank" rel="nofollow">os-fcgi</a> (fastcgi модуль для веб-разработки) и 
 			<a href="https://github.com/unitpoint/objectscript/blob/master/os.cpp" 
-			target="_blank">os</a> (консольное приложение для запуска скриптов из командной строки).
+			target="_blank" rel="nofollow">os</a> (консольное приложение для запуска скриптов из командной строки).
 	  </td>
 	</tr>
 	<tr>
@@ -24,29 +24,31 @@
 		В сборку вошли следующие расширения
 		<div style="padding-left:40px">
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-base64" 
-				target="_blank">base64</a>
+				target="_blank" rel="nofollow">base64</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-curl" 
-				target="_blank">curl</a>
+				target="_blank" rel="nofollow">curl</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-datetime" 
-				target="_blank">datetime</a>
+				target="_blank" rel="nofollow">datetime</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-filesystem" 
-				target="_blank">filesystem</a>
+				target="_blank" rel="nofollow">filesystem</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-hashlib" 
-				target="_blank">hashlib</a>
+				target="_blank" rel="nofollow">hashlib</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-iconv" 
-				target="_blank">iconv</a>
+				target="_blank" rel="nofollow">iconv</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-json" 
+				target="_blank" rel="nofollow">json</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-odbo" 
-				target="_blank">odbo</a>
+				target="_blank" rel="nofollow">odbo</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-process" 
-				target="_blank">process</a>
+				target="_blank" rel="nofollow">process</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-regexp" 
-				target="_blank">regexp</a>
+				target="_blank" rel="nofollow">regexp</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-sqlite3" 
-				target="_blank">sqlite3</a>
+				target="_blank" rel="nofollow">sqlite3</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-url" 
-				target="_blank">url</a>
+				target="_blank" rel="nofollow">url</a>
 		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-zlib" 
-				target="_blank">zlib</a>
+				target="_blank" rel="nofollow">zlib</a>
 		</div>
 	  </td>
 	</tr>
@@ -56,9 +58,9 @@
 		В сборку не вошли следующие расширения
 		<div style="padding-left:40px">
 		    <a type="button" class="btn btn-warning btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-libnoise" 
-				target="_blank">libnoise</a>
+				target="_blank" rel="nofollow">libnoise</a>
 			<a type="button" class="btn btn-warning btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-opengl" 
-				target="_blank">opengl</a>
+				target="_blank" rel="nofollow">opengl</a>
 		</div>
 	  </td>
     </tr>
@@ -67,6 +69,6 @@
 
 <p>
 Язык ObjectScript распространяется как в откомпилированном виде, так и с открытыми исходными кодами под 
-<a href="https://github.com/unitpoint/objectscript/blob/master/LICENSE" target="_blank">MIT лицензией</a>.
+<a href="https://github.com/unitpoint/objectscript/blob/master/LICENSE" target="_blank" rel="nofollow">MIT лицензией</a>.
 Эта лицензия подразумевает полное свободное и бесплатное использование ObjectScript в ваших продуктах,
 в том числе в коммерческих.

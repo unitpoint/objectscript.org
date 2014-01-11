@@ -164,7 +164,7 @@ END,
 	</tr>
 	<tr>
 	  <td><code>r</code></td>
-	  <td width="100%">Дата в формате <a href="http://www.faqs.org/rfcs/rfc2822" target="_blank">RFC 2822</a>.
+	  <td width="100%">Дата в формате <a href="http://www.faqs.org/rfcs/rfc2822" target="_blank" rel="nofollow">RFC 2822</a>.
 			Например: Thu, 21 Dec 2013 16:01:07 +0200</td>
 	</tr>
 	<tr>

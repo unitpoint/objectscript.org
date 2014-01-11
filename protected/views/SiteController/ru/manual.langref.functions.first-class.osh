@@ -1,5 +1,5 @@
 ﻿<p>
-В ObjectScript все функции ялвяются функциями первого класса (<a href="http://en.wikipedia.org/wiki/First-class_function" target="_blank">first-class 
+В ObjectScript все функции ялвяются функциями первого класса (<a href="http://en.wikipedia.org/wiki/First-class_function" target="_blank" rel="nofollow">first-class 
 function</a>). Это означает, что ObjectScript поддерживает передачу функций в качестве аргументов другим функциям, возврат их как результат 
 других функций, присваивание их переменным или сохранение в структурах данных. 
 

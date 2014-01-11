@@ -1,7 +1,7 @@
 ﻿<p>
 <div class="bs-callout bs-callout-info">
   У вас уже должен быть установлен <i>Джентльменский набор Web-разработчика</i> («Д.н.w.р», читается «Денвер»). Если это не так,
-  то скачайте и установите <a href="http://www.denwer.ru/" target="_blank">Denwer</a> с оф. сайта.
+  то скачайте и установите <a href="http://www.denwer.ru/" target="_blank" rel="nofollow">Denwer</a> с оф. сайта.
 </div>
 </p>
 
@@ -62,7 +62,7 @@ Include conf/extra/httpd-ostest.conf
 <div class="row">
   <div class="col-md-10 badge-src">
 	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/www/examples/httpd-ostest.conf"
-		target="_blank"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+		target="_blank" rel="nofollow"><span class="glyphicon glyphicon-paperclip"></span></a></span>
 <pre class="prettyprint"><% @controller.beginWidget("HtmlEncodeWidget") %>
 #
 # Use name-based virtual hosting.

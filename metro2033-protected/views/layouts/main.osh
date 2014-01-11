@@ -3,6 +3,7 @@
 <% 
 	var CLIENT_VERSION = app.params.CLIENT_VERSION
 	var baseUrl = app.request.getBaseUrl(true)
+	var useInternet = true
 %>
 <head>
 	<meta charset="<%=html.encode(app.charset)%>">
@@ -34,8 +35,13 @@
 	</style>
 	<![endif]-->
 	
+	<%if(useInternet){%>
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<%}else{%>
+	<script src="<%=baseUrl%>/assets/js/jquery-1.10.2.min.js?<%=CLIENT_VERSION%>"></script>
+	<script src="<%=baseUrl%>/assets/js/jquery-ui-1.9.0.custom.min.js?<%=CLIENT_VERSION%>"></script>
+	<%}/*if*/%>
 	
 	<script src="<%=baseUrl%>/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
 	<script src="<%=baseUrl%>/assets/js/raphael.js?<%=CLIENT_VERSION%>"></script>

@@ -118,7 +118,7 @@
     <!-- TOP LEFT RIBBON: START COPYING HERE -->
     <div class="github-fork-ribbon-wrapper left">
         <div class="github-fork-ribbon">
-            <a href="https://github.com/unitpoint/objectscript" target="_blank">Fork me on GitHub</a>
+            <a href="https://github.com/unitpoint/objectscript" target="_blank" rel="nofollow">Fork me on GitHub</a>
         </div>
     </div>
     <!-- TOP LEFT RIBBON: END COPYING HERE -->

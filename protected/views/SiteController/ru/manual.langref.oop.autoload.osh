@@ -3,7 +3,7 @@
 
 <p>
 Автоматическая загрузка уже работает при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L1" 
-target="_blank">библиотеки std</a> и реализована следующим образом.
+target="_blank" rel="nofollow">библиотеки std</a> и реализована следующим образом.
 
 <div class="row">
   <div class="col-md-11 badge-src">

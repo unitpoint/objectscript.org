@@ -20,7 +20,7 @@ ${app.controller.renderWidget{'SourceWidget', source="examples/tutorial.oop.clon
 <p>
 Если нужно сделать глубокое (рекурсивное) клонирование, то используйте метод <code>deepClone</code>. 
 Этот метод добавляется при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L78" 
-target="_blank">библиотеки std</a> 
+target="_blank" rel="nofollow">библиотеки std</a> 
 
 <h3>Пример глубокого клонирования</h3>
 ${app.controller.renderWidget{'SourceWidget', source="examples/tutorial.oop.clone-deep.osh"}}
