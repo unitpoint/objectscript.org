@@ -22,6 +22,11 @@ function evalEnv(str, env){
 	return compileText(str).applyEnv(env || _G, null, ...)
 }
 
+function delegate(self, func){
+	var args = ...
+	return function(){ return func.apply(self, args) }
+}
+
 function toArray(a){
 	arrayOf(a) && return a;
 	var type = typeOf(a)
