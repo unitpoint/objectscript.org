@@ -20,6 +20,10 @@ HttpRequest = extends Component {
 		return @_baseUrl || @_baseUrl = path.dirname(@scriptUrl)
 	},
 	
+	__get@fullBaseUrl = function(){
+		return @getBaseUrl(true)
+	},
+	
 	__get@scriptUrl = function(){
 		return @_scriptUrl || @_scriptUrl = @{
 			var scriptName = path.basename(_SERVER.SCRIPT_FILENAME)
