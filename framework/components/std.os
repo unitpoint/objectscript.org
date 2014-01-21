@@ -211,6 +211,11 @@ function DateTime.__sub(b){
 	}
 }
 
+function DateTime.__cmp(b){
+	b is DateTime || throw "DateTime.__cmp requires DateTime"
+	return @comdate <=> b.comdate
+}
+
 var shutdownFunctions, cleanupFunctions = {}, {}
 
 function registerShutdownFunction(func){
