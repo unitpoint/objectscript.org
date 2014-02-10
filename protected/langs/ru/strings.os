@@ -25,5 +25,5 @@
 		target="_blank" rel="nofollow">ObjectScript ${OS_VERSION}</a> /
 		<a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
 		target="_blank" rel="nofollow">os-fcgi ${OS_FCGI_VERSION}</a> 
-		Copyright (C) 2012-2013 <a href="mailto:evgeniy.golovin@unitpoint.ru" target="_blank" rel="nofollow">Евгений Головин</a>END
+		Copyright (C) 2012-${DateTime.now().year} <a href="mailto:evgeniy.golovin@unitpoint.ru" target="_blank" rel="nofollow">Евгений Головин</a>END
 }
