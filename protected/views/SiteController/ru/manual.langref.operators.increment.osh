@@ -33,11 +33,5 @@ ObjectScript поддерживает префиксные и постфиксн
   </tbody>
 </table>
 
-<p>
-<div class="bs-callout bs-callout-danger">
-Операторы инкремента и декремента работают только с локальными переменными.
-</div>
-</p>
-
 <h3>Пример</h3>
 <%@controller.widget{'SourceWidget', source="examples/tutorial.operators.increment.osh"}%>
