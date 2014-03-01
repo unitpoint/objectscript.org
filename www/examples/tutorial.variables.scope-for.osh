@@ -1,5 +1,5 @@
 ﻿<pre><%
-  for(var i = 0; i < 5; i++){
+  for(local i = 0; i < 5; i++){
     print "i: "..i
   }
   print "i after for: "..i

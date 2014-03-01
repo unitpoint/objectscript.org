@@ -1,7 +1,7 @@
 ﻿<pre><%
-  var a = "hello"
+  local a = "hello"
   ;{
-    var a = a
+    local a = a
     print "sub a: "..a
     a = "world"
     print "sub a: "..a
