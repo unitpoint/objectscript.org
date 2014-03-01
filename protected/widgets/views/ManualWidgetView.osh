@@ -94,8 +94,11 @@ $(function(){
   </div>
   <div class="col-md-9 manual">
 	<div class="page-header">
+	  <div class="pull-right"><%=@controller.renderPartial("/layouts/_uptolike")%></div>
 	  <h1><%=pageTitle%></h1>
 	</div>
+
+	
 	<% if(!stringOf(content[page])){ %>
 		<div class="row content">
 			<div class="col-md-5">

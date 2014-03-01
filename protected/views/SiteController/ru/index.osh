@@ -2,6 +2,7 @@
 	@controller.pageTitle = "Новый язык программирования / ObjectScript Homepage"
 %>
 <div class="jumbotron gradient_ie9">
+	<div class="pull-right"><%=@controller.renderPartial("/layouts/_uptolike")%></div>
 	<h1>ObjectScript</h1>
 	<p>
 	ObjectScript (OS) - это новый язык программирования для веб разработки, бесплатный, кроссплатформенный, 
