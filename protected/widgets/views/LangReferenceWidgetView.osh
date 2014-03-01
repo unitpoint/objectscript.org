@@ -1,23 +1,23 @@
 <%
 	// echo "${this} <br />"
-	var parts, links, file = @page.split("."), [], @file
-	var getContent = function(name){
+	local parts, links, file = @page.split("."), [], @file
+	local getContent = function(name){
 		// echo "getContent: ${name}, ${links} <br />"
-		var r = objectOf(name) || require(file = stringOf(name) || throw "string or object required") 
+		local r = objectOf(name) || require(file = stringOf(name) || throw "string or object required") 
 		// echo "getContent ret: ${name}, ${r} <br />"
 		return r
 	}
-	var fullContent = @content ? getContent(@content) : require(file = "${@pageViewPrefix}${links.push(parts.shift())}.os")
+	local fullContent = @content ? getContent(@content) : require(file = "${@pageViewPrefix}${links.push(parts.shift())}.os")
 	
-	var breadcrumb, content, prevContent, name = [], fullContent
-	var prop = function(obj, name, value){
+	local breadcrumb, content, prevContent, name = [], fullContent
+	local prop = function(obj, name, value){
 		if(value){
 			Object.setProperty.call(obj, name, value)
 			return value
 		}
 		return Object.getProperty.call(obj, name)
 	}
-	var sections = {
+	local sections = {
 		props = _T.PROPERTIES,
 		funcs = _T.FUNCTIONS,
 		methods = _T.METHODS,
@@ -29,7 +29,7 @@
 		name = parts.first
 		// don't allow content.methods[name] usage because of content.methods can contains magics names
 		// so use prop function
-		var cur, key
+		local cur, key
 		for(key in sections){
 			(cur = prop(content[key], name)) && break
 		}
@@ -40,16 +40,16 @@
 		prevContent, content = content, prop(content[key], name, getContent(cur))
 		delete parts.first
 	}
-	var pageTitle = links.join(".").replace(Regexp("#^globals\.|^globals$#s"), "")
+	local pageTitle = links.join(".").replace(Regexp("#^globals\.|^globals$#s"), "")
 	
-	var controller = @controller
-	var decode = function(str){
+	local controller = @controller
+	local decode = function(str){
 		return str && toString(str).replace {
 			[Regexp("#\@(url|plainUrl)\((.*?)\)#s")] = {|m|
-				var params = m[2].split(",")
+				local params = m[2].split(",")
 				if(#params == 1){
-					var route = params[0].trim().split("/")
-					var count = #route
+					local route = params[0].trim().split("/")
+					local count = #route
 					count == 1 ? params = {params={page=route[0]}}
 						: count == 2 ? params = {action=route[0], params={page=route[1]}}
 						: params = {controller=route[0], action=route[1], params={page=route[2]}}
@@ -63,7 +63,7 @@
 			[Regexp("#^\d+$#s")] = "<span class='lit'>$0</span>",
 		}
 	}
-	var decodeSourceFile = function(url){
+	local decodeSourceFile = function(url){
 		return toString(url).replace{
 			[Regexp("#^https://github\.com/unitpoint/objectscript\.org/blob/master/#s")] = "",
 			[Regexp("#\#.*?$#s")] = "",
@@ -75,13 +75,13 @@
 		if(@breadcrumb){
 			echo "<li><a href='${@controller.createUrl(@breadcrumb.url)}'>${@breadcrumb.name}</a></li>"
 		}
-		var htmlTitle = [] // "ObjectScript", _T.MENU_REFERENCE]
-		for(var _, item in breadcrumb){
-			var key, name = item.unpack()
+		local htmlTitle = [] // "ObjectScript", _T.MENU_REFERENCE]
+		for(local _, item in breadcrumb){
+			local key, name = item.unpack()
 			if(key == @page){
 				echo "<li class='active'>${name}</li>"
 			}else{
-				var url = @controller.createUrl{params={page=key}, amp="&amp;"}
+				local url = @controller.createUrl{params={page=key}, amp="&amp;"}
 				echo "<li><a href='${url}'>${name}</a></li>"
 			}
 			htmlTitle[] = name
@@ -123,31 +123,31 @@ $(function(){
 			// prevContent = content
 			links.pop()
 		}
-		var compare = function(a, b, ka, kb){
+		local compare = function(a, b, ka, kb){
 			return ka.lower() <=> kb.lower()
 		}
-		var list = function(title, items, allowSub){
+		local list = function(title, items, allowSub){
 			// if items is null then compare returns false
 			#items > 0 || return;
-			var open = false
+			local open = false
 			
 			ob.push()
 			// items can contain 'sort' so call Object.sort instead of items.sort
 			items = Object.sort.call(items, compare)
 			// items can contain '__iter' so call Object.__iter instead of items.sort
-			for(var name, content in items){
+			for(local name, content in items){
 				links.push(name)
-				var page = links.join(".")
-				var url = @controller.createUrl{params={page=page}, amp="&amp;"}
+				local page = links.join(".")
+				local url = @controller.createUrl{params={page=page}, amp="&amp;"}
 				if(page == @page){
 					open = true
 					echo "<li class='open'><span class='item'><b>${name}</b></span>"
 					if(allowSub && false){
 						ob.push()
-						for(var section, name in sections){
+						for(local section, name in sections){
 							list.call(this, name, content[section])
 						}
-						var sub = ob.popContents()
+						local sub = ob.popContents()
 						if(sub != ""){
 							echo "<ul>${sub}</ul>"
 						}
@@ -158,12 +158,12 @@ $(function(){
 				}
 				links.pop()
 			}
-			var sub = ob.popContents()
+			local sub = ob.popContents()
 			echo "<li"..(open ? " class='open'" : "").."><span class='folder'>${title}</span><ul>"
 			echo sub
 			echo "</ul></li>"
 		}
-		for(var section, name in sections){
+		for(local section, name in sections){
 			list.call(this, name, prevContent[section], true)
 		}
 	%>
@@ -171,14 +171,14 @@ $(function(){
   </div>
   <div class="col-md-9 manual">
 	<%
-		var pageHeader = function(){
+		local pageHeader = function(){
 			%>
 			<div class="page-header">
 			  <h1><%=pageTitle%></h1>
 			</div>
 			<%
 		}
-		var descPrinted, retPrinted = true, false
+		local descPrinted, retPrinted = true, false
 		if(!pageTitle || pageTitle == ""){
 			content.desc && echo(decode(content.desc))
 		}else if(!content.ret){
@@ -207,8 +207,8 @@ $(function(){
 			pageHeader()
 			echo '<pre class="prettyprint lang-js prettyprinted" style="padding-left:20px">'
 			echo "<span class='kwd'>${content.ret}</span> <span class='pln'>${name}</span><span class='pun'>(</span>"
-			var paramNum = 0
-			for(var paramName, param in content.params){
+			local paramNum = 0
+			for(local paramName, param in content.params){
 				echo(paramNum++ > 0 ? "<span class='pun'>,</span> " : " ")
 				echo "<nobr>"
 				echo "<span class='pln'>${paramName}</span>"
@@ -281,8 +281,8 @@ $(function(){
 			  <th colspan="3"><%=_T.PARAM_LIST%></th>
 			</tr>
 			<%
-				var paramNum = 0
-				for(var paramName, param in content.params){
+				local paramNum = 0
+				for(local paramName, param in content.params){
 					echo "<tr"..(paramNum++ % 2 == 1 ? " class='active'" : "")..">"
 						echo "<td>"..(param.type || "").."</td>"
 						echo "<th><code>${paramName}</code></th>"
@@ -323,10 +323,10 @@ $(function(){
 			// echo "<pre>"; echo json.encode({name, links}); echo "</pre>";
 			links[] = pageTitle
 			ob.push()
-			for(var section, name in sections){
+			for(local section, name in sections){
 				list.call(this, name, content[section], true)
 			}
-			var data = ob.popContents()
+			local data = ob.popContents()
 			if(data != ""){
 				%>
 				<hr>
