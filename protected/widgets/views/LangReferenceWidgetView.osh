@@ -171,10 +171,11 @@ $(function(){
   </div>
   <div class="col-md-9 manual">
 	<%
+		local controller = @controller
 		local pageHeader = function(){
 			%>
 			<div class="page-header">
-			  <div class="pull-right"><%=@controller.renderPartial("/layouts/_uptolike")%></div>
+			  <div class="pull-right"><%=controller.renderPartial("/layouts/_uptolike")%></div>
 			  <h1><%=pageTitle%></h1>
 			</div>
 			<%
