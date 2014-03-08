@@ -182,6 +182,7 @@ $(function(){
 		}
 		local descPrinted, retPrinted = true, false
 		if(!pageTitle || pageTitle == ""){
+			%><div class="pull-right"><%=controller.renderPartial("/layouts/_uptolike")%></div><%
 			content.desc && echo(decode(content.desc))
 		}else if(!content.ret){
 			pageHeader()
