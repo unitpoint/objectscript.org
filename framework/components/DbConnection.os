@@ -18,6 +18,10 @@ DbConnection = extends Component {
 	},
 	
 	query = function(sql, params){
+		if(objectOf(sql)){
+			params && throw "2rd argument should be null here"
+			sql, params = sql.shift(), sql
+		}	
 		sql = sql.replace(Regexp("#\{\{(.+?)\}\}#g"), @tablePrefix.."$1")
 		return (@handle || @open()).query(sql, params)
 	},
