@@ -22,9 +22,17 @@ function evalEnv(str, env){
 	return compileText(str).applyEnv(env || _G, null, ...)
 }
 
-function delegate(self, func){
+function delegateWithArgs(self, func){
 	var args = ...
 	return function(){ return func.apply(self, args) }
+}
+
+function delegate(self, func){
+	return function(){ return func.apply(self, arguments) }
+}
+
+function Function.bind(self){
+	return delegate(self, this);
 }
 
 function toArray(a){
