@@ -163,7 +163,7 @@ Application = extends Component {
 	_componentsInCreation = {},
 	getComponent = function(name, config){
 		return @_components[name || throw "Attempt to create empty component"] || @{
-			config || config = @config.components[name] || throw "Component \"${name}\" is not configured"
+			config || config = @config.components[name] || throw "Component or property \"${name}\" is not configured"
 			config.enabled === false && throw "Component \"${name}\" is disabled"
 			@_componentsInCreation[name] && throw "Component \"${name}\" creation in progress"
 			@_componentsInCreation[name] = true
