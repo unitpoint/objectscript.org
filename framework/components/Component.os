@@ -1,4 +1,4 @@
-Component = {
+Component = extends Object {
 	__construct = function(){
 		super()
 	},
