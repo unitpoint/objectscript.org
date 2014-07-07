@@ -9,6 +9,10 @@ WebUser = extends Component {
 		return @_user
 	},
 	
+	__get = function(name) {
+		return @getState(name) || super(name)
+	},
+
 	init = function(){
 		super()
 		if(app.session.data.identity.id){
@@ -21,11 +25,25 @@ WebUser = extends Component {
 	login = function(user, duration){
 		if(user){
 			@_user = user
-			app.session.new().identity = {
-				id = user.id,
-				// expires = DateTime.now() + duration/(60*60*24),
-			}
+			@setState{id = user.id}
 			return true
 		}
 	},
+
+	logout = function(user, duration){
+		app.session.delete()
+	},
+
+	hasState = function(key) {
+		return !!app.session.data.identity[key]
+	},
+
+	getState = function(key) {
+		return app.session.data.identity[key]
+	},
+
+	setState = function(state) {
+		(app.session.data.identity || app.session.new().identity = {}).merge(state)
+	}
+
 }
