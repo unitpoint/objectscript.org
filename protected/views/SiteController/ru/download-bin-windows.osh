@@ -7,9 +7,9 @@
 	  <td>
 		
 		<div style="padding-left:40px">
-		    <p><a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-2.0.3-rc.zip" 
-				target="_blank" rel="nofollow">os-2.0.3-rc.zip</a>
-			&nbsp; <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-2.0.3-rc" 
+		    <p><a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-2.1-rc.zip" 
+				target="_blank" rel="nofollow">os-2.1-rc.zip</a>
+			&nbsp; <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-2.1-rc" 
 			target="_blank" title="Открыть архив ObjectScript"><span class="glyphicon glyphicon-folder-open"></span></a>
 		</div>	  
 		<p>Содержит <a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
