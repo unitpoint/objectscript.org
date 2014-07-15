@@ -18,8 +18,8 @@ Validator = extends Component {
 	
 	createValidator = function(type, model, attributes, params){
 		params = {}.merge(params, {attributes=attributes})
-		if(type in model){
-			functionOf(model[type]) || throw "Function required for ${type} in model ${model.classname}"
+		if(type in model && functionOf(model[type])){
+			// functionOf(model[type]) || throw "Function required for ${type} in model ${model.classname}"
 			// params.model = model
 			params.method = type
 			return app.createValidator("InlineValidator", params)

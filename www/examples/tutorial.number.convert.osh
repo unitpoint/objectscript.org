@@ -11,7 +11,7 @@
   printf("\"12lo\": %9s %9s\n", numberOf("12lo"), toNumber("12lo"))
   printf("    12: %9s %9s\n", numberOf(12), toNumber(12))
 
-  var MyClass = {
+  var MyClass = extends Object {
     valueOf = function(){
       return 10
     }

@@ -1,6 +1,6 @@
 ﻿<pre style="font-size:18px"><%
 
-    Matrix = {
+    Matrix = extends Object {
         __construct = function(){
             this.data = {}
         },

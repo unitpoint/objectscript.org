@@ -14,7 +14,7 @@
   printf("\"0b10\": %9s %9s\n", d(stringOf("0b10")), d(toString("0b10")))
   printf("    12: %9s %9s\n", d(stringOf(12)), d(toString(12)))
 
-  var MyClass = {
+  var MyClass = extends Object {
     valueOf = function(){
       return 10
     }

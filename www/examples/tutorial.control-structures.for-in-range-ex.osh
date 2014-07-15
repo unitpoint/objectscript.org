@@ -1,6 +1,6 @@
 ﻿<pre style="font-size:18px"><%
 
-    Range = {
+    Range = extends Object {
         __construct = function(a, b){
             if(b){
                 @a, @b = a, b

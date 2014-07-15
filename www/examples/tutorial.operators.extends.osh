@@ -1,6 +1,6 @@
 ﻿<pre style="font-size:18px"><%
 
-    Person = {
+    Person = extends Object {
         __construct = function(firstname, lastname){
             this.firstname = firstname
             this.lastname = lastname

@@ -215,7 +215,7 @@ Model = extends Component {
 	},
 	
 	__get@tableName = function(){
-		return "{{"..(Object.getName.call(this) || @classname)
+		return "{{"..@classname
 			.replace(Regexp('/(?<![A-Z])[A-Z]/'), '_$0')
 			.replace(Regexp('/^_/'), '').lower().."}}"
 	},
@@ -232,7 +232,7 @@ Model = extends Component {
 		}
 		var row = app.db.fetch("select * from ${@tableName}"..(where != "" ? " where ${where}" : ""), params)
 		if(row){
-			var model = _G[Object.getName.call(this) || @classname]()
+			var model = _G[@classname]()
 			for(var k, v in row){
 				model[k] = v
 			}

@@ -1,6 +1,6 @@
 ﻿<pre style="font-size:18px"><%
 
-	Test = {
+	Test = extends Object {
 		__get@user = function(){
 			return this.__user
 		},
