@@ -27,7 +27,7 @@
 			"langref.basic-syntax.html" = "Изолирование от HTML",
 			"langref.basic-syntax.separation" = "Пробелы и точки с запятой",
 			"langref.basic-syntax.comments" = "Комментарии",
-			"langref.basic-syntax.concat" = "Конкатецация строк",
+			"langref.basic-syntax.concat" = "Конкатенация строк",
 			"langref.basic-syntax.functions-call" = {
 				"Вызов функции", {
 					"langref.basic-syntax.functions-call.intro" = "Введение",
