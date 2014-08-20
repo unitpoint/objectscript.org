@@ -91,7 +91,7 @@ function setCookie(name, value, expires, path, domain, secure, httponly){
 			buf.append("; expires="..(stringOf(expires) || throw "setCookie: expires should be DateTime, String or null"))
 		}
 		path && buf.append("; path=${path}")
-		domain && buf.append("; path=${domain}")
+		domain && buf.append("; domain=${domain}")
 		secure && buf.append("; secure")
 		httponly && buf.append("; httponly")
 	}
