@@ -13,7 +13,7 @@ HttpRequest = extends Component {
 	},
 	
 	getBaseUrl = function(absolute){
-		return absolute ? @hostInfo .. @baseUrl : @baseUrl
+		return absolute ? @fullBaseUrl : @baseUrl
 	},
 	
 	__get@baseUrl = function(){
@@ -21,7 +21,7 @@ HttpRequest = extends Component {
 	},
 	
 	__get@fullBaseUrl = function(){
-		return @getBaseUrl(true)
+		return @hostInfo .. @baseUrl
 	},
 	
 	__get@scriptUrl = function(){
