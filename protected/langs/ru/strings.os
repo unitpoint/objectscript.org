@@ -6,6 +6,7 @@
 	MENU_REFERENCE = "Справочник функций",
 	MENU_EXAMPLES = "Примеры",
 	MENU_EXAMPLE_METRO2033 = "Метро 2033",
+	MENU_EXAMPLE_OS2D = "OS2D для 2d игр под мобильники",
 	PARAM_LIST = "Список параметров",
 	DEFAULT_VALUE = "По умолчанию",
 	RETURN_VALUE = "Возвращаемое значение",
