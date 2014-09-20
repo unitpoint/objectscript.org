@@ -1,6 +1,6 @@
 *.osc
 *.ost
+*?-local.os
 /www/test/show.os
-/protected/config/*?-local.os
 /scripts/
 /in-progress/
