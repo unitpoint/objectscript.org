@@ -3,7 +3,8 @@
 %>
 <div class="bs-callout bs-callout-danger" style="margin-bottom: 30px;">
   <p>Загрузить новую версию 
-	<a href="<%=@controller.createUrl{action="download", amp="&amp;"}%>"><b>ObjectScript <%=OS_VERSION%></b></a>
+	<a href="<%=@controller.createUrl{action="download", amp="&amp;"}%>"><b>ObjectScript <%=OS_VERSION%></b></a>,
+	посмотреть <a href="https://github.com/unitpoint/objectscript/commits/master" target="_blank">изменения в этой версии</a>.
   </p>
 </div>
 

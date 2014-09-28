@@ -11,6 +11,7 @@
 				target="_blank" rel="nofollow">os-<%=OS_VERSION%>.zip</a>
 			&nbsp; <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-<%=OS_VERSION%>" 
 			target="_blank" title="Открыть архив ObjectScript"><span class="glyphicon glyphicon-folder-open"></span></a>
+			&nbsp; <a href="https://github.com/unitpoint/objectscript/commits/master" target="_blank">Изменения в этой версии</a>
 		</div>	  
 		<p>Содержит <a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp" 
 			target="_blank" rel="nofollow">os-fcgi</a> (fastcgi модуль для веб-разработки) и 
