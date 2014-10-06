@@ -10,6 +10,14 @@ function __get(name){
 	throw "unknown class or global property \"${name}\""
 }
 
+/* function Object.__get(name){
+	if(@prototype !== Object || @getProperty("__instantiable", false) !== null){
+		throw "unknown \"${name}\" property in ${@__name || @classname}"
+	}
+	return null
+} */
+
+
 function assert(a, message){
 	return a || throw(message || "assert failed")
 }
@@ -22,17 +30,28 @@ function evalEnv(str, env){
 	return compileText(str).applyEnv(env || _G, null, ...)
 }
 
-function delegateWithArgs(self, func){
-	var args = ...
-	return function(){ return func.apply(self, args) }
-}
-
 function delegate(self, func){
-	return function(){ return func.apply(self, arguments) }
+	var args = ...
+	if(#args == 0){
+
+
+
+		return function(){ return func.apply(self, arguments) }
+	}
+	return function(){ 
+		if(#arguments == 0){
+			return func.apply(self, args)
+		}
+		return func.apply(self, [].merge(args, arguments))
+	}
 }
 
 function Function.bind(self){
-	return delegate(self, this);
+	var args = ...
+	if(#args == 0){
+		return delegate(self, this)
+	}
+	return delegate.apply(_E, [self, this].merge(args))
 }
 
 function toArray(a){
