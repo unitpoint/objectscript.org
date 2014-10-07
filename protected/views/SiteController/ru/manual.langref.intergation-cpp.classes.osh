@@ -46,7 +46,7 @@ TestClass * constructTestClass(int i, float j){ return new TestClass(i, j); }
 void registerTestClass(OS * os)
 {
   OS::FuncDef funcs[] = {
-    def("__construct", constructTestClass),
+    def("__newinstance", constructTestClass),
     def("__get@i", &TestClass::getI),
     def("__set@i", &TestClass::setI),
     def("__get@j", &TestClass::getJ),
