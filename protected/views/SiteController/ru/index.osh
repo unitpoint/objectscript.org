@@ -58,7 +58,7 @@
   <%@controller.widget{'SourceWidget', source="examples/tutorial.fibonacci.os", row=false, width=6}%>
   <div class="col-md-6">
 	<p>Эта программа выводит числа фибоначчи в интервале от 0 до 100 в виде массива. Для ее запуска,
-	вопользуйтесь консольным приложением для запуска скриптов ObjectScript:</p>
+	воспользуйтесь консольным приложением для запуска скриптов ObjectScript:</p>
 <pre class="prettyprint lang-js">
 > os fibonacci.os
 [0,1,1,2,3,5,8,13,21,34,55,89]
