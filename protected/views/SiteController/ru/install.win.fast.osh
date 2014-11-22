@@ -1,0 +1,39 @@
+﻿<ol>
+<li><p>Загрузите полностью готовый для работы пакет <a href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-web.zip" 
+	target="_blank">os-web.zip</a>
+
+<li><p>Распакуйте пакет в корневую директорию диска <code>C:</code>, должно получится примерно так:
+<p class="text-left">
+	<img src="/img/objectscript-web-folder.jpg">
+</p>
+
+<li><p>Запустите файл <code>c:\os-web\os-web-start.cmd</code>
+
+<li><p>Откройте в браузере ссылку <a href="http://localhost/" target="_blank">http://localhost</a>
+<p class="text-left">
+	<img src="/img/objectscript-web-localhost.jpg">
+</p>
+</ol>
+
+<p>
+Теперь Вы можете программировать на ObjectScript под веб. Откройте Ваш первый скрипт на ObjectScript, 
+он находится тут <code>c:\os-web\nginx\html\index.osh</code> 
+<nobr>(см. <a href="<%=app.createUrl{controlller="site", action="manual", params={page="tutorial.useful"}, amp="&amp;"}%>">Делаем что-нибудь полезное</a>).</nobr>
+
+<p>
+Для удобства работы, в пакете имеются три управляющих файла:
+
+<ol>
+<li><p><code>c:\os-web\os-web-start.cmd</code> - старт вебсервера
+<li><p><code>c:\os-web\os-web-stop.cmd</code> - остановка вебсервера
+<li><p><code>c:\os-web\os-web-restart.cmd</code> - перезапуск вебсервера (например, после изменения файлов конфигурации)
+</ol>
+
+Можно вынести ссылки на эти файлы на рабочий стол для быстрого доступа. 
+
+<p>
+<div class="bs-callout bs-callout-danger">
+  Если у Вас уже запущен какой-либо другой вебсервер, то его необходимо выключить, 
+  после чего запустить <code>c:\os-web\os-web-start.cmd</code> заного.
+</div>
+</p>

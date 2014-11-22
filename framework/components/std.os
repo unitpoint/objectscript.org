@@ -372,8 +372,8 @@ path || throw "path module required"
 
 function path.normalize(path){
 	var r = []
-	for(var _, p in (stringOf(path) || throw "string required").split(Regexp("#[/\\\\]#"))){
-		if(p == "" || p == "."){
+	for(var _, p in (stringOf(path) || throw "string required").split(Regexp(`#[/\\]#`))){
+		if(!p || p == "."){
 			continue
 		}
 		if(p == ".."){

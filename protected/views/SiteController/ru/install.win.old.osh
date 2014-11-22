@@ -1,0 +1,13 @@
+﻿<p>
+Текущая версия <code>os-fcgi</code> под Windows предназначена для программирования на ObjectScript на локальном компьютере, т.е. чтобы использовать 
+ваш компьютер в качестве веб-сервера. Например, этот сайт можно скачать из репозитория и запустить на локальном компьютере.
+<ol>
+<li><p>
+Загрузим бинарные файлы под Windows или исходники сервиса <code>os-fcgi</code> 
+в разделе <a href="<%=@controller.createUrl{controller="site", action="download", amp="&amp;"}%>">Загрузки</a>.
+<li><p>
+Запустим файл <code>os-NN\os-fcgi.exe</code>
+<li><p>
+Осталось настроить <code>os-fcgi</code> под веб-сервер, например, 
+под <a href="<%=@controller.createUrl{params={page="install.win.denwer"}, amp="&amp;"}%>">apache на Denwer</a>.
+</ol>

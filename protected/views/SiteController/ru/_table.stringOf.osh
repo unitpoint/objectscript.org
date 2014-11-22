@@ -44,7 +44,7 @@
 	</tr>
 	<tr>
 	  <td><code>12</code></td>
-	  <td><span class="str">"12"</span></td>
+	  <td><code>null</code></td>
 	  <td><span class="str">"12"</span></td>
 	</tr>
 	<tr>

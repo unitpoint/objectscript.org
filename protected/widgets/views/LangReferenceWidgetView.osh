@@ -193,7 +193,7 @@ $(function(){
 					echo "<th><code>${name}</code></th>"
 					echo "<td width='100%'>"
 					if(content.def){
-						if(content.def == "true" || content.def == "false" || content.def == "null"){
+						if(content.def === "true" || content.def === "false" || content.def === "null"){
 							content.def = "<code>${content.def}</code>"
 						}
 						echo "<p>= ${decode(content.def)}</p>"
@@ -216,7 +216,7 @@ $(function(){
 				echo "<nobr>"
 				echo "<span class='pln'>${paramName}</span>"
 				if(param.def){
-					if(param.def == "true" || param.def == "false" || param.def == "null"){
+					if(param.def === "true" || param.def === "false" || param.def === "null"){
 						param.def = "<span class='kwd'>${param.def}</span>"
 					}
 					// echo "<p><b>${_T.DEFAULT_VALUE}:</b> ${decode(param.def)}</p>"
