@@ -1,0 +1,72 @@
+﻿<!-- <script type="text/javascript" src="ZeroClipboard.js"></script> -->
+<script type="text/javascript">
+$(function(){
+	/* clip.on( 'dataRequested', function (client, args) {
+		client.setText( "Copy me!" );
+	}); */
+	$("input").focus(function(){
+		// this.select();
+		// console.log("select", this)
+	}).click(function(){
+		this.select();
+		// console.log("click", this)
+	}).keyup(function(){
+		// console.log("keyup", this)
+		return false;
+	}).keydown(function(){
+		// console.log("keydown", this)
+		return false;
+	});
+});
+</script>
+<p>
+The website which you are currently viewing (<a href="http://objectscript.org">objectscript.org</a>)
+is written using ObjectScript which is available for free (Open-Source).
+</p>
+
+<table class="table table-striped vertical-align">
+  <tbody class="bold-sub-links">
+    <tr>
+	  <td width="45%">
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript.org"
+			target="_blank" title="Go to objectscript.org's source code">github.com/unitpoint/objectscript.org</a>
+	  </td>
+	  <td>
+		Go to objectscript.org's source code
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript.org/archive/master.zip"
+			target="_blank" title="Download objectscript.org's source as archiv">objectscript.org-master.zip</a>
+	  </td>
+	  <td>
+		Download objectscript.org's source as archiv
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control" type="text" value="https://github.com/unitpoint/objectscript.org.git" />
+	  </td>
+	  <td>
+		Clone the source of objectscript.org via HTTPS
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control" type="text" value="git@github.com:unitpoint/objectscript.org.git" />
+	  </td>
+	  <td>
+		Clone the source of objectscript.org via SSH
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control ro-link" type="text" value="https://github.com/unitpoint/objectscript.org" />
+	  </td>
+	  <td>
+		Clone the source of objectscript.org via SVN
+	  </td>
+	</tr>
+  </tbody>
+</table>

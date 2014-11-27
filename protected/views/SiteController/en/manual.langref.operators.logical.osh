@@ -1,0 +1,52 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Название</th>
+	  <th>Действие</th>
+	  <th>Эквивалент</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a || b</code></td>
+	  <td>Логическое ИЛИ</td>
+	  <td>Если <code>a</code> при преобразовании к булеву типу равно <i>истина</i>, то возвращается <code>a</code>, иначе <code>b</code>.</td>
+	  <td><code>a ? a : b</code></td>
+	</tr>
+	<tr>
+	  <td><code>a && b</code></td>
+	  <td>Логическое И</td>
+	  <td>Если <code>a</code> при преобразовании к булеву типу равно <i>ложь</i>, то возвращается <code>a</code>, иначе <code>b</code>.</td>
+	  <td><code>!a ? a : b</code></td>
+	</tr>
+	<tr>
+	  <td><code>!a</code></td>
+	  <td>Логическое отрицание (NOT)</td>
+	  <td>Если <code>a</code> при преобразовании к булеву типу равно <i>истина</i>, то возвращается <code>false</code>, иначе <code>true</code>.</td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>!!a</code></td>
+	  <td>К булеву типу</td>
+	  <td>Значение <code>a</code> преобразуется к булеву типу.</td>
+	  <td></td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+В ObjectScript преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
+все другие значения возвращают <i>истину</i>, включая число <code>0</code> и пустую строку <code>""</code>.
+</div>
+</p>
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.logical.osh"}%>
+
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.ternary"}, amp="&amp;"}%>">Тернарный оператор</a>, 
+	<a href="<%=@controller.createUrl{params={page="langref.types.bool"}, amp="&amp;", "#"="convert"}%>">Преобразование в булев тип</a>
+</div>

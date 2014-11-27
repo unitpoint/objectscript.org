@@ -1,0 +1,24 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>delete a[b]</code></td>
+	  <td>
+		<p>Если <code>a</code> - массив, то удаляет элемент массива по индексу <code>b</code>.  
+		<p>Если <code>a</code> - объект, то удаляет свойство с именем <code>b</code>.
+	</tr>
+  </tbody>
+</table>
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.delete.osh"}%>
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, amp="&amp;", "#"="delete"}%>">Удаление свойств объектов</a>
+</div>
+

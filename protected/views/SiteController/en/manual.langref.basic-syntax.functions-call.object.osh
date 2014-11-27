@@ -1,0 +1,14 @@
+﻿<p>
+В процессе разработки программы иногда появляется неоходимость вызвать функцию с одним параметром,
+который к тому же является контейнером пар ключ/значения (объектом).
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj-in-brackets.osh"}%>
+
+<p>
+ObjectScript позволяет вместо стоящих подряд скобок <code>({</code> и <code>})</code> использовать только фигурные.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.obj.osh"}%>
+<div class="alert alert-info">
+См. 
+<a href="<%=@controller.createUrl{params={page="langref.oop"}, amp="&amp;"}%>">ООП</a>
+</div>

@@ -1,0 +1,5 @@
+﻿<p>
+Обычным способом является конструкция вида <code>max(a, b)</code>. В начале указывается функция,
+затем в круглых скобках передаются параметры вызова через запятую.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.osh"}%>

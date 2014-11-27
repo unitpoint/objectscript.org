@@ -1,0 +1,6 @@
+﻿<p>
+ObjectScript разрешает объявить метод для удаления многомерного свойства. 
+Такой метод должен иметь имя <code>__deldim</code>, в параметрах которому передаются два (или больше) ключа 
+свойства, которое нужно удалить.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.oop.properties.delete-dim.osh"}%>

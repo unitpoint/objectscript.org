@@ -1,0 +1,59 @@
+﻿<p>
+Побитовые операторы позволяют считывать и устанавливать конкретные биты целых чисел.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Название</th>
+	  <th>Перегрузка методом</th>
+	  <th>Обратный метод</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a | b</code></td>
+	  <td>Побитовое ИЛИ</td>
+	  <td><code>__bitor</code></td>
+	  <td><code>__rbitor</code></td>
+	</tr>
+	<tr>
+	  <td><code>a & b</code></td>
+	  <td>Побитовое И</td>
+	  <td><code>__bitand</code></td>
+	  <td><code>__rbitand</code></td>
+	</tr>
+	<tr>
+	  <td><code>a ^ b</code></td>
+	  <td>Побитовое исключающее ИЛИ (XOR)</td>
+	  <td><code>__bitxor</code></td>
+	  <td><code>__rbitxor</code></td>
+	</tr>
+	<tr>
+	  <td><code>a << b</code></td>
+	  <td>Побитовый левый сдвиг</td>
+	  <td><code>__lshift</code></td>
+	  <td><code>__rlshift</code></td>
+	</tr>
+	<tr>
+	  <td><code>a >> b</code></td>
+	  <td>Побитовый правый сдвиг</td>
+	  <td><code>__rshift</code></td>
+	  <td><code>__rrshift</code></td>
+	</tr>
+	<tr>
+	  <td><code>~a</code></td>
+	  <td>Побитовая инверсия</td>
+	  <td><code>__bitnot</code></td>
+	  <td></td>
+	</tr>
+  </tbody>
+</table>
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.bitwise.osh"}%>
+
+<h3>Побитовые операции с <code>null</code></h3>
+
+<p>
+Любые побитовые операции с <code>null</code> всегда возвращаю <code>null</code>. Перегружаемые методы в этом случае не вызываются.

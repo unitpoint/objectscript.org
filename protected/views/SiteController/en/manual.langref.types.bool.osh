@@ -1,0 +1,49 @@
+﻿<p>
+Это простейший тип, который выражает истинность значения. Он может быть либо <code>true</code> 
+либо <code>false</code> (регистро-зависимы).
+Функция <code>typeOf</code> для булева типа возвращает строку <code>"boolean"</code>.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  foo = true; // присвоить foo значение true
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+Булев тип обычно используется при сравнении. Такие операторы возвращает <i>boolean</i> значение, 
+которое потом передается управляющей конструкции.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+  if (action == "show_version") {
+    echo "Current ObjectScript version is "..OS_VERSION;
+  }
+
+  if (show_separators) {
+    echo "<hr>";
+  }
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<h3 class="anchor-mark"><a name="convert"></a>Преобразование в булев тип</h3>
+
+<p>
+Для явного преобразования в <i>boolean</i>, мы используем в ObjectScript оператор двойного отрицания <code>!!</code>. 
+В большинстве случаев приведение типа необязательно, 
+так как значение будет автоматически преобразовано, если оператор, функция или управляющая конструкция 
+требует <i>boolean</i> аргумент.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+В ObjectScript преобразование к булеву типу происходит следующим образом: <code>null</code> и <code>false</code> возвращают <i>ложь</i>, 
+все другие значения возвращают <i>истину</i>, включая число <code>0</code> и пустую строку <code>""</code>.
+</div>
+</p>

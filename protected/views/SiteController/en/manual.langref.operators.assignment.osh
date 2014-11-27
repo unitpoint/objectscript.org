@@ -1,0 +1,72 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a = 5</code></td>
+	  <td>Левый операнд получает значение правого выражения (т.е. устанавливается значением).</td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+Результатом выполнения оператора присваивания является само присвоенное значение. Таким образом, результат 
+выполнения <code>a = 3</code> будет равен <code>3</code>. Это позволяет делать некоторые трюки.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.1.osh"}%>
+
+<p>
+ObjectScript позволяет инициализировать несколько переменных за один раз. При этом нужно указать перечисление (через запятую) 
+принимающих переменных, затем оператор присваивания (<code>=</code>) и перечисление значений. 
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Если количество значений
+будет меньше, чем количество переменных, то оставшиеся переменные получат пустое значение <code>null</code>.
+Если количество значений будет больше, чем количество переменных, то лишние значения будут проигнорированы.
+</div>
+</p>
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.2.osh"}%>
+
+<p>
+Интересное следствие из этого то, что можно менять местами два и более значений переменных одной командой.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.3.osh"}%>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<p>
+Обратите внимание, что при присваивании нескольких значений нескольким переменным в одном выражении, используется
+только один знак <code>=</code>.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint lang-js">
+
+  var a, b = 1, 2   // правильно
+  
+  var a = 1, b = 2  // так не правильно
+  
+</pre>
+  </div>
+</div>
+
+</div>
+</p>
+
+<p>
+Кроме этого, ObjectScript позволяет возвращать несколько значений из функций и сразу присваивать их переменным.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.return-values.osh"}%>
+
+<%if(false){%>
+<p>
+А еще ObjectScript позволяет присваивать одно значение сразу нескольким переменным одной командой.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.assignment.4.osh"}%>
+<%}/*if*/%>

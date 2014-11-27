@@ -1,0 +1,44 @@
+﻿<p>
+ObjectScript поддерживает комментарии в стиле <code>C++</code>, например:
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+    echo "Это тест"; // Это однострочный комментарий
+    /* Это многострочный комментарий
+       еще одна строка комментария */
+    echo "Это еще один тест";
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+Однострочные комментарии идут до конца строки. Если на этой строке нужно использовать закрывающий тег <code>%&gt;</code>,
+то необходимо воспользоваться коментарием вида <code>/* ... */</code>.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-html"><% @controller.beginWidget("HtmlEncodeWidget") %>
+<h1>Это &lt;% /* echo "простой" */ %&gt; пример</h1>
+<p>Заголовок вверху выведет 'Это пример'.</p>
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>
+
+<p>
+Многострочные комментарии заканчиваются при первой же обнаруженной последовательности <code>*/</code>. Убедитесь, что вы 
+не вкладываете друг в друга многострочные комментарии. Очень легко допустить эту ошибку при комментировании большого блока кода.
+
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js"><% @controller.beginWidget("HtmlEncodeWidget") %>
+&lt;%
+ /*
+    echo "Это тест"; /* Этот комментарий вызовет проблему */
+ */
+%&gt;
+<% @controller.endWidget("HtmlEncodeWidget") %></pre>
+  </div>
+</div>

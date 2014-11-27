@@ -1,0 +1,70 @@
+﻿<p>
+The ObjectScript source project contains two projects:
+
+<ul>
+<li><p><code>os</code> - Run ObjectScript programs on the command line.
+
+<li><p><code>os-fcgi</code> - ObjectScript for the web - a service designed for web servers and alike.
+<code>os-fcgi</code> implements the FastCGI protocol which is supported by pretty much all major web servers.
+</ul>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Installation should be done as the <code>root</code> user.
+</div>
+</p>
+
+<ol>
+<li><p>To get started, download the latest version of ObjectScript and go to the appropriate folder:</p>
+<pre>
+git clone https://github.com/unitpoint/objectscript.git
+cd ./objectscript
+</pre>
+<p class="text-left">
+	<img src="/img/objectscript-clone.png">
+</p>
+
+<li><p>Now configure the project for your platform:
+<pre>
+mkdir build && cd build
+cmake -DBUILD_SOCI=ON -DCMAKE_INSTALL_PREFIX=/ ..
+</pre>
+<p class="text-left">
+	<img src="/img/objectscript-configure.png">
+</p>
+
+<li><p>Now compile and install <code>os</code> and <code>os-fcgi</code>:</p>
+<pre>
+make
+make install
+</pre>
+<p class="text-left">
+	<img src="/img/objectscript-make.png">
+</p>
+
+<li><p>Awesome! Let's now start the <code>os-fcgi</code> service:</p>
+<pre>
+service os-fcgi restart
+</pre>
+<p class="text-left">
+	<img src="/img/os-fcgi-start.png">
+</p>
+</ol>
+
+<p>
+Those are all the commands to download and build ObjectScript at a glance:
+</p>
+<pre>
+git clone https://github.com/unitpoint/objectscript.git
+cd ./objectscript
+mkdir build && cd build
+cmake -DBUILD_SOCI=ON -DCMAKE_INSTALL_PREFIX=/ ..
+make
+make install
+service os-fcgi restart
+</pre>
+
+<p>
+Вот и все, мы скачали исходники <code>os-fcgi</code>, скомпилировали их, установили и запустили сервис <code>os-fcgi</code>.
+По умолчанию <code>os-fcgi</code> слушает порт 9000 на локальном компьютере, осталось только настроить наш веб-сервер для работы
+по протокоду FastCGI, чтобы начать программировать на OS.

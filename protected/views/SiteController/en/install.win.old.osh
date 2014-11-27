@@ -1,0 +1,19 @@
+﻿<p>
+The current version of <code>os-fcgi</code> is designed for local web development. You could even download
+this site's source code and run it on your local maschine.
+</p>
+
+<ol>
+<li><p>
+    Download <code>os-fcgi.exe</code> from the <a href="<%=@controller.createUrl{controller="site", action="download", amp="&amp;"}%>">
+    Downloads page</a>. You can also compile it from source.
+</p></li>
+<li><p>
+    Run the file <code>os-NN\os-fcgi.exe</code>
+</p></li>
+<li><p>
+    Now you only need to make your web server aware of ObjectScript. Yu can visit the tutorial to configure
+    ObjectScript with
+    <a href="<%=@controller.createUrl{params={page="install.win.denwer"}, amp="&amp;"}%>">Apache and Denwer</a>.
+</li></p>
+</ol>

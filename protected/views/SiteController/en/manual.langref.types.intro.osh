@@ -1,0 +1,64 @@
+﻿<p>
+ObjectScript поддерживает восемь типов данных.
+<% var c = @controller %>
+<p>
+Три скалярных типа:
+<ul>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.bool"}, amp="&amp;"}%>">boolean</a> - <code>true</code> или <code>false</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.number"}, amp="&amp;"}%>">number</a> - <code>10</code>, <code>0xf0</code>, <code>2.4</code>, <code>5.7e20</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.string"}, amp="&amp;"}%>">string</a> - <code>"Hello, World!"</code>
+</ul>
+
+<p>
+Два смешанных типа:
+
+<ul>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.array"}, amp="&amp;"}%>">array</a> - <code>[1, 2, 3, "value"]</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.object"}, amp="&amp;"}%>">object</a> - <code>{name="Ivan", lastname="Petrov"}</code>
+</ul>
+
+<p>
+Два специальных типа:
+<ul>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.null"}, amp="&amp;"}%>">null</a> - только одно значение  <code>null</code>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.userdata"}, amp="&amp;"}%>">userdata</a> - пользовательские данные для интеграции с кодом на <code>C++</code>
+</ul>
+
+<p>
+И один тип для функций:
+<ul>
+<li><p><a href="<%=c.createUrl{params={page="langref.types.function"}, amp="&amp;"}%>">function</a> - <code>function(){ print "Hello, World!" }</code>
+</ul>
+
+<p>
+ObjectScript - язык с динамической типизацией, это означает, что любая переменная может хранить сначало, например, число, 
+потом строку или любой др. тип данных, потом еще другой. 
+Обычно это определяется во время выполнения программы в зависимости от того, как используется переменная. 
+Если же требуется преобразовать один тип в другой, то для этого нужно использовать специальные функции, 
+например, <code>toNumber</code>,
+<code>toString</code> и т.п. Для того, чтобы узнать тип переменной, в ObjectScript применяется функция <code>typeOf</code>
+(возвращает строку с названием типа), а чтобы проверить тип:
+<code>numberOf</code>, <code>stringOf</code>, <code>arrayOf</code>, <code>objectOf</code>, 
+<code>userdataOf</code>, <code>functionOf</code>, <code>booleanOf</code>.
+
+
+<h3>Простые типы</h3>
+
+<p>
+К простым типам относятся: 
+<a href="<%=c.createUrl{params={page="langref.types.bool"}, amp="&amp;"}%>">boolean</a>,
+<a href="<%=c.createUrl{params={page="langref.types.number"}, amp="&amp;"}%>">number</a>,
+<a href="<%=c.createUrl{params={page="langref.types.string"}, amp="&amp;"}%>">string</a> и
+<a href="<%=c.createUrl{params={page="langref.types.null"}, amp="&amp;"}%>">null</a>. Они так называются, потому что не могут являться
+контейнерами для др. значений.
+
+<h3>Сложные типы</h3>
+
+<p>
+К сложным типам относятся: 
+<a href="<%=c.createUrl{params={page="langref.types.array"}, amp="&amp;"}%>">array</a>,
+<a href="<%=c.createUrl{params={page="langref.types.object"}, amp="&amp;"}%>">object</a>,
+<a href="<%=c.createUrl{params={page="langref.types.userdata"}, amp="&amp;"}%>">userdata</a> и
+<a href="<%=c.createUrl{params={page="langref.types.function"}, amp="&amp;"}%>">function</a>. Значения этих типов могут являться
+контейнерами для др. значений.
+

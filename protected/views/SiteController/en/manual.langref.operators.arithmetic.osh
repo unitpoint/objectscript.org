@@ -1,0 +1,75 @@
+﻿<p>
+Помните школьные основы арифметики? Описанные ниже операторы работают так же.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Название</th>
+	  <th>Перегрузка методом</th>
+	  <th>Обратный метод</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a + b</code></td>
+	  <td>Сложение</td>
+	  <td><code>__add</code></td>
+	  <td><code>__radd</code></td>
+	</tr>
+	<tr>
+	  <td><code>a - b</code></td>
+	  <td>Вычитание</td>
+	  <td><code>__sub</code></td>
+	  <td><code>__rsub</code></td>
+	</tr>
+	<tr>
+	  <td><code>a * b</code></td>
+	  <td>Умножение</td>
+	  <td><code>__mul</code></td>
+	  <td><code>__rmul</code></td>
+	</tr>
+	<tr>
+	  <td><code>a / b</code></td>
+	  <td>Деление</td>
+	  <td><code>__div</code></td>
+	  <td><code>__rdiv</code></td>
+	</tr>
+	<tr>
+	  <td><code>a % b</code></td>
+	  <td>Деление по модулю</td>
+	  <td><code>__mod</code></td>
+	  <td><code>__rmod</code></td>
+	</tr>
+	<tr>
+	  <td><code>a ** b</code></td>
+	  <td>Возведение в степень</td>
+	  <td><code>__pow</code></td>
+	  <td><code>__rpow</code></td>
+	</tr>
+	<tr>
+	  <td><code>+a</code></td>
+	  <td>Унарный плюс</td>
+	  <td><code>__plus</code></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>-a</code></td>
+	  <td>Унарный минус</td>
+	  <td><code>__minus</code></td>
+	  <td></td>
+	</tr>
+  </tbody>
+</table>
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.arithmetic.osh"}%>
+
+<h3>Арифметические операции с <code>null</code></h3>
+
+<p>
+Любые арифметические операции с <code>null</code> всегда возвращаю <code>null</code>. Перегружаемые методы в этом случае не вызываются.
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.operators.increment"}, amp="&amp;"}%>">Операторы инкремента и декремента</a>
+</div>

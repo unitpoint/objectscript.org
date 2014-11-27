@@ -1,0 +1,71 @@
+﻿<!-- <script type="text/javascript" src="ZeroClipboard.js"></script> -->
+<script type="text/javascript">
+$(function(){
+	/* clip.on( 'dataRequested', function (client, args) {
+		client.setText( "Copy me!" );
+	}); */
+	$("input").focus(function(){
+		// this.select();
+		// console.log("select", this)
+	}).click(function(){
+		this.select();
+		// console.log("click", this)
+	}).keyup(function(){
+		// console.log("keyup", this)
+		return false;
+	}).keydown(function(){
+		// console.log("keydown", this)
+		return false;
+	});
+});
+</script>
+<p>
+The ObjectScript language is written in C++ and available as open-source package, free of charge.
+</p>
+
+<table class="table table-striped vertical-align">
+  <tbody class="bold-sub-links">
+    <tr>
+	  <td width="45%">
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript"
+			target="_blank" title="Перейти в репозиторий open-source ObjectScript">github.com/unitpoint/objectscript</a>
+	  </td>
+	  <td>
+		Visit ObjectScript's open-source repository
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript/archive/master.zip"
+			target="_blank" title="Скачать open-source ObjectScript">objectscript-master.zip</a>
+	  </td>
+	  <td>
+		Download the source of ObjectScript as single archive
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control" type="text" value="https://github.com/unitpoint/objectscript.git" />
+	  </td>
+	  <td>
+		Clone the ObjectScript source via HTTPS
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control" type="text" value="git@github.com:unitpoint/objectscript.git" />
+	  </td>
+	  <td>
+		Clone the ObjectScript source via SSH
+	  </td>
+	</tr>
+    <tr>
+	  <td>
+		<input class="form-control ro-link" type="text" value="https://github.com/unitpoint/objectscript" />
+	  </td>
+	  <td>
+		Clone the ObjectScript source via SVN
+	  </td>
+	</tr>
+  </tbody>
+</table>

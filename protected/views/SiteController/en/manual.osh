@@ -1,0 +1,11 @@
+<% 
+	// setCookie("manual", @page, DateTime.now()+1)
+	@controller.widget{"ManualWidget",
+		content = require("manual-content.os"),
+		page = @page,
+		pageViewPrefix = path.dirname(__FILE__).."/manual.",
+		breadcrumb = {
+			url = @controller.createUrl{amp="&amp;"},
+			name = _T.MENU_MANUAL,
+		},
+	}
