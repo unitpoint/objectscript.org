@@ -30,6 +30,21 @@
 </div>
 
 <div class="page-header">
+  <h2>Установка ObjectScript под Windows</h2>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+	<iframe width="560" height="315" src="//www.youtube.com/embed/u9_sfc7bP0k" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="col-md-6">
+	Установка ObjectScript под Windows займет всего несколько минут. На видео подробно рассказывается и показывается, 
+	как это сделать в реальном времени. Кроме установки и настройки ObjectScript для программирования под веб,
+	на видео также поканы несколько примеров и написан скрипт, примерный аналог команды <code>dir</code> в Windows.
+  </div>
+</div>
+
+<div class="page-header">
   <h2>Первая страница на ObjectScript <small>файл index.osh</small></h2>
 </div>
 
