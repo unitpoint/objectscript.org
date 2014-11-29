@@ -1,0 +1,27 @@
+﻿<p>
+To check our test virtual host inscribe his name ( http://ostest ) in the browser address bar. If all goes well, we will see something like:
+To verify that your test setup is correct, you can visit <a href="http://ostest">http://ostest</a>.
+If everything worked well, then you should see soemthing like in this image below:
+<p class="text-center">
+	<img src="/img/os-fcgi-just-ready.png" class="img-thumbnail">
+</p>
+
+<p>
+Now it's time to do something interesting with OS. To do this, you may want to read the examples in the
+documentation section, where you can also find a simple
+<a href="<%=@controller.createUrl{action="manual", params={page="tutorial"}, amp="&amp;"}%>">tutorial</a>
+for web developers.
+</p>
+
+<h3>What to do, if it did not work?</h3>
+<p>
+If the browser displays an error 500, this one for example:
+<p class="text-center">
+	<img src="/img/denwer-err-500.png" class="img-thumbnail">
+</p>
+<p>
+	Then that means that the <code>os-fcgi</code> service is not running,
+	listening to the port or oyu have misconfigured your web server. Follow the instructions under
+	<a href="<%=@controller.createUrl{params={page="install.win.denwer"}, amp="&amp;"}%>">Installing with Apache and Denwer</a>
+	to solve this problem
+</p>

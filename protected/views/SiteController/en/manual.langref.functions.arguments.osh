@@ -1,0 +1,54 @@
+﻿<p>
+Функция может принимать информацию в виде списка аргументов, который является списком разделенных запятыми выражений. 
+Аргументы вычисляются слева направо.
+
+<p>
+В ObjectScript аргументы передаются по значению. Это означает, что нельзя изменить саму переменную, которая была передана в аргументе, 
+но можно изменить свойства аргументов сложных типов, например, объектов. Такие изменения сохранятся после завершения функции.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Оператор</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>arguments</code></td>
+	  <td>Возвращает массив всех аргументов, с которыми функция была запущена.</td>
+	</tr>
+	<tr>
+	  <td><code>...</code></td>
+	  <td>Возвращает массив дополнительных аргументов, с которыми функции была запущена.</td>
+	</tr>
+  </tbody>
+</table>
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.functions.apply.osh"}%>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<p>
+Метод <code>apply</code> вызывает функцию в контексте любого объекта (первый аргумент в apply) со списком 
+параметров (второй аргумент в apply, может быть массив или объект, в случае объекта передаются только 
+именованные параметры). 
+
+<h3>Пример из класса Controller</h3>
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/CController.os#L25"}%>
+<pre class="prettyprint linenums lang-js">
+  runAction = function(name){
+    var old;
+    old, @actionId = @actionId, name || @owner.defaultAction;
+    this["action${@actionId.flower()}"].apply(this, {}.merge(_GET, _POST));
+    @actionId = old;
+  },
+</pre>
+  </div>
+</div>
+
+</div>
+</p>
+

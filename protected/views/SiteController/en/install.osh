@@ -1,0 +1,10 @@
+﻿<% 
+	@controller.widget{"ManualWidget",
+		content = require("install-content.os"),
+		page = @page,
+		pageViewPrefix = path.dirname(__FILE__).."/",
+		breadcrumb = {
+			url = @controller.createUrl{amp="&amp;"},
+			name = _T.MENU_INSTALL,
+		},
+	}

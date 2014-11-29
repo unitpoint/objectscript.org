@@ -1,0 +1,109 @@
+﻿<p>
+Пробелы, символы табуляции и новой строки, которые используются вне строковых констант, не влияют на семантику языка. 
+ObjectScript автоматически определяет, где начинаются и заканчиваются инструкции, поэтому обычно не требуется использовать 
+точки с запятой. Однако, бывают случаи, когда код не будет идентичен с точкой с запятой и без неё.
+
+<h3>Файл test.os</h3>
+<div class="row">
+  <div class="col-md-10">
+<pre class="prettyprint linenums lang-js">
+  var a = getValue(buf)
+  ;(a >= 0 && a <= 10) || throw "error"
+</pre>
+  </div>
+</div>
+
+<p>
+В данном случае, если не использовать <code>;</code>, то результат
+выполнения <code>getValue(buf)</code> будет интерпретироваться, как функция (ObjectScript позволяет возвращать функции), 
+которую нужно вызвать с одним параметром - результатом выражения <code>a >= 0 && a <= 10</code>.
+
+<p>
+Поэтому следует придерживаться нескольких правил для правильного разделения инструкций или разделять их всегда.
+
+<p>
+<div class="bs-callout bs-callout-danger">
+  <p>Общее правило для использования <code>;</code> можно сформулировать следующими двумя пунктами: 
+  <ul>
+	<li><p>точку с запятой требуется ставить перед любыми открывающими скобками, а именно 
+	перед <code>(</code>, <code>{</code> и <code>[</code>, когда они означают не продолжение существующей, 
+	а начало новой инструкции (как в выше приведенном примере)
+	<li><p>когда вы используете выход из функции и ничего при этом не возвращаете - <code>return;</code>
+  </ul>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+  <p>Если вы сомневаетесь, нужно или не нужно вам ставить разделитель между инструкциями, то лучше ставьте.
+</div>
+
+<%return%>
+
+<h3>P.S.</h3>
+
+<p>
+ObjectScript компилирует код в бинарные команды, которые, в зависимости от настроек, сохраняются в отладочных тестовых 
+файлах с расширением <code>.ost</code>. Например, выше приведенный пример будет скомпилирован в следующие наборы команд:
+
+<div class="row">
+  <div class="col-md-6">
+	<h4>Команды c использованием <code>;</code></h4>
+<pre class="prettyprint">
+[1] var a = getValue(buf)
+
+  begin call method
+    move: (5) = var _E
+    move: (6) = "getValue"
+    get property: (7) = var _E ["buf"]
+  end call method: start 5, params 3, ret 1
+  move: var a (4) = (5)
+
+[2] ;(a >= 0 && a <= 10) || throw "error"
+
+  begin pop
+    move: (5) = var a (4)
+    move: (6) = const number 0
+    (5) = (5) [logic >=] (6)
+    logic &&: (5)
+      move: (5) = var a (4)
+      move: (6) = const number 10
+      (5) = (5) [logic <=] (6)
+    logic ||: (5)
+      move: (5) = "error"
+      throw: (5)
+      move: (5) = null
+  end pop 
+</pre>
+  </div>
+  <div class="col-md-6">
+	<h4>Команды без использования <code>;</code></h4>
+<pre class="prettyprint">
+  begin call
+
+[1] var a = getValue(buf)
+
+    begin call method
+      move: (5) = var _E
+      move: (6) = "getValue"
+      get property: (7) = var _E ["buf"]
+    end call method: start 5, params 3
+
+[2] (a >= 0 && a <= 10) || throw "error"
+
+    move: (6) = null
+    get property: (7) = var _E ["a"]
+    move: (8) = const number 0
+    (7) = (7) [logic >=] (8)
+    logic &&: (7)
+      get property: (7) = var _E ["a"]
+      move: (8) = const number 10
+      (7) = (7) [logic <=] (8)
+  end call: start 5, params 3, ret 1
+  logic ||: (5)
+    move: (5) = "error"
+    throw: (5)
+    move: (5) = null
+  move: var a (4) = (5)  
+</pre>
+  </div>
+</div>

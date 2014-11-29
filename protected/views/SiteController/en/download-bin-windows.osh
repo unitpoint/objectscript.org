@@ -1,0 +1,75 @@
+﻿<p>
+Newest packages for Windows.
+
+<table class="table">
+  <tbody class="bold-sub-links">
+	<tr>
+	  <td>
+		<div style="padding-left:40px">
+		    <p><a type="button" class="btn btn-default btn-sm" href="https://github.com/unitpoint/objectscript-bin-win/raw/master/os-<%=OS_VERSION%>.zip"
+				target="_blank" rel="nofollow">os-<%=OS_VERSION%>.zip</a>
+			&nbsp; <a href="https://github.com/unitpoint/objectscript-bin-win/tree/master/os-<%=OS_VERSION%>"
+			target="_blank" title="Open ObjectScript archiv"><span class="glyphicon glyphicon-folder-open"></span></a>
+			&nbsp; <a href="https://github.com/unitpoint/objectscript/commits/master" target="_blank">Changes in this version (Changelog)</a>
+		</div>
+		<p>contains <a href="https://github.com/unitpoint/objectscript/blob/master/os-fcgi.cpp"
+			target="_blank" rel="nofollow">os-fcgi</a> (FastCGI module for websites) and
+			<a href="https://github.com/unitpoint/objectscript/blob/master/os.cpp"
+			target="_blank" rel="nofollow">os</a> (Execute scripts ont he command line).
+	  </td>
+	</tr>
+	<tr>
+	  <td class="success">
+		<p>
+		The following modules are included:
+		<div style="padding-left:40px">
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-base64"
+				target="_blank" rel="nofollow">base64</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-curl"
+				target="_blank" rel="nofollow">curl</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-datetime"
+				target="_blank" rel="nofollow">datetime</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-filesystem"
+				target="_blank" rel="nofollow">filesystem</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-hashlib"
+				target="_blank" rel="nofollow">hashlib</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-iconv"
+				target="_blank" rel="nofollow">iconv</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-json"
+				target="_blank" rel="nofollow">json</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-odbo"
+				target="_blank" rel="nofollow">odbo</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-process"
+				target="_blank" rel="nofollow">process</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-regexp"
+				target="_blank" rel="nofollow">regexp</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-sqlite3"
+				target="_blank" rel="nofollow">sqlite3</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-url"
+				target="_blank" rel="nofollow">url</a>
+		    <a type="button" class="btn btn-info btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-zlib"
+				target="_blank" rel="nofollow">zlib</a>
+		</div>
+        </p>
+	  </td>
+	</tr>
+	<tr>
+	  <td class="danger">
+		<p>
+        The following modules are NOT included:
+		<div style="padding-left:40px">
+		    <a type="button" class="btn btn-warning btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-libnoise"
+				target="_blank" rel="nofollow">libnoise</a>
+			<a type="button" class="btn btn-warning btn-sm" href="https://github.com/unitpoint/objectscript/tree/master/src/ext-opengl"
+				target="_blank" rel="nofollow">opengl</a>
+		</div>
+        </p>
+	  </td>
+    </tr>
+  </tbody>
+</table>
+
+<p>
+ObjectScript is distributed in compiled as well as open-source form under the <a href="https://github.com/unitpoint/objectscript/blob/master/LICENSE" target="_blank" rel="nofollow">MIT license</a>,
+which permits free use of ObjectScript within your project.
+</p>

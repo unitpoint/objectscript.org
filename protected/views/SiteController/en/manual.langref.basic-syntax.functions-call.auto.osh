@@ -1,0 +1,30 @@
+﻿<p>
+Как уже отмечалось ранее, в ObjectScript любые выражения - это либо управляющие конструкции, либо вызовы фукнций. 
+Поэтому рядом стоящие два выражения интерпретируются ObjectScript как  функция и ее параметр. Это позволяет не использовать
+скобки в конструкциях вида.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.auto.osh"}%>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Такой вызов будет рабоать в том случае, если функция стоит обособлено, т.е. не является частью 
+другого выражения или управляющей конструкции. Другими словами, автоматический вызов нельзя использовать
+внутри выражений из нескольких операторов и т.п.
+</div>
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<p>
+Автоматический вызов не будет работать, если параметром функции является массив, записаный
+через квадратные скобки, т.к. такая конструкция обозначает доступ к свойству объекта.
+В такой ситуации нужно использовать обычный вызов функции через круглые скобки.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.basic-syntax.functions-call.auto-array.osh"}%>
+</div>
+</p>
+<div class="alert alert-info">
+См. 
+<a href="<%=@controller.createUrl{params={page="langref.oop.properties"}, amp="&amp;"}%>">Свойства объектов</a>,
+<a href="<%=@controller.createUrl{params={page="langref.oop"}, amp="&amp;"}%>">ООП</a>
+</div>

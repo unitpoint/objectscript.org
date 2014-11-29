@@ -1,0 +1,176 @@
+﻿<p>
+Числа в ObjectScript являются числами с плавающей точкой. Размер числа зависит от платформы, хотя максимум, как правило 
+составляет <code>~1.8e308</code> с точностью около 16 десятичных цифр (64-битный IEEE формат).
+<p>
+В ObjectScript числа можно записать в разных вариантах.
+
+<div class="row">
+  <div class="col-md-11">
+<pre class="prettyprint linenums lang-js">
+  a = 1234;   // десятичное число
+  a = -123;   // отрицательное число
+  a = 0123;   // восьмеричное число (эквивалентно 83 в десятичной системе)
+  a = 0x1A;   // шестнадцатеричное число (эквивалентно 26 в десятичной системе)
+  a = 0b101;  // двоичное число (эквивалентно 5 в десятичной системе)
+  a = 1.5;    // число с плавающей точкой
+  a = 1.5e2;  // экспоненциальная запись числа (эквивалентно 150.0)
+  a = 150e-2; // еще экспоненциальная запись (эквивалентно 1.5)
+</pre>
+  </div>
+</div>
+
+<h3>Погрешности в вычислениях</h3>
+
+<p>
+Числа хранятся в 64-битном IEEE формате (по умолчанию), который обеспечивает точность около 16 десятичных цифр. 
+Т.к. это всегда числа с плавающей точкой, то они могут не совсем точно хранить ожидаемое значение с учетом цифр после запятой.
+Ответ на вопрос, почему это работает именно так, можно найти в <a href="http://floating-point-gui.de/" 
+target="_blank" rel="nofollow">руководстве по числам с плавающей точкой</a>, которое также называется <i>"Why don’t my numbers add up?"</i> 
+("Почему мои числа не складываются?").
+
+<h3>Пример с точностью чисел</h3>
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.numbers.osh"}%>
+
+<h3>Сравнение чисел с плавающей точкой</h3>
+
+<p>
+С учетом потерь на точность вычислений, проверять числа с плавающей точкой на равенство проблематично из-за их внутреннего представления. 
+Тем не менее, существуют способы для их сравнения, которые работают несмотря ни на что.
+<p>
+Для сравнения чисел с плавающей точкой используется верхняя граница относительной ошибки при округлении. Эта величина называется 
+машинной эпсилон или единица округления (unit roundoff) и представляет собой самую маленькую допустимую разницу при расчетах.
+
+<h3><code>a</code> и <code>b</code> равны до 5-ти знаков</h3>
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.numbers.compare.osh"}%>
+
+<h3>Преобразование в число</h3>
+
+<p>
+При выполнении математических операций, ObjectScript автоматически выполняет следующие преобразования:
+
+<p>
+<%@controller.renderPartial("_table.numberOf.osh")%>
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Значение</th>
+	  <th>Результат</th>
+	  <th>Комментарий</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>true</code></td>
+	  <td><code>1</code></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>false</code></td>
+	  <td><code>0</code></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>12</code></td>
+	  <td><code>12</code></td>
+	  <td>это уже число</td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+По умолчанию в ObjectScript математические операторы не работают с др. типами данных. Это сделано для того, 
+чтобы исключить невидимые для программиста преобразования типов и иметь больший контроль над 
+функционалом. Если попытаться сложить строку и число, произойдет исключение времени выполнения.
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.numbers.num-plus-str.osh"}%>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+ObjectScript предлагает разработчику определить, что именно должно произойти в этом случае, 
+например, строковая конкатенация или математическое сложение или оставить как есть. 
+Читайте об этом подробнее в разделе <nobr><a 
+href="<%=@controller.createUrl{params={page="langref.oop.magic-methods"}, amp="&amp;"}%>">Магические методы</a></nobr>.
+</div>
+</p>
+
+<p>
+В ObjectScript преобразование в число выполняется функцией <code>toNumber</code>, она преобразует выше описанные простые типы,
+а также <code>null</code> и строки в число. Для значений других типов, вызывается метод <code>valueOf</code> их прототипа, 
+который должен вернуть один из простых типов (который сам по себе легко преобразуется в число). Если преобразование в число 
+невозможно, то <code>toNumber</code> возвращает <code>0</code>.
+
+<p>
+Другой важной концепцией в ObjectScript является проверка совместимости с числом функцией <code>numberOf</code>. Она также умеет преобразовывать
+строку и булево значение в число, а для <code>null</code> и остальных не числовых типов возвращает <code>null</code>.
+
+<h3>Пример <code>numberOf</code> в DateTime.__add</h3>
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L140"}%>
+<pre class="prettyprint linenums lang-js">
+function DateTime.__add(b){
+  return DateTime {
+    comdate = @comdate + (numberOf(b) || throw "DateTime.__add requires Number")
+  }
+}
+</pre>
+  </div>
+</div>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+<code>DateTime.__add</code> реализует метод прибавление к дате количества дней, которое должно быть числовым. 
+Если к дате прибавить не число, например, значение объектного типа, то это не имеет логического смысла, поэтому 
+вызывается исключение оператором <code>throw</code>.
+</div>
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+Обратите внимание, что в ObjectScript преобразование к булеву типу происходит следующим образом: 
+<code>null</code> и <code>false</code> возвращают <i>ложь</i>, все другие значения возвращают <i>истину</i>, 
+включая число <code>0</code> и пустую строку <code>""</code>. Именно поэтому выше приведенный код работает 
+правильно, даже когда переменная <code>b</code> равна <code>0</code> (нулю).
+</div>
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+В ObjectScript операторы <code>&&</code> и <code>||</code> возвращают исходное значение, делая логическую проверку за кадром.
+</div>
+</p>
+
+<%if(false){%>
+<h3>Пример <code>numberOf</code> в HttpRequest</h3>
+<div class="row">
+  <div class="col-md-11 badge-src">
+	<span class="badge"><a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/CHttpRequest.os#L39"
+		target="_blank" title="Исходник"><span class="glyphicon glyphicon-paperclip"></span></a></span>
+<pre class="prettyprint linenums lang-js">
+__get@port = function(){
+    return @_port || @_port = (!@isSecureConnection 
+        && numberOf(_SERVER['SERVER_PORT'])) || 80
+},
+</pre>
+  </div>
+</div>
+<%}/*if*/%>
+
+<h3>Пример работы <code>numberOf</code> и <code>toNumber</code></h3>
+
+<%@controller.widget{'SourceWidget', source="examples/tutorial.number.convert.osh"}%>
+
+<p>
+<% require("_table.numberOf.osh") %>
+
+<h3>Преобразование в целое</h3>
+
+<p>
+В ObjectScript числа автоматически преобразуются в целые (как и наоборот) при необходимости. Например, при использовании побитовых
+операторов <code>|</code>, <code>&amp;</code>, <code>^</code> и <code>~</code>.
+<p>
+Для явного преобразования в целое, используйте конструкцию <code>foo | 0</code>. Для того, чтобы 
+преобразовать число в 32-битное целое, используйте конструкцию <code>foo & 0xffffffff</code>. Кроме этого
+могут быть полезны фунцкции <code>math.floor</code>, <code>math.ceil</code>, <code>math.round</code>.

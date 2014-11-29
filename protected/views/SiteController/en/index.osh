@@ -1,0 +1,93 @@
+﻿<%
+	@controller.pageTitle = "A new programming language / ObjectScript Home"
+%>
+<div class="bs-callout bs-callout-danger" style="margin-bottom: 30px;">
+  <p>Download the newest version version
+	<a href="<%=@controller.createUrl{action="download", amp="&amp;"}%>"><b>ObjectScript <%=OS_VERSION%></b></a>,
+	or see <a href="https://github.com/unitpoint/objectscript/commits/master" target="_blank">the latest changes</a>.
+  </p>
+</div>
+
+<div class="jumbotron gradient_ie9">
+	<div class="pull-right"><%=@controller.renderPartial("/layouts/_uptolike")%></div>
+	<h1>ObjectScript</h1>
+	<p>
+	ObjectScript, OS for short, is a new programming language for web developers. It's free, cross-platform,
+	lightweight, embeddable and open-source. it combines the benefits of multiple languages, including:
+	JavaScript, Lua, Ruby, Python and PHP. OS features the syntax of Javascripts, the "multiple results"
+	feature from lua, syntactic shugar from Ruby as well as magic methods from PHP and Ruby - and even more!
+	<p>
+	<a class="btn btn-lg btn-primary btn-download" href="<%=@controller.createUrl{action='download', amp='&amp;'}%>" role="button">Download! &raquo;</a>
+</div>
+
+<div class="bs-callout bs-callout-info">
+	<p>
+	ObjectScript is a universal language, able to be used for web development as well as scripting.
+	it can even be embedded into C++ programs.
+	For instance, this site, <a href="http://objectscript.org" target="_blank" rel="nofollow">objectscript.org</a>, was written using OS!
+	ObjectScript - это универсальный язык программирования, ObjectScript предназначен
+	для разработки сайтов или написания скриптов, а также для встраивания в программы на C++.
+</div>
+
+<div class="page-header">
+  <h2>Installation under Windows</h2>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+	<iframe width="560" height="315" src="//www.youtube.com/embed/u9_sfc7bP0k" frameborder="0" allowfullscreen></iframe>
+  </div>
+  <div class="col-md-6">
+	The installation under Windows is very short and barely takes any time. In this video, you will see
+	how to install OS as well to configure it. You also will see a small test program
+	that is similar to Windows' <code>dir</code> command.
+  </div>
+</div>
+
+<div class="page-header">
+  <h2>Your first page in ObjectScript: <small>index.osh</small></h2>
+</div>
+
+<div class="row">
+  <%@controller.widget{'SourceWidget', source="examples/tutorial.firstpage-simple.osh", lang="html", row=false, width=6}%>
+  <div class="col-md-6">
+	<p>
+	Open this file in your favorite web browser y typing in the address of your webserver and <code>/index.osh</code>. For local development, this might be: htto://localhost/index.osh (It depends on the settings within your web server).
+
+	This program is extremely simple. All that it does is display "Hello world!" using ObjectScript's <code>echo</code>. Note that the file is not required to be pre-processed or anything alike. The server will know that this file has to be passed to ObjectScript, because it's file extension is .osh. Think of it like it was a normal hTML document which can have embedded ObjectScript code, and do a bunch of interesting things!
+  </div>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <p>If you are getting a blank page, or are seeing the entire source code instead,
+	then it is very likely that your web server is mis-configured. Pelase see
+	<a href="<%=@controller.createUrl{action="install", amp="&amp;"}%>"> the installation guide</a>
+	to get assistance in installing and configuring OS in your system and with your web server.</p>
+</div>
+
+<div class="page-header">
+  <h2>Your first script in ObjectScript: <small>fibonacci.os</small></h2>
+</div>
+
+<div class="row">
+  <%@controller.widget{'SourceWidget', source="examples/tutorial.fibonacci.os", row=false, width=6}%>
+  <div class="col-md-6">
+	<p>This program displays the Fibonacci numbers in the range from 0 to 100 in an array. To run the program, use the console application to run scripts ObjectScript:
+	This program displays all the Fibonacci numbers from 0 trough 100 as an array.
+	To run it, use the <code>os</code> command line tool which can run ObjectScript programs
+	on the command prompt.</p>
+<pre class="prettyprint lang-js">
+$ os fibonacci.os
+[0,1,1,2,3,5,8,13,21,34,55,89]
+</pre>
+  </div>
+</div>
+
+<div class="bs-callout bs-callout-danger">
+  <p>Obtain the source code or binary packages at the
+	<a href="<%=@controller.createUrl{action='download', amp="&amp;"}%>">
+		Downloads page
+	</a>.</p>
+</div>
+
+<%@controller.widget{'FixTypoWidget', file=__FILE__}%>

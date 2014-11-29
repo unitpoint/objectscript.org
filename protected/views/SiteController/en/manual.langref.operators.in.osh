@@ -1,0 +1,20 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a in b</code></td>
+	  <td>
+		<p>Если <code>b</code> - массив, то возвращает <i>истину</i>, когда в массиве существует элемент <code>a</code>.  
+		<p>Если <code>b</code> - объект, то возвращает <i>истину</i>, когда в объекте существует свойство с именем <code>a</code>.
+		<p>Иначе возвращает <i>ложь</i>.
+	</tr>
+  </tbody>
+</table>
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.in.osh"}%>

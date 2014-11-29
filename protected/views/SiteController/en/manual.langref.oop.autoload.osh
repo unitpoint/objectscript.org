@@ -1,0 +1,36 @@
+﻿<p>
+Для автоматической загрузки классов в ObjectScript используется механизм обращения к неизвестному свойству в глобальной области видимости.
+
+<p>
+Автоматическая загрузка уже работает при подключении <a href="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L1" 
+target="_blank" rel="nofollow">библиотеки std</a> и реализована следующим образом.
+
+<div class="row">
+  <div class="col-md-11 badge-src">
+    <%@controller.widget{'BadgeSourceWidget', source="https://github.com/unitpoint/objectscript.org/blob/master/framework/components/std.os#L1"}%>
+<pre class="prettyprint linenums lang-js">var modulesLoaded = {}
+function __get(name){
+    if(!(name in modulesLoaded)){
+        modulesLoaded[name] = true
+        require(name, false)
+        if(name in this){
+            return this[name]
+        }
+    }
+    throw "unknown class or global property \"${name}\""
+}
+</pre>
+  </div>
+</div>
+
+<p>
+Как это работает? При обращении к неизвестному свойству, вызывается магический метод <code>__get</code>. Он пытается подгрузить файл
+с названием запрашиваемого свойства (при этом проверяется, что запрос к неизвествному свойству не происходит рекурсивно). 
+Если в результате свойство определено (подгружено), то оно возвращается пользователю. Если нет, то вызывается исключение.
+
+<div class="alert alert-info">
+См. 
+<a href="<%=@controller.createUrl{params={page="langref.include-files"}, amp="&amp;"}%>">Механизм подключения файлов</a>,
+<a href="<%=@controller.createUrl{params={page="langref.oop.magic-methods"}, amp="&amp;"}%>">Магические методы</a>
+
+</div>

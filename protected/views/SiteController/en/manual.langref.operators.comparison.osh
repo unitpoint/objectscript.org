@@ -1,0 +1,108 @@
+﻿<p>
+Операторы сравнения, как это видно из их названия, позволяют сравнивать между собой два значения.
+
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Название</th>
+	  <th>Перегрузка методом</th>
+	  <th>Обратный метод</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a === b</code></td>
+	  <td>Строгое равно</td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>a !== b</code></td>
+	  <td>Строгое не равно</td>
+	  <td></td>
+	  <td></td>
+	</tr>
+	<tr>
+	  <td><code>a == b</code></td>
+	  <td>Равно</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>a != b</code></td>
+	  <td>Не равно</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>a >= b</code></td>
+	  <td>Больше или равно</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>a <= b</code></td>
+	  <td>Меньше или равно</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>a > b</code></td>
+	  <td>Больше</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>a < b</code></td>
+	  <td>Меньше</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+	<tr>
+	  <td><code>a <=> b</code></td>
+	  <td>Сравнение</td>
+	  <td><code>__cmp</code></td>
+	  <td><code>__rcmp</code></td>
+	</tr>
+  </tbody>
+</table>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+ Оператор <code>===</code> (строгое равно) возвращает <code>true</code> если типы обоих значений и зами значения равны.
+ Оператор <code>!==</code> возвращает обратный результат от <code>===</code>.
+</div>
+</p>
+
+<p>
+<div class="bs-callout bs-callout-danger">
+ <p>Оператор <code><=></code> сравнивает два аргумента в конструкции <code>a <=> b</code> и возвращает число:
+ <ul>
+   <li><p>меньше нуля, если <code>a < b</code>
+   <li><p>больше нуля, если <code>a > b</code>
+   <li><p>ноль, если <code>a == b</code>
+</div>
+</p>
+
+<h3 class="anchor-mark"><a name="null"></a>Сравнение с <code>null</code></h3>
+<p>
+В ObjectScript операторы нестрогого сравнения с <code>null</code> (пустое значение) всегда возвращают <code>false</code>. Перегружаемые методы
+(<code>__cmp</code>, <code>__rcmp</code>) в этом случае не вызываются. Чтобы проверить значение на <code>null</code>, нужно использовать
+операторы строгово сравнения.
+ 
+<div class="row">
+  <div class="col-md-11 badge-src">
+<pre class="prettyprint linenums lang-js">
+  if(a !== null){
+    // в а не пустое значение
+  }
+</pre>
+  </div>
+</div>
+
+<p>Оператор <code><=></code>, при сравнении с <code>null</code>, также не вызывает перегружаемые операторы. В этом случае, любое 
+не пустое значение всегда больше, чем пустое.
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.comparison.osh"}%>

@@ -1,0 +1,23 @@
+﻿<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th>Синтаксис</th>
+	  <th>Действие</th>
+	</tr>
+  </thead>
+  <tbody>
+	<tr>
+	  <td><code>a .. b</code></td>
+	  <td>Аргументы (<code>a</code>, <code>b</code>) преобразуются к строковому типу, после чего 
+		к первому значению присоединяется второе.</td>
+	</tr>
+  </tbody>
+</table>
+
+<h3>Пример</h3>
+<%@controller.widget{'SourceWidget', source="examples/tutorial.operators.concat.osh"}%>
+
+
+<div class="alert alert-info">
+См. <a href="<%=@controller.createUrl{params={page="langref.types.string"}, amp="&amp;", "#"="convert"}%>">Преобразование в строку</a>
+</div>
