@@ -1,7 +1,7 @@
 UrlManager = extends Component {
 	routeVar = "r",
 	rules = null,
-	ruleConfig = 'UrlRule',
+	ruleClass = 'UrlRule',
 	suffix = null,
 	enablePrettyUrl = true,
 	indexScriptName = "index.osh",
@@ -36,7 +36,7 @@ UrlManager = extends Component {
 				rule.route || rule.route = rule.shift()
 				rule.pattern = key
 			}
-			rules[] = @owner.createComponent(@ruleConfig, rule)
+			rules[] = @owner.createComponent(@ruleClass, rule)
 			// echo "<pre>"; ob.push(); dump(rules.last); echo html.encode(ob.popContents()); echo "</pre>"
 		}
 		@rules = rules
@@ -64,8 +64,9 @@ UrlManager = extends Component {
 				END; terminate() */
 				
 			if("${request.baseUrl}/" != request.url){
-				request.redirect(request.baseUrl)
+				// request.redirect(request.baseUrl)
 			}
+			throw NotFoundHttpException(_T('Page not found.'))
 		}
 	},
 	

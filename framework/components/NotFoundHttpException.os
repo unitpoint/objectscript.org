@@ -1,0 +1,3 @@
+NotFoundHttpException = extends Exception {
+
+}
