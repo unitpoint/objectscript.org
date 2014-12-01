@@ -1,5 +1,6 @@
 return {
 	charset = "utf-8",
+	baseLang = "ru",
 	lang = "ru",
 	// defaultController = "game",
 	aliases = {
@@ -25,32 +26,19 @@ return {
 			
 		}.merge(require("session-local.os", false)),
 		urlManager = {
-			class = "UrlManager",
+			class = "OSMultiLangUrlManager",
+			ruleClass = 'OSMultiLangUrlRule',
 			rules = {
 				'<action:(langref|download|manual|install)>/<page:[\w\d\.\-]+>.html' = 'site/<action>',
 				'' = 'site/index',
 				'<action>.html' = 'site/<action>',
-				/*
-                'articles' = 'post/articles',
-                'apps' = 'post/apps',
-                'apps/create' = 'profile/createApp',
-                'presentations' = 'post/presentations',
-                'presentations/create' = 'profile/createPresentation',
-                'dreambook' = 'post/dreambook',
-                'dreambook/create' = 'post/createDreampost',
-                '<title>-p<id:\d+>' = {'post/', 'urlSuffix' = '.html'},
-                'posts/<title>-<id:\d+>' = {'post/', 'urlSuffix' = '.html'},
-                '<title>~<url:[\w\d\-_]+?>' = {'post/', 'urlSuffix' = '.html'},
-                'posts/<title>~<url:[\w\d\-_]+?>' = {'post/', 'urlSuffix' = '.html'},
-                'posts/<id:\d+>' = 'post/',
-				*/
 				// '<controller:\w+>/<action:\w+>' = '<controller>/<action>',
 				// '<controller:\w+>/' = '<controller>/',
 			},			
 		},
-		/* request = {
-			class = "HttpRequest",
-		}, */
+		request = {
+			class = "OSMultiLangHttpRequest",
+		},
 		// db = require("db-local.os"),
 		db = extends require("db-local.os", false) {}, // hide db user & password while print config
 	},

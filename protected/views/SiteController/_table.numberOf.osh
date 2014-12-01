@@ -1,0 +1,46 @@
+﻿<%
+	var MyClass = extends Object {
+		valueOf = function(){
+			return 10
+		}
+	}
+	var obj = MyClass()
+	var arr = [1,2,3]
+	
+	var values = [null, true, false, 13, "12", "0x12", "0123", "0b10", "12lo", 12.57, "12.57", obj, arr]
+	var funcs = ["numberOf", "toNumber", "parseInt", "parseFloat"]
+	
+	var printCellValue = function(v){
+		echo "<td>"
+		if(stringOf(v)){
+			echo "<span class=\"str\">${json.encode(v)}</span>"
+		}else{
+			echo "<code>${json.encode(v)}</code>"
+		}
+		echo "</td>"
+	}
+%>
+<table class="table table-striped">
+  <thead>
+	<tr>
+	  <th></th>
+		<%
+			for(var _, func in funcs){
+				echo "<th>${func}</th>"
+			}
+		%>
+	</tr>
+  </thead>
+  <tbody>
+	<% for(var _, value in values){	%>
+	<tr>
+		<%
+			printCellValue(value)
+			for(var _, func in funcs){
+				printCellValue(_G[func](value))
+			}
+		%>
+	</tr>
+	<% } /* for */ %>
+  </tbody>
+</table>

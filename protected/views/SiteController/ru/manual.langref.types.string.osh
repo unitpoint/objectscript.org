@@ -254,7 +254,7 @@ Heredoc-синтаксис начинается с последовательн�
 <%@controller.widget{'SourceWidget', source="examples/tutorial.string.convert.osh"}%>
 
 <p>
-<% require("_table.stringOf.osh") %>
+<%=@controller.renderPartial("_table.stringOf.osh")%>
 
 <div class="alert alert-info">
 См. 

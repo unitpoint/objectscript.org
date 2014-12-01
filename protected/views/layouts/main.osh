@@ -38,14 +38,13 @@
 	
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 	
-	<script src="<%=baseUrl%>/assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
 	<link href="<%=baseUrl%>/assets/google-code-prettify/prettify.css?<%=CLIENT_VERSION%>" rel="stylesheet">
+	<script src="<%=baseUrl%>/assets/google-code-prettify/run_prettify.js?<%=CLIENT_VERSION%>"></script>
 	
 	<script src="<%=baseUrl%>/assets/jquery-treeview/jquery.treeview.js?<%=CLIENT_VERSION%>"></script>
 	<script src="<%=baseUrl%>/assets/js/bootstrap.min.js?<%=CLIENT_VERSION%>"></script>
-	<script src="/assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
+	<script src="<%=baseUrl%>/assets/js/jquery.cookie.js?<%=CLIENT_VERSION%>"></script>
 	
-
     <!-- START COPYING HERE -->
     <link rel="stylesheet" href="<%=baseUrl%>/assets/css/gh-fork-ribbon.css" />
     <!--[if IE]>
@@ -98,6 +97,23 @@
 						  <li><a href="https://github.com/unitpoint/os2d" target="_blank"><%=_T.MENU_EXAMPLE_OS2D%></a></li>
 						  <li><a href="<%=baseUrl%>/metro2033"><%=_T.MENU_EXAMPLE_METRO2033%></a></li>
 						  <li><a href="http://colorearth.info" target="_blank">colorearth.info</a></li>
+						</ul>
+					  </li>
+					  <li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><img src="<%=baseUrl%>/img/flag-icon-<%=app.lang%>.png" /></a>
+						<ul class="dropdown-menu">
+							<%
+								var saveLang = app.lang
+								for(var langId, langName in app.params.languages){
+									var url = app.request.url.replace("/${app.lang}/", "/${langId}/")
+									if(!url.find("/${langId}/")){
+										app.lang = langId
+										url = app.createUrl{controller=app.controller.controllerId, action=app.controller.actionId}
+										app.lang = saveLang
+									}
+									echo "<li><a href=\"${url}\"><img src=\"${baseUrl}/img/flag-icon-${langId}.png\" style=\"padding-right:10px\" />${html.encode(langName)}</a></li>"
+								}
+							%>
 						</ul>
 					  </li>
 					</ul>

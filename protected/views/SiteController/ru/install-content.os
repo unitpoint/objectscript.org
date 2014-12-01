@@ -2,7 +2,7 @@
 	"install.unix" = {
 		"Установка под Unix", {
 			"install.unix.os-make" = "Компиляция ObjectScript",
-			"install.unix.os-fcgi-conf" = "Настройка os-fcgi",
+			// "install.unix.os-fcgi-conf" = "Настройка os-fcgi",
 			"install.unix.nginx" = "Установка под nginx",
 		},
 	},
