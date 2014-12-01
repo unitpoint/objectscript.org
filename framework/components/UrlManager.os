@@ -55,6 +55,9 @@ UrlManager = extends Component {
 					return route
 				}
 			}
+			if(request.pathInfo === ""){
+				return null
+			}
 			/* echo <<<END"<pre>NOT FOUND parseRequest: ${request}, 
 				baseUrl: ${request.baseUrl} <br />
 				scriptUrl: ${request.scriptUrl} <br />
@@ -63,9 +66,6 @@ UrlManager = extends Component {
 				hostInfo: ${request.hostInfo} <br />
 				END; terminate() */
 				
-			if("${request.baseUrl}/" != request.url){
-				// request.redirect(request.baseUrl)
-			}
 			throw NotFoundHttpException(_T('Page not found.'))
 		}
 	},
