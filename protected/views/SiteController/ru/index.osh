@@ -12,7 +12,7 @@
 	<div class="pull-right"><%=@controller.renderPartial("/layouts/_uptolike")%></div>
 	<h1>ObjectScript</h1>
 	<p>
-	ObjectScript (OS) - это новый язык программирования для веб разработки, бесплатный, кроссплатформенный, 
+	ObjectScript (OS) - это новый язык программирования общего назначения, бесплатный, кроссплатформенный, 
 	легкий, встраиваемый и с открытым исходным кодом. 
 	ObjectScript сочетает преимущества таких языков, как JavaScript, Lua, Ruby, Python и PHP. OS имеет синтаксис из JavaScript, 
 	множественные результаты функций из Lua, синтаксический сахар из Ruby, магические методы из Python, PHP и мн. др.
@@ -23,7 +23,7 @@
 <div class="bs-callout bs-callout-info">
 	<p>
 	ObjectScript - это универсальный язык программирования, ObjectScript предназначен 
-	для разработки сайтов или написания скриптов, а также для встраивания в программы на C++. 
+	для для встраивания в программы на C++, разработки сайтов или написания скриптов. 
 	Например, этот сайт сделан на ObjectScript,
 	<a href="https://github.com/unitpoint/objectscript.org" target="_blank" rel="nofollow">исходники сайта objectscript.org</a>
 	распространяются абсолютно бесплатно.</p>
