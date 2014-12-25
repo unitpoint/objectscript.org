@@ -38,8 +38,8 @@
 	<iframe width="560" height="315" src="//www.youtube.com/embed/u9_sfc7bP0k" frameborder="0" allowfullscreen></iframe>
   </div>
   <div class="col-md-6">
-	Установка ObjectScript под Windows займет всего несколько минут. На видео подробно рассказывается
-	об установке ObjectScript для программирования под веб. Показаны несколько веб-примеров и написан консольный скрипт, 
+	На видео показано, как установить ObjectScript под Windows. 
+	Показаны несколько веб-примеров и написан консольный скрипт, 
 	примерный аналог команды <code>dir</code> в Windows.
   </div>
 </div>
