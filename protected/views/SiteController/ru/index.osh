@@ -23,7 +23,7 @@
 <div class="bs-callout bs-callout-info">
 	<p>
 	ObjectScript - это универсальный язык программирования, ObjectScript предназначен 
-	для для встраивания в программы на C++, разработки сайтов или написания скриптов. 
+	для встраивания в программы на C++, разработки сайтов, написания скриптов и др.. 
 	Например, этот сайт сделан на ObjectScript,
 	<a href="https://github.com/unitpoint/objectscript.org" target="_blank" rel="nofollow">исходники сайта objectscript.org</a>
 	распространяются абсолютно бесплатно.</p>
