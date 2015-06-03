@@ -6,6 +6,23 @@ Model = extends Component {
 	_validators = null,
 	_scenario = null,
 	
+	schema = null,
+	
+	__get = function(name){
+		if(name in @schema){
+			return null
+		}
+		return super(name)
+	},
+	
+	/* __set = function(name, value){
+		if(name in @schema){
+			this[name] = value
+			return
+		}
+		super(name, value)
+	}, */
+	
 	__get@scenario = function(){
 		return @_scenario
 	},
@@ -59,14 +76,16 @@ Model = extends Component {
 		var values = {}
 		if(names){
 			for(var _, name in names){
-				var value = this[name] 
-				if(!functionOf(value) && typeOf(name) == "string" && name.sub(0, 1) != "_"){
+				var value = this.schema[name] 
+				// if(!functionOf(value) && typeOf(name) == "string" && name.sub(0, 1) != "_"){
+				if(stringOf(name)){
 					values[name] = value 
 				}
 			}
 		}else{
-			for(var name, value in this){
-				if(!functionOf(value) && typeOf(name) == "string" && name.sub(0, 1) != "_"){
+			for(var name, value in this.schema){
+				// if(!functionOf(value) && typeOf(name) == "string" && name.sub(0, 1) != "_"){
+				if(stringOf(name)){
 					values[name] = value 
 				}
 			}

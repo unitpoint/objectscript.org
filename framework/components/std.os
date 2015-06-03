@@ -33,9 +33,6 @@ function evalEnv(str, env){
 function delegate(self, func){
 	var args = ...
 	if(#args == 0){
-
-
-
 		return function(){ return func.apply(self, arguments) }
 	}
 	return function(){ 

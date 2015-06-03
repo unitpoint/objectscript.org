@@ -1,8 +1,10 @@
 LoginForm = extends Model {
-	email = null,
-	password = null,
-	invite_code = null,
-	// rememberMe = true,
+	schema = {
+		email = null,
+		password = null,
+		invite_code = null,
+		// rememberMe = true,
+	},
 	
 	_user = null,
 	_invite = null,

@@ -1,5 +1,7 @@
 Invite = extends Model {
-	id = null,
-	code = null,
-	user_id = null,
+	schema = {
+		id = null,
+		code = null,
+		user_id = null,
+	},
 }
